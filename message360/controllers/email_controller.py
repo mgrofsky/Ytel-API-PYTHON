@@ -3,7 +3,7 @@
 """
     message360.controllers.email_controller
 
-    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 10/18/2016
+    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 10/21/2016
 """
 
 from .base_controller import *
@@ -35,7 +35,7 @@ class EmailController(BaseController):
         Args:
             to (string): The to email address
             mfrom (string): The from email address
-            mtype (string): email format type, html or text
+            mtype (SendEmailAs): email format type, html or text
             subject (string): Email subject
             message (string): The body of the email message
             cc (string, optional): CC Email address
@@ -77,10 +77,6 @@ class EmailController(BaseController):
         _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
             'ResponseType': response_type
         })
-
-        _files = {
-            'attachment': attachment
-        }
         
         # Validate and preprocess url
         _query_url = APIHelper.clean_url(_query_builder)
@@ -98,14 +94,15 @@ class EmailController(BaseController):
             'subject': subject,
             'message': message,
             'cc': cc,
-            'bcc': bcc
+            'bcc': bcc,
+            'attachment': attachment
         }
         
         # Form encode parameters.
         _form_parameters = APIHelper.form_encode_parameters(_form_parameters)
 
         # Prepare the API call.
-        _request = self.http_client.post(_query_url, headers=_headers, parameters=_form_parameters, files=_files, username=Configuration.basic_auth_user_name, password=Configuration.basic_auth_password)
+        _request = self.http_client.post(_query_url, headers=_headers, parameters=_form_parameters, username=Configuration.basic_auth_user_name, password=Configuration.basic_auth_password)
 
         # Invoke the on before request HttpCallBack if specified
         if self.http_call_back != None:

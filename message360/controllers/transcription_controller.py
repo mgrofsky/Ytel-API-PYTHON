@@ -3,7 +3,7 @@
 """
     message360.controllers.transcription_controller
 
-    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 10/18/2016
+    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 10/21/2016
 """
 
 from .base_controller import *
@@ -31,8 +31,7 @@ class TranscriptionController(BaseController):
         Args:
             page (int, optional): TODO: type description here. Example: 
             page_size (int, optional): TODO: type description here. Example: 
-            status (StatusEnum, optional): TODO: type description here.
-                Example: 
+            status (Status, optional): TODO: type description here. Example: 
             date_transcribed (string, optional): TODO: type description here.
                 Example: 
             response_type (string, optional): Response format, xml or json

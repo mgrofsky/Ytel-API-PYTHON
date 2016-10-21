@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 
 """
-    message360.models.http_method_enum
+    message360.models.http_method
 
-    This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 10/18/2016
+    This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 10/21/2016
 """
 
-class HttpMethodEnum(object):
+class HttpMethod(object):
 
     """Implementation of the 'HttpMethod' enum.
 

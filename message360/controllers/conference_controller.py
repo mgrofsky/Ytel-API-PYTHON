@@ -3,7 +3,7 @@
 """
     message360.controllers.conference_controller
 
-    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 10/18/2016
+    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 10/21/2016
 """
 
 from .base_controller import *
@@ -383,8 +383,8 @@ class ConferenceController(BaseController):
                 in the response per page
             friendly_name (string, optional): Only return conferences with the
                 specified FriendlyName
-            status (InterruptedCallStatusEnum, optional): TODO: type
-                description here. Example: 
+            status (InterruptedCallStatus, optional): TODO: type description
+                here. Example: 
             date_created (string, optional): TODO: type description here.
                 Example: 
             date_updated (string, optional): TODO: type description here.
