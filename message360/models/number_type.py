@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 
 """
-    message360.models.number_type_enum
+    message360.models.number_type
 
-    This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 10/18/2016
+    This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 10/21/2016
 """
 
-class NumberTypeEnum(object):
+class NumberType(object):
 
     """Implementation of the 'Number Type' enum.
 

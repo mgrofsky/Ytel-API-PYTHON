@@ -1,4 +1,4 @@
-# Getting Started
+#
 
 ## How to Build
 
@@ -189,10 +189,10 @@ def create_list_participant(self,
 
 ```python
 conference_sid = 'ConferenceSid'
-page = 136
-pagesize = 136
-muted = True
-deaf = True
+page = 12
+pagesize = 12
+muted = False
+deaf = False
 response_type = 'json'
 
 result = conference_client.create_list_participant(conference_sid, page, pagesize, muted, deaf, response_type)
@@ -232,7 +232,7 @@ def add_participant(self,
 ```python
 conferencesid = 'conferencesid'
 participantnumber = 'participantnumber'
-tocountrycode = 136
+tocountrycode = 176
 muted = True
 deaf = True
 response_type = 'json'
@@ -304,10 +304,10 @@ def create_list_conference(self,
 #### Example Usage
 
 ```python
-page = 136
-page_size = 136
+page = 176
+page_size = 176
 friendly_name = 'FriendlyName'
-status = InterruptedCallStatusEnum.CANCELED
+status = InterruptedCallStatus.CANCELED
 date_created = 'DateCreated'
 date_updated = 'DateUpdated'
 response_type = 'json'
@@ -357,9 +357,9 @@ def create_list_transcription(self,
 #### Example Usage
 
 ```python
-page = 44
-page_size = 44
-status = StatusEnum.INPROGRESS
+page = 176
+page_size = 176
+status = Status.INPROGRESS
 date_transcribed = 'DateTranscribed'
 response_type = 'json'
 
@@ -498,7 +498,7 @@ def create_available_phone_number(self,
 ```python
 number_type = 'NumberType'
 area_code = 'AreaCode'
-page_size = 44
+page_size = 176
 response_type = 'json'
 
 result = phone_number_client.create_available_phone_number(number_type, area_code, page_size, response_type)
@@ -534,8 +534,8 @@ def create_list_number(self,
 #### Example Usage
 
 ```python
-page = 44
-page_size = 44
+page = 176
+page_size = 176
 number_type = 'NumberType'
 friendly_name = 'FriendlyName'
 response_type = 'json'
@@ -686,17 +686,17 @@ def update_phone_number(self,
 phone_number = 'PhoneNumber'
 friendly_name = 'FriendlyName'
 voice_url = 'VoiceUrl'
-voice_method = HttpMethodEnum.GET
+voice_method = HttpMethod.GET
 voice_fallback_url = 'VoiceFallbackUrl'
-voice_fallback_method = HttpMethodEnum.GET
+voice_fallback_method = HttpMethod.GET
 hangup_callback = 'HangupCallback'
-hangup_callback_method = HttpMethodEnum.GET
+hangup_callback_method = HttpMethod.GET
 heartbeat_url = 'HeartbeatUrl'
-heartbeat_method = HttpMethodEnum.GET
+heartbeat_method = HttpMethod.GET
 sms_url = 'SmsUrl'
-sms_method = HttpMethodEnum.GET
+sms_method = HttpMethod.GET
 sms_fallback_url = 'SmsFallbackUrl'
-sms_fallback_method = HttpMethodEnum.GET
+sms_fallback_method = HttpMethod.GET
 response_type = 'json'
 
 result = phone_number_client.update_phone_number(phone_number, friendly_name, voice_url, voice_method, voice_fallback_url, voice_fallback_method, hangup_callback, hangup_callback_method, heartbeat_url, heartbeat_method, sms_url, sms_method, sms_fallback_url, sms_fallback_method, response_type)
@@ -802,12 +802,12 @@ def create_send_email(self,
 ```python
 to = 'to'
 mfrom = 'from'
-mtype = 'html'
+mtype = SendEmailAs.HTML
 subject = 'subject'
 message = 'message'
 cc = 'cc'
 bcc = 'bcc'
-attachment = "PathToFile"
+attachment = 'attachment'
 response_type = 'json'
 
 result = email_client.create_send_email(to, mfrom, mtype, subject, message, cc, bcc, attachment, response_type)
@@ -1181,7 +1181,7 @@ mfrom = 'from'
 tocountrycode = 1
 to = 'to'
 body = 'body'
-method = HttpMethodEnum.GET
+method = HttpMethod.GET
 messagestatuscallback = 'messagestatuscallback'
 response_type = 'json'
 
@@ -1250,8 +1250,8 @@ def create_list_sms(self,
 #### Example Usage
 
 ```python
-page = 86
-pagesize = 86
+page = 218
+pagesize = 218
 mfrom = 'from'
 to = 'to'
 datesent = 'datesent'
@@ -1290,7 +1290,7 @@ def create_list_inbound_sms(self,
 #### Example Usage
 
 ```python
-page = 86
+page = 218
 pagesize = 'pagesize'
 mfrom = 'from'
 to = 'to'
@@ -1443,8 +1443,8 @@ def create_list_recording(self,
 #### Example Usage
 
 ```python
-page = 86
-page_size = 86
+page = 218
+page_size = 218
 date_created = 'DateCreated'
 call_sid = 'CallSid'
 response_type = 'json'
@@ -1563,22 +1563,22 @@ mfrom = 'From'
 to_country_code = 'ToCountryCode'
 to = 'To'
 url = 'Url'
-method = HttpMethodEnum.GET
+method = HttpMethod.GET
 status_call_back_url = 'StatusCallBackUrl'
-status_call_back_method = HttpMethodEnum.GET
+status_call_back_method = HttpMethod.GET
 fall_back_url = 'FallBackUrl'
-fall_back_method = HttpMethodEnum.GET
+fall_back_method = HttpMethod.GET
 heart_beat_url = 'HeartBeatUrl'
-heart_beat_method = False
-timeout = 86
+heart_beat_method = True
+timeout = 218
 play_dtmf = 'PlayDtmf'
-hide_caller_id = False
-record = False
+hide_caller_id = True
+record = True
 record_call_back_url = 'RecordCallBackUrl'
-record_call_back_method = HttpMethodEnum.GET
-transcribe = False
+record_call_back_method = HttpMethod.GET
+transcribe = True
 transcribe_call_back_url = 'TranscribeCallBackUrl'
-if_machine = IfMachineEnum.CONTINUE
+if_machine = IfMachine.CONTINUE
 response_type = 'json'
 
 result = call_client.create_make_call(from_country_code, mfrom, to_country_code, to, url, method, status_call_back_url, status_call_back_method, fall_back_url, fall_back_method, heart_beat_url, heart_beat_method, timeout, play_dtmf, hide_caller_id, record, record_call_back_url, record_call_back_method, transcribe, transcribe_call_back_url, if_machine, response_type)
@@ -1618,10 +1618,10 @@ def create_play_audio(self,
 #### Example Usage
 
 ```python
-length = 86
-direction = DirectionEnum.IN
-loop = False
-mix = False
+length = 218
+direction = Direction.IN
+loop = True
+mix = True
 call_sid = 'CallSid'
 audio_url = 'AudioUrl'
 response_type = 'json'
@@ -1664,11 +1664,11 @@ def create_record_call(self,
 
 ```python
 call_sid = 'CallSid'
-record = False
-direction = DirectionEnum.IN
-time_limit = 86
+record = True
+direction = Direction.IN
+time_limit = 218
 call_back_url = 'CallBackUrl'
-fileformat = AudioFormatEnum.MP3
+fileformat = AudioFormat.MP3
 response_type = 'json'
 
 result = call_client.create_record_call(call_sid, record, direction, time_limit, call_back_url, fileformat, response_type)
@@ -1711,12 +1711,12 @@ def create_voice_effect(self,
 
 ```python
 call_sid = 'CallSid'
-audio_direction = AudioDirectionEnum.IN
-pitch_semi_tones = 86.3031682960238
-pitch_octaves = 86.3031682960238
-pitch = 86.3031682960238
-rate = 86.3031682960238
-tempo = 86.3031682960238
+audio_direction = AudioDirection.IN
+pitch_semi_tones = 218.210384905436
+pitch_octaves = 218.210384905436
+pitch = 218.210384905436
+rate = 218.210384905436
+tempo = 218.210384905436
 response_type = 'json'
 
 result = call_client.create_voice_effect(call_sid, audio_direction, pitch_semi_tones, pitch_octaves, pitch, rate, tempo, response_type)
@@ -1752,7 +1752,7 @@ def create_send_digit(self,
 ```python
 call_sid = 'CallSid'
 play_dtmf = 'PlayDtmf'
-play_dtmf_direction = DirectionEnum.IN
+play_dtmf_direction = Direction.IN
 response_type = 'json'
 
 result = call_client.create_send_digit(call_sid, play_dtmf, play_dtmf_direction, response_type)
@@ -1790,8 +1790,8 @@ def create_interrupted_call(self,
 ```python
 call_sid = 'CallSid'
 url = 'Url'
-method = HttpMethodEnum.GET
-status = InterruptedCallStatusEnum.CANCELED
+method = HttpMethod.GET
+status = InterruptedCallStatus.CANCELED
 response_type = 'json'
 
 result = call_client.create_interrupted_call(call_sid, url, method, status, response_type)

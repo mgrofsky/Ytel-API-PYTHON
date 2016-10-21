@@ -3,7 +3,7 @@
 """
     message360.controllers.sms_controller
 
-    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 10/18/2016
+    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 10/21/2016
 """
 
 from .base_controller import *
@@ -38,8 +38,8 @@ class SMSController(BaseController):
             tocountrycode (int): To country code
             to (string): Number to send the SMS to
             body (string): Text Message To Send
-            method (HttpMethodEnum, optional): Specifies the HTTP method used
-                to request the required URL once SMS sent.
+            method (HttpMethod, optional): Specifies the HTTP method used to
+                request the required URL once SMS sent.
             messagestatuscallback (string, optional): URL that can be
                 requested to receive notification when SMS has Sent. A set of
                 default parameters will be sent here once the SMS is
