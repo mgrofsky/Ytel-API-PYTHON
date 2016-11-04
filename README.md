@@ -1,14 +1,14 @@
-#
+#Getting started
 
 ## How to Build
 
 
-You must have Python greater than 2.7 installed in your system to build and run your SDK files. 
-The generated code has dependencies over external libraries like nose, jsonpickle, etc. These dependencies are defined in the ```requirements.txt``` file that comes with the SDK.
-To resolve these dependencies, we use the PIP Dependency manager. Install it by following steps at [https://pip.pypa.io/en/stable/installing/](https://pip.pypa.io/en/stable/installing/).
+You must have Python version 2.7.x or 3.x installed on your system to install and run this SDK. This SDK package depends on other Python packages like nose, jsonpickle etc. 
+These dependencies are defined in the ```requirements.txt``` file that comes with the SDK.
+To resolve these dependencies, you can use the PIP Dependency manager. Install it by following steps at [https://pip.pypa.io/en/stable/installing/](https://pip.pypa.io/en/stable/installing/).
 
-The paths of Python and PIP must be properly set in the environment variables. Open command prompt and type ```pip --version```.
-This should display the current version of the PIP Dependency Manager installed if the installation was successful.
+Python and PIP executables should be defined in your PATH. Open command prompt and type ```pip --version```.
+This should display the version of the PIP Dependency Manager installed if your installation was successful and the paths are properly defined.
 
 * Using command line, navigate to the directory containing the generated files (including ```requirements.txt```) for the SDK.
 * Run the command ```pip install -r requirements.txt```. This should install all the required dependencies.
@@ -18,11 +18,11 @@ This should display the current version of the PIP Dependency Manager installed 
 
 ## How to Use
 
-The following section explains how to use the Message360 library in a new project.
+The following section explains how to use the Message360 SDK package in a new project.
 
 ### 1. Open Project in an IDE
 
-Open an IDE for Python like PyCharm. The basic workflow presented here is also applicable if you prefer using a different editor or IDE.
+Open up a Python IDE like PyCharm. The basic workflow presented here is also applicable if you prefer using a different editor or IDE.
 
 ![Open project in PyCharm - Step 1](http://apidocs.io/illustration/python?step=pyCharm)
 
@@ -60,7 +60,7 @@ from message360lib.message360_client import *
 
 ![Add a new project in PyCharm - Step 4](http://apidocs.io/illustration/python?step=projectFiles&workspaceFolder=Message360-Python&libraryName=message360lib.message360_client&projectName=message360)
 
-After this you can add code to initialize the client library and acquire the instance of a Controller class. Sample code to initialize the client library and using controller methods is given in the subsequent sections.
+After this you can write code to instantiate an API client object, get a controller object and  make API calls. Sample code is given in the subsequent sections.
 
 ### 3. Run the Test Project
 
@@ -80,7 +80,7 @@ runner. You can run the tests as follows:
 
 ## Initialization
 
-### Authentication and Initialization
+### Authentication and 
 In order to setup authentication and initialization of the API client, you need the following information.
 
 | Parameter | Description |
@@ -189,8 +189,8 @@ def create_list_participant(self,
 
 ```python
 conference_sid = 'ConferenceSid'
-page = 12
-pagesize = 12
+page = 63
+pagesize = 63
 muted = False
 deaf = False
 response_type = 'json'
@@ -232,9 +232,9 @@ def add_participant(self,
 ```python
 conferencesid = 'conferencesid'
 participantnumber = 'participantnumber'
-tocountrycode = 176
-muted = True
-deaf = True
+tocountrycode = 63
+muted = False
+deaf = False
 response_type = 'json'
 
 result = conference_client.add_participant(conferencesid, participantnumber, tocountrycode, muted, deaf, response_type)
@@ -304,8 +304,8 @@ def create_list_conference(self,
 #### Example Usage
 
 ```python
-page = 176
-page_size = 176
+page = 63
+page_size = 63
 friendly_name = 'FriendlyName'
 status = InterruptedCallStatus.CANCELED
 date_created = 'DateCreated'
@@ -357,8 +357,8 @@ def create_list_transcription(self,
 #### Example Usage
 
 ```python
-page = 176
-page_size = 176
+page = 63
+page_size = 63
 status = Status.INPROGRESS
 date_transcribed = 'DateTranscribed'
 response_type = 'json'
@@ -498,7 +498,7 @@ def create_available_phone_number(self,
 ```python
 number_type = 'NumberType'
 area_code = 'AreaCode'
-page_size = 176
+page_size = 63
 response_type = 'json'
 
 result = phone_number_client.create_available_phone_number(number_type, area_code, page_size, response_type)
@@ -534,8 +534,8 @@ def create_list_number(self,
 #### Example Usage
 
 ```python
-page = 176
-page_size = 176
+page = 63
+page_size = 63
 number_type = 'NumberType'
 friendly_name = 'FriendlyName'
 response_type = 'json'
@@ -686,17 +686,17 @@ def update_phone_number(self,
 phone_number = 'PhoneNumber'
 friendly_name = 'FriendlyName'
 voice_url = 'VoiceUrl'
-voice_method = HttpMethod.GET
+voice_method = HttpAction.GET
 voice_fallback_url = 'VoiceFallbackUrl'
-voice_fallback_method = HttpMethod.GET
+voice_fallback_method = HttpAction.GET
 hangup_callback = 'HangupCallback'
-hangup_callback_method = HttpMethod.GET
+hangup_callback_method = HttpAction.GET
 heartbeat_url = 'HeartbeatUrl'
-heartbeat_method = HttpMethod.GET
+heartbeat_method = HttpAction.GET
 sms_url = 'SmsUrl'
-sms_method = HttpMethod.GET
+sms_method = HttpAction.GET
 sms_fallback_url = 'SmsFallbackUrl'
-sms_fallback_method = HttpMethod.GET
+sms_fallback_method = HttpAction.GET
 response_type = 'json'
 
 result = phone_number_client.update_phone_number(phone_number, friendly_name, voice_url, voice_method, voice_fallback_url, voice_fallback_method, hangup_callback, hangup_callback_method, heartbeat_url, heartbeat_method, sms_url, sms_method, sms_fallback_url, sms_fallback_method, response_type)
@@ -1181,7 +1181,7 @@ mfrom = 'from'
 tocountrycode = 1
 to = 'to'
 body = 'body'
-method = HttpMethod.GET
+method = HttpAction.GET
 messagestatuscallback = 'messagestatuscallback'
 response_type = 'json'
 
@@ -1250,8 +1250,8 @@ def create_list_sms(self,
 #### Example Usage
 
 ```python
-page = 218
-pagesize = 218
+page = 155
+pagesize = 155
 mfrom = 'from'
 to = 'to'
 datesent = 'datesent'
@@ -1290,7 +1290,7 @@ def create_list_inbound_sms(self,
 #### Example Usage
 
 ```python
-page = 218
+page = 155
 pagesize = 'pagesize'
 mfrom = 'from'
 to = 'to'
@@ -1443,8 +1443,8 @@ def create_list_recording(self,
 #### Example Usage
 
 ```python
-page = 218
-page_size = 218
+page = 155
+page_size = 155
 date_created = 'DateCreated'
 call_sid = 'CallSid'
 response_type = 'json'
@@ -1563,19 +1563,19 @@ mfrom = 'From'
 to_country_code = 'ToCountryCode'
 to = 'To'
 url = 'Url'
-method = HttpMethod.GET
+method = HttpAction.GET
 status_call_back_url = 'StatusCallBackUrl'
-status_call_back_method = HttpMethod.GET
+status_call_back_method = HttpAction.GET
 fall_back_url = 'FallBackUrl'
-fall_back_method = HttpMethod.GET
+fall_back_method = HttpAction.GET
 heart_beat_url = 'HeartBeatUrl'
 heart_beat_method = True
-timeout = 218
+timeout = 155
 play_dtmf = 'PlayDtmf'
 hide_caller_id = True
 record = True
 record_call_back_url = 'RecordCallBackUrl'
-record_call_back_method = HttpMethod.GET
+record_call_back_method = HttpAction.GET
 transcribe = True
 transcribe_call_back_url = 'TranscribeCallBackUrl'
 if_machine = IfMachine.CONTINUE
@@ -1618,7 +1618,7 @@ def create_play_audio(self,
 #### Example Usage
 
 ```python
-length = 218
+length = 155
 direction = Direction.IN
 loop = True
 mix = True
@@ -1666,7 +1666,7 @@ def create_record_call(self,
 call_sid = 'CallSid'
 record = True
 direction = Direction.IN
-time_limit = 218
+time_limit = 155
 call_back_url = 'CallBackUrl'
 fileformat = AudioFormat.MP3
 response_type = 'json'
@@ -1712,11 +1712,11 @@ def create_voice_effect(self,
 ```python
 call_sid = 'CallSid'
 audio_direction = AudioDirection.IN
-pitch_semi_tones = 218.210384905436
-pitch_octaves = 218.210384905436
-pitch = 218.210384905436
-rate = 218.210384905436
-tempo = 218.210384905436
+pitch_semi_tones = 155.265896052712
+pitch_octaves = 155.265896052712
+pitch = 155.265896052712
+rate = 155.265896052712
+tempo = 155.265896052712
 response_type = 'json'
 
 result = call_client.create_voice_effect(call_sid, audio_direction, pitch_semi_tones, pitch_octaves, pitch, rate, tempo, response_type)
@@ -1790,7 +1790,7 @@ def create_interrupted_call(self,
 ```python
 call_sid = 'CallSid'
 url = 'Url'
-method = HttpMethod.GET
+method = HttpAction.GET
 status = InterruptedCallStatus.CANCELED
 response_type = 'json'
 

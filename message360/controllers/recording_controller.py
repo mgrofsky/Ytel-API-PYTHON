@@ -3,7 +3,7 @@
 """
     message360.controllers.recording_controller
 
-    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 10/21/2016
+    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 11/04/2016
 """
 
 from .base_controller import *
