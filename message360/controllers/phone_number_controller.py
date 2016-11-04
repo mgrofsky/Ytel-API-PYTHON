@@ -3,7 +3,7 @@
 """
     message360.controllers.phone_number_controller
 
-    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 10/21/2016
+    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 11/04/2016
 """
 
 from .base_controller import *
@@ -451,26 +451,26 @@ class PhoneNumberController(BaseController):
                 Example: 
             voice_url (string, optional): URL requested once the call
                 connects
-            voice_method (HttpMethod, optional): TODO: type description here.
+            voice_method (HttpAction, optional): TODO: type description here.
                 Example: 
             voice_fallback_url (string, optional): URL requested if the voice
                 URL is not available
-            voice_fallback_method (HttpMethod, optional): TODO: type
+            voice_fallback_method (HttpAction, optional): TODO: type
                 description here. Example: 
             hangup_callback (string, optional): TODO: type description here.
                 Example: 
-            hangup_callback_method (HttpMethod, optional): TODO: type
+            hangup_callback_method (HttpAction, optional): TODO: type
                 description here. Example: 
             heartbeat_url (string, optional): URL requested once the call
                 connects
-            heartbeat_method (HttpMethod, optional): URL that can be requested
+            heartbeat_method (HttpAction, optional): URL that can be requested
                 every 60 seconds during the call to notify of elapsed time
             sms_url (string, optional): URL requested when an SMS is received
-            sms_method (HttpMethod, optional): TODO: type description here.
+            sms_method (HttpAction, optional): TODO: type description here.
                 Example: 
             sms_fallback_url (string, optional): URL requested once the call
                 connects
-            sms_fallback_method (HttpMethod, optional): URL requested if the
+            sms_fallback_method (HttpAction, optional): URL requested if the
                 sms URL is not available
             response_type (string, optional): Response format, xml or json
 

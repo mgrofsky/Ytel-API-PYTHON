@@ -3,7 +3,7 @@
 """
     message360.controllers.call_controller
 
-    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 10/21/2016
+    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 11/04/2016
 """
 
 from .base_controller import *
@@ -131,15 +131,15 @@ class CallController(BaseController):
             to_country_code (string): To cuntry code number
             to (string): To number
             url (string): URL requested once the call connects
-            method (HttpMethod, optional): Specifies the HTTP method used to
+            method (HttpAction, optional): Specifies the HTTP method used to
                 request the required URL once call connects.
             status_call_back_url (string, optional): specifies the HTTP
                 methodlinkclass used to request StatusCallbackUrl.
-            status_call_back_method (HttpMethod, optional): Specifies the HTTP
+            status_call_back_method (HttpAction, optional): Specifies the HTTP
                 methodlinkclass used to request StatusCallbackUrl.
             fall_back_url (string, optional): URL requested if the initial Url
                 parameter fails or encounters an error
-            fall_back_method (HttpMethod, optional): Specifies the HTTP method
+            fall_back_method (HttpAction, optional): Specifies the HTTP method
                 used to request the required FallbackUrl once call connects.
             heart_beat_url (string, optional): URL that can be requested every
                 60 seconds during the call to notify of elapsed tim
@@ -154,7 +154,7 @@ class CallController(BaseController):
             record (bool, optional): Specifies if the call should be recorded
             record_call_back_url (string, optional): Recording parameters will
                 be sent here upon completion
-            record_call_back_method (HttpMethod, optional): Method used to
+            record_call_back_method (HttpAction, optional): Method used to
                 request the RecordCallback URL.
             transcribe (bool, optional): Specifies if the call recording
                 should be transcribed
@@ -665,7 +665,7 @@ class CallController(BaseController):
             call_sid (string): Call SId
             url (string, optional): URL the in-progress call will be
                 redirected to
-            method (HttpMethod, optional): The method used to request the
+            method (HttpAction, optional): The method used to request the
                 above Url parameter
             status (InterruptedCallStatus, optional): Status to set the
                 in-progress call to
