@@ -3,7 +3,7 @@
 """
     message360.http.requests_client
 
-    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 11/04/2016
+    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 11/11/2016
 """
 
 import requests
@@ -40,18 +40,12 @@ class RequestsClient(HttpClient):
             HttpResponse: The response of the HttpRequest.
             
         """	
-        auth = None
-
-        if request.username or request.password:
-            auth=(request.username, request.password)
-
         response = requests.request(HttpMethodEnum.to_string(request.http_method), 
                                     request.query_url, 
                                     headers=request.headers,
                                     params=request.query_parameters, 
                                     data=request.parameters,
                                     files=request.files,
-                                    auth=auth,
                                     timeout=self.timeout)
 
         return self.convert_response(response, False)
@@ -65,19 +59,13 @@ class RequestsClient(HttpClient):
         Returns:
             HttpResponse: The response of the HttpRequest.
             
-        """
-        auth = None
-
-        if request.username or request.password:
-            auth=(request.username, request.password)
-        
+        """        
         response = requests.request(HttpMethodEnum.to_string(request.http_method), 
                                     request.query_url, 
                                     headers=request.headers,
                                     params=request.query_parameters, 
                                     data=request.parameters, 
                                     files=request.files,
-                                    auth=auth,
                                     timeout=self.timeout)
                                    
         return self.convert_response(response, True)

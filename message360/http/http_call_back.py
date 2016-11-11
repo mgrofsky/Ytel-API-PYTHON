@@ -3,7 +3,7 @@
 """
     message360.http.http_call_back
 
-    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 11/04/2016
+    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 11/11/2016
 """
 
 from .http_request import HttpRequest

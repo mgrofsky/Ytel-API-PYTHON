@@ -1,22 +1,22 @@
 # -*- coding: utf-8 -*-
 
 """
-    message360.controllers.recording_controller
+    message360.controllers.web_rtc_controller
 
     This file was automatically generated for message360 by APIMATIC BETA v2.0 on 11/11/2016
 """
 
 from .base_controller import *
 
-class RecordingController(BaseController):
+class WebRTCController(BaseController):
 
     """A Controller to access Endpoints in the message360 API."""
 
-    def create_view_recording(self,
-                              options=dict()):
-        """Does a POST request to /recording/viewrecording.{ResponseType}.
+    def create_check_funds(self,
+                           options=dict()):
+        """Does a POST request to /webrtc/checkFunds.json.
 
-        View a specific Recording
+        TODO: type endpoint description here.
 
         Args:
             options (dict, optional): Key-value pairs for any of the
@@ -25,11 +25,11 @@ class RecordingController(BaseController):
                 being the key and their desired values being the value. A list
                 of parameters that can be used are::
 
-                    recording_sid -- string -- Search Recording sid
-                    response_type -- string -- Response format, xml or json
+                    account_sid -- string -- Your message360 Account SID
+                    auth_token -- string -- Your message360 Token
 
         Returns:
-            string: Response from the API. 
+            void: Response from the API. 
 
         Raises:
             APIException: When an error occurs while fetching the data from
@@ -40,25 +40,22 @@ class RecordingController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(recording_sid = options.get("recording_sid"))
+        self.validate_parameters(account_sid = options.get("account_sid"),
+                            auth_token = options.get("auth_token"))
 
         # The base uri for api requests
         _query_builder = Configuration.base_uri
  
         # Prepare query string for API call
-        _query_builder += '/recording/viewrecording.{ResponseType}'
-
-        # Process optional template parameters
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
-            'ResponseType': options.get('response_type', None)
-        })
+        _query_builder += '/webrtc/checkFunds.json'
 
         # Validate and preprocess url
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare form parameters
         _form_parameters = {
-            'RecordingSid': options.get('recording_sid', None)
+            'account_sid': options.get('account_sid', None),
+            'auth_token': options.get('auth_token', None)
         }
         
         # Form encode parameters.
@@ -76,16 +73,11 @@ class RecordingController(BaseController):
         # Global error handling using HTTP status codes.
         self.validate_response(_context)    
 
-        # Return appropriate type
-        return _context.response.raw_body
+    def create_authenticate_number(self,
+                                   options=dict()):
+        """Does a POST request to /webrtc/authenticateNumber.json.
 
-
-
-    def create_delete_recording(self,
-                                options=dict()):
-        """Does a POST request to /recording/deleterecording.{ResponseType}.
-
-        Delete Recording Record
+        Authenticate a message360 number for use
 
         Args:
             options (dict, optional): Key-value pairs for any of the
@@ -94,12 +86,13 @@ class RecordingController(BaseController):
                 being the key and their desired values being the value. A list
                 of parameters that can be used are::
 
-                    recording_sid -- string -- Unique Recording Sid to be
-                        delete
-                    response_type -- string -- Response format, xml or json
+                    phone_number -- string -- Phone number to authenticate for
+                        use
+                    account_sid -- string -- Your message360 Account SID
+                    auth_token -- string -- Your message360 token
 
         Returns:
-            string: Response from the API. 
+            void: Response from the API. 
 
         Raises:
             APIException: When an error occurs while fetching the data from
@@ -110,25 +103,24 @@ class RecordingController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(recording_sid = options.get("recording_sid"))
+        self.validate_parameters(phone_number = options.get("phone_number"),
+                            account_sid = options.get("account_sid"),
+                            auth_token = options.get("auth_token"))
 
         # The base uri for api requests
         _query_builder = Configuration.base_uri
  
         # Prepare query string for API call
-        _query_builder += '/recording/deleterecording.{ResponseType}'
-
-        # Process optional template parameters
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
-            'ResponseType': options.get('response_type', None)
-        })
+        _query_builder += '/webrtc/authenticateNumber.json'
 
         # Validate and preprocess url
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare form parameters
         _form_parameters = {
-            'RecordingSid': options.get('recording_sid', None)
+            'phone_number': options.get('phone_number', None),
+            'account_sid': options.get('account_sid', None),
+            'auth_token': options.get('auth_token', None)
         }
         
         # Form encode parameters.
@@ -146,16 +138,11 @@ class RecordingController(BaseController):
         # Global error handling using HTTP status codes.
         self.validate_response(_context)    
 
-        # Return appropriate type
-        return _context.response.raw_body
+    def create_token(self,
+                     options=dict()):
+        """Does a POST request to /webrtc/createToken.json.
 
-
-
-    def create_list_recording(self,
-                              options=dict()):
-        """Does a POST request to /recording/listrecording.{ResponseType}.
-
-        List out Recordings
+        message360 webrtc
 
         Args:
             options (dict, optional): Key-value pairs for any of the
@@ -164,18 +151,11 @@ class RecordingController(BaseController):
                 being the key and their desired values being the value. A list
                 of parameters that can be used are::
 
-                    page -- int -- Which page of the overall response will be
-                        returned. Zero indexed
-                    page_size -- int -- Number of individual resources listed
-                        in the response per page
-                    date_created -- string -- TODO: type description here.
-                        Example: 
-                    call_sid -- string -- TODO: type description here.
-                        Example: 
-                    response_type -- string -- Response format, xml or json
+                    account_sid -- string -- Your message360 Account SID
+                    auth_token -- string -- Your message360 Token
 
         Returns:
-            string: Response from the API. 
+            void: Response from the API. 
 
         Raises:
             APIException: When an error occurs while fetching the data from
@@ -185,26 +165,23 @@ class RecordingController(BaseController):
 
         """
 
+        # Validate required parameters
+        self.validate_parameters(account_sid = options.get("account_sid"),
+                            auth_token = options.get("auth_token"))
+
         # The base uri for api requests
         _query_builder = Configuration.base_uri
  
         # Prepare query string for API call
-        _query_builder += '/recording/listrecording.{ResponseType}'
-
-        # Process optional template parameters
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
-            'ResponseType': options.get('response_type', None)
-        })
+        _query_builder += '/webrtc/createToken.json'
 
         # Validate and preprocess url
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare form parameters
         _form_parameters = {
-            'Page': options.get('page', None),
-            'PageSize': options.get('page_size', None),
-            'DateCreated': options.get('date_created', None),
-            'CallSid': options.get('call_sid', None)
+            'account_sid': options.get('account_sid', None),
+            'auth_token': options.get('auth_token', None)
         }
         
         # Form encode parameters.
@@ -221,8 +198,3 @@ class RecordingController(BaseController):
 
         # Global error handling using HTTP status codes.
         self.validate_response(_context)    
-
-        # Return appropriate type
-        return _context.response.raw_body
-
-

@@ -3,7 +3,7 @@
 """
     message360.http.http_client
 
-    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 11/04/2016
+    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 11/11/2016
 """
 
 from .http_request import HttpRequest
@@ -58,18 +58,14 @@ class HttpClient(object):
         raise NotImplementedError("Please Implement this method")
 
     def get(self, query_url,
-            headers = None,
-            query_parameters = None,
-            username = None,
-            password = None):
+            headers = {},
+            query_parameters = {}):
         """Create a simple GET HttpRequest object for the given parameters
         
         Args:
             query_url (string): The URL to send the request to.
             headers (dict, optional): The headers for the HTTP Request.
             query_parameters (dict, optional): Query parameters to add in the URL.
-            username (string, optional): Username for Basic Auth requests.
-            password (string, optional): Password for Basic Auth requests.
             
         Returns:
             HttpRequest: The generated HttpRequest for the given paremeters.
@@ -80,17 +76,13 @@ class HttpClient(object):
                            headers,
                            query_parameters,
                            None,
-                           None,
-                           username,
-                           password)
+                           None)
     
     def post(self, query_url,
-             headers = None,
-             query_parameters = None,
-             parameters = None,
-             files = None,
-             username = None,
-             password = None):
+             headers = {},
+             query_parameters = {},
+             parameters = {},
+             files = {}):
         """Create a simple POST HttpRequest object for the given parameters
         
         Args:
@@ -99,8 +91,6 @@ class HttpClient(object):
             query_parameters (dict, optional): Query parameters to add in the URL.
             parameters (dict, optional): Form or body parameters to be included in the body.
             files (dict, optional): Files to be sent with the request.
-            username (string, optional): Username for Basic Auth requests.
-            password (string, optional): Password for Basic Auth requests.
             
         Returns:
             HttpRequest: The generated HttpRequest for the given paremeters.
@@ -111,17 +101,13 @@ class HttpClient(object):
                            headers,
                            query_parameters,
                            parameters,
-                           files,
-                           username,
-                           password)
+                           files)
     
     def put(self, query_url,
-            headers = None,
-            query_parameters = None,
-            parameters = None,
-            files = None,
-            username = None,
-            password = None):
+            headers = {},
+            query_parameters = {},
+            parameters = {},
+            files = {}):
         """Create a simple PUT HttpRequest object for the given parameters
         
         Args:
@@ -130,8 +116,6 @@ class HttpClient(object):
             query_parameters (dict, optional): Query parameters to add in the URL.
             parameters (dict, optional): Form or body parameters to be included in the body.
             files (dict, optional): Files to be sent with the request.
-            username (string, optional): Username for Basic Auth requests.
-            password (string, optional): Password for Basic Auth requests.
             
         Returns:
             HttpRequest: The generated HttpRequest for the given paremeters.
@@ -142,17 +126,13 @@ class HttpClient(object):
                            headers,
                            query_parameters,
                            parameters,
-                           files,
-                           username,
-                           password)
+                           files)
     
     def patch(self, query_url,
-              headers = None,
-              query_parameters = None,
-              parameters = None,
-              files = None,
-              username = None,
-              password = None):
+              headers = {},
+              query_parameters = {},
+              parameters = {},
+              files = {}):
         """Create a simple PATCH HttpRequest object for the given parameters
         
         Args:
@@ -161,8 +141,6 @@ class HttpClient(object):
             query_parameters (dict, optional): Query parameters to add in the URL.
             parameters (dict, optional): Form or body parameters to be included in the body.
             files (dict, optional): Files to be sent with the request.
-            username (string, optional): Username for Basic Auth requests.
-            password (string, optional): Password for Basic Auth requests.
             
         Returns:
             HttpRequest: The generated HttpRequest for the given paremeters.
@@ -173,23 +151,17 @@ class HttpClient(object):
                            headers,
                            query_parameters,
                            parameters,
-                           files,
-                           username,
-                           password)
+                           files)
     
     def delete(self, query_url,
-               headers = None,
-               query_parameters = None,
-               username = None,
-               password = None):
+               headers = {},
+               query_parameters = {}):
         """Create a simple DELETE HttpRequest object for the given parameters
         
         Args:
             query_url (string): The URL to send the request to.
             headers (dict, optional): The headers for the HTTP Request.
             query_parameters (dict, optional): Query parameters to add in the URL.
-            username (string, optional): Username for Basic Auth requests.
-            password (string, optional): Password for Basic Auth requests.
             
         Returns:
             HttpRequest: The generated HttpRequest for the given paremeters.
@@ -200,6 +172,4 @@ class HttpClient(object):
                            headers,
                            query_parameters,
                            None,
-                           None,
-                           username,
-                           password)
+                           None)
