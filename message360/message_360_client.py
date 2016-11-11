@@ -3,7 +3,7 @@
 """
     message360.message_360_client
 
-    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 11/04/2016
+    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 11/11/2016
 """
 
 from .http import *
@@ -31,6 +31,14 @@ class Message360Client(object):
         return UsageController()
 
     @lazy_property
+    def web_rtc(self):
+        return WebRTCController()
+
+    @lazy_property
+    def recording(self):
+        return RecordingController()
+
+    @lazy_property
     def email(self):
         return EmailController()
 
@@ -41,10 +49,6 @@ class Message360Client(object):
     @lazy_property
     def account(self):
         return AccountController()
-
-    @lazy_property
-    def recording(self):
-        return RecordingController()
 
     @lazy_property
     def call(self):
@@ -59,7 +63,9 @@ class Message360Client(object):
                  basic_auth_user_name = None,
                  basic_auth_password = None):
 
-        Configuration.basic_auth_user_name = basic_auth_user_name
-        Configuration.basic_auth_password = basic_auth_password
+        if basic_auth_user_name != None:
+            Configuration.basic_auth_user_name = basic_auth_user_name
+        if basic_auth_password != None:
+            Configuration.basic_auth_password = basic_auth_password
 
 
