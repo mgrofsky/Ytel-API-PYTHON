@@ -3,7 +3,7 @@
 """
     message360.controllers.conference_controller
 
-    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 11/11/2016
+    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 11/16/2016
 """
 
 from .base_controller import *
@@ -43,7 +43,7 @@ class ConferenceController(BaseController):
 
         # Validate required parameters
         self.validate_parameters(conference_sid = options.get("conference_sid"),
-                            participant_sid = options.get("participant_sid"))
+                                 participant_sid = options.get("participant_sid"))
 
         # The base uri for api requests
         _query_builder = Configuration.base_uri
@@ -196,8 +196,8 @@ class ConferenceController(BaseController):
 
         # Validate required parameters
         self.validate_parameters(conferencesid = options.get("conferencesid"),
-                            participantnumber = options.get("participantnumber"),
-                            tocountrycode = options.get("tocountrycode"))
+                                 participantnumber = options.get("participantnumber"),
+                                 tocountrycode = options.get("tocountrycode"))
 
         # The base uri for api requests
         _query_builder = Configuration.base_uri

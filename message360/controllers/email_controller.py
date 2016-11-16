@@ -3,7 +3,7 @@
 """
     message360.controllers.email_controller
 
-    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 11/11/2016
+    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 11/16/2016
 """
 
 from .base_controller import *
@@ -258,10 +258,10 @@ class EmailController(BaseController):
 
         # Validate required parameters
         self.validate_parameters(to = options.get("to"),
-                            mfrom = options.get("mfrom"),
-                            mtype = options.get("mtype"),
-                            subject = options.get("subject"),
-                            message = options.get("message"))
+                                 mfrom = options.get("mfrom"),
+                                 mtype = options.get("mtype"),
+                                 subject = options.get("subject"),
+                                 message = options.get("message"))
 
         # The base uri for api requests
         _query_builder = Configuration.base_uri

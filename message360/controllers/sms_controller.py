@@ -3,7 +3,7 @@
 """
     message360.controllers.sms_controller
 
-    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 11/11/2016
+    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 11/16/2016
 """
 
 from .base_controller import *
@@ -52,10 +52,10 @@ class SMSController(BaseController):
 
         # Validate required parameters
         self.validate_parameters(fromcountrycode = options.get("fromcountrycode"),
-                            mfrom = options.get("mfrom"),
-                            tocountrycode = options.get("tocountrycode"),
-                            to = options.get("to"),
-                            body = options.get("body"))
+                                 mfrom = options.get("mfrom"),
+                                 tocountrycode = options.get("tocountrycode"),
+                                 to = options.get("to"),
+                                 body = options.get("body"))
 
         # The base uri for api requests
         _query_builder = Configuration.base_uri

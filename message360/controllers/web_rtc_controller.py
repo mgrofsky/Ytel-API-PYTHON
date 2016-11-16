@@ -3,7 +3,7 @@
 """
     message360.controllers.web_rtc_controller
 
-    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 11/11/2016
+    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 11/16/2016
 """
 
 from .base_controller import *
@@ -41,7 +41,7 @@ class WebRTCController(BaseController):
 
         # Validate required parameters
         self.validate_parameters(account_sid = options.get("account_sid"),
-                            auth_token = options.get("auth_token"))
+                                 auth_token = options.get("auth_token"))
 
         # The base uri for api requests
         _query_builder = Configuration.base_uri
@@ -104,8 +104,8 @@ class WebRTCController(BaseController):
 
         # Validate required parameters
         self.validate_parameters(phone_number = options.get("phone_number"),
-                            account_sid = options.get("account_sid"),
-                            auth_token = options.get("auth_token"))
+                                 account_sid = options.get("account_sid"),
+                                 auth_token = options.get("auth_token"))
 
         # The base uri for api requests
         _query_builder = Configuration.base_uri
@@ -167,7 +167,7 @@ class WebRTCController(BaseController):
 
         # Validate required parameters
         self.validate_parameters(account_sid = options.get("account_sid"),
-                            auth_token = options.get("auth_token"))
+                                 auth_token = options.get("auth_token"))
 
         # The base uri for api requests
         _query_builder = Configuration.base_uri

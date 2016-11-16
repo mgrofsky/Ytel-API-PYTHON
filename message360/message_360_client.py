@@ -3,7 +3,7 @@
 """
     message360.message_360_client
 
-    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 11/11/2016
+    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 11/16/2016
 """
 
 from .http import *
@@ -62,7 +62,6 @@ class Message360Client(object):
     def __init__(self, 
                  basic_auth_user_name = None,
                  basic_auth_password = None):
-
         if basic_auth_user_name != None:
             Configuration.basic_auth_user_name = basic_auth_user_name
         if basic_auth_password != None:

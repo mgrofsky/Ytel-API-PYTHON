@@ -3,12 +3,13 @@
 """
    message360.api_helper
 
-   This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 11/11/2016
+   This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 11/16/2016
 """
 
 import re
 import jsonpickle
 from requests.utils import quote
+from .models.base_model import BaseModel
 
 
 class APIHelper(object):
@@ -197,7 +198,7 @@ class APIHelper(object):
             obj = obj.to_dictionary()  
         
         if obj is None:
-            return None           
+            return {}           
         elif isinstance(obj, list):
             for index, entry in enumerate(obj):
                 retval.update(APIHelper.form_encode(entry, instanceName + "[" + str(index) + "]"))
