@@ -3,7 +3,7 @@
 """
     message360.models.send_email_as
 
-    This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 11/11/2016
+    This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 11/16/2016
 """
 
 class SendEmailAs(object):

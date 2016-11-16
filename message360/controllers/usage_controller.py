@@ -3,7 +3,7 @@
 """
     message360.controllers.usage_controller
 
-    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 11/11/2016
+    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 11/16/2016
 """
 
 from .base_controller import *
@@ -43,8 +43,8 @@ class UsageController(BaseController):
 
         # Validate required parameters
         self.validate_parameters(product_code = options.get("product_code"),
-                            start_date = options.get("start_date"),
-                            end_date = options.get("end_date"))
+                                 start_date = options.get("start_date"),
+                                 end_date = options.get("end_date"))
 
         # The base uri for api requests
         _query_builder = Configuration.base_uri

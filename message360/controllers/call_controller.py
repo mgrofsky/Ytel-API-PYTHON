@@ -3,7 +3,7 @@
 """
     message360.controllers.call_controller
 
-    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 11/11/2016
+    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 11/16/2016
 """
 
 from .base_controller import *
@@ -152,10 +152,10 @@ class CallController(BaseController):
 
         # Validate required parameters
         self.validate_parameters(from_country_code = options.get("from_country_code"),
-                            mfrom = options.get("mfrom"),
-                            to_country_code = options.get("to_country_code"),
-                            to = options.get("to"),
-                            url = options.get("url"))
+                                 mfrom = options.get("mfrom"),
+                                 to_country_code = options.get("to_country_code"),
+                                 to = options.get("to"),
+                                 url = options.get("url"))
 
         # The base uri for api requests
         _query_builder = Configuration.base_uri
@@ -261,9 +261,9 @@ class CallController(BaseController):
 
         # Validate required parameters
         self.validate_parameters(length = options.get("length"),
-                            direction = options.get("direction"),
-                            loop = options.get("loop"),
-                            mix = options.get("mix"))
+                                 direction = options.get("direction"),
+                                 loop = options.get("loop"),
+                                 mix = options.get("mix"))
 
         # The base uri for api requests
         _query_builder = Configuration.base_uri
@@ -348,7 +348,7 @@ class CallController(BaseController):
 
         # Validate required parameters
         self.validate_parameters(call_sid = options.get("call_sid"),
-                            record = options.get("record"))
+                                 record = options.get("record"))
 
         # The base uri for api requests
         _query_builder = Configuration.base_uri
@@ -511,7 +511,7 @@ class CallController(BaseController):
 
         # Validate required parameters
         self.validate_parameters(call_sid = options.get("call_sid"),
-                            play_dtmf = options.get("play_dtmf"))
+                                 play_dtmf = options.get("play_dtmf"))
 
         # The base uri for api requests
         _query_builder = Configuration.base_uri

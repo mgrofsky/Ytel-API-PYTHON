@@ -195,10 +195,10 @@ collect = {}
 conference_sid = 'ConferenceSid'
 collect['conference_sid'] = conference_sid
 
-page = 8
+page = 27
 collect['page'] = page
 
-pagesize = 8
+pagesize = 27
 collect['pagesize'] = pagesize
 
 muted = False
@@ -249,7 +249,7 @@ collect['conferencesid'] = conferencesid
 participantnumber = 'participantnumber'
 collect['participantnumber'] = participantnumber
 
-tocountrycode = 8
+tocountrycode = 27
 collect['tocountrycode'] = tocountrycode
 
 muted = False
@@ -330,10 +330,10 @@ def create_list_conference(self,
 ```python
 collect = {}
 
-page = 8
+page = 27
 collect['page'] = page
 
-page_size = 8
+page_size = 27
 collect['page_size'] = page_size
 
 friendly_name = 'FriendlyName'
@@ -395,10 +395,10 @@ def create_list_transcription(self,
 ```python
 collect = {}
 
-page = 8
+page = 27
 collect['page'] = page
 
-page_size = 8
+page_size = 27
 collect['page_size'] = page_size
 
 status = Status.INPROGRESS
@@ -564,7 +564,7 @@ collect['number_type'] = number_type
 area_code = 'AreaCode'
 collect['area_code'] = area_code
 
-page_size = 8
+page_size = 27
 collect['page_size'] = page_size
 
 response_type = 'json'
@@ -602,10 +602,10 @@ def create_list_number(self,
 ```python
 collect = {}
 
-page = 8
+page = 27
 collect['page'] = page
 
-page_size = 8
+page_size = 27
 collect['page_size'] = page_size
 
 number_type = 'NumberType'
@@ -1099,10 +1099,10 @@ def create_list_recording(self,
 ```python
 collect = {}
 
-page = 100
+page = 119
 collect['page'] = page
 
-page_size = 100
+page_size = 119
 collect['page_size'] = page_size
 
 date_created = 'DateCreated'
@@ -1698,10 +1698,10 @@ def create_list_sms(self,
 ```python
 collect = {}
 
-page = 100
+page = 119
 collect['page'] = page
 
-pagesize = 100
+pagesize = 119
 collect['pagesize'] = pagesize
 
 mfrom = 'from'
@@ -1748,7 +1748,7 @@ def create_list_inbound_sms(self,
 ```python
 collect = {}
 
-page = 100
+page = 119
 collect['page'] = page
 
 pagesize = 'pagesize'
@@ -1804,7 +1804,7 @@ def create_view_account(self,
 ```python
 collect = {}
 
-date = 'date'
+date = '2016-11-01'
 collect['date'] = date
 
 response_type = 'json'
@@ -1942,7 +1942,7 @@ collect['heart_beat_url'] = heart_beat_url
 heart_beat_method = False
 collect['heart_beat_method'] = heart_beat_method
 
-timeout = 100
+timeout = 119
 collect['timeout'] = timeout
 
 play_dtmf = 'PlayDtmf'
@@ -2006,7 +2006,7 @@ def create_play_audio(self,
 ```python
 collect = {}
 
-length = 100
+length = 119
 collect['length'] = length
 
 direction = Direction.IN
@@ -2070,7 +2070,7 @@ collect['record'] = record
 direction = Direction.IN
 collect['direction'] = direction
 
-time_limit = 100
+time_limit = 119
 collect['time_limit'] = time_limit
 
 call_back_url = 'CallBackUrl'
@@ -2123,19 +2123,19 @@ collect['call_sid'] = call_sid
 audio_direction = AudioDirection.IN
 collect['audio_direction'] = audio_direction
 
-pitch_semi_tones = 100.221427916652
+pitch_semi_tones = 77.5333565578486
 collect['pitch_semi_tones'] = pitch_semi_tones
 
-pitch_octaves = 100.221427916652
+pitch_octaves = 77.5333565578486
 collect['pitch_octaves'] = pitch_octaves
 
-pitch = 100.221427916652
+pitch = 77.5333565578486
 collect['pitch'] = pitch
 
-rate = 100.221427916652
+rate = 77.5333565578486
 collect['rate'] = rate
 
-tempo = 100.221427916652
+tempo = 77.5333565578486
 collect['tempo'] = tempo
 
 response_type = 'json'

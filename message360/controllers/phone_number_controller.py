@@ -3,7 +3,7 @@
 """
     message360.controllers.phone_number_controller
 
-    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 11/11/2016
+    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 11/16/2016
 """
 
 from .base_controller import *
@@ -44,7 +44,7 @@ class PhoneNumberController(BaseController):
 
         # Validate required parameters
         self.validate_parameters(number_type = options.get("number_type"),
-                            area_code = options.get("area_code"))
+                                 area_code = options.get("area_code"))
 
         # The base uri for api requests
         _query_builder = Configuration.base_uri
