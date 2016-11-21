@@ -3,7 +3,7 @@
 """
     message360.message_360_client
 
-    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 11/16/2016
+    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 11/21/2016
 """
 
 from .http import *
@@ -57,6 +57,10 @@ class Message360Client(object):
     @lazy_property
     def carrier(self):
         return CarrierController()
+
+    @lazy_property
+    def address(self):
+        return AddressController()
 
 
     def __init__(self, 

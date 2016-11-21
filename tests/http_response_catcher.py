@@ -3,7 +3,7 @@
 """
     tests.http_response_catcher
 
-    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 11/16/2016
+    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 11/21/2016
 """
 
 from message360.http.http_call_back import *

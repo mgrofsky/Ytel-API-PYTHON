@@ -10,3 +10,4 @@ from .sms_controller import *
 from .account_controller import *
 from .call_controller import *
 from .carrier_controller import *
+from .address_controller import *

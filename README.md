@@ -3,7 +3,7 @@
 ## How to Build
 
 
-You must have Python version 2.7.x or 3.x installed on your system to install and run this SDK. This SDK package depends on other Python packages like nose, jsonpickle etc. 
+You must have Python 2 >=2.7.9 or Python 3 >=3.4 installed on your system to install and run this SDK. This SDK package depends on other Python packages like nose, jsonpickle etc. 
 These dependencies are defined in the ```requirements.txt``` file that comes with the SDK.
 To resolve these dependencies, you can use the PIP Dependency manager. Install it by following steps at [https://pip.pypa.io/en/stable/installing/](https://pip.pypa.io/en/stable/installing/).
 
@@ -55,10 +55,10 @@ Name it "testsdk"
 In your python file you will be required to import the generated python library using the following code lines
 
 ```Python
-from message360lib.message360_client import *
+from message360.message_360_client import *
 ```
 
-![Add a new project in PyCharm - Step 4](http://apidocs.io/illustration/python?step=projectFiles&workspaceFolder=Message360-Python&libraryName=message360lib.message360_client&projectName=message360)
+![Add a new project in PyCharm - Step 4](http://apidocs.io/illustration/python?step=projectFiles&workspaceFolder=Message360-Python&libraryName=message360.message_360_client&projectName=message360)
 
 After this you can write code to instantiate an API client object, get a controller object and  make API calls. Sample code is given in the subsequent sections.
 
@@ -66,7 +66,7 @@ After this you can write code to instantiate an API client object, get a control
 
 To run the file within your test project, right click on your Python file inside your Test project and click on ```Run```
 
-![Run Test Project - Step 1](http://apidocs.io/illustration/python?step=runProject&workspaceFolder=Message360-Python&libraryName=message360lib.message360_client&projectName=message360)
+![Run Test Project - Step 1](http://apidocs.io/illustration/python?step=runProject&workspaceFolder=Message360-Python&libraryName=message360.message_360_client&projectName=message360)
 
 
 ## How to Test
@@ -76,7 +76,8 @@ cases. unittest is used as the testing framework and nose is used as the test
 runner. You can run the tests as follows:
 
   1. From terminal/cmd navigate to the root directory of the SDK.
-  2. Invoke 'nosetests'
+  2. Invoke 'pip install -r test-requirements.txt'
+  3. Invoke 'nosetests'
 
 ## Initialization
 
@@ -115,6 +116,7 @@ client = Message360Client(basic_auth_user_name, basic_auth_password)
 * [AccountController](#account_controller)
 * [CallController](#call_controller)
 * [CarrierController](#carrier_controller)
+* [AddressController](#address_controller)
 
 ### <a name="conference_controller"></a>![Class: ](http://apidocs.io/img/class.png ".ConferenceController") ConferenceController
 
@@ -195,10 +197,10 @@ collect = {}
 conference_sid = 'ConferenceSid'
 collect['conference_sid'] = conference_sid
 
-page = 27
+page = 98
 collect['page'] = page
 
-pagesize = 27
+pagesize = 98
 collect['pagesize'] = pagesize
 
 muted = False
@@ -249,7 +251,7 @@ collect['conferencesid'] = conferencesid
 participantnumber = 'participantnumber'
 collect['participantnumber'] = participantnumber
 
-tocountrycode = 27
+tocountrycode = 98
 collect['tocountrycode'] = tocountrycode
 
 muted = False
@@ -330,10 +332,10 @@ def create_list_conference(self,
 ```python
 collect = {}
 
-page = 27
+page = 98
 collect['page'] = page
 
-page_size = 27
+page_size = 98
 collect['page_size'] = page_size
 
 friendly_name = 'FriendlyName'
@@ -395,10 +397,10 @@ def create_list_transcription(self,
 ```python
 collect = {}
 
-page = 27
+page = 98
 collect['page'] = page
 
-page_size = 27
+page_size = 98
 collect['page_size'] = page_size
 
 status = Status.INPROGRESS
@@ -564,7 +566,7 @@ collect['number_type'] = number_type
 area_code = 'AreaCode'
 collect['area_code'] = area_code
 
-page_size = 27
+page_size = 98
 collect['page_size'] = page_size
 
 response_type = 'json'
@@ -602,10 +604,10 @@ def create_list_number(self,
 ```python
 collect = {}
 
-page = 27
+page = 98
 collect['page'] = page
 
-page_size = 27
+page_size = 98
 collect['page_size'] = page_size
 
 number_type = 'NumberType'
@@ -1099,10 +1101,10 @@ def create_list_recording(self,
 ```python
 collect = {}
 
-page = 119
+page = 189
 collect['page'] = page
 
-page_size = 119
+page_size = 189
 collect['page_size'] = page_size
 
 date_created = 'DateCreated'
@@ -1698,10 +1700,10 @@ def create_list_sms(self,
 ```python
 collect = {}
 
-page = 119
+page = 189
 collect['page'] = page
 
-pagesize = 119
+pagesize = 189
 collect['pagesize'] = pagesize
 
 mfrom = 'from'
@@ -1748,7 +1750,7 @@ def create_list_inbound_sms(self,
 ```python
 collect = {}
 
-page = 119
+page = 189
 collect['page'] = page
 
 pagesize = 'pagesize'
@@ -1939,19 +1941,19 @@ collect['fall_back_method'] = fall_back_method
 heart_beat_url = 'HeartBeatUrl'
 collect['heart_beat_url'] = heart_beat_url
 
-heart_beat_method = False
+heart_beat_method = True
 collect['heart_beat_method'] = heart_beat_method
 
-timeout = 119
+timeout = 189
 collect['timeout'] = timeout
 
 play_dtmf = 'PlayDtmf'
 collect['play_dtmf'] = play_dtmf
 
-hide_caller_id = False
+hide_caller_id = True
 collect['hide_caller_id'] = hide_caller_id
 
-record = False
+record = True
 collect['record'] = record
 
 record_call_back_url = 'RecordCallBackUrl'
@@ -1960,7 +1962,7 @@ collect['record_call_back_url'] = record_call_back_url
 record_call_back_method = HttpAction.GET
 collect['record_call_back_method'] = record_call_back_method
 
-transcribe = False
+transcribe = True
 collect['transcribe'] = transcribe
 
 transcribe_call_back_url = 'TranscribeCallBackUrl'
@@ -2006,16 +2008,16 @@ def create_play_audio(self,
 ```python
 collect = {}
 
-length = 119
+length = 189
 collect['length'] = length
 
 direction = Direction.IN
 collect['direction'] = direction
 
-loop = False
+loop = True
 collect['loop'] = loop
 
-mix = False
+mix = True
 collect['mix'] = mix
 
 call_sid = 'CallSid'
@@ -2064,13 +2066,13 @@ collect = {}
 call_sid = 'CallSid'
 collect['call_sid'] = call_sid
 
-record = False
+record = True
 collect['record'] = record
 
 direction = Direction.IN
 collect['direction'] = direction
 
-time_limit = 119
+time_limit = 189
 collect['time_limit'] = time_limit
 
 call_back_url = 'CallBackUrl'
@@ -2123,19 +2125,19 @@ collect['call_sid'] = call_sid
 audio_direction = AudioDirection.IN
 collect['audio_direction'] = audio_direction
 
-pitch_semi_tones = 77.5333565578486
+pitch_semi_tones = 189.787368916342
 collect['pitch_semi_tones'] = pitch_semi_tones
 
-pitch_octaves = 77.5333565578486
+pitch_octaves = 189.787368916342
 collect['pitch_octaves'] = pitch_octaves
 
-pitch = 77.5333565578486
+pitch = 189.787368916342
 collect['pitch'] = pitch
 
-rate = 77.5333565578486
+rate = 189.787368916342
 collect['rate'] = rate
 
-tempo = 77.5333565578486
+tempo = 189.787368916342
 collect['tempo'] = tempo
 
 response_type = 'json'
@@ -2370,6 +2372,237 @@ collect['response_type'] = response_type
 
 
 result = carrier_client.create_carrier_lookup_list(collect)
+
+```
+
+
+[Back to List of Controllers](#list_of_controllers)
+
+### <a name="address_controller"></a>![Class: ](http://apidocs.io/img/class.png ".AddressController") AddressController
+
+#### Get controller instance
+
+An instance of the ``` AddressController ``` class can be accessed from the API Client.
+
+```python
+ address_client = client.address
+```
+
+#### <a name="create_address"></a>![Method: ](http://apidocs.io/img/method.png ".AddressController.create_address") create_address
+
+> To add an address to your address book, you create a new address object. You can retrieve and delete individual addresses as well as get a list of addresses. Addresses are identified by a unique random ID.
+
+```python
+def create_address(self,
+                       options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| name |  ``` Required ```  | Name of user |
+| address |  ``` Required ```  | Address of user. |
+| country |  ``` Required ```  | Must be a 2 letter country short-name code (ISO 3166) |
+| state |  ``` Required ```  | Must be a 2 letter State eg. CA for US. For Some Countries it can be greater than 2 letters. |
+| city |  ``` Required ```  | City Name. |
+| zip |  ``` Required ```  | Zip code of city. |
+| description |  ``` Optional ```  | Description of addresses. |
+| email |  ``` Optional ```  | Email Id of user. |
+| phone |  ``` Optional ```  | Phone number of user. |
+| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response Type Either json or xml |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+name = 'name'
+collect['name'] = name
+
+address = 'address'
+collect['address'] = address
+
+country = 'country'
+collect['country'] = country
+
+state = 'state'
+collect['state'] = state
+
+city = 'city'
+collect['city'] = city
+
+zip = 'zip'
+collect['zip'] = zip
+
+description = 'description'
+collect['description'] = description
+
+email = 'email'
+collect['email'] = email
+
+phone = 'phone'
+collect['phone'] = phone
+
+response_type = ResponseType.JSON
+collect['response_type'] = response_type
+
+
+result = address_client.create_address(collect)
+
+```
+
+
+#### <a name="create_view_address"></a>![Method: ](http://apidocs.io/img/method.png ".AddressController.create_view_address") create_view_address
+
+> View Address Specific address Book by providing the address id
+
+```python
+def create_view_address(self,
+                            options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| addressId |  ``` Required ```  | The identifier of the address to be retrieved. |
+| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response Type either json or xml |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+address_id = 'addressId'
+collect['address_id'] = address_id
+
+response_type = ResponseType.JSON
+collect['response_type'] = response_type
+
+
+result = address_client.create_view_address(collect)
+
+```
+
+
+#### <a name="create_list_address"></a>![Method: ](http://apidocs.io/img/method.png ".AddressController.create_list_address") create_list_address
+
+> List All Address 
+
+```python
+def create_list_address(self,
+                            options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| page |  ``` Optional ```  ``` DefaultValue ```  | Return requested # of items starting the value, default=0, must be an integer |
+| pageSize |  ``` Optional ```  ``` DefaultValue ```  | How many results to return, default=10, max 100, must be an integer |
+| addressId |  ``` Optional ```  | addresses Sid |
+| dateCreated |  ``` Optional ```  | date created address. |
+| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response Type either json or xml |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+page = 1
+collect['page'] = page
+
+page_size = 10
+collect['page_size'] = page_size
+
+address_id = 'addressId'
+collect['address_id'] = address_id
+
+date_created = 'dateCreated'
+collect['date_created'] = date_created
+
+response_type = ResponseType.JSON
+collect['response_type'] = response_type
+
+
+result = address_client.create_list_address(collect)
+
+```
+
+
+#### <a name="create_verify_address"></a>![Method: ](http://apidocs.io/img/method.png ".AddressController.create_verify_address") create_verify_address
+
+> Validates an address given.
+
+```python
+def create_verify_address(self,
+                              options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| addressid |  ``` Required ```  | The identifier of the address to be verified. |
+| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response type either JSON or xml |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+addressid = 'addressid'
+collect['addressid'] = addressid
+
+response_type = ResponseType.JSON
+collect['response_type'] = response_type
+
+
+result = address_client.create_verify_address(collect)
+
+```
+
+
+#### <a name="create_delete_address"></a>![Method: ](http://apidocs.io/img/method.png ".AddressController.create_delete_address") create_delete_address
+
+> To delete Address to your address book
+
+```python
+def create_delete_address(self,
+                              options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| addressid |  ``` Required ```  | The identifier of the address to be deleted. |
+| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response type either json or xml |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+addressid = 'addressid'
+collect['addressid'] = addressid
+
+response_type = ResponseType.JSON
+collect['response_type'] = response_type
+
+
+result = address_client.create_delete_address(collect)
 
 ```
 

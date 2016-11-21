@@ -1,22 +1,25 @@
 # -*- coding: utf-8 -*-
 
 """
-    message360.controllers.conference_controller
+    message360.controllers.address_controller
 
     This file was automatically generated for message360 by APIMATIC BETA v2.0 on 11/21/2016
 """
 
 from .base_controller import *
 
-class ConferenceController(BaseController):
+class AddressController(BaseController):
 
     """A Controller to access Endpoints in the message360 API."""
 
-    def create_view_participant(self,
-                                options=dict()):
-        """Does a POST request to /conferences/viewparticipant.{ResponseType}.
+    def create_address(self,
+                       options=dict()):
+        """Does a POST request to /address/createaddress.{ResponseType}.
 
-        View Participant
+        To add an address to your address book, you create a new address
+        object. You can retrieve and delete individual addresses as well as
+        get a list of addresses. Addresses are identified by a unique random
+        ID.
 
         Args:
             options (dict, optional): Key-value pairs for any of the
@@ -25,10 +28,19 @@ class ConferenceController(BaseController):
                 being the key and their desired values being the value. A list
                 of parameters that can be used are::
 
-                    conference_sid -- string -- unique conference sid
-                    participant_sid -- string -- TODO: type description here.
-                        Example: 
-                    response_type -- string -- Response format, xml or json
+                    name -- string -- Name of user
+                    address -- string -- Address of user.
+                    country -- string -- Must be a 2 letter country short-name
+                        code (ISO 3166)
+                    state -- string -- Must be a 2 letter State eg. CA for US.
+                        For Some Countries it can be greater than 2 letters.
+                    city -- string -- City Name.
+                    zip -- string -- Zip code of city.
+                    description -- string -- Description of addresses.
+                    email -- string -- Email Id of user.
+                    phone -- string -- Phone number of user.
+                    response_type -- ResponseType -- Response Type Either json
+                        or xml
 
         Returns:
             string: Response from the API. 
@@ -42,14 +54,18 @@ class ConferenceController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(conference_sid = options.get("conference_sid"),
-                                 participant_sid = options.get("participant_sid"))
+        self.validate_parameters(name = options.get("name"),
+                                 address = options.get("address"),
+                                 country = options.get("country"),
+                                 state = options.get("state"),
+                                 city = options.get("city"),
+                                 zip = options.get("zip"))
 
         # The base uri for api requests
         _query_builder = Configuration.base_uri
  
         # Prepare query string for API call
-        _query_builder += '/conferences/viewparticipant.{ResponseType}'
+        _query_builder += '/address/createaddress.{ResponseType}'
 
         # Process optional template parameters
         _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
@@ -61,8 +77,15 @@ class ConferenceController(BaseController):
 
         # Prepare form parameters
         _form_parameters = {
-            'ConferenceSid': options.get('conference_sid', None),
-            'ParticipantSid': options.get('participant_sid', None)
+            'name': options.get('name', None),
+            'address': options.get('address', None),
+            'country': options.get('country', None),
+            'state': options.get('state', None),
+            'city': options.get('city', None),
+            'zip': options.get('zip', None),
+            'description': options.get('description', None),
+            'email': options.get('email', None),
+            'phone': options.get('phone', None)
         }
         
         # Form encode parameters.
@@ -85,11 +108,11 @@ class ConferenceController(BaseController):
 
 
 
-    def create_list_participant(self,
-                                options=dict()):
-        """Does a POST request to /conferences/listparticipant.{ResponseType}.
+    def create_view_address(self,
+                            options=dict()):
+        """Does a POST request to /address/viewaddress.{ResponseType}.
 
-        List Participant
+        View Address Specific address Book by providing the address id
 
         Args:
             options (dict, optional): Key-value pairs for any of the
@@ -98,12 +121,10 @@ class ConferenceController(BaseController):
                 being the key and their desired values being the value. A list
                 of parameters that can be used are::
 
-                    conference_sid -- string -- unique conference sid
-                    page -- int -- page number
-                    pagesize -- int -- TODO: type description here. Example: 
-                    muted -- bool -- TODO: type description here. Example: 
-                    deaf -- bool -- TODO: type description here. Example: 
-                    response_type -- string -- Response format, xml or json
+                    address_id -- string -- The identifier of the address to
+                        be retrieved.
+                    response_type -- ResponseType -- Response Type either json
+                        or xml
 
         Returns:
             string: Response from the API. 
@@ -117,13 +138,13 @@ class ConferenceController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(conference_sid = options.get("conference_sid"))
+        self.validate_parameters(address_id = options.get("address_id"))
 
         # The base uri for api requests
         _query_builder = Configuration.base_uri
  
         # Prepare query string for API call
-        _query_builder += '/conferences/listparticipant.{ResponseType}'
+        _query_builder += '/address/viewaddress.{ResponseType}'
 
         # Process optional template parameters
         _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
@@ -135,11 +156,7 @@ class ConferenceController(BaseController):
 
         # Prepare form parameters
         _form_parameters = {
-            'ConferenceSid': options.get('conference_sid', None),
-            'Page': options.get('page', None),
-            'Pagesize': options.get('pagesize', None),
-            'Muted': options.get('muted', None),
-            'Deaf': options.get('deaf', None)
+            'addressId': options.get('address_id', None)
         }
         
         # Form encode parameters.
@@ -162,11 +179,11 @@ class ConferenceController(BaseController):
 
 
 
-    def add_participant(self,
-                        options=dict()):
-        """Does a POST request to /conferences/addParticipant.{ResponseType}.
+    def create_list_address(self,
+                            options=dict()):
+        """Does a POST request to /address/listaddress.{ResponseType}.
 
-        Add Participant in conference 
+        List All Address 
 
         Args:
             options (dict, optional): Key-value pairs for any of the
@@ -175,13 +192,14 @@ class ConferenceController(BaseController):
                 being the key and their desired values being the value. A list
                 of parameters that can be used are::
 
-                    conferencesid -- string -- Unique Conference Sid
-                    participantnumber -- string -- Particiant Number
-                    tocountrycode -- int -- TODO: type description here.
-                        Example: 
-                    muted -- bool -- TODO: type description here. Example: 
-                    deaf -- bool -- TODO: type description here. Example: 
-                    response_type -- string -- Response format, xml or json
+                    page -- int -- Return requested # of items starting the
+                        value, default=0, must be an integer
+                    page_size -- int -- How many results to return,
+                        default=10, max 100, must be an integer
+                    address_id -- string -- addresses Sid
+                    date_created -- string -- date created address.
+                    response_type -- ResponseType -- Response Type either json
+                        or xml
 
         Returns:
             string: Response from the API. 
@@ -194,16 +212,11 @@ class ConferenceController(BaseController):
 
         """
 
-        # Validate required parameters
-        self.validate_parameters(conferencesid = options.get("conferencesid"),
-                                 participantnumber = options.get("participantnumber"),
-                                 tocountrycode = options.get("tocountrycode"))
-
         # The base uri for api requests
         _query_builder = Configuration.base_uri
  
         # Prepare query string for API call
-        _query_builder += '/conferences/addParticipant.{ResponseType}'
+        _query_builder += '/address/listaddress.{ResponseType}'
 
         # Process optional template parameters
         _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
@@ -215,11 +228,10 @@ class ConferenceController(BaseController):
 
         # Prepare form parameters
         _form_parameters = {
-            'conferencesid': options.get('conferencesid', None),
-            'participantnumber': options.get('participantnumber', None),
-            'tocountrycode': options.get('tocountrycode', None),
-            'muted': options.get('muted', None),
-            'deaf': options.get('deaf', None)
+            'page': options.get('page', None),
+            'pageSize': options.get('page_size', None),
+            'addressId': options.get('address_id', None),
+            'dateCreated': options.get('date_created', None)
         }
         
         # Form encode parameters.
@@ -242,11 +254,11 @@ class ConferenceController(BaseController):
 
 
 
-    def create_view_conference(self,
-                               options=dict()):
-        """Does a POST request to /conferences/viewconference.{ResponseType}.
+    def create_verify_address(self,
+                              options=dict()):
+        """Does a POST request to /address/verifyaddress.{ResponseType}.
 
-        View Conference
+        Validates an address given.
 
         Args:
             options (dict, optional): Key-value pairs for any of the
@@ -255,9 +267,10 @@ class ConferenceController(BaseController):
                 being the key and their desired values being the value. A list
                 of parameters that can be used are::
 
-                    conferencesid -- string -- The unique identifier of each
-                        conference resource
-                    response_type -- string -- Response format, xml or json
+                    addressid -- string -- The identifier of the address to be
+                        verified.
+                    response_type -- ResponseType -- Response type either JSON
+                        or xml
 
         Returns:
             string: Response from the API. 
@@ -271,13 +284,13 @@ class ConferenceController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(conferencesid = options.get("conferencesid"))
+        self.validate_parameters(addressid = options.get("addressid"))
 
         # The base uri for api requests
         _query_builder = Configuration.base_uri
  
         # Prepare query string for API call
-        _query_builder += '/conferences/viewconference.{ResponseType}'
+        _query_builder += '/address/verifyaddress.{ResponseType}'
 
         # Process optional template parameters
         _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
@@ -289,7 +302,7 @@ class ConferenceController(BaseController):
 
         # Prepare form parameters
         _form_parameters = {
-            'conferencesid': options.get('conferencesid', None)
+            'addressid': options.get('addressid', None)
         }
         
         # Form encode parameters.
@@ -312,11 +325,11 @@ class ConferenceController(BaseController):
 
 
 
-    def create_list_conference(self,
-                               options=dict()):
-        """Does a POST request to /conferences/listconference.{ResponseType}.
+    def create_delete_address(self,
+                              options=dict()):
+        """Does a POST request to /address/deleteaddress.{ResponseType}.
 
-        List Conference
+        To delete Address to your address book
 
         Args:
             options (dict, optional): Key-value pairs for any of the
@@ -325,19 +338,10 @@ class ConferenceController(BaseController):
                 being the key and their desired values being the value. A list
                 of parameters that can be used are::
 
-                    page -- int -- Which page of the overall response will be
-                        returned. Zero indexed
-                    page_size -- int -- Number of individual resources listed
-                        in the response per page
-                    friendly_name -- string -- Only return conferences with
-                        the specified FriendlyName
-                    status -- InterruptedCallStatus -- TODO: type description
-                        here. Example: 
-                    date_created -- string -- TODO: type description here.
-                        Example: 
-                    date_updated -- string -- TODO: type description here.
-                        Example: 
-                    response_type -- string -- Response format, xml or json
+                    addressid -- string -- The identifier of the address to be
+                        deleted.
+                    response_type -- ResponseType -- Response type either json
+                        or xml
 
         Returns:
             string: Response from the API. 
@@ -350,11 +354,14 @@ class ConferenceController(BaseController):
 
         """
 
+        # Validate required parameters
+        self.validate_parameters(addressid = options.get("addressid"))
+
         # The base uri for api requests
         _query_builder = Configuration.base_uri
  
         # Prepare query string for API call
-        _query_builder += '/conferences/listconference.{ResponseType}'
+        _query_builder += '/address/deleteaddress.{ResponseType}'
 
         # Process optional template parameters
         _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
@@ -366,12 +373,7 @@ class ConferenceController(BaseController):
 
         # Prepare form parameters
         _form_parameters = {
-            'Page': options.get('page', None),
-            'PageSize': options.get('page_size', None),
-            'FriendlyName': options.get('friendly_name', None),
-            'Status': options.get('status', None),
-            'DateCreated': options.get('date_created', None),
-            'DateUpdated': options.get('date_updated', None)
+            'addressid': options.get('addressid', None)
         }
         
         # Form encode parameters.
