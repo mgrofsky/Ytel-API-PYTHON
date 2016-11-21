@@ -19,7 +19,7 @@ setup(
     install_requires=[
         'requests>=2.9.1, <3.0',
         'jsonpickle>=0.7.1, <1.0',
-		'python-dateutil>=2.5.3, <3.0'
+        'python-dateutil>=2.5.3, <3.0'
     ],
     tests_require=[
         'nose>=1.3.7'
