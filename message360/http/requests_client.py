@@ -3,10 +3,11 @@
 """
     message360.http.requests_client
 
-    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 11/21/2016
+    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 12/01/2016
 """
 
 import requests
+from cachecontrol import CacheControl
 
 from .http_client import HttpClient
 from .http_response import HttpResponse
@@ -21,7 +22,7 @@ class RequestsClient(HttpClient):
     
     """
 
-    def __init__(self, timeout):
+    def __init__(self, timeout = 60, cache = False):
         """The constructor.
 
         Args:
@@ -29,6 +30,7 @@ class RequestsClient(HttpClient):
 
         """
         self.timeout = timeout
+        self.session = CacheControl(requests.session()) if cache else requests.session()
 
     def execute_as_string(self, request):
         """Execute a given HttpRequest to get a string response back
@@ -40,13 +42,13 @@ class RequestsClient(HttpClient):
             HttpResponse: The response of the HttpRequest.
             
         """	
-        response = requests.request(HttpMethodEnum.to_string(request.http_method), 
-                                    request.query_url, 
-                                    headers=request.headers,
-                                    params=request.query_parameters, 
-                                    data=request.parameters,
-                                    files=request.files,
-                                    timeout=self.timeout)
+        response = self.session.request(HttpMethodEnum.to_string(request.http_method), 
+                                        request.query_url, 
+                                        headers=request.headers,
+                                        params=request.query_parameters, 
+                                        data=request.parameters,
+                                        files=request.files,
+                                        timeout=self.timeout)
 
         return self.convert_response(response, False)
     
@@ -60,13 +62,13 @@ class RequestsClient(HttpClient):
             HttpResponse: The response of the HttpRequest.
             
         """        
-        response = requests.request(HttpMethodEnum.to_string(request.http_method), 
-                                    request.query_url, 
-                                    headers=request.headers,
-                                    params=request.query_parameters, 
-                                    data=request.parameters, 
-                                    files=request.files,
-                                    timeout=self.timeout)
+        response = self.session.request(HttpMethodEnum.to_string(request.http_method), 
+                                        request.query_url, 
+                                        headers=request.headers,
+                                        params=request.query_parameters, 
+                                        data=request.parameters, 
+                                        files=request.files,
+                                        timeout=self.timeout)
                                    
         return self.convert_response(response, True)
     

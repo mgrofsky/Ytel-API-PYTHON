@@ -3,7 +3,7 @@
 """
     message360.controllers.recording_controller
 
-    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 11/21/2016
+    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 12/01/2016
 """
 
 from .base_controller import *
@@ -12,11 +12,11 @@ class RecordingController(BaseController):
 
     """A Controller to access Endpoints in the message360 API."""
 
-    def create_view_recording(self,
+    def create_list_recording(self,
                               options=dict()):
-        """Does a POST request to /recording/viewrecording.{ResponseType}.
+        """Does a POST request to /recording/listrecording.{ResponseType}.
 
-        View a specific Recording
+        List out Recordings
 
         Args:
             options (dict, optional): Key-value pairs for any of the
@@ -25,8 +25,16 @@ class RecordingController(BaseController):
                 being the key and their desired values being the value. A list
                 of parameters that can be used are::
 
-                    recording_sid -- string -- Search Recording sid
-                    response_type -- string -- Response format, xml or json
+                    page -- int -- Which page of the overall response will be
+                        returned. Zero indexed
+                    page_size -- int -- Number of individual resources listed
+                        in the response per page
+                    date_created -- string -- TODO: type description here.
+                        Example: 
+                    call_sid -- string -- TODO: type description here.
+                        Example: 
+                    response_type -- string -- Response type format xml or
+                        json
 
         Returns:
             string: Response from the API. 
@@ -39,14 +47,11 @@ class RecordingController(BaseController):
 
         """
 
-        # Validate required parameters
-        self.validate_parameters(recording_sid = options.get("recording_sid"))
-
         # The base uri for api requests
         _query_builder = Configuration.base_uri
  
         # Prepare query string for API call
-        _query_builder += '/recording/viewrecording.{ResponseType}'
+        _query_builder += '/recording/listrecording.{ResponseType}'
 
         # Process optional template parameters
         _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
@@ -58,7 +63,10 @@ class RecordingController(BaseController):
 
         # Prepare form parameters
         _form_parameters = {
-            'RecordingSid': options.get('recording_sid', None)
+            'Page': options.get('page', None),
+            'PageSize': options.get('page_size', None),
+            'DateCreated': options.get('date_created', None),
+            'CallSid': options.get('call_sid', None)
         }
         
         # Form encode parameters.
@@ -96,7 +104,8 @@ class RecordingController(BaseController):
 
                     recording_sid -- string -- Unique Recording Sid to be
                         delete
-                    response_type -- string -- Response format, xml or json
+                    response_type -- string -- Response type format xml or
+                        json
 
         Returns:
             string: Response from the API. 
@@ -151,11 +160,11 @@ class RecordingController(BaseController):
 
 
 
-    def create_list_recording(self,
+    def create_view_recording(self,
                               options=dict()):
-        """Does a POST request to /recording/listrecording.{ResponseType}.
+        """Does a POST request to /recording/viewrecording.{ResponseType}.
 
-        List out Recordings
+        View a specific Recording
 
         Args:
             options (dict, optional): Key-value pairs for any of the
@@ -164,15 +173,9 @@ class RecordingController(BaseController):
                 being the key and their desired values being the value. A list
                 of parameters that can be used are::
 
-                    page -- int -- Which page of the overall response will be
-                        returned. Zero indexed
-                    page_size -- int -- Number of individual resources listed
-                        in the response per page
-                    date_created -- string -- TODO: type description here.
-                        Example: 
-                    call_sid -- string -- TODO: type description here.
-                        Example: 
-                    response_type -- string -- Response format, xml or json
+                    recording_sid -- string -- Search Recording sid
+                    response_type -- string -- Response type format xml or
+                        json
 
         Returns:
             string: Response from the API. 
@@ -185,11 +188,14 @@ class RecordingController(BaseController):
 
         """
 
+        # Validate required parameters
+        self.validate_parameters(recording_sid = options.get("recording_sid"))
+
         # The base uri for api requests
         _query_builder = Configuration.base_uri
  
         # Prepare query string for API call
-        _query_builder += '/recording/listrecording.{ResponseType}'
+        _query_builder += '/recording/viewrecording.{ResponseType}'
 
         # Process optional template parameters
         _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
@@ -201,10 +207,7 @@ class RecordingController(BaseController):
 
         # Prepare form parameters
         _form_parameters = {
-            'Page': options.get('page', None),
-            'PageSize': options.get('page_size', None),
-            'DateCreated': options.get('date_created', None),
-            'CallSid': options.get('call_sid', None)
+            'RecordingSid': options.get('recording_sid', None)
         }
         
         # Form encode parameters.

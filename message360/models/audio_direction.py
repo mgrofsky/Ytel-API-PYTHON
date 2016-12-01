@@ -3,7 +3,7 @@
 """
     message360.models.audio_direction
 
-    This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 11/21/2016
+    This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 12/01/2016
 """
 
 class AudioDirection(object):

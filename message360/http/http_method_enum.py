@@ -3,7 +3,7 @@
 """
     message360.http.http_method_enum
 
-    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 11/21/2016
+    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 12/01/2016
 """
 
 class HttpMethodEnum(object):
