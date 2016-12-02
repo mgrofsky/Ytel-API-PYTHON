@@ -3,7 +3,7 @@
 """
     message360.controllers.usage_controller
 
-    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 11/21/2016
+    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 12/02/2016
 """
 
 from .base_controller import *
@@ -25,10 +25,11 @@ class UsageController(BaseController):
                 being the key and their desired values being the value. A list
                 of parameters that can be used are::
 
-                    product_code -- string -- Product Code
+                    product_code -- ProductCode -- Product Code
                     start_date -- string -- Start Usage Date
                     end_date -- string -- End Usage Date
-                    response_type -- string -- Response format, xml or json
+                    response_type -- string -- Response type format xml or
+                        json
 
         Returns:
             string: Response from the API. 

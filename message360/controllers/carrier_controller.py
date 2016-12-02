@@ -3,7 +3,7 @@
 """
     message360.controllers.carrier_controller
 
-    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 11/21/2016
+    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 12/02/2016
 """
 
 from .base_controller import *
@@ -26,7 +26,8 @@ class CarrierController(BaseController):
                 of parameters that can be used are::
 
                     phonenumber -- string -- The number to lookup
-                    response_type -- string -- Response format, xml or json
+                    response_type -- string -- Response type format xml or
+                        json
 
         Returns:
             string: Response from the API. 
@@ -94,9 +95,10 @@ class CarrierController(BaseController):
                 being the key and their desired values being the value. A list
                 of parameters that can be used are::
 
-                    page -- string -- Page Number
-                    pagesize -- string -- Page Size
-                    response_type -- string -- Response format, xml or json
+                    page -- int -- Page Number
+                    pagesize -- int -- Page Size
+                    response_type -- string -- Response type format xml or
+                        json
 
         Returns:
             string: Response from the API. 

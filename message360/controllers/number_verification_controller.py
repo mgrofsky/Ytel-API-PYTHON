@@ -1,22 +1,22 @@
 # -*- coding: utf-8 -*-
 
 """
-    message360.controllers.account_controller
+    message360.controllers.number_verification_controller
 
     This file was automatically generated for message360 by APIMATIC BETA v2.0 on 12/02/2016
 """
 
 from .base_controller import *
 
-class AccountController(BaseController):
+class NumberVerificationController(BaseController):
 
     """A Controller to access Endpoints in the message360 API."""
 
-    def create_view_account(self,
-                            options=dict()):
-        """Does a POST request to /accounts/viewaccount.{ResponseType}.
+    def create_verify_number(self,
+                             options=dict()):
+        """Does a POST request to /verifycallerid/verifynumber.{ResponseType}.
 
-        Display Account Description
+        Number Verification
 
         Args:
             options (dict, optional): Key-value pairs for any of the
@@ -25,9 +25,11 @@ class AccountController(BaseController):
                 being the key and their desired values being the value. A list
                 of parameters that can be used are::
 
-                    date -- string -- TODO: type description here. Example: 
-                    response_type -- string -- Response type format xml or
-                        json
+                    phonenumber -- string -- TODO: type description here.
+                        Example: 
+                    mtype -- string -- TODO: type description here. Example: 
+                    response_type -- string -- Response Type either json or
+                        xml
 
         Returns:
             string: Response from the API. 
@@ -41,13 +43,14 @@ class AccountController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(date = options.get("date"))
+        self.validate_parameters(phonenumber = options.get("phonenumber"),
+                                 mtype = options.get("mtype"))
 
         # The base uri for api requests
         _query_builder = Configuration.base_uri
  
         # Prepare query string for API call
-        _query_builder += '/accounts/viewaccount.{ResponseType}'
+        _query_builder += '/verifycallerid/verifynumber.{ResponseType}'
 
         # Process optional template parameters
         _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
@@ -59,7 +62,8 @@ class AccountController(BaseController):
 
         # Prepare form parameters
         _form_parameters = {
-            'date': options.get('date', None)
+            'phonenumber': options.get('phonenumber', None),
+            'type': options.get('mtype', None)
         }
         
         # Form encode parameters.

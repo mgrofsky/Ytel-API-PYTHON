@@ -3,7 +3,7 @@
 """
     message360.message_360_client
 
-    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 11/21/2016
+    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 12/02/2016
 """
 
 from .http import *
@@ -19,28 +19,20 @@ class Message360Client(object):
         return ConferenceController()
 
     @lazy_property
-    def transcription(self):
-        return TranscriptionController()
-
-    @lazy_property
-    def phone_number(self):
-        return PhoneNumberController()
-
-    @lazy_property
-    def usage(self):
-        return UsageController()
-
-    @lazy_property
-    def web_rtc(self):
-        return WebRTCController()
-
-    @lazy_property
-    def recording(self):
-        return RecordingController()
-
-    @lazy_property
     def email(self):
         return EmailController()
+
+    @lazy_property
+    def number_verification(self):
+        return NumberVerificationController()
+
+    @lazy_property
+    def carrier(self):
+        return CarrierController()
+
+    @lazy_property
+    def call(self):
+        return CallController()
 
     @lazy_property
     def sms(self):
@@ -51,16 +43,32 @@ class Message360Client(object):
         return AccountController()
 
     @lazy_property
-    def call(self):
-        return CallController()
+    def web_rtc(self):
+        return WebRTCController()
 
     @lazy_property
-    def carrier(self):
-        return CarrierController()
+    def sub_account(self):
+        return SubAccountController()
 
     @lazy_property
     def address(self):
         return AddressController()
+
+    @lazy_property
+    def phone_number(self):
+        return PhoneNumberController()
+
+    @lazy_property
+    def recording(self):
+        return RecordingController()
+
+    @lazy_property
+    def transcription(self):
+        return TranscriptionController()
+
+    @lazy_property
+    def usage(self):
+        return UsageController()
 
 
     def __init__(self, 

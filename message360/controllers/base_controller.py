@@ -3,7 +3,7 @@
 """
     message360controllers.base_controller
 
-    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 11/21/2016
+    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 12/02/2016
 """
 
 from ..http import *
@@ -27,7 +27,7 @@ class BaseController(object):
     
     """
 
-    http_client = RequestsClient(10)
+    http_client = RequestsClient(timeout = 10)
 
     http_call_back = None
 

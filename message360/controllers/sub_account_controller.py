@@ -1,22 +1,22 @@
 # -*- coding: utf-8 -*-
 
 """
-    message360.controllers.recording_controller
+    message360.controllers.sub_account_controller
 
     This file was automatically generated for message360 by APIMATIC BETA v2.0 on 12/02/2016
 """
 
 from .base_controller import *
 
-class RecordingController(BaseController):
+class SubAccountController(BaseController):
 
     """A Controller to access Endpoints in the message360 API."""
 
-    def create_list_recording(self,
-                              options=dict()):
-        """Does a POST request to /recording/listrecording.{ResponseType}.
+    def create_sub_account(self,
+                           options=dict()):
+        """Does a POST request to /user/createsubaccount.{ResponseType}.
 
-        List out Recordings
+        Create Sub account
 
         Args:
             options (dict, optional): Key-value pairs for any of the
@@ -25,16 +25,13 @@ class RecordingController(BaseController):
                 being the key and their desired values being the value. A list
                 of parameters that can be used are::
 
-                    page -- int -- Which page of the overall response will be
-                        returned. Zero indexed
-                    page_size -- int -- Number of individual resources listed
-                        in the response per page
-                    date_created -- string -- TODO: type description here.
+                    firstname -- string -- TODO: type description here.
                         Example: 
-                    call_sid -- string -- TODO: type description here.
+                    lastname -- string -- TODO: type description here.
                         Example: 
-                    response_type -- string -- Response type format xml or
-                        json
+                    email -- string -- TODO: type description here. Example: 
+                    response_type -- string -- ResponseType Format either json
+                        or xml
 
         Returns:
             string: Response from the API. 
@@ -47,11 +44,16 @@ class RecordingController(BaseController):
 
         """
 
+        # Validate required parameters
+        self.validate_parameters(firstname = options.get("firstname"),
+                                 lastname = options.get("lastname"),
+                                 email = options.get("email"))
+
         # The base uri for api requests
         _query_builder = Configuration.base_uri
  
         # Prepare query string for API call
-        _query_builder += '/recording/listrecording.{ResponseType}'
+        _query_builder += '/user/createsubaccount.{ResponseType}'
 
         # Process optional template parameters
         _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
@@ -63,10 +65,9 @@ class RecordingController(BaseController):
 
         # Prepare form parameters
         _form_parameters = {
-            'Page': options.get('page', None),
-            'PageSize': options.get('page_size', None),
-            'DateCreated': options.get('date_created', None),
-            'CallSid': options.get('call_sid', None)
+            'firstname': options.get('firstname', None),
+            'lastname': options.get('lastname', None),
+            'email': options.get('email', None)
         }
         
         # Form encode parameters.
@@ -89,11 +90,11 @@ class RecordingController(BaseController):
 
 
 
-    def create_delete_recording(self,
-                                options=dict()):
-        """Does a POST request to /recording/deleterecording.{ResponseType}.
+    def create_suspend_sub_account(self,
+                                   options=dict()):
+        """Does a POST request to /user/subaccountactivation.{ResponseType}.
 
-        Delete Recording Record
+        Suspend or unsuspend
 
         Args:
             options (dict, optional): Key-value pairs for any of the
@@ -102,10 +103,12 @@ class RecordingController(BaseController):
                 being the key and their desired values being the value. A list
                 of parameters that can be used are::
 
-                    recording_sid -- string -- Unique Recording Sid to be
-                        delete
-                    response_type -- string -- Response type format xml or
-                        json
+                    subaccountsid -- string -- TODO: type description here.
+                        Example: 
+                    activate -- ActivateStatus -- TODO: type description here.
+                        Example: 
+                    response_type -- string -- TODO: type description here.
+                        Example: 
 
         Returns:
             string: Response from the API. 
@@ -119,13 +122,14 @@ class RecordingController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(recording_sid = options.get("recording_sid"))
+        self.validate_parameters(subaccountsid = options.get("subaccountsid"),
+                                 activate = options.get("activate"))
 
         # The base uri for api requests
         _query_builder = Configuration.base_uri
  
         # Prepare query string for API call
-        _query_builder += '/recording/deleterecording.{ResponseType}'
+        _query_builder += '/user/subaccountactivation.{ResponseType}'
 
         # Process optional template parameters
         _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
@@ -137,7 +141,8 @@ class RecordingController(BaseController):
 
         # Prepare form parameters
         _form_parameters = {
-            'RecordingSid': options.get('recording_sid', None)
+            'subaccountsid': options.get('subaccountsid', None),
+            'activate': options.get('activate', None)
         }
         
         # Form encode parameters.
@@ -160,11 +165,11 @@ class RecordingController(BaseController):
 
 
 
-    def create_view_recording(self,
-                              options=dict()):
-        """Does a POST request to /recording/viewrecording.{ResponseType}.
+    def create_delete_merge_sub_account(self,
+                                        options=dict()):
+        """Does a POST request to /user/deletesubaccount.{ResponseType}.
 
-        View a specific Recording
+        Delete or Merge Sub account
 
         Args:
             options (dict, optional): Key-value pairs for any of the
@@ -173,9 +178,12 @@ class RecordingController(BaseController):
                 being the key and their desired values being the value. A list
                 of parameters that can be used are::
 
-                    recording_sid -- string -- Search Recording sid
-                    response_type -- string -- Response type format xml or
-                        json
+                    subaccountsid -- string -- TODO: type description here.
+                        Example: 
+                    mergenumber -- MergeNumberStatus -- TODO: type description
+                        here. Example: 
+                    response_type -- string -- Response type format either
+                        json or xml
 
         Returns:
             string: Response from the API. 
@@ -189,13 +197,14 @@ class RecordingController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(recording_sid = options.get("recording_sid"))
+        self.validate_parameters(subaccountsid = options.get("subaccountsid"),
+                                 mergenumber = options.get("mergenumber"))
 
         # The base uri for api requests
         _query_builder = Configuration.base_uri
  
         # Prepare query string for API call
-        _query_builder += '/recording/viewrecording.{ResponseType}'
+        _query_builder += '/user/deletesubaccount.{ResponseType}'
 
         # Process optional template parameters
         _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
@@ -207,7 +216,8 @@ class RecordingController(BaseController):
 
         # Prepare form parameters
         _form_parameters = {
-            'RecordingSid': options.get('recording_sid', None)
+            'subaccountsid': options.get('subaccountsid', None),
+            'mergenumber': options.get('mergenumber', None)
         }
         
         # Form encode parameters.

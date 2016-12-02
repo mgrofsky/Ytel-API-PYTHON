@@ -3,7 +3,7 @@
 """
     message360.controllers.address_controller
 
-    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 11/21/2016
+    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 12/02/2016
 """
 
 from .base_controller import *
@@ -39,8 +39,8 @@ class AddressController(BaseController):
                     description -- string -- Description of addresses.
                     email -- string -- Email Id of user.
                     phone -- string -- Phone number of user.
-                    response_type -- ResponseType -- Response Type Either json
-                        or xml
+                    response_type -- string -- Response Type Either json or
+                        xml
 
         Returns:
             string: Response from the API. 
@@ -108,11 +108,11 @@ class AddressController(BaseController):
 
 
 
-    def create_view_address(self,
-                            options=dict()):
-        """Does a POST request to /address/viewaddress.{ResponseType}.
+    def create_delete_address(self,
+                              options=dict()):
+        """Does a POST request to /address/deleteaddress.{ResponseType}.
 
-        View Address Specific address Book by providing the address id
+        To delete Address to your address book
 
         Args:
             options (dict, optional): Key-value pairs for any of the
@@ -121,10 +121,10 @@ class AddressController(BaseController):
                 being the key and their desired values being the value. A list
                 of parameters that can be used are::
 
-                    address_id -- string -- The identifier of the address to
-                        be retrieved.
-                    response_type -- ResponseType -- Response Type either json
-                        or xml
+                    addressid -- string -- The identifier of the address to be
+                        deleted.
+                    response_type -- string -- Response type either json or
+                        xml
 
         Returns:
             string: Response from the API. 
@@ -138,13 +138,13 @@ class AddressController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(address_id = options.get("address_id"))
+        self.validate_parameters(addressid = options.get("addressid"))
 
         # The base uri for api requests
         _query_builder = Configuration.base_uri
  
         # Prepare query string for API call
-        _query_builder += '/address/viewaddress.{ResponseType}'
+        _query_builder += '/address/deleteaddress.{ResponseType}'
 
         # Process optional template parameters
         _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
@@ -156,82 +156,7 @@ class AddressController(BaseController):
 
         # Prepare form parameters
         _form_parameters = {
-            'addressId': options.get('address_id', None)
-        }
-        
-        # Form encode parameters.
-        _form_parameters = APIHelper.form_encode_parameters(_form_parameters)
-
-        # Prepare the API call.
-        _request = self.http_client.post(_query_url, parameters=_form_parameters)
-
-        # Apply authentication.
-        BasicAuth.apply(_request)
-
-        # Execute the request.
-        _context = self.execute_request(_request)        
-
-        # Global error handling using HTTP status codes.
-        self.validate_response(_context)    
-
-        # Return appropriate type
-        return _context.response.raw_body
-
-
-
-    def create_list_address(self,
-                            options=dict()):
-        """Does a POST request to /address/listaddress.{ResponseType}.
-
-        List All Address 
-
-        Args:
-            options (dict, optional): Key-value pairs for any of the
-                parameters to this API Endpoint. All parameters to the
-                endpoint are supplied through the dictionary with their names
-                being the key and their desired values being the value. A list
-                of parameters that can be used are::
-
-                    page -- int -- Return requested # of items starting the
-                        value, default=0, must be an integer
-                    page_size -- int -- How many results to return,
-                        default=10, max 100, must be an integer
-                    address_id -- string -- addresses Sid
-                    date_created -- string -- date created address.
-                    response_type -- ResponseType -- Response Type either json
-                        or xml
-
-        Returns:
-            string: Response from the API. 
-
-        Raises:
-            APIException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        # The base uri for api requests
-        _query_builder = Configuration.base_uri
- 
-        # Prepare query string for API call
-        _query_builder += '/address/listaddress.{ResponseType}'
-
-        # Process optional template parameters
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
-            'ResponseType': options.get('response_type', None)
-        })
-
-        # Validate and preprocess url
-        _query_url = APIHelper.clean_url(_query_builder)
-
-        # Prepare form parameters
-        _form_parameters = {
-            'page': options.get('page', None),
-            'pageSize': options.get('page_size', None),
-            'addressId': options.get('address_id', None),
-            'dateCreated': options.get('date_created', None)
+            'addressid': options.get('addressid', None)
         }
         
         # Form encode parameters.
@@ -269,8 +194,8 @@ class AddressController(BaseController):
 
                     addressid -- string -- The identifier of the address to be
                         verified.
-                    response_type -- ResponseType -- Response type either JSON
-                        or xml
+                    response_type -- string -- Response type either JSON or
+                        xml
 
         Returns:
             string: Response from the API. 
@@ -325,11 +250,11 @@ class AddressController(BaseController):
 
 
 
-    def create_delete_address(self,
-                              options=dict()):
-        """Does a POST request to /address/deleteaddress.{ResponseType}.
+    def create_list_address(self,
+                            options=dict()):
+        """Does a POST request to /address/listaddress.{ResponseType}.
 
-        To delete Address to your address book
+        List All Address 
 
         Args:
             options (dict, optional): Key-value pairs for any of the
@@ -338,10 +263,85 @@ class AddressController(BaseController):
                 being the key and their desired values being the value. A list
                 of parameters that can be used are::
 
-                    addressid -- string -- The identifier of the address to be
-                        deleted.
-                    response_type -- ResponseType -- Response type either json
-                        or xml
+                    page -- int -- Return requested # of items starting the
+                        value, default=0, must be an integer
+                    page_size -- int -- How many results to return,
+                        default=10, max 100, must be an integer
+                    address_id -- string -- addresses Sid
+                    date_created -- string -- date created address.
+                    response_type -- string -- Response Type either json or
+                        xml
+
+        Returns:
+            string: Response from the API. 
+
+        Raises:
+            APIException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        # The base uri for api requests
+        _query_builder = Configuration.base_uri
+ 
+        # Prepare query string for API call
+        _query_builder += '/address/listaddress.{ResponseType}'
+
+        # Process optional template parameters
+        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+            'ResponseType': options.get('response_type', None)
+        })
+
+        # Validate and preprocess url
+        _query_url = APIHelper.clean_url(_query_builder)
+
+        # Prepare form parameters
+        _form_parameters = {
+            'page': options.get('page', None),
+            'pageSize': options.get('page_size', None),
+            'addressId': options.get('address_id', None),
+            'dateCreated': options.get('date_created', None)
+        }
+        
+        # Form encode parameters.
+        _form_parameters = APIHelper.form_encode_parameters(_form_parameters)
+
+        # Prepare the API call.
+        _request = self.http_client.post(_query_url, parameters=_form_parameters)
+
+        # Apply authentication.
+        BasicAuth.apply(_request)
+
+        # Execute the request.
+        _context = self.execute_request(_request)        
+
+        # Global error handling using HTTP status codes.
+        self.validate_response(_context)    
+
+        # Return appropriate type
+        return _context.response.raw_body
+
+
+
+    def create_view_address(self,
+                            options=dict()):
+        """Does a POST request to /address/viewaddress.{ResponseType}.
+
+        View Address Specific address Book by providing the address id
+
+        Args:
+            options (dict, optional): Key-value pairs for any of the
+                parameters to this API Endpoint. All parameters to the
+                endpoint are supplied through the dictionary with their names
+                being the key and their desired values being the value. A list
+                of parameters that can be used are::
+
+                    address_id -- string -- The identifier of the address to
+                        be retrieved.
+                    response_type -- string -- Response Type either json or
+                        xml
 
         Returns:
             string: Response from the API. 
@@ -355,13 +355,13 @@ class AddressController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(addressid = options.get("addressid"))
+        self.validate_parameters(address_id = options.get("address_id"))
 
         # The base uri for api requests
         _query_builder = Configuration.base_uri
  
         # Prepare query string for API call
-        _query_builder += '/address/deleteaddress.{ResponseType}'
+        _query_builder += '/address/viewaddress.{ResponseType}'
 
         # Process optional template parameters
         _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
@@ -373,7 +373,7 @@ class AddressController(BaseController):
 
         # Prepare form parameters
         _form_parameters = {
-            'addressid': options.get('addressid', None)
+            'addressId': options.get('address_id', None)
         }
         
         # Form encode parameters.
