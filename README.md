@@ -162,10 +162,10 @@ collect['conference_sid'] = conference_sid
 participant_sid = 'ParticipantSid'
 collect['participant_sid'] = participant_sid
 
-muted = False
+muted = True
 collect['muted'] = muted
 
-deaf = False
+deaf = True
 collect['deaf'] = deaf
 
 response_type = 'json'
@@ -205,10 +205,10 @@ def create_list_conference(self,
 ```python
 collect = {}
 
-page = 80
+page = 148
 collect['page'] = page
 
-page_size = 80
+page_size = 148
 collect['page_size'] = page_size
 
 friendly_name = 'FriendlyName'
@@ -300,7 +300,7 @@ collect['conferencesid'] = conferencesid
 participantnumber = 'participantnumber'
 collect['participantnumber'] = participantnumber
 
-tocountrycode = 171
+tocountrycode = 148
 collect['tocountrycode'] = tocountrycode
 
 muted = True
@@ -348,10 +348,10 @@ collect = {}
 conference_sid = 'ConferenceSid'
 collect['conference_sid'] = conference_sid
 
-page = 171
+page = 148
 collect['page'] = page
 
-pagesize = 171
+pagesize = 148
 collect['pagesize'] = pagesize
 
 muted = True
@@ -1010,10 +1010,10 @@ def create_carrier_lookup_list(self,
 ```python
 collect = {}
 
-page = 171
+page = 106
 collect['page'] = page
 
-pagesize = 171
+pagesize = 106
 collect['pagesize'] = pagesize
 
 response_type = 'json'
@@ -1150,7 +1150,7 @@ collect['heart_beat_url'] = heart_beat_url
 heart_beat_method = HttpAction.GET
 collect['heart_beat_method'] = heart_beat_method
 
-timeout = 171
+timeout = 106
 collect['timeout'] = timeout
 
 play_dtmf = 'PlayDtmf'
@@ -1159,7 +1159,7 @@ collect['play_dtmf'] = play_dtmf
 hide_caller_id = 'HideCallerId'
 collect['hide_caller_id'] = hide_caller_id
 
-record = True
+record = False
 collect['record'] = record
 
 record_call_back_url = 'RecordCallBackUrl'
@@ -1168,7 +1168,7 @@ collect['record_call_back_url'] = record_call_back_url
 record_call_back_method = HttpAction.GET
 collect['record_call_back_method'] = record_call_back_method
 
-transcribe = True
+transcribe = False
 collect['transcribe'] = transcribe
 
 transcribe_call_back_url = 'TranscribeCallBackUrl'
@@ -1218,19 +1218,19 @@ collect['call_sid'] = call_sid
 audio_direction = AudioDirection.IN
 collect['audio_direction'] = audio_direction
 
-pitch_semi_tones = 171.811906689225
+pitch_semi_tones = 106.668559187869
 collect['pitch_semi_tones'] = pitch_semi_tones
 
-pitch_octaves = 171.811906689225
+pitch_octaves = 106.668559187869
 collect['pitch_octaves'] = pitch_octaves
 
-pitch = 171.811906689225
+pitch = 106.668559187869
 collect['pitch'] = pitch
 
-rate = 171.811906689225
+rate = 106.668559187869
 collect['rate'] = rate
 
-tempo = 171.811906689225
+tempo = 106.668559187869
 collect['tempo'] = tempo
 
 response_type = 'json'
@@ -1273,13 +1273,13 @@ collect = {}
 call_sid = 'CallSid'
 collect['call_sid'] = call_sid
 
-record = True
+record = False
 collect['record'] = record
 
 direction = Direction.IN
 collect['direction'] = direction
 
-time_limit = 171
+time_limit = 106
 collect['time_limit'] = time_limit
 
 call_back_url = 'CallBackUrl'
@@ -1331,16 +1331,16 @@ collect['call_sid'] = call_sid
 audio_url = 'AudioUrl'
 collect['audio_url'] = audio_url
 
-length = 130
+length = 106
 collect['length'] = length
 
 direction = Direction.IN
 collect['direction'] = direction
 
-loop = True
+loop = False
 collect['loop'] = loop
 
-mix = True
+mix = False
 collect['mix'] = mix
 
 response_type = 'json'
@@ -1379,10 +1379,10 @@ def create_list_calls(self,
 ```python
 collect = {}
 
-page = 130
+page = 106
 collect['page'] = page
 
-page_size = 130
+page_size = 106
 collect['page_size'] = page_size
 
 to = 'To'
@@ -1572,7 +1572,7 @@ collect['heart_beat_url'] = heart_beat_url
 heart_beat_method = True
 collect['heart_beat_method'] = heart_beat_method
 
-timeout = 130
+timeout = 198
 collect['timeout'] = timeout
 
 play_dtmf = 'PlayDtmf'
@@ -1681,7 +1681,7 @@ def create_list_inbound_sms(self,
 ```python
 collect = {}
 
-page = 130
+page = 198
 collect['page'] = page
 
 pagesize = 'pagesize'
@@ -1729,10 +1729,10 @@ def create_list_sms(self,
 ```python
 collect = {}
 
-page = 130
+page = 198
 collect['page'] = page
 
-pagesize = 130
+pagesize = 198
 collect['pagesize'] = pagesize
 
 mfrom = 'from'
@@ -2574,10 +2574,10 @@ def create_list_number(self,
 ```python
 collect = {}
 
-page = 221
+page = 198
 collect['page'] = page
 
-page_size = 221
+page_size = 198
 collect['page_size'] = page_size
 
 number_type = NumberType.ALL
@@ -2626,7 +2626,7 @@ collect['number_type'] = number_type
 area_code = 'AreaCode'
 collect['area_code'] = area_code
 
-page_size = 221
+page_size = 198
 collect['page_size'] = page_size
 
 response_type = 'json'
@@ -2676,10 +2676,10 @@ def create_list_recording(self,
 ```python
 collect = {}
 
-page = 221
+page = 198
 collect['page'] = page
 
-page_size = 221
+page_size = 198
 collect['page_size'] = page_size
 
 date_created = 'DateCreated'
@@ -2910,10 +2910,10 @@ def create_list_transcription(self,
 ```python
 collect = {}
 
-page = 221
+page = 34
 collect['page'] = page
 
-page_size = 221
+page_size = 34
 collect['page_size'] = page_size
 
 status = Status.INPROGRESS

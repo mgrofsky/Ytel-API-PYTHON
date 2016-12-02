@@ -3,7 +3,7 @@
 """
     message360.controllers.web_rtc_controller
 
-    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 12/01/2016
+    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 12/02/2016
 """
 
 from .base_controller import *
