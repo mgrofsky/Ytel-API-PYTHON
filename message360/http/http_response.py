@@ -3,7 +3,7 @@
 """
     message360.http.http_response
 
-    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 12/02/2016
+    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 12/08/2016
 """
 
 class HttpResponse(object):

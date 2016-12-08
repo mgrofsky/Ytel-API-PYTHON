@@ -3,7 +3,7 @@
 """
     message360.controllers.sms_controller
 
-    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 12/02/2016
+    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 12/08/2016
 """
 
 from .base_controller import *
@@ -11,6 +11,7 @@ from .base_controller import *
 class SMSController(BaseController):
 
     """A Controller to access Endpoints in the message360 API."""
+    
 
     def create_view_sms(self,
                         options=dict()):
@@ -43,44 +44,28 @@ class SMSController(BaseController):
         # Validate required parameters
         self.validate_parameters(messagesid = options.get("messagesid"))
 
-        # The base uri for api requests
-        _query_builder = Configuration.base_uri
- 
-        # Prepare query string for API call
+        # Prepare query URL
+        _query_builder = Configuration.get_base_uri()
         _query_builder += '/sms/viewsms.{ResponseType}'
-
-        # Process optional template parameters
         _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
             'ResponseType': options.get('response_type', None)
         })
-
-        # Validate and preprocess url
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare form parameters
         _form_parameters = {
             'messagesid': options.get('messagesid', None)
         }
-        
-        # Form encode parameters.
         _form_parameters = APIHelper.form_encode_parameters(_form_parameters)
 
-        # Prepare the API call.
+        # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
-
-        # Apply authentication.
         BasicAuth.apply(_request)
-
-        # Execute the request.
         _context = self.execute_request(_request)        
-
-        # Global error handling using HTTP status codes.
         self.validate_response(_context)    
 
         # Return appropriate type
         return _context.response.raw_body
-
-
 
     def create_list_inbound_sms(self,
                                 options=dict()):
@@ -115,18 +100,12 @@ class SMSController(BaseController):
 
         """
 
-        # The base uri for api requests
-        _query_builder = Configuration.base_uri
- 
-        # Prepare query string for API call
+        # Prepare query URL
+        _query_builder = Configuration.get_base_uri()
         _query_builder += '/sms/getInboundsms.{ResponseType}'
-
-        # Process optional template parameters
         _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
             'ResponseType': options.get('response_type', None)
         })
-
-        # Validate and preprocess url
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare form parameters
@@ -136,26 +115,16 @@ class SMSController(BaseController):
             'from': options.get('mfrom', None),
             'to': options.get('to', None)
         }
-        
-        # Form encode parameters.
         _form_parameters = APIHelper.form_encode_parameters(_form_parameters)
 
-        # Prepare the API call.
+        # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
-
-        # Apply authentication.
         BasicAuth.apply(_request)
-
-        # Execute the request.
         _context = self.execute_request(_request)        
-
-        # Global error handling using HTTP status codes.
         self.validate_response(_context)    
 
         # Return appropriate type
         return _context.response.raw_body
-
-
 
     def create_list_sms(self,
                         options=dict()):
@@ -192,18 +161,12 @@ class SMSController(BaseController):
 
         """
 
-        # The base uri for api requests
-        _query_builder = Configuration.base_uri
- 
-        # Prepare query string for API call
+        # Prepare query URL
+        _query_builder = Configuration.get_base_uri()
         _query_builder += '/sms/listsms.{ResponseType}'
-
-        # Process optional template parameters
         _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
             'ResponseType': options.get('response_type', None)
         })
-
-        # Validate and preprocess url
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare form parameters
@@ -214,26 +177,16 @@ class SMSController(BaseController):
             'to': options.get('to', None),
             'datesent': options.get('datesent', None)
         }
-        
-        # Form encode parameters.
         _form_parameters = APIHelper.form_encode_parameters(_form_parameters)
 
-        # Prepare the API call.
+        # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
-
-        # Apply authentication.
         BasicAuth.apply(_request)
-
-        # Execute the request.
         _context = self.execute_request(_request)        
-
-        # Global error handling using HTTP status codes.
         self.validate_response(_context)    
 
         # Return appropriate type
         return _context.response.raw_body
-
-
 
     def create_send_sms(self,
                         options=dict()):
@@ -281,18 +234,12 @@ class SMSController(BaseController):
                                  to = options.get("to"),
                                  body = options.get("body"))
 
-        # The base uri for api requests
-        _query_builder = Configuration.base_uri
- 
-        # Prepare query string for API call
+        # Prepare query URL
+        _query_builder = Configuration.get_base_uri()
         _query_builder += '/sms/sendsms.{ResponseType}'
-
-        # Process optional template parameters
         _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
             'ResponseType': options.get('response_type', None)
         })
-
-        # Validate and preprocess url
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare form parameters
@@ -305,23 +252,13 @@ class SMSController(BaseController):
             'method': options.get('method', None),
             'messagestatuscallback': options.get('messagestatuscallback', None)
         }
-        
-        # Form encode parameters.
         _form_parameters = APIHelper.form_encode_parameters(_form_parameters)
 
-        # Prepare the API call.
+        # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
-
-        # Apply authentication.
         BasicAuth.apply(_request)
-
-        # Execute the request.
         _context = self.execute_request(_request)        
-
-        # Global error handling using HTTP status codes.
         self.validate_response(_context)    
 
         # Return appropriate type
         return _context.response.raw_body
-
-

@@ -3,13 +3,12 @@
 """
     message360controllers.base_controller
 
-    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 12/02/2016
+    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 12/08/2016
 """
-
 from ..http import *
 from ..exceptions import *
+from ..configuration import *
 from ..api_helper import APIHelper
-from ..configuration import Configuration
 
 class BaseController(object):
 
@@ -49,7 +48,7 @@ class BaseController(object):
             
         """       
         for name, value in kwargs.items():
-             if value == None:
+            if value == None:
                 raise ValueError("Required parameter {} cannot be None.".format(name))
 
     def execute_request(self, request, binary = False):
@@ -72,7 +71,7 @@ class BaseController(object):
         # Add global headers to request
         request.headers = APIHelper.merge_dicts(self.global_headers, request.headers)
 
-        # Invoke the API call to fetch the response.
+        # Invoke the API call to fetch the response.      
         func = self.http_client.execute_as_binary if binary else self.http_client.execute_as_string
         response = func(request)
         context = HttpContext(request, response)

@@ -3,7 +3,7 @@
 """
     message360.controllers.web_rtc_controller
 
-    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 12/02/2016
+    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 12/08/2016
 """
 
 from .base_controller import *
@@ -11,6 +11,7 @@ from .base_controller import *
 class WebRTCController(BaseController):
 
     """A Controller to access Endpoints in the message360 API."""
+    
 
     def create_token(self,
                      options=dict()):
@@ -43,13 +44,9 @@ class WebRTCController(BaseController):
         self.validate_parameters(account_sid = options.get("account_sid"),
                                  auth_token = options.get("auth_token"))
 
-        # The base uri for api requests
-        _query_builder = Configuration.base_uri
- 
-        # Prepare query string for API call
+        # Prepare query URL
+        _query_builder = Configuration.get_base_uri()
         _query_builder += '/webrtc/createToken.json'
-
-        # Validate and preprocess url
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare form parameters
@@ -57,20 +54,12 @@ class WebRTCController(BaseController):
             'account_sid': options.get('account_sid', None),
             'auth_token': options.get('auth_token', None)
         }
-        
-        # Form encode parameters.
         _form_parameters = APIHelper.form_encode_parameters(_form_parameters)
 
-        # Prepare the API call.
+        # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
-
-        # Apply authentication.
         BasicAuth.apply(_request)
-
-        # Execute the request.
         _context = self.execute_request(_request)        
-
-        # Global error handling using HTTP status codes.
         self.validate_response(_context)    
 
     def create_check_funds(self,
@@ -104,13 +93,9 @@ class WebRTCController(BaseController):
         self.validate_parameters(account_sid = options.get("account_sid"),
                                  auth_token = options.get("auth_token"))
 
-        # The base uri for api requests
-        _query_builder = Configuration.base_uri
- 
-        # Prepare query string for API call
+        # Prepare query URL
+        _query_builder = Configuration.get_base_uri()
         _query_builder += '/webrtc/checkFunds.json'
-
-        # Validate and preprocess url
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare form parameters
@@ -118,20 +103,12 @@ class WebRTCController(BaseController):
             'account_sid': options.get('account_sid', None),
             'auth_token': options.get('auth_token', None)
         }
-        
-        # Form encode parameters.
         _form_parameters = APIHelper.form_encode_parameters(_form_parameters)
 
-        # Prepare the API call.
+        # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
-
-        # Apply authentication.
         BasicAuth.apply(_request)
-
-        # Execute the request.
         _context = self.execute_request(_request)        
-
-        # Global error handling using HTTP status codes.
         self.validate_response(_context)    
 
     def create_authenticate_number(self,
@@ -168,13 +145,9 @@ class WebRTCController(BaseController):
                                  account_sid = options.get("account_sid"),
                                  auth_token = options.get("auth_token"))
 
-        # The base uri for api requests
-        _query_builder = Configuration.base_uri
- 
-        # Prepare query string for API call
+        # Prepare query URL
+        _query_builder = Configuration.get_base_uri()
         _query_builder += '/webrtc/authenticateNumber.json'
-
-        # Validate and preprocess url
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare form parameters
@@ -183,18 +156,10 @@ class WebRTCController(BaseController):
             'account_sid': options.get('account_sid', None),
             'auth_token': options.get('auth_token', None)
         }
-        
-        # Form encode parameters.
         _form_parameters = APIHelper.form_encode_parameters(_form_parameters)
 
-        # Prepare the API call.
+        # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
-
-        # Apply authentication.
         BasicAuth.apply(_request)
-
-        # Execute the request.
         _context = self.execute_request(_request)        
-
-        # Global error handling using HTTP status codes.
         self.validate_response(_context)    

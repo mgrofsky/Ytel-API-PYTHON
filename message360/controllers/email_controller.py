@@ -3,7 +3,7 @@
 """
     message360.controllers.email_controller
 
-    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 12/02/2016
+    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 12/08/2016
 """
 
 from .base_controller import *
@@ -11,6 +11,7 @@ from .base_controller import *
 class EmailController(BaseController):
 
     """A Controller to access Endpoints in the message360 API."""
+    
 
     def create_delete_invalid(self,
                               options=dict()):
@@ -44,44 +45,28 @@ class EmailController(BaseController):
         # Validate required parameters
         self.validate_parameters(email = options.get("email"))
 
-        # The base uri for api requests
-        _query_builder = Configuration.base_uri
- 
-        # Prepare query string for API call
+        # Prepare query URL
+        _query_builder = Configuration.get_base_uri()
         _query_builder += '/email/deleteinvalidemail.{ResponseType}'
-
-        # Process optional template parameters
         _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
             'ResponseType': options.get('response_type', None)
         })
-
-        # Validate and preprocess url
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare form parameters
         _form_parameters = {
             'email': options.get('email', None)
         }
-        
-        # Form encode parameters.
         _form_parameters = APIHelper.form_encode_parameters(_form_parameters)
 
-        # Prepare the API call.
+        # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
-
-        # Apply authentication.
         BasicAuth.apply(_request)
-
-        # Execute the request.
         _context = self.execute_request(_request)        
-
-        # Global error handling using HTTP status codes.
         self.validate_response(_context)    
 
         # Return appropriate type
         return _context.response.raw_body
-
-
 
     def create_list_blocks(self,
                            options=dict()):
@@ -112,18 +97,12 @@ class EmailController(BaseController):
 
         """
 
-        # The base uri for api requests
-        _query_builder = Configuration.base_uri
- 
-        # Prepare query string for API call
+        # Prepare query URL
+        _query_builder = Configuration.get_base_uri()
         _query_builder += '/email/listblockemail.{ResponseType}'
-
-        # Process optional template parameters
         _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
             'ResponseType': options.get('response_type', None)
         })
-
-        # Validate and preprocess url
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare form parameters
@@ -131,26 +110,16 @@ class EmailController(BaseController):
             'offset': options.get('offset', None),
             'limit': options.get('limit', None)
         }
-        
-        # Form encode parameters.
         _form_parameters = APIHelper.form_encode_parameters(_form_parameters)
 
-        # Prepare the API call.
+        # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
-
-        # Apply authentication.
         BasicAuth.apply(_request)
-
-        # Execute the request.
         _context = self.execute_request(_request)        
-
-        # Global error handling using HTTP status codes.
         self.validate_response(_context)    
 
         # Return appropriate type
         return _context.response.raw_body
-
-
 
     def create_list_spam(self,
                          options=dict()):
@@ -182,18 +151,12 @@ class EmailController(BaseController):
 
         """
 
-        # The base uri for api requests
-        _query_builder = Configuration.base_uri
- 
-        # Prepare query string for API call
+        # Prepare query URL
+        _query_builder = Configuration.get_base_uri()
         _query_builder += '/email/listspamemail.{ResponseType}'
-
-        # Process optional template parameters
         _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
             'ResponseType': options.get('response_type', None)
         })
-
-        # Validate and preprocess url
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare form parameters
@@ -201,26 +164,16 @@ class EmailController(BaseController):
             'offset': options.get('offset', None),
             'limit': options.get('limit', None)
         }
-        
-        # Form encode parameters.
         _form_parameters = APIHelper.form_encode_parameters(_form_parameters)
 
-        # Prepare the API call.
+        # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
-
-        # Apply authentication.
         BasicAuth.apply(_request)
-
-        # Execute the request.
         _context = self.execute_request(_request)        
-
-        # Global error handling using HTTP status codes.
         self.validate_response(_context)    
 
         # Return appropriate type
         return _context.response.raw_body
-
-
 
     def create_list_bounces(self,
                             options=dict()):
@@ -252,18 +205,12 @@ class EmailController(BaseController):
 
         """
 
-        # The base uri for api requests
-        _query_builder = Configuration.base_uri
- 
-        # Prepare query string for API call
+        # Prepare query URL
+        _query_builder = Configuration.get_base_uri()
         _query_builder += '/email/listbounceemail.{ResponseType}'
-
-        # Process optional template parameters
         _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
             'ResponseType': options.get('response_type', None)
         })
-
-        # Validate and preprocess url
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare form parameters
@@ -271,26 +218,16 @@ class EmailController(BaseController):
             'offset': options.get('offset', None),
             'limit': options.get('limit', None)
         }
-        
-        # Form encode parameters.
         _form_parameters = APIHelper.form_encode_parameters(_form_parameters)
 
-        # Prepare the API call.
+        # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
-
-        # Apply authentication.
         BasicAuth.apply(_request)
-
-        # Execute the request.
         _context = self.execute_request(_request)        
-
-        # Global error handling using HTTP status codes.
         self.validate_response(_context)    
 
         # Return appropriate type
         return _context.response.raw_body
-
-
 
     def create_delete_bounces(self,
                               options=dict()):
@@ -324,44 +261,28 @@ class EmailController(BaseController):
         # Validate required parameters
         self.validate_parameters(email = options.get("email"))
 
-        # The base uri for api requests
-        _query_builder = Configuration.base_uri
- 
-        # Prepare query string for API call
+        # Prepare query URL
+        _query_builder = Configuration.get_base_uri()
         _query_builder += '/email/deletebouncesemail.{ResponseType}'
-
-        # Process optional template parameters
         _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
             'ResponseType': options.get('response_type', None)
         })
-
-        # Validate and preprocess url
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare form parameters
         _form_parameters = {
             'email': options.get('email', None)
         }
-        
-        # Form encode parameters.
         _form_parameters = APIHelper.form_encode_parameters(_form_parameters)
 
-        # Prepare the API call.
+        # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
-
-        # Apply authentication.
         BasicAuth.apply(_request)
-
-        # Execute the request.
         _context = self.execute_request(_request)        
-
-        # Global error handling using HTTP status codes.
         self.validate_response(_context)    
 
         # Return appropriate type
         return _context.response.raw_body
-
-
 
     def create_list_invalid(self,
                             options=dict()):
@@ -392,18 +313,12 @@ class EmailController(BaseController):
 
         """
 
-        # The base uri for api requests
-        _query_builder = Configuration.base_uri
- 
-        # Prepare query string for API call
+        # Prepare query URL
+        _query_builder = Configuration.get_base_uri()
         _query_builder += '/email/listinvalidemail.{ResponseType}'
-
-        # Process optional template parameters
         _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
             'ResponseType': options.get('response_type', None)
         })
-
-        # Validate and preprocess url
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare form parameters
@@ -411,26 +326,16 @@ class EmailController(BaseController):
             'offet': options.get('offet', None),
             'limit': options.get('limit', None)
         }
-        
-        # Form encode parameters.
         _form_parameters = APIHelper.form_encode_parameters(_form_parameters)
 
-        # Prepare the API call.
+        # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
-
-        # Apply authentication.
         BasicAuth.apply(_request)
-
-        # Execute the request.
         _context = self.execute_request(_request)        
-
-        # Global error handling using HTTP status codes.
         self.validate_response(_context)    
 
         # Return appropriate type
         return _context.response.raw_body
-
-
 
     def create_list_unsubscribes(self,
                                  options=dict()):
@@ -462,18 +367,12 @@ class EmailController(BaseController):
 
         """
 
-        # The base uri for api requests
-        _query_builder = Configuration.base_uri
- 
-        # Prepare query string for API call
+        # Prepare query URL
+        _query_builder = Configuration.get_base_uri()
         _query_builder += '/email/listunsubscribedemail.{ResponseType}'
-
-        # Process optional template parameters
         _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
             'ResponseType': options.get('response_type', None)
         })
-
-        # Validate and preprocess url
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare form parameters
@@ -481,26 +380,16 @@ class EmailController(BaseController):
             'offset': options.get('offset', None),
             'limit': options.get('limit', None)
         }
-        
-        # Form encode parameters.
         _form_parameters = APIHelper.form_encode_parameters(_form_parameters)
 
-        # Prepare the API call.
+        # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
-
-        # Apply authentication.
         BasicAuth.apply(_request)
-
-        # Execute the request.
         _context = self.execute_request(_request)        
-
-        # Global error handling using HTTP status codes.
         self.validate_response(_context)    
 
         # Return appropriate type
         return _context.response.raw_body
-
-
 
     def create_delete_unsubscribes(self,
                                    options=dict()):
@@ -534,44 +423,28 @@ class EmailController(BaseController):
         # Validate required parameters
         self.validate_parameters(email = options.get("email"))
 
-        # The base uri for api requests
-        _query_builder = Configuration.base_uri
- 
-        # Prepare query string for API call
+        # Prepare query URL
+        _query_builder = Configuration.get_base_uri()
         _query_builder += '/email/deleteunsubscribedemail.{ResponseType}'
-
-        # Process optional template parameters
         _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
             'ResponseType': options.get('response_type', None)
         })
-
-        # Validate and preprocess url
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare form parameters
         _form_parameters = {
             'email': options.get('email', None)
         }
-        
-        # Form encode parameters.
         _form_parameters = APIHelper.form_encode_parameters(_form_parameters)
 
-        # Prepare the API call.
+        # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
-
-        # Apply authentication.
         BasicAuth.apply(_request)
-
-        # Execute the request.
         _context = self.execute_request(_request)        
-
-        # Global error handling using HTTP status codes.
         self.validate_response(_context)    
 
         # Return appropriate type
         return _context.response.raw_body
-
-
 
     def add_unsubscribes(self,
                          options=dict()):
@@ -605,44 +478,28 @@ class EmailController(BaseController):
         # Validate required parameters
         self.validate_parameters(email = options.get("email"))
 
-        # The base uri for api requests
-        _query_builder = Configuration.base_uri
- 
-        # Prepare query string for API call
+        # Prepare query URL
+        _query_builder = Configuration.get_base_uri()
         _query_builder += '/email/addunsubscribesemail.{ResponseType}'
-
-        # Process optional template parameters
         _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
             'ResponseType': options.get('response_type', None)
         })
-
-        # Validate and preprocess url
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare form parameters
         _form_parameters = {
             'email': options.get('email', None)
         }
-        
-        # Form encode parameters.
         _form_parameters = APIHelper.form_encode_parameters(_form_parameters)
 
-        # Prepare the API call.
+        # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
-
-        # Apply authentication.
         BasicAuth.apply(_request)
-
-        # Execute the request.
         _context = self.execute_request(_request)        
-
-        # Global error handling using HTTP status codes.
         self.validate_response(_context)    
 
         # Return appropriate type
         return _context.response.raw_body
-
-
 
     def create_delete_block(self,
                             options=dict()):
@@ -676,44 +533,28 @@ class EmailController(BaseController):
         # Validate required parameters
         self.validate_parameters(email = options.get("email"))
 
-        # The base uri for api requests
-        _query_builder = Configuration.base_uri
- 
-        # Prepare query string for API call
+        # Prepare query URL
+        _query_builder = Configuration.get_base_uri()
         _query_builder += '/email/deleteblocksemail.{ResponseType}'
-
-        # Process optional template parameters
         _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
             'ResponseType': options.get('response_type', None)
         })
-
-        # Validate and preprocess url
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare form parameters
         _form_parameters = {
             'email': options.get('email', None)
         }
-        
-        # Form encode parameters.
         _form_parameters = APIHelper.form_encode_parameters(_form_parameters)
 
-        # Prepare the API call.
+        # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
-
-        # Apply authentication.
         BasicAuth.apply(_request)
-
-        # Execute the request.
         _context = self.execute_request(_request)        
-
-        # Global error handling using HTTP status codes.
         self.validate_response(_context)    
 
         # Return appropriate type
         return _context.response.raw_body
-
-
 
     def create_delete_spam(self,
                            options=dict()):
@@ -746,44 +587,28 @@ class EmailController(BaseController):
         # Validate required parameters
         self.validate_parameters(email = options.get("email"))
 
-        # The base uri for api requests
-        _query_builder = Configuration.base_uri
- 
-        # Prepare query string for API call
+        # Prepare query URL
+        _query_builder = Configuration.get_base_uri()
         _query_builder += '/email/deletespamemail.{ResponseType}'
-
-        # Process optional template parameters
         _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
             'ResponseType': options.get('response_type', None)
         })
-
-        # Validate and preprocess url
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare form parameters
         _form_parameters = {
             'email': options.get('email', None)
         }
-        
-        # Form encode parameters.
         _form_parameters = APIHelper.form_encode_parameters(_form_parameters)
 
-        # Prepare the API call.
+        # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
-
-        # Apply authentication.
         BasicAuth.apply(_request)
-
-        # Execute the request.
         _context = self.execute_request(_request)        
-
-        # Global error handling using HTTP status codes.
         self.validate_response(_context)    
 
         # Return appropriate type
         return _context.response.raw_body
-
-
 
     def create_send_email(self,
                           options=dict()):
@@ -828,18 +653,12 @@ class EmailController(BaseController):
                                  subject = options.get("subject"),
                                  message = options.get("message"))
 
-        # The base uri for api requests
-        _query_builder = Configuration.base_uri
- 
-        # Prepare query string for API call
+        # Prepare query URL
+        _query_builder = Configuration.get_base_uri()
         _query_builder += '/email/sendemails.{ResponseType}'
-
-        # Process optional template parameters
         _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
             'ResponseType': options.get('response_type', None)
         })
-
-        # Validate and preprocess url
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare form parameters
@@ -853,23 +672,13 @@ class EmailController(BaseController):
             'bcc': options.get('bcc', None),
             'attachment': options.get('attachment', None)
         }
-        
-        # Form encode parameters.
         _form_parameters = APIHelper.form_encode_parameters(_form_parameters)
 
-        # Prepare the API call.
+        # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
-
-        # Apply authentication.
         BasicAuth.apply(_request)
-
-        # Execute the request.
         _context = self.execute_request(_request)        
-
-        # Global error handling using HTTP status codes.
         self.validate_response(_context)    
 
         # Return appropriate type
         return _context.response.raw_body
-
-
