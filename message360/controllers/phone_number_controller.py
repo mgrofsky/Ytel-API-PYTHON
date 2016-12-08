@@ -3,7 +3,7 @@
 """
     message360.controllers.phone_number_controller
 
-    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 12/02/2016
+    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 12/08/2016
 """
 
 from .base_controller import *
@@ -11,6 +11,7 @@ from .base_controller import *
 class PhoneNumberController(BaseController):
 
     """A Controller to access Endpoints in the message360 API."""
+    
 
     def update_phone_number(self,
                             options=dict()):
@@ -71,18 +72,12 @@ class PhoneNumberController(BaseController):
         # Validate required parameters
         self.validate_parameters(phone_number = options.get("phone_number"))
 
-        # The base uri for api requests
-        _query_builder = Configuration.base_uri
- 
-        # Prepare query string for API call
+        # Prepare query URL
+        _query_builder = Configuration.get_base_uri()
         _query_builder += '/incomingphone/updatenumber.{ResponseType}'
-
-        # Process optional template parameters
         _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
             'ResponseType': options.get('response_type', None)
         })
-
-        # Validate and preprocess url
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare form parameters
@@ -102,26 +97,16 @@ class PhoneNumberController(BaseController):
             'SmsFallbackUrl': options.get('sms_fallback_url', None),
             'SmsFallbackMethod': options.get('sms_fallback_method', None)
         }
-        
-        # Form encode parameters.
         _form_parameters = APIHelper.form_encode_parameters(_form_parameters)
 
-        # Prepare the API call.
+        # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
-
-        # Apply authentication.
         BasicAuth.apply(_request)
-
-        # Execute the request.
         _context = self.execute_request(_request)        
-
-        # Global error handling using HTTP status codes.
         self.validate_response(_context)    
 
         # Return appropriate type
         return _context.response.raw_body
-
-
 
     def create_buy_number(self,
                           options=dict()):
@@ -154,44 +139,28 @@ class PhoneNumberController(BaseController):
         # Validate required parameters
         self.validate_parameters(phone_number = options.get("phone_number"))
 
-        # The base uri for api requests
-        _query_builder = Configuration.base_uri
- 
-        # Prepare query string for API call
+        # Prepare query URL
+        _query_builder = Configuration.get_base_uri()
         _query_builder += '/incomingphone/buynumber.{ResponseType}'
-
-        # Process optional template parameters
         _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
             'ResponseType': options.get('response_type', None)
         })
-
-        # Validate and preprocess url
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare form parameters
         _form_parameters = {
             'PhoneNumber': options.get('phone_number', None)
         }
-        
-        # Form encode parameters.
         _form_parameters = APIHelper.form_encode_parameters(_form_parameters)
 
-        # Prepare the API call.
+        # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
-
-        # Apply authentication.
         BasicAuth.apply(_request)
-
-        # Execute the request.
         _context = self.execute_request(_request)        
-
-        # Global error handling using HTTP status codes.
         self.validate_response(_context)    
 
         # Return appropriate type
         return _context.response.raw_body
-
-
 
     def create_release_number(self,
                               options=dict()):
@@ -224,44 +193,28 @@ class PhoneNumberController(BaseController):
         # Validate required parameters
         self.validate_parameters(phone_number = options.get("phone_number"))
 
-        # The base uri for api requests
-        _query_builder = Configuration.base_uri
- 
-        # Prepare query string for API call
+        # Prepare query URL
+        _query_builder = Configuration.get_base_uri()
         _query_builder += '/incomingphone/releasenumber.{ResponseType}'
-
-        # Process optional template parameters
         _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
             'ResponseType': options.get('response_type', None)
         })
-
-        # Validate and preprocess url
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare form parameters
         _form_parameters = {
             'PhoneNumber': options.get('phone_number', None)
         }
-        
-        # Form encode parameters.
         _form_parameters = APIHelper.form_encode_parameters(_form_parameters)
 
-        # Prepare the API call.
+        # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
-
-        # Apply authentication.
         BasicAuth.apply(_request)
-
-        # Execute the request.
         _context = self.execute_request(_request)        
-
-        # Global error handling using HTTP status codes.
         self.validate_response(_context)    
 
         # Return appropriate type
         return _context.response.raw_body
-
-
 
     def create_view_number_details(self,
                                    options=dict()):
@@ -294,44 +247,28 @@ class PhoneNumberController(BaseController):
         # Validate required parameters
         self.validate_parameters(phone_number = options.get("phone_number"))
 
-        # The base uri for api requests
-        _query_builder = Configuration.base_uri
- 
-        # Prepare query string for API call
+        # Prepare query URL
+        _query_builder = Configuration.get_base_uri()
         _query_builder += '/incomingphone/viewnumber.{ResponseType}'
-
-        # Process optional template parameters
         _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
             'ResponseType': options.get('response_type', None)
         })
-
-        # Validate and preprocess url
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare form parameters
         _form_parameters = {
             'PhoneNumber': options.get('phone_number', None)
         }
-        
-        # Form encode parameters.
         _form_parameters = APIHelper.form_encode_parameters(_form_parameters)
 
-        # Prepare the API call.
+        # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
-
-        # Apply authentication.
         BasicAuth.apply(_request)
-
-        # Execute the request.
         _context = self.execute_request(_request)        
-
-        # Global error handling using HTTP status codes.
         self.validate_response(_context)    
 
         # Return appropriate type
         return _context.response.raw_body
-
-
 
     def create_list_number(self,
                            options=dict()):
@@ -368,18 +305,12 @@ class PhoneNumberController(BaseController):
 
         """
 
-        # The base uri for api requests
-        _query_builder = Configuration.base_uri
- 
-        # Prepare query string for API call
+        # Prepare query URL
+        _query_builder = Configuration.get_base_uri()
         _query_builder += '/incomingphone/listnumber.{ResponseType}'
-
-        # Process optional template parameters
         _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
             'ResponseType': options.get('response_type', None)
         })
-
-        # Validate and preprocess url
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare form parameters
@@ -389,26 +320,16 @@ class PhoneNumberController(BaseController):
             'NumberType': options.get('number_type', None),
             'FriendlyName': options.get('friendly_name', None)
         }
-        
-        # Form encode parameters.
         _form_parameters = APIHelper.form_encode_parameters(_form_parameters)
 
-        # Prepare the API call.
+        # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
-
-        # Apply authentication.
         BasicAuth.apply(_request)
-
-        # Execute the request.
         _context = self.execute_request(_request)        
-
-        # Global error handling using HTTP status codes.
         self.validate_response(_context)    
 
         # Return appropriate type
         return _context.response.raw_body
-
-
 
     def create_available_phone_number(self,
                                       options=dict()):
@@ -445,18 +366,12 @@ class PhoneNumberController(BaseController):
         self.validate_parameters(number_type = options.get("number_type"),
                                  area_code = options.get("area_code"))
 
-        # The base uri for api requests
-        _query_builder = Configuration.base_uri
- 
-        # Prepare query string for API call
+        # Prepare query URL
+        _query_builder = Configuration.get_base_uri()
         _query_builder += '/incomingphone/availablenumber.{ResponseType}'
-
-        # Process optional template parameters
         _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
             'ResponseType': options.get('response_type', None)
         })
-
-        # Validate and preprocess url
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare form parameters
@@ -465,23 +380,13 @@ class PhoneNumberController(BaseController):
             'AreaCode': options.get('area_code', None),
             'PageSize': options.get('page_size', None)
         }
-        
-        # Form encode parameters.
         _form_parameters = APIHelper.form_encode_parameters(_form_parameters)
 
-        # Prepare the API call.
+        # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
-
-        # Apply authentication.
         BasicAuth.apply(_request)
-
-        # Execute the request.
         _context = self.execute_request(_request)        
-
-        # Global error handling using HTTP status codes.
         self.validate_response(_context)    
 
         # Return appropriate type
         return _context.response.raw_body
-
-

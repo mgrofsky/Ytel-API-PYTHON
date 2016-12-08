@@ -3,7 +3,7 @@
 """
     message360.controllers.call_controller
 
-    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 12/02/2016
+    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 12/08/2016
 """
 
 from .base_controller import *
@@ -11,6 +11,7 @@ from .base_controller import *
 class CallController(BaseController):
 
     """A Controller to access Endpoints in the message360 API."""
+    
 
     def create_view_call(self,
                          options=dict()):
@@ -43,44 +44,28 @@ class CallController(BaseController):
         # Validate required parameters
         self.validate_parameters(callsid = options.get("callsid"))
 
-        # The base uri for api requests
-        _query_builder = Configuration.base_uri
- 
-        # Prepare query string for API call
+        # Prepare query URL
+        _query_builder = Configuration.get_base_uri()
         _query_builder += '/calls/viewcalls.{ResponseType}'
-
-        # Process optional template parameters
         _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
             'ResponseType': options.get('response_type', None)
         })
-
-        # Validate and preprocess url
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare form parameters
         _form_parameters = {
             'callsid': options.get('callsid', None)
         }
-        
-        # Form encode parameters.
         _form_parameters = APIHelper.form_encode_parameters(_form_parameters)
 
-        # Prepare the API call.
+        # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
-
-        # Apply authentication.
         BasicAuth.apply(_request)
-
-        # Execute the request.
         _context = self.execute_request(_request)        
-
-        # Global error handling using HTTP status codes.
         self.validate_response(_context)    
 
         # Return appropriate type
         return _context.response.raw_body
-
-
 
     def create_group_call(self,
                           options=dict()):
@@ -151,18 +136,12 @@ class CallController(BaseController):
                                  to = options.get("to"),
                                  url = options.get("url"))
 
-        # The base uri for api requests
-        _query_builder = Configuration.base_uri
- 
-        # Prepare query string for API call
+        # Prepare query URL
+        _query_builder = Configuration.get_base_uri()
         _query_builder += '/calls/groupcall.{ResponseType}'
-
-        # Process optional template parameters
         _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
             'ResponseType': options.get('response_type', None)
         })
-
-        # Validate and preprocess url
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare form parameters
@@ -188,26 +167,16 @@ class CallController(BaseController):
             'Transcribe': options.get('transcribe', None),
             'TranscribeCallBackUrl': options.get('transcribe_call_back_url', None)
         }
-        
-        # Form encode parameters.
         _form_parameters = APIHelper.form_encode_parameters(_form_parameters)
 
-        # Prepare the API call.
+        # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
-
-        # Apply authentication.
         BasicAuth.apply(_request)
-
-        # Execute the request.
         _context = self.execute_request(_request)        
-
-        # Global error handling using HTTP status codes.
         self.validate_response(_context)    
 
         # Return appropriate type
         return _context.response.raw_body
-
-
 
     def create_voice_effect(self,
                             options=dict()):
@@ -248,18 +217,12 @@ class CallController(BaseController):
         # Validate required parameters
         self.validate_parameters(call_sid = options.get("call_sid"))
 
-        # The base uri for api requests
-        _query_builder = Configuration.base_uri
- 
-        # Prepare query string for API call
+        # Prepare query URL
+        _query_builder = Configuration.get_base_uri()
         _query_builder += '/calls/voiceeffect.{ResponseType}'
-
-        # Process optional template parameters
         _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
             'ResponseType': options.get('response_type', None)
         })
-
-        # Validate and preprocess url
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare form parameters
@@ -272,26 +235,16 @@ class CallController(BaseController):
             'Rate': options.get('rate', None),
             'Tempo': options.get('tempo', None)
         }
-        
-        # Form encode parameters.
         _form_parameters = APIHelper.form_encode_parameters(_form_parameters)
 
-        # Prepare the API call.
+        # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
-
-        # Apply authentication.
         BasicAuth.apply(_request)
-
-        # Execute the request.
         _context = self.execute_request(_request)        
-
-        # Global error handling using HTTP status codes.
         self.validate_response(_context)    
 
         # Return appropriate type
         return _context.response.raw_body
-
-
 
     def create_record_call(self,
                            options=dict()):
@@ -334,18 +287,12 @@ class CallController(BaseController):
         self.validate_parameters(call_sid = options.get("call_sid"),
                                  record = options.get("record"))
 
-        # The base uri for api requests
-        _query_builder = Configuration.base_uri
- 
-        # Prepare query string for API call
+        # Prepare query URL
+        _query_builder = Configuration.get_base_uri()
         _query_builder += '/calls/recordcalls.{ResponseType}'
-
-        # Process optional template parameters
         _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
             'ResponseType': options.get('response_type', None)
         })
-
-        # Validate and preprocess url
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare form parameters
@@ -357,26 +304,16 @@ class CallController(BaseController):
             'CallBackUrl': options.get('call_back_url', None),
             'Fileformat': options.get('fileformat', None)
         }
-        
-        # Form encode parameters.
         _form_parameters = APIHelper.form_encode_parameters(_form_parameters)
 
-        # Prepare the API call.
+        # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
-
-        # Apply authentication.
         BasicAuth.apply(_request)
-
-        # Execute the request.
         _context = self.execute_request(_request)        
-
-        # Global error handling using HTTP status codes.
         self.validate_response(_context)    
 
         # Return appropriate type
         return _context.response.raw_body
-
-
 
     def create_play_audio(self,
                           options=dict()):
@@ -422,18 +359,12 @@ class CallController(BaseController):
         self.validate_parameters(call_sid = options.get("call_sid"),
                                  audio_url = options.get("audio_url"))
 
-        # The base uri for api requests
-        _query_builder = Configuration.base_uri
- 
-        # Prepare query string for API call
+        # Prepare query URL
+        _query_builder = Configuration.get_base_uri()
         _query_builder += '/calls/playaudios.{ResponseType}'
-
-        # Process optional template parameters
         _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
             'ResponseType': options.get('response_type', None)
         })
-
-        # Validate and preprocess url
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare form parameters
@@ -445,26 +376,16 @@ class CallController(BaseController):
             'Loop': options.get('loop', None),
             'Mix': options.get('mix', None)
         }
-        
-        # Form encode parameters.
         _form_parameters = APIHelper.form_encode_parameters(_form_parameters)
 
-        # Prepare the API call.
+        # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
-
-        # Apply authentication.
         BasicAuth.apply(_request)
-
-        # Execute the request.
         _context = self.execute_request(_request)        
-
-        # Global error handling using HTTP status codes.
         self.validate_response(_context)    
 
         # Return appropriate type
         return _context.response.raw_body
-
-
 
     def create_list_calls(self,
                           options=dict()):
@@ -501,18 +422,12 @@ class CallController(BaseController):
 
         """
 
-        # The base uri for api requests
-        _query_builder = Configuration.base_uri
- 
-        # Prepare query string for API call
+        # Prepare query URL
+        _query_builder = Configuration.get_base_uri()
         _query_builder += '/calls/listcalls.{ResponseType}'
-
-        # Process optional template parameters
         _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
             'ResponseType': options.get('response_type', None)
         })
-
-        # Validate and preprocess url
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare form parameters
@@ -523,26 +438,16 @@ class CallController(BaseController):
             'From': options.get('mfrom', None),
             'DateCreated': options.get('date_created', None)
         }
-        
-        # Form encode parameters.
         _form_parameters = APIHelper.form_encode_parameters(_form_parameters)
 
-        # Prepare the API call.
+        # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
-
-        # Apply authentication.
         BasicAuth.apply(_request)
-
-        # Execute the request.
         _context = self.execute_request(_request)        
-
-        # Global error handling using HTTP status codes.
         self.validate_response(_context)    
 
         # Return appropriate type
         return _context.response.raw_body
-
-
 
     def create_interrupted_call(self,
                                 options=dict()):
@@ -581,18 +486,12 @@ class CallController(BaseController):
         # Validate required parameters
         self.validate_parameters(call_sid = options.get("call_sid"))
 
-        # The base uri for api requests
-        _query_builder = Configuration.base_uri
- 
-        # Prepare query string for API call
+        # Prepare query URL
+        _query_builder = Configuration.get_base_uri()
         _query_builder += '/calls/interruptcalls.{ResponseType}'
-
-        # Process optional template parameters
         _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
             'ResponseType': options.get('response_type', None)
         })
-
-        # Validate and preprocess url
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare form parameters
@@ -602,26 +501,16 @@ class CallController(BaseController):
             'Method': options.get('method', None),
             'Status': options.get('status', None)
         }
-        
-        # Form encode parameters.
         _form_parameters = APIHelper.form_encode_parameters(_form_parameters)
 
-        # Prepare the API call.
+        # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
-
-        # Apply authentication.
         BasicAuth.apply(_request)
-
-        # Execute the request.
         _context = self.execute_request(_request)        
-
-        # Global error handling using HTTP status codes.
         self.validate_response(_context)    
 
         # Return appropriate type
         return _context.response.raw_body
-
-
 
     def create_send_digit(self,
                           options=dict()):
@@ -660,18 +549,12 @@ class CallController(BaseController):
         self.validate_parameters(call_sid = options.get("call_sid"),
                                  play_dtmf = options.get("play_dtmf"))
 
-        # The base uri for api requests
-        _query_builder = Configuration.base_uri
- 
-        # Prepare query string for API call
+        # Prepare query URL
+        _query_builder = Configuration.get_base_uri()
         _query_builder += '/calls/senddigits.{ResponseType}'
-
-        # Process optional template parameters
         _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
             'ResponseType': options.get('response_type', None)
         })
-
-        # Validate and preprocess url
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare form parameters
@@ -680,26 +563,16 @@ class CallController(BaseController):
             'PlayDtmf': options.get('play_dtmf', None),
             'PlayDtmfDirection': options.get('play_dtmf_direction', None)
         }
-        
-        # Form encode parameters.
         _form_parameters = APIHelper.form_encode_parameters(_form_parameters)
 
-        # Prepare the API call.
+        # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
-
-        # Apply authentication.
         BasicAuth.apply(_request)
-
-        # Execute the request.
         _context = self.execute_request(_request)        
-
-        # Global error handling using HTTP status codes.
         self.validate_response(_context)    
 
         # Return appropriate type
         return _context.response.raw_body
-
-
 
     def create_make_call(self,
                          options=dict()):
@@ -778,21 +651,13 @@ class CallController(BaseController):
                                  to = options.get("to"),
                                  url = options.get("url"))
 
-        # The base uri for api requests
-        _query_builder = Configuration.base_uri
- 
-        # Prepare query string for API call
+        # Prepare query URL
+        _query_builder = Configuration.get_base_uri()
         _query_builder += '/calls/makecall.{ResponseType}'
-
-        # Process optional template parameters
         _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
             'ResponseType': options.get('response_type', None)
         })
-
-        # Validate and preprocess url
         _query_url = APIHelper.clean_url(_query_builder)
-
-        # Process optional query parameters
         _query_parameters = {
             'Method': options.get('method', None)
         }
@@ -820,23 +685,13 @@ class CallController(BaseController):
             'TranscribeCallBackUrl': options.get('transcribe_call_back_url', None),
             'IfMachine': options.get('if_machine', None)
         }
-        
-        # Form encode parameters.
         _form_parameters = APIHelper.form_encode_parameters(_form_parameters)
 
-        # Prepare the API call.
+        # Prepare and execute request
         _request = self.http_client.post(_query_url, query_parameters=_query_parameters, parameters=_form_parameters)
-
-        # Apply authentication.
         BasicAuth.apply(_request)
-
-        # Execute the request.
         _context = self.execute_request(_request)        
-
-        # Global error handling using HTTP status codes.
         self.validate_response(_context)    
 
         # Return appropriate type
         return _context.response.raw_body
-
-
