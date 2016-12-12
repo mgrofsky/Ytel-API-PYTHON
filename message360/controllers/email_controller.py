@@ -3,7 +3,7 @@
 """
     message360.controllers.email_controller
 
-    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 12/08/2016
+    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 12/12/2016
 """
 
 from .base_controller import *

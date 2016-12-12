@@ -205,10 +205,10 @@ def create_list_conference(self,
 ```python
 collect = {}
 
-page = 183
+page = 186
 collect['page'] = page
 
-page_size = 183
+page_size = 186
 collect['page_size'] = page_size
 
 friendly_name = 'FriendlyName'
@@ -300,7 +300,7 @@ collect['conferencesid'] = conferencesid
 participantnumber = 'participantnumber'
 collect['participantnumber'] = participantnumber
 
-tocountrycode = 142
+tocountrycode = 186
 collect['tocountrycode'] = tocountrycode
 
 muted = True
@@ -348,10 +348,10 @@ collect = {}
 conference_sid = 'ConferenceSid'
 collect['conference_sid'] = conference_sid
 
-page = 142
+page = 186
 collect['page'] = page
 
-pagesize = 142
+pagesize = 186
 collect['pagesize'] = pagesize
 
 muted = True
@@ -1010,10 +1010,10 @@ def create_carrier_lookup_list(self,
 ```python
 collect = {}
 
-page = 142
+page = 22
 collect['page'] = page
 
-pagesize = 142
+pagesize = 22
 collect['pagesize'] = pagesize
 
 response_type = 'json'
@@ -1150,7 +1150,7 @@ collect['heart_beat_url'] = heart_beat_url
 heart_beat_method = HttpAction.GET
 collect['heart_beat_method'] = heart_beat_method
 
-timeout = 142
+timeout = 22
 collect['timeout'] = timeout
 
 play_dtmf = 'PlayDtmf'
@@ -1159,7 +1159,7 @@ collect['play_dtmf'] = play_dtmf
 hide_caller_id = 'HideCallerId'
 collect['hide_caller_id'] = hide_caller_id
 
-record = True
+record = False
 collect['record'] = record
 
 record_call_back_url = 'RecordCallBackUrl'
@@ -1168,7 +1168,7 @@ collect['record_call_back_url'] = record_call_back_url
 record_call_back_method = HttpAction.GET
 collect['record_call_back_method'] = record_call_back_method
 
-transcribe = True
+transcribe = False
 collect['transcribe'] = transcribe
 
 transcribe_call_back_url = 'TranscribeCallBackUrl'
@@ -1218,19 +1218,19 @@ collect['call_sid'] = call_sid
 audio_direction = AudioDirection.IN
 collect['audio_direction'] = audio_direction
 
-pitch_semi_tones = 142.163190470153
+pitch_semi_tones = 22.8361971480009
 collect['pitch_semi_tones'] = pitch_semi_tones
 
-pitch_octaves = 142.163190470153
+pitch_octaves = 22.8361971480009
 collect['pitch_octaves'] = pitch_octaves
 
-pitch = 142.163190470153
+pitch = 22.8361971480009
 collect['pitch'] = pitch
 
-rate = 142.163190470153
+rate = 22.8361971480009
 collect['rate'] = rate
 
-tempo = 142.163190470153
+tempo = 22.8361971480009
 collect['tempo'] = tempo
 
 response_type = 'json'
@@ -1273,13 +1273,13 @@ collect = {}
 call_sid = 'CallSid'
 collect['call_sid'] = call_sid
 
-record = True
+record = False
 collect['record'] = record
 
 direction = Direction.IN
 collect['direction'] = direction
 
-time_limit = 233
+time_limit = 22
 collect['time_limit'] = time_limit
 
 call_back_url = 'CallBackUrl'
@@ -1331,16 +1331,16 @@ collect['call_sid'] = call_sid
 audio_url = 'AudioUrl'
 collect['audio_url'] = audio_url
 
-length = 233
+length = 22
 collect['length'] = length
 
 direction = Direction.IN
 collect['direction'] = direction
 
-loop = True
+loop = False
 collect['loop'] = loop
 
-mix = True
+mix = False
 collect['mix'] = mix
 
 response_type = 'json'
@@ -1379,10 +1379,10 @@ def create_list_calls(self,
 ```python
 collect = {}
 
-page = 233
+page = 22
 collect['page'] = page
 
-page_size = 233
+page_size = 22
 collect['page_size'] = page_size
 
 to = 'To'
@@ -1569,19 +1569,19 @@ collect['fall_back_method'] = fall_back_method
 heart_beat_url = 'HeartBeatUrl'
 collect['heart_beat_url'] = heart_beat_url
 
-heart_beat_method = True
+heart_beat_method = False
 collect['heart_beat_method'] = heart_beat_method
 
-timeout = 233
+timeout = 22
 collect['timeout'] = timeout
 
 play_dtmf = 'PlayDtmf'
 collect['play_dtmf'] = play_dtmf
 
-hide_caller_id = True
+hide_caller_id = False
 collect['hide_caller_id'] = hide_caller_id
 
-record = True
+record = False
 collect['record'] = record
 
 record_call_back_url = 'RecordCallBackUrl'
@@ -1590,7 +1590,7 @@ collect['record_call_back_url'] = record_call_back_url
 record_call_back_method = HttpAction.GET
 collect['record_call_back_method'] = record_call_back_method
 
-transcribe = True
+transcribe = False
 collect['transcribe'] = transcribe
 
 transcribe_call_back_url = 'TranscribeCallBackUrl'
@@ -1681,7 +1681,7 @@ def create_list_inbound_sms(self,
 ```python
 collect = {}
 
-page = 233
+page = 114
 collect['page'] = page
 
 pagesize = 'pagesize'
@@ -1729,10 +1729,10 @@ def create_list_sms(self,
 ```python
 collect = {}
 
-page = 233
+page = 114
 collect['page'] = page
 
-pagesize = 233
+pagesize = 114
 collect['pagesize'] = pagesize
 
 mfrom = 'from'
@@ -1871,41 +1871,6 @@ An instance of the ``` WebRTCController ``` class can be accessed from the API C
  web_rtc_client = client.web_rtc
 ```
 
-#### <a name="create_token"></a>![Method: ](http://apidocs.io/img/method.png ".WebRTCController.create_token") create_token
-
-> message360 webrtc
-
-```python
-def create_token(self,
-                     options=dict())
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| accountSid |  ``` Required ```  | Your message360 Account SID |
-| authToken |  ``` Required ```  | Your message360 Token |
-
-
-
-#### Example Usage
-
-```python
-collect = {}
-
-account_sid = 'account_sid'
-collect['account_sid'] = account_sid
-
-auth_token = 'auth_token'
-collect['auth_token'] = auth_token
-
-
-web_rtc_client.create_token(collect)
-
-```
-
-
 #### <a name="create_check_funds"></a>![Method: ](http://apidocs.io/img/method.png ".WebRTCController.create_check_funds") create_check_funds
 
 > TODO: Add a method description
@@ -1936,7 +1901,7 @@ auth_token = 'auth_token'
 collect['auth_token'] = auth_token
 
 
-web_rtc_client.create_check_funds(collect)
+result = web_rtc_client.create_check_funds(collect)
 
 ```
 
@@ -1975,7 +1940,42 @@ auth_token = 'auth_token'
 collect['auth_token'] = auth_token
 
 
-web_rtc_client.create_authenticate_number(collect)
+result = web_rtc_client.create_authenticate_number(collect)
+
+```
+
+
+#### <a name="create_token"></a>![Method: ](http://apidocs.io/img/method.png ".WebRTCController.create_token") create_token
+
+> message360 webrtc
+
+```python
+def create_token(self,
+                     options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| accountSid |  ``` Required ```  | Your message360 Account SID |
+| authToken |  ``` Required ```  | Your message360 Token |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+account_sid = 'account_sid'
+collect['account_sid'] = account_sid
+
+auth_token = 'auth_token'
+collect['auth_token'] = auth_token
+
+
+result = web_rtc_client.create_token(collect)
 
 ```
 
@@ -2574,10 +2574,10 @@ def create_list_number(self,
 ```python
 collect = {}
 
-page = 191
+page = 72
 collect['page'] = page
 
-page_size = 191
+page_size = 72
 collect['page_size'] = page_size
 
 number_type = NumberType.ALL
@@ -2626,7 +2626,7 @@ collect['number_type'] = number_type
 area_code = 'AreaCode'
 collect['area_code'] = area_code
 
-page_size = 191
+page_size = 72
 collect['page_size'] = page_size
 
 response_type = 'json'
@@ -2676,10 +2676,10 @@ def create_list_recording(self,
 ```python
 collect = {}
 
-page = 191
+page = 72
 collect['page'] = page
 
-page_size = 191
+page_size = 72
 collect['page_size'] = page_size
 
 date_created = 'DateCreated'
@@ -2910,10 +2910,10 @@ def create_list_transcription(self,
 ```python
 collect = {}
 
-page = 191
+page = 72
 collect['page'] = page
 
-page_size = 191
+page_size = 72
 collect['page_size'] = page_size
 
 status = Status.INPROGRESS
