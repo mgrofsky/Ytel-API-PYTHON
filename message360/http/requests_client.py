@@ -3,7 +3,7 @@
 """
     message360.http.requests_client
 
-    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 12/08/2016
+    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 12/12/2016
 """
 
 import requests
