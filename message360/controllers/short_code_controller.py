@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-    message360.controllers.phone_number_controller
+    message360.controllers.short_code_controller
 
     This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ).
 """
@@ -11,16 +11,16 @@ from ..api_helper import APIHelper
 from ..configuration import Configuration
 from ..http.auth.basic_auth import BasicAuth
 
-class PhoneNumberController(BaseController):
+class ShortCodeController(BaseController):
 
     """A Controller to access Endpoints in the message360 API."""
 
 
-    def update_phone_number(self,
-                            options=dict()):
-        """Does a POST request to /incomingphone/updatenumber.{ResponseType}.
+    def create_view_template(self,
+                             options=dict()):
+        """Does a POST request to /template/view.{ResponseType}.
 
-        Update Phone Number Details
+        View a Shared ShortCode Template
 
         Args:
             options (dict, optional): Key-value pairs for any of the
@@ -29,35 +29,8 @@ class PhoneNumberController(BaseController):
                 being the key and their desired values being the value. A list
                 of parameters that can be used are::
 
-                    phone_number -- string -- TODO: type description here.
-                        Example: 
-                    friendly_name -- string -- TODO: type description here.
-                        Example: 
-                    voice_url -- string -- URL requested once the call
-                        connects
-                    voice_method -- HttpAction -- TODO: type description here.
-                        Example: 
-                    voice_fallback_url -- string -- URL requested if the voice
-                        URL is not available
-                    voice_fallback_method -- HttpAction -- TODO: type
-                        description here. Example: 
-                    hangup_callback -- string -- TODO: type description here.
-                        Example: 
-                    hangup_callback_method -- HttpAction -- TODO: type
-                        description here. Example: 
-                    heartbeat_url -- string -- URL requested once the call
-                        connects
-                    heartbeat_method -- HttpAction -- URL that can be
-                        requested every 60 seconds during the call to notify
-                        of elapsed time
-                    sms_url -- string -- URL requested when an SMS is
-                        received
-                    sms_method -- HttpAction -- TODO: type description here.
-                        Example: 
-                    sms_fallback_url -- string -- URL requested once the call
-                        connects
-                    sms_fallback_method -- HttpAction -- URL requested if the
-                        sms URL is not available
+                    templateid -- uuid|string -- The unique identifier for a
+                        template object
                     response_type -- string -- Response type format xml or
                         json
 
@@ -73,11 +46,12 @@ class PhoneNumberController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(phone_number=options.get("phone_number"))
+        self.validate_parameters(templateid=options.get("templateid"),
+                                 response_type=options.get("response_type"))
 
         # Prepare query URL
         _query_builder = Configuration.get_base_uri()
-        _query_builder += '/incomingphone/updatenumber.{ResponseType}'
+        _query_builder += '/template/view.{ResponseType}'
         _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
             'ResponseType': options.get('response_type', None)
         })
@@ -85,20 +59,7 @@ class PhoneNumberController(BaseController):
 
         # Prepare form parameters
         _form_parameters = {
-            'PhoneNumber': options.get('phone_number', None),
-            'FriendlyName': options.get('friendly_name', None),
-            'VoiceUrl': options.get('voice_url', None),
-            'VoiceMethod': options.get('voice_method', None),
-            'VoiceFallbackUrl': options.get('voice_fallback_url', None),
-            'VoiceFallbackMethod': options.get('voice_fallback_method', None),
-            'HangupCallback': options.get('hangup_callback', None),
-            'HangupCallbackMethod': options.get('hangup_callback_method', None),
-            'HeartbeatUrl': options.get('heartbeat_url', None),
-            'HeartbeatMethod': options.get('heartbeat_method', None),
-            'SmsUrl': options.get('sms_url', None),
-            'SmsMethod': options.get('sms_method', None),
-            'SmsFallbackUrl': options.get('sms_fallback_url', None),
-            'SmsFallbackMethod': options.get('sms_fallback_method', None)
+            'templateid': options.get('templateid', None)
         }
         _form_parameters = APIHelper.form_encode_parameters(_form_parameters)
 
@@ -111,11 +72,12 @@ class PhoneNumberController(BaseController):
         # Return appropriate type
         return _context.response.raw_body
 
-    def create_buy_number(self,
-                          options=dict()):
-        """Does a POST request to /incomingphone/buynumber.{ResponseType}.
+    def create_send_short_code(self,
+                               options=dict(),
+                               _optional_form_parameters=None):
+        """Does a POST request to /shortcode/sendsms.{ResponseType}.
 
-        Buy Phone Number 
+        Send an SMS from a message360 ShortCode
 
         Args:
             options (dict, optional): Key-value pairs for any of the
@@ -124,7 +86,20 @@ class PhoneNumberController(BaseController):
                 being the key and their desired values being the value. A list
                 of parameters that can be used are::
 
-                    phone_number -- string -- Phone number to be purchase
+                    shortcode -- string -- The Short Code number that is the
+                        sender of this message
+                    tocountrycode -- string -- The country code for sending
+                        this message
+                    to -- string -- A valid 10-digit number that should
+                        receive the message+
+                    templateid -- uuid|string -- The unique identifier for the
+                        template used for the message
+                    method -- string -- Specifies the HTTP method used to
+                        request the required URL once the Short Code message
+                        is sent.
+                    message_status_callback -- string -- URL that can be
+                        requested to receive notification when Short Code
+                        message was sent.
                     response_type -- string -- Response type format xml or
                         json
 
@@ -140,11 +115,14 @@ class PhoneNumberController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(phone_number=options.get("phone_number"))
+        self.validate_parameters(shortcode=options.get("shortcode"),
+                                 tocountrycode=options.get("tocountrycode"),
+                                 to=options.get("to"),
+                                 templateid=options.get("templateid"))
 
         # Prepare query URL
         _query_builder = Configuration.get_base_uri()
-        _query_builder += '/incomingphone/buynumber.{ResponseType}'
+        _query_builder += '/shortcode/sendsms.{ResponseType}'
         _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
             'ResponseType': options.get('response_type', None)
         })
@@ -152,9 +130,16 @@ class PhoneNumberController(BaseController):
 
         # Prepare form parameters
         _form_parameters = {
-            'PhoneNumber': options.get('phone_number', None)
+            'shortcode': options.get('shortcode', None),
+            'tocountrycode': options.get('tocountrycode', None),
+            'to': options.get('to', None),
+            'templateid': options.get('templateid', None),
+            'Method': options.get('method', None),
+            'MessageStatusCallback': options.get('message_status_callback', None)
         }
         _form_parameters = APIHelper.form_encode_parameters(_form_parameters)
+        if _form_parameters != None and _optional_form_parameters != None:
+            _form_parameters.update(APIHelper.form_encode_parameters(_optional_form_parameters))
 
         # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
@@ -165,119 +150,11 @@ class PhoneNumberController(BaseController):
         # Return appropriate type
         return _context.response.raw_body
 
-    def create_release_number(self,
-                              options=dict()):
-        """Does a POST request to /incomingphone/releasenumber.{ResponseType}.
+    def create_list_inbound_short_code(self,
+                                       options=dict()):
+        """Does a POST request to /shortcode/getinboundsms.{ResponseType}.
 
-        Release number from account
-
-        Args:
-            options (dict, optional): Key-value pairs for any of the
-                parameters to this API Endpoint. All parameters to the
-                endpoint are supplied through the dictionary with their names
-                being the key and their desired values being the value. A list
-                of parameters that can be used are::
-
-                    phone_number -- string -- Phone number to be relase
-                    response_type -- string -- Response type format xml or
-                        json
-
-        Returns:
-            string: Response from the API. 
-
-        Raises:
-            APIException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        # Validate required parameters
-        self.validate_parameters(phone_number=options.get("phone_number"))
-
-        # Prepare query URL
-        _query_builder = Configuration.get_base_uri()
-        _query_builder += '/incomingphone/releasenumber.{ResponseType}'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
-            'ResponseType': options.get('response_type', None)
-        })
-        _query_url = APIHelper.clean_url(_query_builder)
-
-        # Prepare form parameters
-        _form_parameters = {
-            'PhoneNumber': options.get('phone_number', None)
-        }
-        _form_parameters = APIHelper.form_encode_parameters(_form_parameters)
-
-        # Prepare and execute request
-        _request = self.http_client.post(_query_url, parameters=_form_parameters)
-        BasicAuth.apply(_request)
-        _context = self.execute_request(_request)        
-        self.validate_response(_context)
-
-        # Return appropriate type
-        return _context.response.raw_body
-
-    def create_view_number_details(self,
-                                   options=dict()):
-        """Does a POST request to /incomingphone/viewnumber.{ResponseType}.
-
-        Get Phone Number Details
-
-        Args:
-            options (dict, optional): Key-value pairs for any of the
-                parameters to this API Endpoint. All parameters to the
-                endpoint are supplied through the dictionary with their names
-                being the key and their desired values being the value. A list
-                of parameters that can be used are::
-
-                    phone_number -- string -- Get Phone number Detail
-                    response_type -- string -- Response type format xml or
-                        json
-
-        Returns:
-            string: Response from the API. 
-
-        Raises:
-            APIException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        # Validate required parameters
-        self.validate_parameters(phone_number=options.get("phone_number"))
-
-        # Prepare query URL
-        _query_builder = Configuration.get_base_uri()
-        _query_builder += '/incomingphone/viewnumber.{ResponseType}'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
-            'ResponseType': options.get('response_type', None)
-        })
-        _query_url = APIHelper.clean_url(_query_builder)
-
-        # Prepare form parameters
-        _form_parameters = {
-            'PhoneNumber': options.get('phone_number', None)
-        }
-        _form_parameters = APIHelper.form_encode_parameters(_form_parameters)
-
-        # Prepare and execute request
-        _request = self.http_client.post(_query_url, parameters=_form_parameters)
-        BasicAuth.apply(_request)
-        _context = self.execute_request(_request)        
-        self.validate_response(_context)
-
-        # Return appropriate type
-        return _context.response.raw_body
-
-    def create_list_number(self,
-                           options=dict()):
-        """Does a POST request to /incomingphone/listnumber.{ResponseType}.
-
-        List Account's Phone number details
+        List All Inbound ShortCode
 
         Args:
             options (dict, optional): Key-value pairs for any of the
@@ -288,12 +165,13 @@ class PhoneNumberController(BaseController):
 
                     page -- int -- Which page of the overall response will be
                         returned. Zero indexed
-                    page_size -- int -- Number of individual resources listed
+                    pagesize -- int -- Number of individual resources listed
                         in the response per page
-                    number_type -- NumberType -- TODO: type description here.
-                        Example: 
-                    friendly_name -- string -- TODO: type description here.
-                        Example: 
+                    mfrom -- string -- From Number to Inbound ShortCode
+                    shortcode -- string -- Only list messages sent to this
+                        Short Code
+                    date_received -- string -- Only list messages sent with
+                        the specified date
                     response_type -- string -- Response type format xml or
                         json
 
@@ -310,7 +188,71 @@ class PhoneNumberController(BaseController):
 
         # Prepare query URL
         _query_builder = Configuration.get_base_uri()
-        _query_builder += '/incomingphone/listnumber.{ResponseType}'
+        _query_builder += '/shortcode/getinboundsms.{ResponseType}'
+        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+            'ResponseType': options.get('response_type', None)
+        })
+        _query_url = APIHelper.clean_url(_query_builder)
+        _query_parameters = {
+            'DateReceived': options.get('date_received', None)
+        }
+
+        # Prepare form parameters
+        _form_parameters = {
+            'page': options.get('page', None),
+            'pagesize': options.get('pagesize', None),
+            'from': options.get('mfrom', None),
+            'Shortcode': options.get('shortcode', None)
+        }
+        _form_parameters = APIHelper.form_encode_parameters(_form_parameters)
+
+        # Prepare and execute request
+        _request = self.http_client.post(_query_url, query_parameters=_query_parameters, parameters=_form_parameters)
+        BasicAuth.apply(_request)
+        _context = self.execute_request(_request)        
+        self.validate_response(_context)
+
+        # Return appropriate type
+        return _context.response.raw_body
+
+    def create_list_short_code(self,
+                               options=dict()):
+        """Does a POST request to /shortcode/listsms.{ResponseType}.
+
+        List ShortCode Messages
+
+        Args:
+            options (dict, optional): Key-value pairs for any of the
+                parameters to this API Endpoint. All parameters to the
+                endpoint are supplied through the dictionary with their names
+                being the key and their desired values being the value. A list
+                of parameters that can be used are::
+
+                    page -- int -- Which page of the overall response will be
+                        returned. Zero indexed
+                    pagesize -- int -- Number of individual resources listed
+                        in the response per page
+                    mfrom -- string -- Messages sent from this number
+                    to -- string -- Messages sent to this number
+                    datesent -- string -- Only list SMS messages sent in the
+                        specified date range
+                    response_type -- string -- Response type format xml or
+                        json
+
+        Returns:
+            string: Response from the API. 
+
+        Raises:
+            APIException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        # Prepare query URL
+        _query_builder = Configuration.get_base_uri()
+        _query_builder += '/shortcode/listsms.{ResponseType}'
         _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
             'ResponseType': options.get('response_type', None)
         })
@@ -318,10 +260,11 @@ class PhoneNumberController(BaseController):
 
         # Prepare form parameters
         _form_parameters = {
-            'Page': options.get('page', None),
-            'PageSize': options.get('page_size', None),
-            'NumberType': options.get('number_type', None),
-            'FriendlyName': options.get('friendly_name', None)
+            'page': options.get('page', None),
+            'pagesize': options.get('pagesize', None),
+            'from': options.get('mfrom', None),
+            'to': options.get('to', None),
+            'datesent': options.get('datesent', None)
         }
         _form_parameters = APIHelper.form_encode_parameters(_form_parameters)
 
@@ -334,11 +277,11 @@ class PhoneNumberController(BaseController):
         # Return appropriate type
         return _context.response.raw_body
 
-    def create_available_phone_number(self,
-                                      options=dict()):
-        """Does a POST request to /incomingphone/availablenumber.{ResponseType}.
+    def create_list_templates(self,
+                              options=dict()):
+        """Does a POST request to /template/lists.{ResponseType}.
 
-        Available Phone Number
+        List Shortcode Templates by Type
 
         Args:
             options (dict, optional): Key-value pairs for any of the
@@ -347,10 +290,65 @@ class PhoneNumberController(BaseController):
                 being the key and their desired values being the value. A list
                 of parameters that can be used are::
 
-                    number_type -- NumberType -- Number type either SMS,Voice
-                        or all
-                    area_code -- string -- Phone Number Area Code
-                    page_size -- int -- Page Size
+                    mtype -- string -- The type (category) of template Valid
+                        values: marketing, authorization
+                    page -- int -- The page count to retrieve from the total
+                        results in the collection. Page indexing starts at 1.
+                    pagesize -- int -- The count of objects to return per
+                        page.
+                    response_type -- string -- Response type format xml or
+                        json
+
+        Returns:
+            string: Response from the API. 
+
+        Raises:
+            APIException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        # Prepare query URL
+        _query_builder = Configuration.get_base_uri()
+        _query_builder += '/template/lists.{ResponseType}'
+        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+            'ResponseType': options.get('response_type', None)
+        })
+        _query_url = APIHelper.clean_url(_query_builder)
+
+        # Prepare form parameters
+        _form_parameters = {
+            'type': options.get('mtype', None),
+            'page': options.get('page', None),
+            'pagesize': options.get('pagesize', None)
+        }
+        _form_parameters = APIHelper.form_encode_parameters(_form_parameters)
+
+        # Prepare and execute request
+        _request = self.http_client.post(_query_url, parameters=_form_parameters)
+        BasicAuth.apply(_request)
+        _context = self.execute_request(_request)        
+        self.validate_response(_context)
+
+        # Return appropriate type
+        return _context.response.raw_body
+
+    def create_view_short_code(self,
+                               options=dict()):
+        """Does a POST request to /shortcode/viewsms.{ResponseType}.
+
+        View a ShortCode Message
+
+        Args:
+            options (dict, optional): Key-value pairs for any of the
+                parameters to this API Endpoint. All parameters to the
+                endpoint are supplied through the dictionary with their names
+                being the key and their desired values being the value. A list
+                of parameters that can be used are::
+
+                    messagesid -- string -- Message sid
                     response_type -- string -- Response type format xml or
                         json
 
@@ -366,12 +364,11 @@ class PhoneNumberController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(number_type=options.get("number_type"),
-                                 area_code=options.get("area_code"))
+        self.validate_parameters(messagesid=options.get("messagesid"))
 
         # Prepare query URL
         _query_builder = Configuration.get_base_uri()
-        _query_builder += '/incomingphone/availablenumber.{ResponseType}'
+        _query_builder += '/shortcode/viewsms.{ResponseType}'
         _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
             'ResponseType': options.get('response_type', None)
         })
@@ -379,9 +376,7 @@ class PhoneNumberController(BaseController):
 
         # Prepare form parameters
         _form_parameters = {
-            'NumberType': options.get('number_type', None),
-            'AreaCode': options.get('area_code', None),
-            'PageSize': options.get('page_size', None)
+            'messagesid': options.get('messagesid', None)
         }
         _form_parameters = APIHelper.form_encode_parameters(_form_parameters)
 

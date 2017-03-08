@@ -3,15 +3,18 @@
 """
     message360.controllers.usage_controller
 
-    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 12/12/2016
+    This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ).
 """
 
-from .base_controller import *
+from .base_controller import BaseController
+from ..api_helper import APIHelper
+from ..configuration import Configuration
+from ..http.auth.basic_auth import BasicAuth
 
 class UsageController(BaseController):
 
     """A Controller to access Endpoints in the message360 API."""
-    
+
 
     def create_list_usage(self,
                           options=dict()):
@@ -44,9 +47,9 @@ class UsageController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(product_code = options.get("product_code"),
-                                 start_date = options.get("start_date"),
-                                 end_date = options.get("end_date"))
+        self.validate_parameters(product_code=options.get("product_code"),
+                                 start_date=options.get("start_date"),
+                                 end_date=options.get("end_date"))
 
         # Prepare query URL
         _query_builder = Configuration.get_base_uri()
@@ -68,7 +71,7 @@ class UsageController(BaseController):
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
         _context = self.execute_request(_request)        
-        self.validate_response(_context)    
+        self.validate_response(_context)
 
         # Return appropriate type
         return _context.response.raw_body

@@ -3,15 +3,18 @@
 """
     message360.controllers.address_controller
 
-    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 12/12/2016
+    This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ).
 """
 
-from .base_controller import *
+from .base_controller import BaseController
+from ..api_helper import APIHelper
+from ..configuration import Configuration
+from ..http.auth.basic_auth import BasicAuth
 
 class AddressController(BaseController):
 
     """A Controller to access Endpoints in the message360 API."""
-    
+
 
     def create_address(self,
                        options=dict()):
@@ -40,7 +43,7 @@ class AddressController(BaseController):
                     description -- string -- Description of addresses.
                     email -- string -- Email Id of user.
                     phone -- string -- Phone number of user.
-                    response_type -- string -- Response Type Either json or
+                    response_type -- string -- Response type either json or
                         xml
 
         Returns:
@@ -55,12 +58,12 @@ class AddressController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(name = options.get("name"),
-                                 address = options.get("address"),
-                                 country = options.get("country"),
-                                 state = options.get("state"),
-                                 city = options.get("city"),
-                                 zip = options.get("zip"))
+        self.validate_parameters(name=options.get("name"),
+                                 address=options.get("address"),
+                                 country=options.get("country"),
+                                 state=options.get("state"),
+                                 city=options.get("city"),
+                                 zip=options.get("zip"))
 
         # Prepare query URL
         _query_builder = Configuration.get_base_uri()
@@ -72,15 +75,15 @@ class AddressController(BaseController):
 
         # Prepare form parameters
         _form_parameters = {
-            'name': options.get('name', None),
-            'address': options.get('address', None),
-            'country': options.get('country', None),
-            'state': options.get('state', None),
-            'city': options.get('city', None),
-            'zip': options.get('zip', None),
-            'description': options.get('description', None),
+            'Name': options.get('name', None),
+            'Address': options.get('address', None),
+            'Country': options.get('country', None),
+            'State': options.get('state', None),
+            'City': options.get('city', None),
+            'Zip': options.get('zip', None),
+            'Description': options.get('description', None),
             'email': options.get('email', None),
-            'phone': options.get('phone', None)
+            'Phone': options.get('phone', None)
         }
         _form_parameters = APIHelper.form_encode_parameters(_form_parameters)
 
@@ -88,7 +91,7 @@ class AddressController(BaseController):
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
         _context = self.execute_request(_request)        
-        self.validate_response(_context)    
+        self.validate_response(_context)
 
         # Return appropriate type
         return _context.response.raw_body
@@ -106,8 +109,8 @@ class AddressController(BaseController):
                 being the key and their desired values being the value. A list
                 of parameters that can be used are::
 
-                    addressid -- string -- The identifier of the address to be
-                        deleted.
+                    address_sid -- string -- The identifier of the address to
+                        be deleted.
                     response_type -- string -- Response type either json or
                         xml
 
@@ -123,7 +126,7 @@ class AddressController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(addressid = options.get("addressid"))
+        self.validate_parameters(address_sid=options.get("address_sid"))
 
         # Prepare query URL
         _query_builder = Configuration.get_base_uri()
@@ -135,7 +138,7 @@ class AddressController(BaseController):
 
         # Prepare form parameters
         _form_parameters = {
-            'addressid': options.get('addressid', None)
+            'AddressSID': options.get('address_sid', None)
         }
         _form_parameters = APIHelper.form_encode_parameters(_form_parameters)
 
@@ -143,7 +146,7 @@ class AddressController(BaseController):
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
         _context = self.execute_request(_request)        
-        self.validate_response(_context)    
+        self.validate_response(_context)
 
         # Return appropriate type
         return _context.response.raw_body
@@ -161,9 +164,9 @@ class AddressController(BaseController):
                 being the key and their desired values being the value. A list
                 of parameters that can be used are::
 
-                    addressid -- string -- The identifier of the address to be
-                        verified.
-                    response_type -- string -- Response type either JSON or
+                    address_sid -- string -- The identifier of the address to
+                        be verified.
+                    response_type -- string -- Response type either json or
                         xml
 
         Returns:
@@ -178,7 +181,7 @@ class AddressController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(addressid = options.get("addressid"))
+        self.validate_parameters(address_sid=options.get("address_sid"))
 
         # Prepare query URL
         _query_builder = Configuration.get_base_uri()
@@ -190,7 +193,7 @@ class AddressController(BaseController):
 
         # Prepare form parameters
         _form_parameters = {
-            'addressid': options.get('addressid', None)
+            'AddressSID': options.get('address_sid', None)
         }
         _form_parameters = APIHelper.form_encode_parameters(_form_parameters)
 
@@ -198,7 +201,7 @@ class AddressController(BaseController):
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
         _context = self.execute_request(_request)        
-        self.validate_response(_context)    
+        self.validate_response(_context)
 
         # Return appropriate type
         return _context.response.raw_body
@@ -218,9 +221,9 @@ class AddressController(BaseController):
 
                     page -- int -- Return requested # of items starting the
                         value, default=0, must be an integer
-                    page_size -- int -- How many results to return,
-                        default=10, max 100, must be an integer
-                    address_id -- string -- addresses Sid
+                    page_size -- int -- How many results to return, default is
+                        10, max is 100, must be an integer
+                    address_sid -- string -- addresses Sid
                     date_created -- string -- date created address.
                     response_type -- string -- Response Type either json or
                         xml
@@ -246,10 +249,10 @@ class AddressController(BaseController):
 
         # Prepare form parameters
         _form_parameters = {
-            'page': options.get('page', None),
-            'pageSize': options.get('page_size', None),
-            'addressId': options.get('address_id', None),
-            'dateCreated': options.get('date_created', None)
+            'Page': options.get('page', None),
+            'PageSize': options.get('page_size', None),
+            'AddressSID': options.get('address_sid', None),
+            'DateCreated': options.get('date_created', None)
         }
         _form_parameters = APIHelper.form_encode_parameters(_form_parameters)
 
@@ -257,7 +260,7 @@ class AddressController(BaseController):
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
         _context = self.execute_request(_request)        
-        self.validate_response(_context)    
+        self.validate_response(_context)
 
         # Return appropriate type
         return _context.response.raw_body
@@ -275,7 +278,7 @@ class AddressController(BaseController):
                 being the key and their desired values being the value. A list
                 of parameters that can be used are::
 
-                    address_id -- string -- The identifier of the address to
+                    address_sid -- string -- The identifier of the address to
                         be retrieved.
                     response_type -- string -- Response Type either json or
                         xml
@@ -292,7 +295,7 @@ class AddressController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(address_id = options.get("address_id"))
+        self.validate_parameters(address_sid=options.get("address_sid"))
 
         # Prepare query URL
         _query_builder = Configuration.get_base_uri()
@@ -304,7 +307,7 @@ class AddressController(BaseController):
 
         # Prepare form parameters
         _form_parameters = {
-            'addressId': options.get('address_id', None)
+            'AddressSID': options.get('address_sid', None)
         }
         _form_parameters = APIHelper.form_encode_parameters(_form_parameters)
 
@@ -312,7 +315,7 @@ class AddressController(BaseController):
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
         _context = self.execute_request(_request)        
-        self.validate_response(_context)    
+        self.validate_response(_context)
 
         # Return appropriate type
         return _context.response.raw_body

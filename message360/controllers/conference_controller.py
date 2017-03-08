@@ -3,15 +3,18 @@
 """
     message360.controllers.conference_controller
 
-    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 12/12/2016
+    This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ).
 """
 
-from .base_controller import *
+from .base_controller import BaseController
+from ..api_helper import APIHelper
+from ..configuration import Configuration
+from ..http.auth.basic_auth import BasicAuth
 
 class ConferenceController(BaseController):
 
     """A Controller to access Endpoints in the message360 API."""
-    
+
 
     def create_deaf_mute_participant(self,
                                      options=dict()):
@@ -47,8 +50,8 @@ class ConferenceController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(conference_sid = options.get("conference_sid"),
-                                 participant_sid = options.get("participant_sid"))
+        self.validate_parameters(conference_sid=options.get("conference_sid"),
+                                 participant_sid=options.get("participant_sid"))
 
         # Prepare query URL
         _query_builder = Configuration.get_base_uri()
@@ -71,7 +74,7 @@ class ConferenceController(BaseController):
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
         _context = self.execute_request(_request)        
-        self.validate_response(_context)    
+        self.validate_response(_context)
 
         # Return appropriate type
         return _context.response.raw_body
@@ -138,7 +141,7 @@ class ConferenceController(BaseController):
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
         _context = self.execute_request(_request)        
-        self.validate_response(_context)    
+        self.validate_response(_context)
 
         # Return appropriate type
         return _context.response.raw_body
@@ -173,7 +176,7 @@ class ConferenceController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(conferencesid = options.get("conferencesid"))
+        self.validate_parameters(conferencesid=options.get("conferencesid"))
 
         # Prepare query URL
         _query_builder = Configuration.get_base_uri()
@@ -193,7 +196,7 @@ class ConferenceController(BaseController):
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
         _context = self.execute_request(_request)        
-        self.validate_response(_context)    
+        self.validate_response(_context)
 
         # Return appropriate type
         return _context.response.raw_body
@@ -232,9 +235,9 @@ class ConferenceController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(conferencesid = options.get("conferencesid"),
-                                 participantnumber = options.get("participantnumber"),
-                                 tocountrycode = options.get("tocountrycode"))
+        self.validate_parameters(conferencesid=options.get("conferencesid"),
+                                 participantnumber=options.get("participantnumber"),
+                                 tocountrycode=options.get("tocountrycode"))
 
         # Prepare query URL
         _query_builder = Configuration.get_base_uri()
@@ -258,7 +261,7 @@ class ConferenceController(BaseController):
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
         _context = self.execute_request(_request)        
-        self.validate_response(_context)    
+        self.validate_response(_context)
 
         # Return appropriate type
         return _context.response.raw_body
@@ -295,7 +298,7 @@ class ConferenceController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(conference_sid = options.get("conference_sid"))
+        self.validate_parameters(conference_sid=options.get("conference_sid"))
 
         # Prepare query URL
         _query_builder = Configuration.get_base_uri()
@@ -319,7 +322,7 @@ class ConferenceController(BaseController):
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
         _context = self.execute_request(_request)        
-        self.validate_response(_context)    
+        self.validate_response(_context)
 
         # Return appropriate type
         return _context.response.raw_body
@@ -355,8 +358,8 @@ class ConferenceController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(conference_sid = options.get("conference_sid"),
-                                 participant_sid = options.get("participant_sid"))
+        self.validate_parameters(conference_sid=options.get("conference_sid"),
+                                 participant_sid=options.get("participant_sid"))
 
         # Prepare query URL
         _query_builder = Configuration.get_base_uri()
@@ -377,7 +380,7 @@ class ConferenceController(BaseController):
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
         _context = self.execute_request(_request)        
-        self.validate_response(_context)    
+        self.validate_response(_context)
 
         # Return appropriate type
         return _context.response.raw_body

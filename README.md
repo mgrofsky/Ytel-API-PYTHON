@@ -1,4 +1,4 @@
-#Getting started
+# Getting started
 
 ## How to Build
 
@@ -13,7 +13,7 @@ This should display the version of the PIP Dependency Manager installed if your 
 * Using command line, navigate to the directory containing the generated files (including ```requirements.txt```) for the SDK.
 * Run the command ```pip install -r requirements.txt```. This should install all the required dependencies.
 
-![Building SDK - Step 1](http://apidocs.io/illustration/python?step=installDependencies&workspaceFolder=Message360-Python)
+![Building SDK - Step 1](https://apidocs.io/illustration/python?step=installDependencies&workspaceFolder=Message360-Python)
 
 
 ## How to Use
@@ -24,33 +24,33 @@ The following section explains how to use the Message360 SDK package in a new pr
 
 Open up a Python IDE like PyCharm. The basic workflow presented here is also applicable if you prefer using a different editor or IDE.
 
-![Open project in PyCharm - Step 1](http://apidocs.io/illustration/python?step=pyCharm)
+![Open project in PyCharm - Step 1](https://apidocs.io/illustration/python?step=pyCharm)
 
 Click on ```Open``` in PyCharm to browse to your generated SDK directory and then click ```OK```.
 
-![Open project in PyCharm - Step 2](http://apidocs.io/illustration/python?step=openProject0&workspaceFolder=Message360-Python)     
+![Open project in PyCharm - Step 2](https://apidocs.io/illustration/python?step=openProject0&workspaceFolder=Message360-Python)     
 
 The project files will be displayed in the side bar as follows:
 
-![Open project in PyCharm - Step 3](http://apidocs.io/illustration/python?step=openProject1&workspaceFolder=Message360-Python&projectName=message360)     
+![Open project in PyCharm - Step 3](https://apidocs.io/illustration/python?step=openProject1&workspaceFolder=Message360-Python&projectName=message360)     
 
 ### 2. Add a new Test Project
 
 Create a new directory by right clicking on the solution name as shown below:
 
-![Add a new project in PyCharm - Step 1](http://apidocs.io/illustration/python?step=createDirectory&workspaceFolder=Message360-Python&projectName=message360)
+![Add a new project in PyCharm - Step 1](https://apidocs.io/illustration/python?step=createDirectory&workspaceFolder=Message360-Python&projectName=message360)
 
 Name the directory as "test"
 
-![Add a new project in PyCharm - Step 2](http://apidocs.io/illustration/python?step=nameDirectory)
+![Add a new project in PyCharm - Step 2](https://apidocs.io/illustration/python?step=nameDirectory)
    
 Add a python file to this project with the name "testsdk"
 
-![Add a new project in PyCharm - Step 3](http://apidocs.io/illustration/python?step=createFile&workspaceFolder=Message360-Python&projectName=message360)
+![Add a new project in PyCharm - Step 3](https://apidocs.io/illustration/python?step=createFile&workspaceFolder=Message360-Python&projectName=message360)
 
 Name it "testsdk"
 
-![Add a new project in PyCharm - Step 4](http://apidocs.io/illustration/python?step=nameFile)
+![Add a new project in PyCharm - Step 4](https://apidocs.io/illustration/python?step=nameFile)
 
 In your python file you will be required to import the generated python library using the following code lines
 
@@ -58,7 +58,7 @@ In your python file you will be required to import the generated python library 
 from message360.message_360_client import *
 ```
 
-![Add a new project in PyCharm - Step 4](http://apidocs.io/illustration/python?step=projectFiles&workspaceFolder=Message360-Python&libraryName=message360.message_360_client&projectName=message360)
+![Add a new project in PyCharm - Step 4](https://apidocs.io/illustration/python?step=projectFiles&workspaceFolder=Message360-Python&libraryName=message360.message_360_client&projectName=message360)
 
 After this you can write code to instantiate an API client object, get a controller object and  make API calls. Sample code is given in the subsequent sections.
 
@@ -66,7 +66,7 @@ After this you can write code to instantiate an API client object, get a control
 
 To run the file within your test project, right click on your Python file inside your Test project and click on ```Run```
 
-![Run Test Project - Step 1](http://apidocs.io/illustration/python?step=runProject&workspaceFolder=Message360-Python&libraryName=message360.message_360_client&projectName=message360)
+![Run Test Project - Step 1](https://apidocs.io/illustration/python?step=runProject&workspaceFolder=Message360-Python&libraryName=message360.message_360_client&projectName=message360)
 
 
 ## How to Test
@@ -81,7 +81,7 @@ runner. You can run the tests as follows:
 
 ## Initialization
 
-### Authentication and 
+### Authentication
 In order to setup authentication and initialization of the API client, you need the following information.
 
 | Parameter | Description |
@@ -105,22 +105,310 @@ client = Message360Client(basic_auth_user_name, basic_auth_password)
 
 ### <a name="list_of_controllers"></a>List of Controllers
 
+* [ShortCodeController](#short_code_controller)
 * [ConferenceController](#conference_controller)
 * [EmailController](#email_controller)
 * [NumberVerificationController](#number_verification_controller)
 * [CarrierController](#carrier_controller)
 * [CallController](#call_controller)
-* [SMSController](#sms_controller)
-* [AccountController](#account_controller)
 * [WebRTCController](#web_rtc_controller)
 * [SubAccountController](#sub_account_controller)
 * [AddressController](#address_controller)
 * [PhoneNumberController](#phone_number_controller)
 * [RecordingController](#recording_controller)
+* [SMSController](#sms_controller)
 * [TranscriptionController](#transcription_controller)
 * [UsageController](#usage_controller)
+* [AccountController](#account_controller)
 
-### <a name="conference_controller"></a>![Class: ](http://apidocs.io/img/class.png ".ConferenceController") ConferenceController
+### <a name="short_code_controller"></a>![Class: ](https://apidocs.io/img/class.png ".ShortCodeController") ShortCodeController
+
+#### Get controller instance
+
+An instance of the ``` ShortCodeController ``` class can be accessed from the API Client.
+
+```python
+ short_code_client = client.short_code
+```
+
+#### <a name="create_view_template"></a>![Method: ](https://apidocs.io/img/method.png ".ShortCodeController.create_view_template") create_view_template
+
+> View a Shared ShortCode Template
+
+```python
+def create_view_template(self,
+                             options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| templateid |  ``` Required ```  | The unique identifier for a template object |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+templateid = uuid.uuid4()
+collect['templateid'] = templateid
+
+response_type = 'json'
+collect['response_type'] = response_type
+
+
+result = short_code_client.create_view_template(collect)
+
+```
+
+
+#### <a name="create_send_short_code"></a>![Method: ](https://apidocs.io/img/method.png ".ShortCodeController.create_send_short_code") create_send_short_code
+
+> Send an SMS from a message360 ShortCode
+
+```python
+def create_send_short_code(self,
+                               options=dict(),
+                               _optional_form_parameters=None)
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| shortcode |  ``` Required ```  | The Short Code number that is the sender of this message |
+| tocountrycode |  ``` Required ```  ``` DefaultValue ```  | The country code for sending this message |
+| to |  ``` Required ```  | A valid 10-digit number that should receive the message+ |
+| templateid |  ``` Required ```  | The unique identifier for the template used for the message |
+| method |  ``` Optional ```  ``` DefaultValue ```  | Specifies the HTTP method used to request the required URL once the Short Code message is sent. |
+| messageStatusCallback |  ``` Optional ```  | URL that can be requested to receive notification when Short Code message was sent. |
+| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response type format xml or json |
+| _optional_form_parameters | ``` Optional ``` | Additional optional form parameters are supported by this method |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+shortcode = 'shortcode'
+collect['shortcode'] = shortcode
+
+tocountrycode = '1'
+collect['tocountrycode'] = tocountrycode
+
+to = 'to'
+collect['to'] = to
+
+templateid = uuid.uuid4()
+collect['templateid'] = templateid
+
+method = 'GET'
+collect['method'] = method
+
+message_status_callback = 'MessageStatusCallback'
+collect['message_status_callback'] = message_status_callback
+
+response_type = 'json'
+collect['response_type'] = response_type
+
+# key-value map for optional form parameters
+optional_form_parameters = { }
+
+
+result = short_code_client.create_send_short_code(collect, optional_form_parameters, )
+
+```
+
+
+#### <a name="create_list_inbound_short_code"></a>![Method: ](https://apidocs.io/img/method.png ".ShortCodeController.create_list_inbound_short_code") create_list_inbound_short_code
+
+> List All Inbound ShortCode
+
+```python
+def create_list_inbound_short_code(self,
+                                       options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| page |  ``` Optional ```  | Which page of the overall response will be returned. Zero indexed |
+| pagesize |  ``` Optional ```  ``` DefaultValue ```  | Number of individual resources listed in the response per page |
+| mfrom |  ``` Optional ```  | From Number to Inbound ShortCode |
+| shortcode |  ``` Optional ```  | Only list messages sent to this Short Code |
+| dateReceived |  ``` Optional ```  | Only list messages sent with the specified date |
+| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response type format xml or json |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+page = 57
+collect['page'] = page
+
+pagesize = 10
+collect['pagesize'] = pagesize
+
+mfrom = 'from'
+collect['mfrom'] = mfrom
+
+shortcode = 'Shortcode'
+collect['shortcode'] = shortcode
+
+date_received = 'DateReceived'
+collect['date_received'] = date_received
+
+response_type = 'json'
+collect['response_type'] = response_type
+
+
+result = short_code_client.create_list_inbound_short_code(collect)
+
+```
+
+
+#### <a name="create_list_short_code"></a>![Method: ](https://apidocs.io/img/method.png ".ShortCodeController.create_list_short_code") create_list_short_code
+
+> List ShortCode Messages
+
+```python
+def create_list_short_code(self,
+                               options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| page |  ``` Optional ```  | Which page of the overall response will be returned. Zero indexed |
+| pagesize |  ``` Optional ```  ``` DefaultValue ```  | Number of individual resources listed in the response per page |
+| mfrom |  ``` Optional ```  | Messages sent from this number |
+| to |  ``` Optional ```  | Messages sent to this number |
+| datesent |  ``` Optional ```  | Only list SMS messages sent in the specified date range |
+| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response type format xml or json |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+page = 57
+collect['page'] = page
+
+pagesize = 10
+collect['pagesize'] = pagesize
+
+mfrom = 'from'
+collect['mfrom'] = mfrom
+
+to = 'to'
+collect['to'] = to
+
+datesent = 'datesent'
+collect['datesent'] = datesent
+
+response_type = 'json'
+collect['response_type'] = response_type
+
+
+result = short_code_client.create_list_short_code(collect)
+
+```
+
+
+#### <a name="create_list_templates"></a>![Method: ](https://apidocs.io/img/method.png ".ShortCodeController.create_list_templates") create_list_templates
+
+> List Shortcode Templates by Type
+
+```python
+def create_list_templates(self,
+                              options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| mtype |  ``` Optional ```  ``` DefaultValue ```  | The type (category) of template Valid values: marketing, authorization |
+| page |  ``` Optional ```  | The page count to retrieve from the total results in the collection. Page indexing starts at 1. |
+| pagesize |  ``` Optional ```  ``` DefaultValue ```  | The count of objects to return per page. |
+| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response type format xml or json |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+mtype = 'authorization'
+collect['mtype'] = mtype
+
+page = 57
+collect['page'] = page
+
+pagesize = 10
+collect['pagesize'] = pagesize
+
+response_type = 'json'
+collect['response_type'] = response_type
+
+
+result = short_code_client.create_list_templates(collect)
+
+```
+
+
+#### <a name="create_view_short_code"></a>![Method: ](https://apidocs.io/img/method.png ".ShortCodeController.create_view_short_code") create_view_short_code
+
+> View a ShortCode Message
+
+```python
+def create_view_short_code(self,
+                               options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| messagesid |  ``` Required ```  | Message sid |
+| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response type format xml or json |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+messagesid = 'messagesid'
+collect['messagesid'] = messagesid
+
+response_type = 'json'
+collect['response_type'] = response_type
+
+
+result = short_code_client.create_view_short_code(collect)
+
+```
+
+
+[Back to List of Controllers](#list_of_controllers)
+
+### <a name="conference_controller"></a>![Class: ](https://apidocs.io/img/class.png ".ConferenceController") ConferenceController
 
 #### Get controller instance
 
@@ -130,7 +418,7 @@ An instance of the ``` ConferenceController ``` class can be accessed from the A
  conference_client = client.conference
 ```
 
-#### <a name="create_deaf_mute_participant"></a>![Method: ](http://apidocs.io/img/method.png ".ConferenceController.create_deaf_mute_participant") create_deaf_mute_participant
+#### <a name="create_deaf_mute_participant"></a>![Method: ](https://apidocs.io/img/method.png ".ConferenceController.create_deaf_mute_participant") create_deaf_mute_participant
 
 > Deaf Mute Participant
 
@@ -162,10 +450,10 @@ collect['conference_sid'] = conference_sid
 participant_sid = 'ParticipantSid'
 collect['participant_sid'] = participant_sid
 
-muted = True
+muted = False
 collect['muted'] = muted
 
-deaf = True
+deaf = False
 collect['deaf'] = deaf
 
 response_type = 'json'
@@ -177,7 +465,7 @@ result = conference_client.create_deaf_mute_participant(collect)
 ```
 
 
-#### <a name="create_list_conference"></a>![Method: ](http://apidocs.io/img/method.png ".ConferenceController.create_list_conference") create_list_conference
+#### <a name="create_list_conference"></a>![Method: ](https://apidocs.io/img/method.png ".ConferenceController.create_list_conference") create_list_conference
 
 > List Conference
 
@@ -205,10 +493,10 @@ def create_list_conference(self,
 ```python
 collect = {}
 
-page = 186
+page = 57
 collect['page'] = page
 
-page_size = 186
+page_size = 57
 collect['page_size'] = page_size
 
 friendly_name = 'FriendlyName'
@@ -232,7 +520,7 @@ result = conference_client.create_list_conference(collect)
 ```
 
 
-#### <a name="create_view_conference"></a>![Method: ](http://apidocs.io/img/method.png ".ConferenceController.create_view_conference") create_view_conference
+#### <a name="create_view_conference"></a>![Method: ](https://apidocs.io/img/method.png ".ConferenceController.create_view_conference") create_view_conference
 
 > View Conference
 
@@ -267,7 +555,7 @@ result = conference_client.create_view_conference(collect)
 ```
 
 
-#### <a name="add_participant"></a>![Method: ](http://apidocs.io/img/method.png ".ConferenceController.add_participant") add_participant
+#### <a name="add_participant"></a>![Method: ](https://apidocs.io/img/method.png ".ConferenceController.add_participant") add_participant
 
 > Add Participant in conference 
 
@@ -300,13 +588,13 @@ collect['conferencesid'] = conferencesid
 participantnumber = 'participantnumber'
 collect['participantnumber'] = participantnumber
 
-tocountrycode = 186
+tocountrycode = 57
 collect['tocountrycode'] = tocountrycode
 
-muted = True
+muted = False
 collect['muted'] = muted
 
-deaf = True
+deaf = False
 collect['deaf'] = deaf
 
 response_type = 'json'
@@ -318,7 +606,7 @@ result = conference_client.add_participant(collect)
 ```
 
 
-#### <a name="create_list_participant"></a>![Method: ](http://apidocs.io/img/method.png ".ConferenceController.create_list_participant") create_list_participant
+#### <a name="create_list_participant"></a>![Method: ](https://apidocs.io/img/method.png ".ConferenceController.create_list_participant") create_list_participant
 
 > List Participant
 
@@ -348,16 +636,16 @@ collect = {}
 conference_sid = 'ConferenceSid'
 collect['conference_sid'] = conference_sid
 
-page = 186
+page = 57
 collect['page'] = page
 
-pagesize = 186
+pagesize = 57
 collect['pagesize'] = pagesize
 
-muted = True
+muted = False
 collect['muted'] = muted
 
-deaf = True
+deaf = False
 collect['deaf'] = deaf
 
 response_type = 'json'
@@ -369,7 +657,7 @@ result = conference_client.create_list_participant(collect)
 ```
 
 
-#### <a name="create_view_participant"></a>![Method: ](http://apidocs.io/img/method.png ".ConferenceController.create_view_participant") create_view_participant
+#### <a name="create_view_participant"></a>![Method: ](https://apidocs.io/img/method.png ".ConferenceController.create_view_participant") create_view_participant
 
 > View Participant
 
@@ -410,7 +698,7 @@ result = conference_client.create_view_participant(collect)
 
 [Back to List of Controllers](#list_of_controllers)
 
-### <a name="email_controller"></a>![Class: ](http://apidocs.io/img/class.png ".EmailController") EmailController
+### <a name="email_controller"></a>![Class: ](https://apidocs.io/img/class.png ".EmailController") EmailController
 
 #### Get controller instance
 
@@ -420,7 +708,7 @@ An instance of the ``` EmailController ``` class can be accessed from the API Cl
  email_client = client.email
 ```
 
-#### <a name="create_delete_invalid"></a>![Method: ](http://apidocs.io/img/method.png ".EmailController.create_delete_invalid") create_delete_invalid
+#### <a name="create_delete_invalid"></a>![Method: ](https://apidocs.io/img/method.png ".EmailController.create_delete_invalid") create_delete_invalid
 
 > This endpoint allows you to delete entries in the Invalid Emails list.
 
@@ -455,7 +743,7 @@ result = email_client.create_delete_invalid(collect)
 ```
 
 
-#### <a name="create_list_blocks"></a>![Method: ](http://apidocs.io/img/method.png ".EmailController.create_list_blocks") create_list_blocks
+#### <a name="create_list_blocks"></a>![Method: ](https://apidocs.io/img/method.png ".EmailController.create_list_blocks") create_list_blocks
 
 > Outputs email addresses on your blocklist
 
@@ -494,7 +782,7 @@ result = email_client.create_list_blocks(collect)
 ```
 
 
-#### <a name="create_list_spam"></a>![Method: ](http://apidocs.io/img/method.png ".EmailController.create_list_spam") create_list_spam
+#### <a name="create_list_spam"></a>![Method: ](https://apidocs.io/img/method.png ".EmailController.create_list_spam") create_list_spam
 
 > List out all email addresses marked as spam
 
@@ -533,7 +821,7 @@ result = email_client.create_list_spam(collect)
 ```
 
 
-#### <a name="create_list_bounces"></a>![Method: ](http://apidocs.io/img/method.png ".EmailController.create_list_bounces") create_list_bounces
+#### <a name="create_list_bounces"></a>![Method: ](https://apidocs.io/img/method.png ".EmailController.create_list_bounces") create_list_bounces
 
 > List out all email addresses that have bounced
 
@@ -572,7 +860,7 @@ result = email_client.create_list_bounces(collect)
 ```
 
 
-#### <a name="create_delete_bounces"></a>![Method: ](http://apidocs.io/img/method.png ".EmailController.create_delete_bounces") create_delete_bounces
+#### <a name="create_delete_bounces"></a>![Method: ](https://apidocs.io/img/method.png ".EmailController.create_delete_bounces") create_delete_bounces
 
 > Delete an email address from the bounced address list
 
@@ -607,7 +895,7 @@ result = email_client.create_delete_bounces(collect)
 ```
 
 
-#### <a name="create_list_invalid"></a>![Method: ](http://apidocs.io/img/method.png ".EmailController.create_list_invalid") create_list_invalid
+#### <a name="create_list_invalid"></a>![Method: ](https://apidocs.io/img/method.png ".EmailController.create_list_invalid") create_list_invalid
 
 > List out all invalid email addresses
 
@@ -646,7 +934,7 @@ result = email_client.create_list_invalid(collect)
 ```
 
 
-#### <a name="create_list_unsubscribes"></a>![Method: ](http://apidocs.io/img/method.png ".EmailController.create_list_unsubscribes") create_list_unsubscribes
+#### <a name="create_list_unsubscribes"></a>![Method: ](https://apidocs.io/img/method.png ".EmailController.create_list_unsubscribes") create_list_unsubscribes
 
 > List all unsubscribed email addresses
 
@@ -685,7 +973,7 @@ result = email_client.create_list_unsubscribes(collect)
 ```
 
 
-#### <a name="create_delete_unsubscribes"></a>![Method: ](http://apidocs.io/img/method.png ".EmailController.create_delete_unsubscribes") create_delete_unsubscribes
+#### <a name="create_delete_unsubscribes"></a>![Method: ](https://apidocs.io/img/method.png ".EmailController.create_delete_unsubscribes") create_delete_unsubscribes
 
 > Delete emails from the unsubscribe list
 
@@ -720,7 +1008,7 @@ result = email_client.create_delete_unsubscribes(collect)
 ```
 
 
-#### <a name="add_unsubscribes"></a>![Method: ](http://apidocs.io/img/method.png ".EmailController.add_unsubscribes") add_unsubscribes
+#### <a name="add_unsubscribes"></a>![Method: ](https://apidocs.io/img/method.png ".EmailController.add_unsubscribes") add_unsubscribes
 
 > Add an email to the unsubscribe list
 
@@ -755,7 +1043,7 @@ result = email_client.add_unsubscribes(collect)
 ```
 
 
-#### <a name="create_delete_block"></a>![Method: ](http://apidocs.io/img/method.png ".EmailController.create_delete_block") create_delete_block
+#### <a name="create_delete_block"></a>![Method: ](https://apidocs.io/img/method.png ".EmailController.create_delete_block") create_delete_block
 
 > Deletes a blocked email
 
@@ -790,7 +1078,7 @@ result = email_client.create_delete_block(collect)
 ```
 
 
-#### <a name="create_delete_spam"></a>![Method: ](http://apidocs.io/img/method.png ".EmailController.create_delete_spam") create_delete_spam
+#### <a name="create_delete_spam"></a>![Method: ](https://apidocs.io/img/method.png ".EmailController.create_delete_spam") create_delete_spam
 
 > Deletes a email address marked as spam from the spam list
 
@@ -825,7 +1113,7 @@ result = email_client.create_delete_spam(collect)
 ```
 
 
-#### <a name="create_send_email"></a>![Method: ](http://apidocs.io/img/method.png ".EmailController.create_send_email") create_send_email
+#### <a name="create_send_email"></a>![Method: ](https://apidocs.io/img/method.png ".EmailController.create_send_email") create_send_email
 
 > Send out an email
 
@@ -890,7 +1178,7 @@ result = email_client.create_send_email(collect)
 
 [Back to List of Controllers](#list_of_controllers)
 
-### <a name="number_verification_controller"></a>![Class: ](http://apidocs.io/img/class.png ".NumberVerificationController") NumberVerificationController
+### <a name="number_verification_controller"></a>![Class: ](https://apidocs.io/img/class.png ".NumberVerificationController") NumberVerificationController
 
 #### Get controller instance
 
@@ -900,7 +1188,7 @@ An instance of the ``` NumberVerificationController ``` class can be accessed fr
  number_verification_client = client.number_verification
 ```
 
-#### <a name="create_verify_number"></a>![Method: ](http://apidocs.io/img/method.png ".NumberVerificationController.create_verify_number") create_verify_number
+#### <a name="create_verify_number"></a>![Method: ](https://apidocs.io/img/method.png ".NumberVerificationController.create_verify_number") create_verify_number
 
 > Number Verification
 
@@ -941,7 +1229,7 @@ result = number_verification_client.create_verify_number(collect)
 
 [Back to List of Controllers](#list_of_controllers)
 
-### <a name="carrier_controller"></a>![Class: ](http://apidocs.io/img/class.png ".CarrierController") CarrierController
+### <a name="carrier_controller"></a>![Class: ](https://apidocs.io/img/class.png ".CarrierController") CarrierController
 
 #### Get controller instance
 
@@ -951,7 +1239,7 @@ An instance of the ``` CarrierController ``` class can be accessed from the API 
  carrier_client = client.carrier
 ```
 
-#### <a name="create_carrier_lookup"></a>![Method: ](http://apidocs.io/img/method.png ".CarrierController.create_carrier_lookup") create_carrier_lookup
+#### <a name="create_carrier_lookup"></a>![Method: ](https://apidocs.io/img/method.png ".CarrierController.create_carrier_lookup") create_carrier_lookup
 
 > Get the Carrier Lookup
 
@@ -986,7 +1274,7 @@ result = carrier_client.create_carrier_lookup(collect)
 ```
 
 
-#### <a name="create_carrier_lookup_list"></a>![Method: ](http://apidocs.io/img/method.png ".CarrierController.create_carrier_lookup_list") create_carrier_lookup_list
+#### <a name="create_carrier_lookup_list"></a>![Method: ](https://apidocs.io/img/method.png ".CarrierController.create_carrier_lookup_list") create_carrier_lookup_list
 
 > Get the All Purchase Number's Carrier lookup
 
@@ -1010,10 +1298,10 @@ def create_carrier_lookup_list(self,
 ```python
 collect = {}
 
-page = 22
+page = 148
 collect['page'] = page
 
-pagesize = 22
+pagesize = 148
 collect['pagesize'] = pagesize
 
 response_type = 'json'
@@ -1027,7 +1315,7 @@ result = carrier_client.create_carrier_lookup_list(collect)
 
 [Back to List of Controllers](#list_of_controllers)
 
-### <a name="call_controller"></a>![Class: ](http://apidocs.io/img/class.png ".CallController") CallController
+### <a name="call_controller"></a>![Class: ](https://apidocs.io/img/class.png ".CallController") CallController
 
 #### Get controller instance
 
@@ -1037,7 +1325,7 @@ An instance of the ``` CallController ``` class can be accessed from the API Cli
  call_client = client.call
 ```
 
-#### <a name="create_view_call"></a>![Method: ](http://apidocs.io/img/method.png ".CallController.create_view_call") create_view_call
+#### <a name="create_view_call"></a>![Method: ](https://apidocs.io/img/method.png ".CallController.create_view_call") create_view_call
 
 > View Call Response
 
@@ -1072,7 +1360,7 @@ result = call_client.create_view_call(collect)
 ```
 
 
-#### <a name="create_group_call"></a>![Method: ](http://apidocs.io/img/method.png ".CallController.create_group_call") create_group_call
+#### <a name="create_group_call"></a>![Method: ](https://apidocs.io/img/method.png ".CallController.create_group_call") create_group_call
 
 > Group Call
 
@@ -1150,7 +1438,7 @@ collect['heart_beat_url'] = heart_beat_url
 heart_beat_method = HttpAction.GET
 collect['heart_beat_method'] = heart_beat_method
 
-timeout = 22
+timeout = 148
 collect['timeout'] = timeout
 
 play_dtmf = 'PlayDtmf'
@@ -1159,7 +1447,7 @@ collect['play_dtmf'] = play_dtmf
 hide_caller_id = 'HideCallerId'
 collect['hide_caller_id'] = hide_caller_id
 
-record = False
+record = True
 collect['record'] = record
 
 record_call_back_url = 'RecordCallBackUrl'
@@ -1168,7 +1456,7 @@ collect['record_call_back_url'] = record_call_back_url
 record_call_back_method = HttpAction.GET
 collect['record_call_back_method'] = record_call_back_method
 
-transcribe = False
+transcribe = True
 collect['transcribe'] = transcribe
 
 transcribe_call_back_url = 'TranscribeCallBackUrl'
@@ -1183,7 +1471,7 @@ result = call_client.create_group_call(collect)
 ```
 
 
-#### <a name="create_voice_effect"></a>![Method: ](http://apidocs.io/img/method.png ".CallController.create_voice_effect") create_voice_effect
+#### <a name="create_voice_effect"></a>![Method: ](https://apidocs.io/img/method.png ".CallController.create_voice_effect") create_voice_effect
 
 > Voice Effect
 
@@ -1218,19 +1506,19 @@ collect['call_sid'] = call_sid
 audio_direction = AudioDirection.IN
 collect['audio_direction'] = audio_direction
 
-pitch_semi_tones = 22.8361971480009
+pitch_semi_tones = 148.563680431602
 collect['pitch_semi_tones'] = pitch_semi_tones
 
-pitch_octaves = 22.8361971480009
+pitch_octaves = 148.563680431602
 collect['pitch_octaves'] = pitch_octaves
 
-pitch = 22.8361971480009
+pitch = 148.563680431602
 collect['pitch'] = pitch
 
-rate = 22.8361971480009
+rate = 148.563680431602
 collect['rate'] = rate
 
-tempo = 22.8361971480009
+tempo = 148.563680431602
 collect['tempo'] = tempo
 
 response_type = 'json'
@@ -1242,7 +1530,7 @@ result = call_client.create_voice_effect(collect)
 ```
 
 
-#### <a name="create_record_call"></a>![Method: ](http://apidocs.io/img/method.png ".CallController.create_record_call") create_record_call
+#### <a name="create_record_call"></a>![Method: ](https://apidocs.io/img/method.png ".CallController.create_record_call") create_record_call
 
 > Record a Call
 
@@ -1273,13 +1561,13 @@ collect = {}
 call_sid = 'CallSid'
 collect['call_sid'] = call_sid
 
-record = False
+record = True
 collect['record'] = record
 
 direction = Direction.IN
 collect['direction'] = direction
 
-time_limit = 22
+time_limit = 148
 collect['time_limit'] = time_limit
 
 call_back_url = 'CallBackUrl'
@@ -1297,7 +1585,7 @@ result = call_client.create_record_call(collect)
 ```
 
 
-#### <a name="create_play_audio"></a>![Method: ](http://apidocs.io/img/method.png ".CallController.create_play_audio") create_play_audio
+#### <a name="create_play_audio"></a>![Method: ](https://apidocs.io/img/method.png ".CallController.create_play_audio") create_play_audio
 
 > Play Dtmf and send the Digit
 
@@ -1331,16 +1619,16 @@ collect['call_sid'] = call_sid
 audio_url = 'AudioUrl'
 collect['audio_url'] = audio_url
 
-length = 22
+length = 148
 collect['length'] = length
 
 direction = Direction.IN
 collect['direction'] = direction
 
-loop = False
+loop = True
 collect['loop'] = loop
 
-mix = False
+mix = True
 collect['mix'] = mix
 
 response_type = 'json'
@@ -1352,58 +1640,7 @@ result = call_client.create_play_audio(collect)
 ```
 
 
-#### <a name="create_list_calls"></a>![Method: ](http://apidocs.io/img/method.png ".CallController.create_list_calls") create_list_calls
-
-> A list of calls associated with your Message360 account
-
-```python
-def create_list_calls(self,
-                          options=dict())
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| page |  ``` Optional ```  | Which page of the overall response will be returned. Zero indexed |
-| pageSize |  ``` Optional ```  | Number of individual resources listed in the response per page |
-| to |  ``` Optional ```  | Only list calls to this number |
-| mfrom |  ``` Optional ```  | Only list calls from this number |
-| dateCreated |  ``` Optional ```  | Only list calls starting within the specified date range |
-| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response type format xml or json |
-
-
-
-#### Example Usage
-
-```python
-collect = {}
-
-page = 22
-collect['page'] = page
-
-page_size = 22
-collect['page_size'] = page_size
-
-to = 'To'
-collect['to'] = to
-
-mfrom = 'From'
-collect['mfrom'] = mfrom
-
-date_created = 'DateCreated'
-collect['date_created'] = date_created
-
-response_type = 'json'
-collect['response_type'] = response_type
-
-
-result = call_client.create_list_calls(collect)
-
-```
-
-
-#### <a name="create_interrupted_call"></a>![Method: ](http://apidocs.io/img/method.png ".CallController.create_interrupted_call") create_interrupted_call
+#### <a name="create_interrupted_call"></a>![Method: ](https://apidocs.io/img/method.png ".CallController.create_interrupted_call") create_interrupted_call
 
 > Interrupt the Call by Call Sid
 
@@ -1450,7 +1687,7 @@ result = call_client.create_interrupted_call(collect)
 ```
 
 
-#### <a name="create_send_digit"></a>![Method: ](http://apidocs.io/img/method.png ".CallController.create_send_digit") create_send_digit
+#### <a name="create_send_digit"></a>![Method: ](https://apidocs.io/img/method.png ".CallController.create_send_digit") create_send_digit
 
 > Play Dtmf and send the Digit
 
@@ -1493,7 +1730,7 @@ result = call_client.create_send_digit(collect)
 ```
 
 
-#### <a name="create_make_call"></a>![Method: ](http://apidocs.io/img/method.png ".CallController.create_make_call") create_make_call
+#### <a name="create_make_call"></a>![Method: ](https://apidocs.io/img/method.png ".CallController.create_make_call") create_make_call
 
 > You can experiment with initiating a call through Message360 and view the request response generated when doing so and get the response in json
 
@@ -1569,19 +1806,19 @@ collect['fall_back_method'] = fall_back_method
 heart_beat_url = 'HeartBeatUrl'
 collect['heart_beat_url'] = heart_beat_url
 
-heart_beat_method = False
+heart_beat_method = True
 collect['heart_beat_method'] = heart_beat_method
 
-timeout = 22
+timeout = 148
 collect['timeout'] = timeout
 
 play_dtmf = 'PlayDtmf'
 collect['play_dtmf'] = play_dtmf
 
-hide_caller_id = False
+hide_caller_id = True
 collect['hide_caller_id'] = hide_caller_id
 
-record = False
+record = True
 collect['record'] = record
 
 record_call_back_url = 'RecordCallBackUrl'
@@ -1590,7 +1827,7 @@ collect['record_call_back_url'] = record_call_back_url
 record_call_back_method = HttpAction.GET
 collect['record_call_back_method'] = record_call_back_method
 
-transcribe = False
+transcribe = True
 collect['transcribe'] = transcribe
 
 transcribe_call_back_url = 'TranscribeCallBackUrl'
@@ -1608,60 +1845,13 @@ result = call_client.create_make_call(collect)
 ```
 
 
-[Back to List of Controllers](#list_of_controllers)
+#### <a name="create_list_calls"></a>![Method: ](https://apidocs.io/img/method.png ".CallController.create_list_calls") create_list_calls
 
-### <a name="sms_controller"></a>![Class: ](http://apidocs.io/img/class.png ".SMSController") SMSController
-
-#### Get controller instance
-
-An instance of the ``` SMSController ``` class can be accessed from the API Client.
+> A list of calls associated with your Message360 account
 
 ```python
- sms_client = client.sms
-```
-
-#### <a name="create_view_sms"></a>![Method: ](http://apidocs.io/img/method.png ".SMSController.create_view_sms") create_view_sms
-
-> View Particular SMS
-
-```python
-def create_view_sms(self,
-                        options=dict())
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| messagesid |  ``` Required ```  | Message sid |
-| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response type format xml or json |
-
-
-
-#### Example Usage
-
-```python
-collect = {}
-
-messagesid = 'messagesid'
-collect['messagesid'] = messagesid
-
-response_type = 'json'
-collect['response_type'] = response_type
-
-
-result = sms_client.create_view_sms(collect)
-
-```
-
-
-#### <a name="create_list_inbound_sms"></a>![Method: ](http://apidocs.io/img/method.png ".SMSController.create_list_inbound_sms") create_list_inbound_sms
-
-> List All Inbound SMS
-
-```python
-def create_list_inbound_sms(self,
-                                options=dict())
+def create_list_calls(self,
+                          options=dict())
 ```
 
 #### Parameters
@@ -1669,9 +1859,10 @@ def create_list_inbound_sms(self,
 | Parameter | Tags | Description |
 |-----------|------|-------------|
 | page |  ``` Optional ```  | Which page of the overall response will be returned. Zero indexed |
-| pagesize |  ``` Optional ```  | Number of individual resources listed in the response per page |
-| mfrom |  ``` Optional ```  | From Number to Inbound SMS |
-| to |  ``` Optional ```  | To Number to get Inbound SMS |
+| pageSize |  ``` Optional ```  ``` DefaultValue ```  | Number of individual resources listed in the response per page |
+| to |  ``` Optional ```  | Only list calls to this number |
+| mfrom |  ``` Optional ```  | Only list calls from this number |
+| dateCreated |  ``` Optional ```  | Only list calls starting within the specified date range |
 | responseType |  ``` Optional ```  ``` DefaultValue ```  | Response type format xml or json |
 
 
@@ -1681,187 +1872,33 @@ def create_list_inbound_sms(self,
 ```python
 collect = {}
 
-page = 114
+page = 148
 collect['page'] = page
 
-pagesize = 'pagesize'
-collect['pagesize'] = pagesize
+page_size = 10
+collect['page_size'] = page_size
 
-mfrom = 'from'
+to = 'To'
+collect['to'] = to
+
+mfrom = 'From'
 collect['mfrom'] = mfrom
 
-to = 'to'
-collect['to'] = to
+date_created = 'DateCreated'
+collect['date_created'] = date_created
 
 response_type = 'json'
 collect['response_type'] = response_type
 
 
-result = sms_client.create_list_inbound_sms(collect)
-
-```
-
-
-#### <a name="create_list_sms"></a>![Method: ](http://apidocs.io/img/method.png ".SMSController.create_list_sms") create_list_sms
-
-> List All SMS
-
-```python
-def create_list_sms(self,
-                        options=dict())
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| page |  ``` Optional ```  | Which page of the overall response will be returned. Zero indexed |
-| pagesize |  ``` Optional ```  | Number of individual resources listed in the response per page |
-| mfrom |  ``` Optional ```  | Messages sent from this number |
-| to |  ``` Optional ```  | Messages sent to this number |
-| datesent |  ``` Optional ```  | Only list SMS messages sent in the specified date range |
-| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response type format xml or json |
-
-
-
-#### Example Usage
-
-```python
-collect = {}
-
-page = 114
-collect['page'] = page
-
-pagesize = 114
-collect['pagesize'] = pagesize
-
-mfrom = 'from'
-collect['mfrom'] = mfrom
-
-to = 'to'
-collect['to'] = to
-
-datesent = 'datesent'
-collect['datesent'] = datesent
-
-response_type = 'json'
-collect['response_type'] = response_type
-
-
-result = sms_client.create_list_sms(collect)
-
-```
-
-
-#### <a name="create_send_sms"></a>![Method: ](http://apidocs.io/img/method.png ".SMSController.create_send_sms") create_send_sms
-
-> Send an SMS from a message360 number
-
-```python
-def create_send_sms(self,
-                        options=dict())
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| fromcountrycode |  ``` Required ```  ``` DefaultValue ```  | From Country Code |
-| mfrom |  ``` Required ```  | SMS enabled Message360 number to send this message from |
-| tocountrycode |  ``` Required ```  ``` DefaultValue ```  | To country code |
-| to |  ``` Required ```  | Number to send the SMS to |
-| body |  ``` Required ```  | Text Message To Send |
-| method |  ``` Optional ```  | Specifies the HTTP method used to request the required URL once SMS sent. |
-| messagestatuscallback |  ``` Optional ```  | URL that can be requested to receive notification when SMS has Sent. A set of default parameters will be sent here once the SMS is finished. |
-| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response type format xml or json |
-
-
-
-#### Example Usage
-
-```python
-collect = {}
-
-fromcountrycode = 1
-collect['fromcountrycode'] = fromcountrycode
-
-mfrom = 'from'
-collect['mfrom'] = mfrom
-
-tocountrycode = 1
-collect['tocountrycode'] = tocountrycode
-
-to = 'to'
-collect['to'] = to
-
-body = 'body'
-collect['body'] = body
-
-method = HttpAction.GET
-collect['method'] = method
-
-messagestatuscallback = 'messagestatuscallback'
-collect['messagestatuscallback'] = messagestatuscallback
-
-response_type = 'json'
-collect['response_type'] = response_type
-
-
-result = sms_client.create_send_sms(collect)
+result = call_client.create_list_calls(collect)
 
 ```
 
 
 [Back to List of Controllers](#list_of_controllers)
 
-### <a name="account_controller"></a>![Class: ](http://apidocs.io/img/class.png ".AccountController") AccountController
-
-#### Get controller instance
-
-An instance of the ``` AccountController ``` class can be accessed from the API Client.
-
-```python
- account_client = client.account
-```
-
-#### <a name="create_view_account"></a>![Method: ](http://apidocs.io/img/method.png ".AccountController.create_view_account") create_view_account
-
-> Display Account Description
-
-```python
-def create_view_account(self,
-                            options=dict())
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| date |  ``` Required ```  | TODO: Add a parameter description |
-| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response type format xml or json |
-
-
-
-#### Example Usage
-
-```python
-collect = {}
-
-date = 'date'
-collect['date'] = date
-
-response_type = 'json'
-collect['response_type'] = response_type
-
-
-result = account_client.create_view_account(collect)
-
-```
-
-
-[Back to List of Controllers](#list_of_controllers)
-
-### <a name="web_rtc_controller"></a>![Class: ](http://apidocs.io/img/class.png ".WebRTCController") WebRTCController
+### <a name="web_rtc_controller"></a>![Class: ](https://apidocs.io/img/class.png ".WebRTCController") WebRTCController
 
 #### Get controller instance
 
@@ -1871,7 +1908,7 @@ An instance of the ``` WebRTCController ``` class can be accessed from the API C
  web_rtc_client = client.web_rtc
 ```
 
-#### <a name="create_check_funds"></a>![Method: ](http://apidocs.io/img/method.png ".WebRTCController.create_check_funds") create_check_funds
+#### <a name="create_check_funds"></a>![Method: ](https://apidocs.io/img/method.png ".WebRTCController.create_check_funds") create_check_funds
 
 > TODO: Add a method description
 
@@ -1906,46 +1943,7 @@ result = web_rtc_client.create_check_funds(collect)
 ```
 
 
-#### <a name="create_authenticate_number"></a>![Method: ](http://apidocs.io/img/method.png ".WebRTCController.create_authenticate_number") create_authenticate_number
-
-> Authenticate a message360 number for use
-
-```python
-def create_authenticate_number(self,
-                                   options=dict())
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| phoneNumber |  ``` Required ```  | Phone number to authenticate for use |
-| accountSid |  ``` Required ```  | Your message360 Account SID |
-| authToken |  ``` Required ```  | Your message360 token |
-
-
-
-#### Example Usage
-
-```python
-collect = {}
-
-phone_number = 'phone_number'
-collect['phone_number'] = phone_number
-
-account_sid = 'account_sid'
-collect['account_sid'] = account_sid
-
-auth_token = 'auth_token'
-collect['auth_token'] = auth_token
-
-
-result = web_rtc_client.create_authenticate_number(collect)
-
-```
-
-
-#### <a name="create_token"></a>![Method: ](http://apidocs.io/img/method.png ".WebRTCController.create_token") create_token
+#### <a name="create_token"></a>![Method: ](https://apidocs.io/img/method.png ".WebRTCController.create_token") create_token
 
 > message360 webrtc
 
@@ -1960,6 +1958,8 @@ def create_token(self,
 |-----------|------|-------------|
 | accountSid |  ``` Required ```  | Your message360 Account SID |
 | authToken |  ``` Required ```  | Your message360 Token |
+| username |  ``` Required ```  | WebRTC username authentication |
+| password |  ``` Required ```  | WebRTC password authentication |
 
 
 
@@ -1974,6 +1974,12 @@ collect['account_sid'] = account_sid
 auth_token = 'auth_token'
 collect['auth_token'] = auth_token
 
+username = 'username'
+collect['username'] = username
+
+password = 'password'
+collect['password'] = password
+
 
 result = web_rtc_client.create_token(collect)
 
@@ -1982,7 +1988,7 @@ result = web_rtc_client.create_token(collect)
 
 [Back to List of Controllers](#list_of_controllers)
 
-### <a name="sub_account_controller"></a>![Class: ](http://apidocs.io/img/class.png ".SubAccountController") SubAccountController
+### <a name="sub_account_controller"></a>![Class: ](https://apidocs.io/img/class.png ".SubAccountController") SubAccountController
 
 #### Get controller instance
 
@@ -1992,9 +1998,9 @@ An instance of the ``` SubAccountController ``` class can be accessed from the A
  sub_account_client = client.sub_account
 ```
 
-#### <a name="create_sub_account"></a>![Method: ](http://apidocs.io/img/method.png ".SubAccountController.create_sub_account") create_sub_account
+#### <a name="create_sub_account"></a>![Method: ](https://apidocs.io/img/method.png ".SubAccountController.create_sub_account") create_sub_account
 
-> Create Sub account
+> Create a sub user account under the parent account
 
 ```python
 def create_sub_account(self,
@@ -2005,10 +2011,10 @@ def create_sub_account(self,
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| firstname |  ``` Required ```  | TODO: Add a parameter description |
-| lastname |  ``` Required ```  | TODO: Add a parameter description |
-| email |  ``` Required ```  | TODO: Add a parameter description |
-| responseType |  ``` Optional ```  ``` DefaultValue ```  | ResponseType Format either json or xml |
+| firstName |  ``` Required ```  | Sub account user first name |
+| lastName |  ``` Required ```  | sub account user last name |
+| email |  ``` Required ```  | Sub account email address |
+| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response type format xml or json |
 
 
 
@@ -2017,13 +2023,13 @@ def create_sub_account(self,
 ```python
 collect = {}
 
-firstname = 'firstname'
-collect['firstname'] = firstname
+first_name = 'FirstName'
+collect['first_name'] = first_name
 
-lastname = 'lastname'
-collect['lastname'] = lastname
+last_name = 'LastName'
+collect['last_name'] = last_name
 
-email = 'email'
+email = 'Email'
 collect['email'] = email
 
 response_type = 'json'
@@ -2035,7 +2041,7 @@ result = sub_account_client.create_sub_account(collect)
 ```
 
 
-#### <a name="create_suspend_sub_account"></a>![Method: ](http://apidocs.io/img/method.png ".SubAccountController.create_suspend_sub_account") create_suspend_sub_account
+#### <a name="create_suspend_sub_account"></a>![Method: ](https://apidocs.io/img/method.png ".SubAccountController.create_suspend_sub_account") create_suspend_sub_account
 
 > Suspend or unsuspend
 
@@ -2048,8 +2054,8 @@ def create_suspend_sub_account(self,
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| subaccountsid |  ``` Required ```  | TODO: Add a parameter description |
-| activate |  ``` Required ```  | TODO: Add a parameter description |
+| subAccountSID |  ``` Required ```  | The SubaccountSid to be activated or suspended |
+| activate |  ``` Required ```  ``` DefaultValue ```  | 0 to suspend or 1 to activate |
 | responseType |  ``` Optional ```  | TODO: Add a parameter description |
 
 
@@ -2059,10 +2065,10 @@ def create_suspend_sub_account(self,
 ```python
 collect = {}
 
-subaccountsid = 'subaccountsid'
-collect['subaccountsid'] = subaccountsid
+sub_account_sid = 'SubAccountSID'
+collect['sub_account_sid'] = sub_account_sid
 
-activate = ActivateStatus.ACTIVATE
+activate = ActivateStatus.DEACTIVATE
 collect['activate'] = activate
 
 response_type = 'ResponseType'
@@ -2074,22 +2080,22 @@ result = sub_account_client.create_suspend_sub_account(collect)
 ```
 
 
-#### <a name="create_delete_merge_sub_account"></a>![Method: ](http://apidocs.io/img/method.png ".SubAccountController.create_delete_merge_sub_account") create_delete_merge_sub_account
+#### <a name="create_delete_sub_account"></a>![Method: ](https://apidocs.io/img/method.png ".SubAccountController.create_delete_sub_account") create_delete_sub_account
 
-> Delete or Merge Sub account
+> Delete sub account or merge numbers into parent
 
 ```python
-def create_delete_merge_sub_account(self,
-                                        options=dict())
+def create_delete_sub_account(self,
+                                  options=dict())
 ```
 
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| subaccountsid |  ``` Required ```  | TODO: Add a parameter description |
-| mergenumber |  ``` Required ```  | TODO: Add a parameter description |
-| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response type format either json or xml |
+| subAccountSID |  ``` Required ```  | The SubaccountSid to be deleted |
+| mergeNumber |  ``` Required ```  ``` DefaultValue ```  | 0 to delete or 1 to merge numbers to parent account. |
+| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response type format xml or json |
 
 
 
@@ -2098,24 +2104,24 @@ def create_delete_merge_sub_account(self,
 ```python
 collect = {}
 
-subaccountsid = 'subaccountsid'
-collect['subaccountsid'] = subaccountsid
+sub_account_sid = 'SubAccountSID'
+collect['sub_account_sid'] = sub_account_sid
 
-mergenumber = MergeNumberStatus.DELETE
-collect['mergenumber'] = mergenumber
+merge_number = MergeNumberStatus.DELETE
+collect['merge_number'] = merge_number
 
 response_type = 'json'
 collect['response_type'] = response_type
 
 
-result = sub_account_client.create_delete_merge_sub_account(collect)
+result = sub_account_client.create_delete_sub_account(collect)
 
 ```
 
 
 [Back to List of Controllers](#list_of_controllers)
 
-### <a name="address_controller"></a>![Class: ](http://apidocs.io/img/class.png ".AddressController") AddressController
+### <a name="address_controller"></a>![Class: ](https://apidocs.io/img/class.png ".AddressController") AddressController
 
 #### Get controller instance
 
@@ -2125,7 +2131,7 @@ An instance of the ``` AddressController ``` class can be accessed from the API 
  address_client = client.address
 ```
 
-#### <a name="create_address"></a>![Method: ](http://apidocs.io/img/method.png ".AddressController.create_address") create_address
+#### <a name="create_address"></a>![Method: ](https://apidocs.io/img/method.png ".AddressController.create_address") create_address
 
 > To add an address to your address book, you create a new address object. You can retrieve and delete individual addresses as well as get a list of addresses. Addresses are identified by a unique random ID.
 
@@ -2147,7 +2153,7 @@ def create_address(self,
 | description |  ``` Optional ```  | Description of addresses. |
 | email |  ``` Optional ```  | Email Id of user. |
 | phone |  ``` Optional ```  | Phone number of user. |
-| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response Type Either json or xml |
+| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response type either json or xml |
 
 
 
@@ -2156,31 +2162,31 @@ def create_address(self,
 ```python
 collect = {}
 
-name = 'name'
+name = 'Name'
 collect['name'] = name
 
-address = 'address'
+address = 'Address'
 collect['address'] = address
 
-country = 'country'
+country = 'Country'
 collect['country'] = country
 
-state = 'state'
+state = 'State'
 collect['state'] = state
 
-city = 'city'
+city = 'City'
 collect['city'] = city
 
-zip = 'zip'
+zip = 'Zip'
 collect['zip'] = zip
 
-description = 'description'
+description = 'Description'
 collect['description'] = description
 
 email = 'email'
 collect['email'] = email
 
-phone = 'phone'
+phone = 'Phone'
 collect['phone'] = phone
 
 response_type = 'json'
@@ -2192,7 +2198,7 @@ result = address_client.create_address(collect)
 ```
 
 
-#### <a name="create_delete_address"></a>![Method: ](http://apidocs.io/img/method.png ".AddressController.create_delete_address") create_delete_address
+#### <a name="create_delete_address"></a>![Method: ](https://apidocs.io/img/method.png ".AddressController.create_delete_address") create_delete_address
 
 > To delete Address to your address book
 
@@ -2205,7 +2211,7 @@ def create_delete_address(self,
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| addressid |  ``` Required ```  | The identifier of the address to be deleted. |
+| addressSID |  ``` Required ```  | The identifier of the address to be deleted. |
 | responseType |  ``` Optional ```  ``` DefaultValue ```  | Response type either json or xml |
 
 
@@ -2215,8 +2221,8 @@ def create_delete_address(self,
 ```python
 collect = {}
 
-addressid = 'addressid'
-collect['addressid'] = addressid
+address_sid = 'AddressSID'
+collect['address_sid'] = address_sid
 
 response_type = 'json'
 collect['response_type'] = response_type
@@ -2227,7 +2233,7 @@ result = address_client.create_delete_address(collect)
 ```
 
 
-#### <a name="create_verify_address"></a>![Method: ](http://apidocs.io/img/method.png ".AddressController.create_verify_address") create_verify_address
+#### <a name="create_verify_address"></a>![Method: ](https://apidocs.io/img/method.png ".AddressController.create_verify_address") create_verify_address
 
 > Validates an address given.
 
@@ -2240,8 +2246,8 @@ def create_verify_address(self,
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| addressid |  ``` Required ```  | The identifier of the address to be verified. |
-| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response type either JSON or xml |
+| addressSID |  ``` Required ```  | The identifier of the address to be verified. |
+| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response type either json or xml |
 
 
 
@@ -2250,8 +2256,8 @@ def create_verify_address(self,
 ```python
 collect = {}
 
-addressid = 'addressid'
-collect['addressid'] = addressid
+address_sid = 'AddressSID'
+collect['address_sid'] = address_sid
 
 response_type = 'json'
 collect['response_type'] = response_type
@@ -2262,7 +2268,7 @@ result = address_client.create_verify_address(collect)
 ```
 
 
-#### <a name="create_list_address"></a>![Method: ](http://apidocs.io/img/method.png ".AddressController.create_list_address") create_list_address
+#### <a name="create_list_address"></a>![Method: ](https://apidocs.io/img/method.png ".AddressController.create_list_address") create_list_address
 
 > List All Address 
 
@@ -2276,8 +2282,8 @@ def create_list_address(self,
 | Parameter | Tags | Description |
 |-----------|------|-------------|
 | page |  ``` Optional ```  ``` DefaultValue ```  | Return requested # of items starting the value, default=0, must be an integer |
-| pageSize |  ``` Optional ```  ``` DefaultValue ```  | How many results to return, default=10, max 100, must be an integer |
-| addressId |  ``` Optional ```  | addresses Sid |
+| pageSize |  ``` Optional ```  ``` DefaultValue ```  | How many results to return, default is 10, max is 100, must be an integer |
+| addressSID |  ``` Optional ```  | addresses Sid |
 | dateCreated |  ``` Optional ```  | date created address. |
 | responseType |  ``` Optional ```  ``` DefaultValue ```  | Response Type either json or xml |
 
@@ -2294,10 +2300,10 @@ collect['page'] = page
 page_size = 10
 collect['page_size'] = page_size
 
-address_id = 'addressId'
-collect['address_id'] = address_id
+address_sid = 'AddressSID'
+collect['address_sid'] = address_sid
 
-date_created = 'dateCreated'
+date_created = 'DateCreated'
 collect['date_created'] = date_created
 
 response_type = 'json'
@@ -2309,7 +2315,7 @@ result = address_client.create_list_address(collect)
 ```
 
 
-#### <a name="create_view_address"></a>![Method: ](http://apidocs.io/img/method.png ".AddressController.create_view_address") create_view_address
+#### <a name="create_view_address"></a>![Method: ](https://apidocs.io/img/method.png ".AddressController.create_view_address") create_view_address
 
 > View Address Specific address Book by providing the address id
 
@@ -2322,7 +2328,7 @@ def create_view_address(self,
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| addressId |  ``` Required ```  | The identifier of the address to be retrieved. |
+| addressSID |  ``` Required ```  | The identifier of the address to be retrieved. |
 | responseType |  ``` Optional ```  ``` DefaultValue ```  | Response Type either json or xml |
 
 
@@ -2332,8 +2338,8 @@ def create_view_address(self,
 ```python
 collect = {}
 
-address_id = 'addressId'
-collect['address_id'] = address_id
+address_sid = 'AddressSID'
+collect['address_sid'] = address_sid
 
 response_type = 'json'
 collect['response_type'] = response_type
@@ -2346,7 +2352,7 @@ result = address_client.create_view_address(collect)
 
 [Back to List of Controllers](#list_of_controllers)
 
-### <a name="phone_number_controller"></a>![Class: ](http://apidocs.io/img/class.png ".PhoneNumberController") PhoneNumberController
+### <a name="phone_number_controller"></a>![Class: ](https://apidocs.io/img/class.png ".PhoneNumberController") PhoneNumberController
 
 #### Get controller instance
 
@@ -2356,7 +2362,7 @@ An instance of the ``` PhoneNumberController ``` class can be accessed from the 
  phone_number_client = client.phone_number
 ```
 
-#### <a name="update_phone_number"></a>![Method: ](http://apidocs.io/img/method.png ".PhoneNumberController.update_phone_number") update_phone_number
+#### <a name="update_phone_number"></a>![Method: ](https://apidocs.io/img/method.png ".PhoneNumberController.update_phone_number") update_phone_number
 
 > Update Phone Number Details
 
@@ -2443,7 +2449,7 @@ result = phone_number_client.update_phone_number(collect)
 ```
 
 
-#### <a name="create_buy_number"></a>![Method: ](http://apidocs.io/img/method.png ".PhoneNumberController.create_buy_number") create_buy_number
+#### <a name="create_buy_number"></a>![Method: ](https://apidocs.io/img/method.png ".PhoneNumberController.create_buy_number") create_buy_number
 
 > Buy Phone Number 
 
@@ -2478,7 +2484,7 @@ result = phone_number_client.create_buy_number(collect)
 ```
 
 
-#### <a name="create_release_number"></a>![Method: ](http://apidocs.io/img/method.png ".PhoneNumberController.create_release_number") create_release_number
+#### <a name="create_release_number"></a>![Method: ](https://apidocs.io/img/method.png ".PhoneNumberController.create_release_number") create_release_number
 
 > Release number from account
 
@@ -2513,7 +2519,7 @@ result = phone_number_client.create_release_number(collect)
 ```
 
 
-#### <a name="create_view_number_details"></a>![Method: ](http://apidocs.io/img/method.png ".PhoneNumberController.create_view_number_details") create_view_number_details
+#### <a name="create_view_number_details"></a>![Method: ](https://apidocs.io/img/method.png ".PhoneNumberController.create_view_number_details") create_view_number_details
 
 > Get Phone Number Details
 
@@ -2548,7 +2554,7 @@ result = phone_number_client.create_view_number_details(collect)
 ```
 
 
-#### <a name="create_list_number"></a>![Method: ](http://apidocs.io/img/method.png ".PhoneNumberController.create_list_number") create_list_number
+#### <a name="create_list_number"></a>![Method: ](https://apidocs.io/img/method.png ".PhoneNumberController.create_list_number") create_list_number
 
 > List Account's Phone number details
 
@@ -2562,7 +2568,7 @@ def create_list_number(self,
 | Parameter | Tags | Description |
 |-----------|------|-------------|
 | page |  ``` Optional ```  | Which page of the overall response will be returned. Zero indexed |
-| pageSize |  ``` Optional ```  | Number of individual resources listed in the response per page |
+| pageSize |  ``` Optional ```  ``` DefaultValue ```  | Number of individual resources listed in the response per page |
 | numberType |  ``` Optional ```  | TODO: Add a parameter description |
 | friendlyName |  ``` Optional ```  | TODO: Add a parameter description |
 | responseType |  ``` Optional ```  ``` DefaultValue ```  | Response type format xml or json |
@@ -2574,10 +2580,10 @@ def create_list_number(self,
 ```python
 collect = {}
 
-page = 72
+page = 106
 collect['page'] = page
 
-page_size = 72
+page_size = 10
 collect['page_size'] = page_size
 
 number_type = NumberType.ALL
@@ -2595,7 +2601,7 @@ result = phone_number_client.create_list_number(collect)
 ```
 
 
-#### <a name="create_available_phone_number"></a>![Method: ](http://apidocs.io/img/method.png ".PhoneNumberController.create_available_phone_number") create_available_phone_number
+#### <a name="create_available_phone_number"></a>![Method: ](https://apidocs.io/img/method.png ".PhoneNumberController.create_available_phone_number") create_available_phone_number
 
 > Available Phone Number
 
@@ -2610,7 +2616,7 @@ def create_available_phone_number(self,
 |-----------|------|-------------|
 | numberType |  ``` Required ```  | Number type either SMS,Voice or all |
 | areaCode |  ``` Required ```  | Phone Number Area Code |
-| pageSize |  ``` Optional ```  | Page Size |
+| pageSize |  ``` Optional ```  ``` DefaultValue ```  | Page Size |
 | responseType |  ``` Optional ```  ``` DefaultValue ```  | Response type format xml or json |
 
 
@@ -2626,7 +2632,7 @@ collect['number_type'] = number_type
 area_code = 'AreaCode'
 collect['area_code'] = area_code
 
-page_size = 72
+page_size = 10
 collect['page_size'] = page_size
 
 response_type = 'json'
@@ -2640,7 +2646,7 @@ result = phone_number_client.create_available_phone_number(collect)
 
 [Back to List of Controllers](#list_of_controllers)
 
-### <a name="recording_controller"></a>![Class: ](http://apidocs.io/img/class.png ".RecordingController") RecordingController
+### <a name="recording_controller"></a>![Class: ](https://apidocs.io/img/class.png ".RecordingController") RecordingController
 
 #### Get controller instance
 
@@ -2650,7 +2656,7 @@ An instance of the ``` RecordingController ``` class can be accessed from the AP
  recording_client = client.recording
 ```
 
-#### <a name="create_list_recording"></a>![Method: ](http://apidocs.io/img/method.png ".RecordingController.create_list_recording") create_list_recording
+#### <a name="create_list_recording"></a>![Method: ](https://apidocs.io/img/method.png ".RecordingController.create_list_recording") create_list_recording
 
 > List out Recordings
 
@@ -2676,10 +2682,10 @@ def create_list_recording(self,
 ```python
 collect = {}
 
-page = 72
+page = 106
 collect['page'] = page
 
-page_size = 72
+page_size = 106
 collect['page_size'] = page_size
 
 date_created = 'DateCreated'
@@ -2697,7 +2703,7 @@ result = recording_client.create_list_recording(collect)
 ```
 
 
-#### <a name="create_delete_recording"></a>![Method: ](http://apidocs.io/img/method.png ".RecordingController.create_delete_recording") create_delete_recording
+#### <a name="create_delete_recording"></a>![Method: ](https://apidocs.io/img/method.png ".RecordingController.create_delete_recording") create_delete_recording
 
 > Delete Recording Record
 
@@ -2732,7 +2738,7 @@ result = recording_client.create_delete_recording(collect)
 ```
 
 
-#### <a name="create_view_recording"></a>![Method: ](http://apidocs.io/img/method.png ".RecordingController.create_view_recording") create_view_recording
+#### <a name="create_view_recording"></a>![Method: ](https://apidocs.io/img/method.png ".RecordingController.create_view_recording") create_view_recording
 
 > View a specific Recording
 
@@ -2769,7 +2775,211 @@ result = recording_client.create_view_recording(collect)
 
 [Back to List of Controllers](#list_of_controllers)
 
-### <a name="transcription_controller"></a>![Class: ](http://apidocs.io/img/class.png ".TranscriptionController") TranscriptionController
+### <a name="sms_controller"></a>![Class: ](https://apidocs.io/img/class.png ".SMSController") SMSController
+
+#### Get controller instance
+
+An instance of the ``` SMSController ``` class can be accessed from the API Client.
+
+```python
+ sms_client = client.sms
+```
+
+#### <a name="create_list_inbound_sms"></a>![Method: ](https://apidocs.io/img/method.png ".SMSController.create_list_inbound_sms") create_list_inbound_sms
+
+> List All Inbound SMS
+
+```python
+def create_list_inbound_sms(self,
+                                options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| page |  ``` Optional ```  | Which page of the overall response will be returned. Zero indexed |
+| pagesize |  ``` Optional ```  | Number of individual resources listed in the response per page |
+| mfrom |  ``` Optional ```  | From Number to Inbound SMS |
+| to |  ``` Optional ```  | To Number to get Inbound SMS |
+| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response type format xml or json |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+page = 106
+collect['page'] = page
+
+pagesize = 'pagesize'
+collect['pagesize'] = pagesize
+
+mfrom = 'from'
+collect['mfrom'] = mfrom
+
+to = 'to'
+collect['to'] = to
+
+response_type = 'json'
+collect['response_type'] = response_type
+
+
+result = sms_client.create_list_inbound_sms(collect)
+
+```
+
+
+#### <a name="create_list_sms"></a>![Method: ](https://apidocs.io/img/method.png ".SMSController.create_list_sms") create_list_sms
+
+> List All SMS
+
+```python
+def create_list_sms(self,
+                        options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| page |  ``` Optional ```  | Which page of the overall response will be returned. Zero indexed |
+| pagesize |  ``` Optional ```  | Number of individual resources listed in the response per page |
+| mfrom |  ``` Optional ```  | Messages sent from this number |
+| to |  ``` Optional ```  | Messages sent to this number |
+| datesent |  ``` Optional ```  | Only list SMS messages sent in the specified date range |
+| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response type format xml or json |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+page = 106
+collect['page'] = page
+
+pagesize = 106
+collect['pagesize'] = pagesize
+
+mfrom = 'from'
+collect['mfrom'] = mfrom
+
+to = 'to'
+collect['to'] = to
+
+datesent = 'datesent'
+collect['datesent'] = datesent
+
+response_type = 'json'
+collect['response_type'] = response_type
+
+
+result = sms_client.create_list_sms(collect)
+
+```
+
+
+#### <a name="create_send_sms"></a>![Method: ](https://apidocs.io/img/method.png ".SMSController.create_send_sms") create_send_sms
+
+> Send an SMS from a message360 number
+
+```python
+def create_send_sms(self,
+                        options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| fromcountrycode |  ``` Required ```  ``` DefaultValue ```  | From Country Code |
+| mfrom |  ``` Required ```  | SMS enabled Message360 number to send this message from |
+| tocountrycode |  ``` Required ```  ``` DefaultValue ```  | To country code |
+| to |  ``` Required ```  | Number to send the SMS to |
+| body |  ``` Required ```  | Text Message To Send |
+| method |  ``` Optional ```  | Specifies the HTTP method used to request the required URL once SMS sent. |
+| messagestatuscallback |  ``` Optional ```  | URL that can be requested to receive notification when SMS has Sent. A set of default parameters will be sent here once the SMS is finished. |
+| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response type format xml or json |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+fromcountrycode = 1
+collect['fromcountrycode'] = fromcountrycode
+
+mfrom = 'from'
+collect['mfrom'] = mfrom
+
+tocountrycode = 1
+collect['tocountrycode'] = tocountrycode
+
+to = 'to'
+collect['to'] = to
+
+body = 'body'
+collect['body'] = body
+
+method = HttpAction.GET
+collect['method'] = method
+
+messagestatuscallback = 'messagestatuscallback'
+collect['messagestatuscallback'] = messagestatuscallback
+
+response_type = 'json'
+collect['response_type'] = response_type
+
+
+result = sms_client.create_send_sms(collect)
+
+```
+
+
+#### <a name="create_view_sms"></a>![Method: ](https://apidocs.io/img/method.png ".SMSController.create_view_sms") create_view_sms
+
+> View a Particular SMS
+
+```python
+def create_view_sms(self,
+                        options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| messagesid |  ``` Required ```  | Message sid |
+| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response type format xml or json |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+messagesid = 'messagesid'
+collect['messagesid'] = messagesid
+
+response_type = 'json'
+collect['response_type'] = response_type
+
+
+result = sms_client.create_view_sms(collect)
+
+```
+
+
+[Back to List of Controllers](#list_of_controllers)
+
+### <a name="transcription_controller"></a>![Class: ](https://apidocs.io/img/class.png ".TranscriptionController") TranscriptionController
 
 #### Get controller instance
 
@@ -2779,7 +2989,7 @@ An instance of the ``` TranscriptionController ``` class can be accessed from th
  transcription_client = client.transcription
 ```
 
-#### <a name="create_audio_url_transcription"></a>![Method: ](http://apidocs.io/img/method.png ".TranscriptionController.create_audio_url_transcription") create_audio_url_transcription
+#### <a name="create_audio_url_transcription"></a>![Method: ](https://apidocs.io/img/method.png ".TranscriptionController.create_audio_url_transcription") create_audio_url_transcription
 
 > Audio URL Transcriptions
 
@@ -2814,7 +3024,7 @@ result = transcription_client.create_audio_url_transcription(collect)
 ```
 
 
-#### <a name="create_recording_transcription"></a>![Method: ](http://apidocs.io/img/method.png ".TranscriptionController.create_recording_transcription") create_recording_transcription
+#### <a name="create_recording_transcription"></a>![Method: ](https://apidocs.io/img/method.png ".TranscriptionController.create_recording_transcription") create_recording_transcription
 
 > Recording Transcriptions
 
@@ -2849,7 +3059,7 @@ result = transcription_client.create_recording_transcription(collect)
 ```
 
 
-#### <a name="create_view_transcription"></a>![Method: ](http://apidocs.io/img/method.png ".TranscriptionController.create_view_transcription") create_view_transcription
+#### <a name="create_view_transcription"></a>![Method: ](https://apidocs.io/img/method.png ".TranscriptionController.create_view_transcription") create_view_transcription
 
 > View Specific Transcriptions
 
@@ -2884,7 +3094,7 @@ result = transcription_client.create_view_transcription(collect)
 ```
 
 
-#### <a name="create_list_transcription"></a>![Method: ](http://apidocs.io/img/method.png ".TranscriptionController.create_list_transcription") create_list_transcription
+#### <a name="create_list_transcription"></a>![Method: ](https://apidocs.io/img/method.png ".TranscriptionController.create_list_transcription") create_list_transcription
 
 > Get All transcriptions
 
@@ -2910,10 +3120,10 @@ def create_list_transcription(self,
 ```python
 collect = {}
 
-page = 72
+page = 198
 collect['page'] = page
 
-page_size = 72
+page_size = 198
 collect['page_size'] = page_size
 
 status = Status.INPROGRESS
@@ -2933,7 +3143,7 @@ result = transcription_client.create_list_transcription(collect)
 
 [Back to List of Controllers](#list_of_controllers)
 
-### <a name="usage_controller"></a>![Class: ](http://apidocs.io/img/class.png ".UsageController") UsageController
+### <a name="usage_controller"></a>![Class: ](https://apidocs.io/img/class.png ".UsageController") UsageController
 
 #### Get controller instance
 
@@ -2943,7 +3153,7 @@ An instance of the ``` UsageController ``` class can be accessed from the API Cl
  usage_client = client.usage
 ```
 
-#### <a name="create_list_usage"></a>![Method: ](http://apidocs.io/img/method.png ".UsageController.create_list_usage") create_list_usage
+#### <a name="create_list_usage"></a>![Method: ](https://apidocs.io/img/method.png ".UsageController.create_list_usage") create_list_usage
 
 > Get all usage 
 
@@ -2982,6 +3192,53 @@ collect['response_type'] = response_type
 
 
 result = usage_client.create_list_usage(collect)
+
+```
+
+
+[Back to List of Controllers](#list_of_controllers)
+
+### <a name="account_controller"></a>![Class: ](https://apidocs.io/img/class.png ".AccountController") AccountController
+
+#### Get controller instance
+
+An instance of the ``` AccountController ``` class can be accessed from the API Client.
+
+```python
+ account_client = client.account
+```
+
+#### <a name="create_view_account"></a>![Method: ](https://apidocs.io/img/method.png ".AccountController.create_view_account") create_view_account
+
+> Display Account Description
+
+```python
+def create_view_account(self,
+                            options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| date |  ``` Required ```  | TODO: Add a parameter description |
+| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response type format xml or json |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+date = 'Date'
+collect['date'] = date
+
+response_type = 'json'
+collect['response_type'] = response_type
+
+
+result = account_client.create_view_account(collect)
 
 ```
 

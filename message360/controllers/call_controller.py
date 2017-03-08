@@ -3,15 +3,18 @@
 """
     message360.controllers.call_controller
 
-    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 12/12/2016
+    This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ).
 """
 
-from .base_controller import *
+from .base_controller import BaseController
+from ..api_helper import APIHelper
+from ..configuration import Configuration
+from ..http.auth.basic_auth import BasicAuth
 
 class CallController(BaseController):
 
     """A Controller to access Endpoints in the message360 API."""
-    
+
 
     def create_view_call(self,
                          options=dict()):
@@ -42,7 +45,7 @@ class CallController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(callsid = options.get("callsid"))
+        self.validate_parameters(callsid=options.get("callsid"))
 
         # Prepare query URL
         _query_builder = Configuration.get_base_uri()
@@ -62,7 +65,7 @@ class CallController(BaseController):
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
         _context = self.execute_request(_request)        
-        self.validate_response(_context)    
+        self.validate_response(_context)
 
         # Return appropriate type
         return _context.response.raw_body
@@ -130,11 +133,11 @@ class CallController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(from_country_code = options.get("from_country_code"),
-                                 mfrom = options.get("mfrom"),
-                                 to_country_code = options.get("to_country_code"),
-                                 to = options.get("to"),
-                                 url = options.get("url"))
+        self.validate_parameters(from_country_code=options.get("from_country_code"),
+                                 mfrom=options.get("mfrom"),
+                                 to_country_code=options.get("to_country_code"),
+                                 to=options.get("to"),
+                                 url=options.get("url"))
 
         # Prepare query URL
         _query_builder = Configuration.get_base_uri()
@@ -173,7 +176,7 @@ class CallController(BaseController):
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
         _context = self.execute_request(_request)        
-        self.validate_response(_context)    
+        self.validate_response(_context)
 
         # Return appropriate type
         return _context.response.raw_body
@@ -215,7 +218,7 @@ class CallController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(call_sid = options.get("call_sid"))
+        self.validate_parameters(call_sid=options.get("call_sid"))
 
         # Prepare query URL
         _query_builder = Configuration.get_base_uri()
@@ -241,7 +244,7 @@ class CallController(BaseController):
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
         _context = self.execute_request(_request)        
-        self.validate_response(_context)    
+        self.validate_response(_context)
 
         # Return appropriate type
         return _context.response.raw_body
@@ -284,8 +287,8 @@ class CallController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(call_sid = options.get("call_sid"),
-                                 record = options.get("record"))
+        self.validate_parameters(call_sid=options.get("call_sid"),
+                                 record=options.get("record"))
 
         # Prepare query URL
         _query_builder = Configuration.get_base_uri()
@@ -310,7 +313,7 @@ class CallController(BaseController):
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
         _context = self.execute_request(_request)        
-        self.validate_response(_context)    
+        self.validate_response(_context)
 
         # Return appropriate type
         return _context.response.raw_body
@@ -356,8 +359,8 @@ class CallController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(call_sid = options.get("call_sid"),
-                                 audio_url = options.get("audio_url"))
+        self.validate_parameters(call_sid=options.get("call_sid"),
+                                 audio_url=options.get("audio_url"))
 
         # Prepare query URL
         _query_builder = Configuration.get_base_uri()
@@ -382,69 +385,7 @@ class CallController(BaseController):
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
         _context = self.execute_request(_request)        
-        self.validate_response(_context)    
-
-        # Return appropriate type
-        return _context.response.raw_body
-
-    def create_list_calls(self,
-                          options=dict()):
-        """Does a POST request to /calls/listcalls.{ResponseType}.
-
-        A list of calls associated with your Message360 account
-
-        Args:
-            options (dict, optional): Key-value pairs for any of the
-                parameters to this API Endpoint. All parameters to the
-                endpoint are supplied through the dictionary with their names
-                being the key and their desired values being the value. A list
-                of parameters that can be used are::
-
-                    page -- int -- Which page of the overall response will be
-                        returned. Zero indexed
-                    page_size -- int -- Number of individual resources listed
-                        in the response per page
-                    to -- string -- Only list calls to this number
-                    mfrom -- string -- Only list calls from this number
-                    date_created -- string -- Only list calls starting within
-                        the specified date range
-                    response_type -- string -- Response type format xml or
-                        json
-
-        Returns:
-            string: Response from the API. 
-
-        Raises:
-            APIException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        # Prepare query URL
-        _query_builder = Configuration.get_base_uri()
-        _query_builder += '/calls/listcalls.{ResponseType}'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
-            'ResponseType': options.get('response_type', None)
-        })
-        _query_url = APIHelper.clean_url(_query_builder)
-
-        # Prepare form parameters
-        _form_parameters = {
-            'Page': options.get('page', None),
-            'PageSize': options.get('page_size', None),
-            'To': options.get('to', None),
-            'From': options.get('mfrom', None),
-            'DateCreated': options.get('date_created', None)
-        }
-        _form_parameters = APIHelper.form_encode_parameters(_form_parameters)
-
-        # Prepare and execute request
-        _request = self.http_client.post(_query_url, parameters=_form_parameters)
-        BasicAuth.apply(_request)
-        _context = self.execute_request(_request)        
-        self.validate_response(_context)    
+        self.validate_response(_context)
 
         # Return appropriate type
         return _context.response.raw_body
@@ -484,7 +425,7 @@ class CallController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(call_sid = options.get("call_sid"))
+        self.validate_parameters(call_sid=options.get("call_sid"))
 
         # Prepare query URL
         _query_builder = Configuration.get_base_uri()
@@ -507,7 +448,7 @@ class CallController(BaseController):
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
         _context = self.execute_request(_request)        
-        self.validate_response(_context)    
+        self.validate_response(_context)
 
         # Return appropriate type
         return _context.response.raw_body
@@ -546,8 +487,8 @@ class CallController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(call_sid = options.get("call_sid"),
-                                 play_dtmf = options.get("play_dtmf"))
+        self.validate_parameters(call_sid=options.get("call_sid"),
+                                 play_dtmf=options.get("play_dtmf"))
 
         # Prepare query URL
         _query_builder = Configuration.get_base_uri()
@@ -569,7 +510,7 @@ class CallController(BaseController):
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
         _context = self.execute_request(_request)        
-        self.validate_response(_context)    
+        self.validate_response(_context)
 
         # Return appropriate type
         return _context.response.raw_body
@@ -645,11 +586,11 @@ class CallController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(from_country_code = options.get("from_country_code"),
-                                 mfrom = options.get("mfrom"),
-                                 to_country_code = options.get("to_country_code"),
-                                 to = options.get("to"),
-                                 url = options.get("url"))
+        self.validate_parameters(from_country_code=options.get("from_country_code"),
+                                 mfrom=options.get("mfrom"),
+                                 to_country_code=options.get("to_country_code"),
+                                 to=options.get("to"),
+                                 url=options.get("url"))
 
         # Prepare query URL
         _query_builder = Configuration.get_base_uri()
@@ -691,7 +632,69 @@ class CallController(BaseController):
         _request = self.http_client.post(_query_url, query_parameters=_query_parameters, parameters=_form_parameters)
         BasicAuth.apply(_request)
         _context = self.execute_request(_request)        
-        self.validate_response(_context)    
+        self.validate_response(_context)
+
+        # Return appropriate type
+        return _context.response.raw_body
+
+    def create_list_calls(self,
+                          options=dict()):
+        """Does a POST request to /calls/listcalls.{ResponseType}.
+
+        A list of calls associated with your Message360 account
+
+        Args:
+            options (dict, optional): Key-value pairs for any of the
+                parameters to this API Endpoint. All parameters to the
+                endpoint are supplied through the dictionary with their names
+                being the key and their desired values being the value. A list
+                of parameters that can be used are::
+
+                    page -- int -- Which page of the overall response will be
+                        returned. Zero indexed
+                    page_size -- int -- Number of individual resources listed
+                        in the response per page
+                    to -- string -- Only list calls to this number
+                    mfrom -- string -- Only list calls from this number
+                    date_created -- string -- Only list calls starting within
+                        the specified date range
+                    response_type -- string -- Response type format xml or
+                        json
+
+        Returns:
+            string: Response from the API. 
+
+        Raises:
+            APIException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        # Prepare query URL
+        _query_builder = Configuration.get_base_uri()
+        _query_builder += '/calls/listcalls.{ResponseType}'
+        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+            'ResponseType': options.get('response_type', None)
+        })
+        _query_url = APIHelper.clean_url(_query_builder)
+
+        # Prepare form parameters
+        _form_parameters = {
+            'Page': options.get('page', None),
+            'PageSize': options.get('page_size', None),
+            'To': options.get('to', None),
+            'From': options.get('mfrom', None),
+            'DateCreated': options.get('date_created', None)
+        }
+        _form_parameters = APIHelper.form_encode_parameters(_form_parameters)
+
+        # Prepare and execute request
+        _request = self.http_client.post(_query_url, parameters=_form_parameters)
+        BasicAuth.apply(_request)
+        _context = self.execute_request(_request)        
+        self.validate_response(_context)
 
         # Return appropriate type
         return _context.response.raw_body
