@@ -64,7 +64,7 @@ class TranscriptionController(BaseController):
         # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
-        _context = self.execute_request(_request)        
+        _context = self.execute_request(_request)
         self.validate_response(_context)
 
         # Return appropriate type
@@ -118,7 +118,7 @@ class TranscriptionController(BaseController):
         # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
-        _context = self.execute_request(_request)        
+        _context = self.execute_request(_request)
         self.validate_response(_context)
 
         # Return appropriate type
@@ -172,7 +172,7 @@ class TranscriptionController(BaseController):
         # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
-        _context = self.execute_request(_request)        
+        _context = self.execute_request(_request)
         self.validate_response(_context)
 
         # Return appropriate type
@@ -193,8 +193,9 @@ class TranscriptionController(BaseController):
 
                     page -- int -- TODO: type description here. Example: 
                     page_size -- int -- TODO: type description here. Example:
-                                            status -- Status -- TODO: type description here. Example:
-                                            date_transcribed -- string -- TODO: type description here.
+                                            status -- StatusEnum -- TODO: type description here.
+                        Example: 
+                    date_transcribed -- string -- TODO: type description here.
                         Example: 
                     response_type -- string -- Response type format xml or
                         json
@@ -230,7 +231,7 @@ class TranscriptionController(BaseController):
         # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
-        _context = self.execute_request(_request)        
+        _context = self.execute_request(_request)
         self.validate_response(_context)
 
         # Return appropriate type

@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 
 """
-    message360.models.audio_direction
+    message360.models.audio_direction_enum
 
     This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io )
 """
 
-class AudioDirection(object):
+class AudioDirectionEnum(object):
 
     """Implementation of the 'AudioDirection' enum.
 

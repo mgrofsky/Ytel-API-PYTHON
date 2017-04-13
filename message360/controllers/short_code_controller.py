@@ -66,7 +66,7 @@ class ShortCodeController(BaseController):
         # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
-        _context = self.execute_request(_request)        
+        _context = self.execute_request(_request)
         self.validate_response(_context)
 
         # Return appropriate type
@@ -144,7 +144,7 @@ class ShortCodeController(BaseController):
         # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
-        _context = self.execute_request(_request)        
+        _context = self.execute_request(_request)
         self.validate_response(_context)
 
         # Return appropriate type
@@ -209,7 +209,7 @@ class ShortCodeController(BaseController):
         # Prepare and execute request
         _request = self.http_client.post(_query_url, query_parameters=_query_parameters, parameters=_form_parameters)
         BasicAuth.apply(_request)
-        _context = self.execute_request(_request)        
+        _context = self.execute_request(_request)
         self.validate_response(_context)
 
         # Return appropriate type
@@ -271,7 +271,7 @@ class ShortCodeController(BaseController):
         # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
-        _context = self.execute_request(_request)        
+        _context = self.execute_request(_request)
         self.validate_response(_context)
 
         # Return appropriate type
@@ -329,7 +329,7 @@ class ShortCodeController(BaseController):
         # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
-        _context = self.execute_request(_request)        
+        _context = self.execute_request(_request)
         self.validate_response(_context)
 
         # Return appropriate type
@@ -383,7 +383,7 @@ class ShortCodeController(BaseController):
         # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
-        _context = self.execute_request(_request)        
+        _context = self.execute_request(_request)
         self.validate_response(_context)
 
         # Return appropriate type

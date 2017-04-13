@@ -70,7 +70,7 @@ class SubAccountController(BaseController):
         # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
-        _context = self.execute_request(_request)        
+        _context = self.execute_request(_request)
         self.validate_response(_context)
 
         # Return appropriate type
@@ -91,7 +91,7 @@ class SubAccountController(BaseController):
 
                     sub_account_sid -- string -- The SubaccountSid to be
                         activated or suspended
-                    activate -- ActivateStatus -- 0 to suspend or 1 to
+                    activate -- ActivateStatusEnum -- 0 to suspend or 1 to
                         activate
                     response_type -- string -- TODO: type description here.
                         Example: 
@@ -129,7 +129,7 @@ class SubAccountController(BaseController):
         # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
-        _context = self.execute_request(_request)        
+        _context = self.execute_request(_request)
         self.validate_response(_context)
 
         # Return appropriate type
@@ -150,8 +150,8 @@ class SubAccountController(BaseController):
 
                     sub_account_sid -- string -- The SubaccountSid to be
                         deleted
-                    merge_number -- MergeNumberStatus -- 0 to delete or 1 to
-                        merge numbers to parent account.
+                    merge_number -- MergeNumberStatusEnum -- 0 to delete or 1
+                        to merge numbers to parent account.
                     response_type -- string -- Response type format xml or
                         json
 
@@ -188,7 +188,7 @@ class SubAccountController(BaseController):
         # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
-        _context = self.execute_request(_request)        
+        _context = self.execute_request(_request)
         self.validate_response(_context)
 
         # Return appropriate type

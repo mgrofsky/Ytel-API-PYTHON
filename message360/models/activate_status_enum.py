@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 
 """
-    message360.models.activate_status
+    message360.models.activate_status_enum
 
     This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io )
 """
 
-class ActivateStatus(object):
+class ActivateStatusEnum(object):
 
     """Implementation of the 'ActivateStatus' enum.
 

@@ -64,14 +64,14 @@ class APIHelper(object):
         if isinstance(obj, list):
             value = list()
             for item in obj:
-                if APIHelper.respond_to(item, "to_dictionary"):
-                    value.append(item.to_dictionary())
+                if hasattr(item, "_names"):
+                    value.append(APIHelper.to_dictionary(item))
                 else:
                     value.append(item)
             obj = value
         else:
-            if APIHelper.respond_to(obj, "to_dictionary"):
-                obj = obj.to_dictionary()
+            if hasattr(obj, "_names"):
+                obj = APIHelper.to_dictionary(obj)
 
         return jsonpickle.encode(obj, False)
 
@@ -198,8 +198,8 @@ class APIHelper(object):
         retval = dict()
 
         # If we received an object, resolve it's field names.
-        if APIHelper.respond_to(obj, "to_dictionary"):
-            obj = obj.to_dictionary()
+        if hasattr(obj, "_names"):
+            obj = APIHelper.to_dictionary(obj)
 
         if obj is None:
             return {}
@@ -215,19 +215,39 @@ class APIHelper(object):
         return retval
 
     @staticmethod
-    def respond_to(obj,
-                   function_name):
-        """Checks if an object has a method with a specific name.
+    def to_dictionary(obj):
+        """Creates a dictionary representation of a class instance. The
+        keys are taken from the API description and may differ from language
+        specific variable names of properties.
 
         Args:
-            obj (object): An object to check the method against.
-            function_name (string): The name of the method.
+            obj: The object to be converted into a dictionary.
 
         Returns:
-            Boolean: True if the obj contains the method, False otherwise.
+            dictionary: A dictionary form of the model with properties in
+            their API formats.
 
         """
-        return callable(getattr(obj, function_name, None))
+        dictionary = dict()
+
+        # Loop through all properties in this model
+        for name in obj._names:
+            value = getattr(obj, name)
+            if isinstance(value, list):
+                # Loop through each item
+                dictionary[obj._names[name]] = list()
+                for item in value:
+                    dictionary[obj._names[name]].append(APIHelper.to_dictionary(item) if hasattr(item, "_names") else item)
+            elif isinstance(value, dict):
+                # Loop through each item
+                dictionary[obj._names[name]] = dict()
+                for key in value:
+                    dictionary[obj._names[name]][key] = APIHelper.to_dictionary(value[key]) if hasattr(value[key], "_names") else value[key]
+            else:
+                dictionary[obj._names[name]] = APIHelper.to_dictionary(value) if hasattr(value, "_names") else value
+
+        # Return the result
+        return dictionary
 
     class CustomDate(object):
 
@@ -265,7 +285,7 @@ class APIHelper(object):
 
         @classmethod
         def from_value(cls, value):
-            dtime = datetime.datetime(*eut.parsedate(value)[:6])
+            dtime = datetime.datetime.fromtimestamp(eut.mktime_tz(eut.parsedate_tz(value)))
             return cls(dtime, value)
 
     class UnixDateTime(CustomDate):
@@ -281,8 +301,8 @@ class APIHelper(object):
 
         @classmethod
         def from_value(cls, value):
-            dtime = datetime.datetime.utcfromtimestamp(value)
-            return cls(dtime, value)
+            dtime = datetime.datetime.utcfromtimestamp(float(value))
+            return cls(dtime, float(value))
 
     class RFC3339DateTime(CustomDate):
 

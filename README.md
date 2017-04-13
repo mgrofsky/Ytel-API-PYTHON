@@ -253,7 +253,7 @@ def create_list_inbound_short_code(self,
 ```python
 collect = {}
 
-page = 57
+page = 40
 collect['page'] = page
 
 pagesize = 10
@@ -304,7 +304,7 @@ def create_list_short_code(self,
 ```python
 collect = {}
 
-page = 57
+page = 40
 collect['page'] = page
 
 pagesize = 10
@@ -356,7 +356,7 @@ collect = {}
 mtype = 'authorization'
 collect['mtype'] = mtype
 
-page = 57
+page = 40
 collect['page'] = page
 
 pagesize = 10
@@ -450,10 +450,10 @@ collect['conference_sid'] = conference_sid
 participant_sid = 'ParticipantSid'
 collect['participant_sid'] = participant_sid
 
-muted = False
+muted = True
 collect['muted'] = muted
 
-deaf = False
+deaf = True
 collect['deaf'] = deaf
 
 response_type = 'json'
@@ -493,16 +493,16 @@ def create_list_conference(self,
 ```python
 collect = {}
 
-page = 57
+page = 132
 collect['page'] = page
 
-page_size = 57
+page_size = 132
 collect['page_size'] = page_size
 
 friendly_name = 'FriendlyName'
 collect['friendly_name'] = friendly_name
 
-status = InterruptedCallStatus.CANCELED
+status = InterruptedCallStatusEnum.CANCELED
 collect['status'] = status
 
 date_created = 'DateCreated'
@@ -588,7 +588,7 @@ collect['conferencesid'] = conferencesid
 participantnumber = 'participantnumber'
 collect['participantnumber'] = participantnumber
 
-tocountrycode = 57
+tocountrycode = 90
 collect['tocountrycode'] = tocountrycode
 
 muted = False
@@ -636,10 +636,10 @@ collect = {}
 conference_sid = 'ConferenceSid'
 collect['conference_sid'] = conference_sid
 
-page = 57
+page = 90
 collect['page'] = page
 
-pagesize = 57
+pagesize = 90
 collect['pagesize'] = pagesize
 
 muted = False
@@ -1149,7 +1149,7 @@ collect['to'] = to
 mfrom = 'from'
 collect['mfrom'] = mfrom
 
-mtype = SendEmailAs.HTML
+mtype = SendEmailAsEnum.HTML
 collect['mtype'] = mtype
 
 subject = 'subject'
@@ -1298,10 +1298,10 @@ def create_carrier_lookup_list(self,
 ```python
 collect = {}
 
-page = 148
+page = 90
 collect['page'] = page
 
-pagesize = 148
+pagesize = 90
 collect['pagesize'] = pagesize
 
 response_type = 'json'
@@ -1417,28 +1417,28 @@ collect['to'] = to
 url = 'Url'
 collect['url'] = url
 
-method = HttpAction.GET
+method = HttpActionEnum.GET
 collect['method'] = method
 
 status_call_back_url = 'StatusCallBackUrl'
 collect['status_call_back_url'] = status_call_back_url
 
-status_call_back_method = HttpAction.GET
+status_call_back_method = HttpActionEnum.GET
 collect['status_call_back_method'] = status_call_back_method
 
 fall_back_url = 'FallBackUrl'
 collect['fall_back_url'] = fall_back_url
 
-fall_back_method = HttpAction.GET
+fall_back_method = HttpActionEnum.GET
 collect['fall_back_method'] = fall_back_method
 
 heart_beat_url = 'HeartBeatUrl'
 collect['heart_beat_url'] = heart_beat_url
 
-heart_beat_method = HttpAction.GET
+heart_beat_method = HttpActionEnum.GET
 collect['heart_beat_method'] = heart_beat_method
 
-timeout = 148
+timeout = 182
 collect['timeout'] = timeout
 
 play_dtmf = 'PlayDtmf'
@@ -1453,7 +1453,7 @@ collect['record'] = record
 record_call_back_url = 'RecordCallBackUrl'
 collect['record_call_back_url'] = record_call_back_url
 
-record_call_back_method = HttpAction.GET
+record_call_back_method = HttpActionEnum.GET
 collect['record_call_back_method'] = record_call_back_method
 
 transcribe = True
@@ -1503,22 +1503,22 @@ collect = {}
 call_sid = 'CallSid'
 collect['call_sid'] = call_sid
 
-audio_direction = AudioDirection.IN
+audio_direction = AudioDirectionEnum.IN
 collect['audio_direction'] = audio_direction
 
-pitch_semi_tones = 148.563680431602
+pitch_semi_tones = 182.107227557389
 collect['pitch_semi_tones'] = pitch_semi_tones
 
-pitch_octaves = 148.563680431602
+pitch_octaves = 182.107227557389
 collect['pitch_octaves'] = pitch_octaves
 
-pitch = 148.563680431602
+pitch = 182.107227557389
 collect['pitch'] = pitch
 
-rate = 148.563680431602
+rate = 182.107227557389
 collect['rate'] = rate
 
-tempo = 148.563680431602
+tempo = 182.107227557389
 collect['tempo'] = tempo
 
 response_type = 'json'
@@ -1564,16 +1564,16 @@ collect['call_sid'] = call_sid
 record = True
 collect['record'] = record
 
-direction = Direction.IN
+direction = DirectionEnum.IN
 collect['direction'] = direction
 
-time_limit = 148
+time_limit = 182
 collect['time_limit'] = time_limit
 
 call_back_url = 'CallBackUrl'
 collect['call_back_url'] = call_back_url
 
-fileformat = AudioFormat.MP3
+fileformat = AudioFormatEnum.MP3
 collect['fileformat'] = fileformat
 
 response_type = 'json'
@@ -1619,10 +1619,10 @@ collect['call_sid'] = call_sid
 audio_url = 'AudioUrl'
 collect['audio_url'] = audio_url
 
-length = 148
+length = 182
 collect['length'] = length
 
-direction = Direction.IN
+direction = DirectionEnum.IN
 collect['direction'] = direction
 
 loop = True
@@ -1672,10 +1672,10 @@ collect['call_sid'] = call_sid
 url = 'Url'
 collect['url'] = url
 
-method = HttpAction.GET
+method = HttpActionEnum.GET
 collect['method'] = method
 
-status = InterruptedCallStatus.CANCELED
+status = InterruptedCallStatusEnum.CANCELED
 collect['status'] = status
 
 response_type = 'json'
@@ -1718,7 +1718,7 @@ collect['call_sid'] = call_sid
 play_dtmf = 'PlayDtmf'
 collect['play_dtmf'] = play_dtmf
 
-play_dtmf_direction = Direction.IN
+play_dtmf_direction = DirectionEnum.IN
 collect['play_dtmf_direction'] = play_dtmf_direction
 
 response_type = 'json'
@@ -1788,19 +1788,19 @@ collect['to'] = to
 url = 'Url'
 collect['url'] = url
 
-method = HttpAction.GET
+method = HttpActionEnum.GET
 collect['method'] = method
 
 status_call_back_url = 'StatusCallBackUrl'
 collect['status_call_back_url'] = status_call_back_url
 
-status_call_back_method = HttpAction.GET
+status_call_back_method = HttpActionEnum.GET
 collect['status_call_back_method'] = status_call_back_method
 
 fall_back_url = 'FallBackUrl'
 collect['fall_back_url'] = fall_back_url
 
-fall_back_method = HttpAction.GET
+fall_back_method = HttpActionEnum.GET
 collect['fall_back_method'] = fall_back_method
 
 heart_beat_url = 'HeartBeatUrl'
@@ -1809,7 +1809,7 @@ collect['heart_beat_url'] = heart_beat_url
 heart_beat_method = True
 collect['heart_beat_method'] = heart_beat_method
 
-timeout = 148
+timeout = 182
 collect['timeout'] = timeout
 
 play_dtmf = 'PlayDtmf'
@@ -1824,7 +1824,7 @@ collect['record'] = record
 record_call_back_url = 'RecordCallBackUrl'
 collect['record_call_back_url'] = record_call_back_url
 
-record_call_back_method = HttpAction.GET
+record_call_back_method = HttpActionEnum.GET
 collect['record_call_back_method'] = record_call_back_method
 
 transcribe = True
@@ -1833,7 +1833,7 @@ collect['transcribe'] = transcribe
 transcribe_call_back_url = 'TranscribeCallBackUrl'
 collect['transcribe_call_back_url'] = transcribe_call_back_url
 
-if_machine = IfMachine.CONTINUE
+if_machine = IfMachineEnum.CONTINUE
 collect['if_machine'] = if_machine
 
 response_type = 'json'
@@ -1872,7 +1872,7 @@ def create_list_calls(self,
 ```python
 collect = {}
 
-page = 148
+page = 182
 collect['page'] = page
 
 page_size = 10
@@ -1892,6 +1892,69 @@ collect['response_type'] = response_type
 
 
 result = call_client.create_list_calls(collect)
+
+```
+
+
+#### <a name="create_send_ringless_vm"></a>![Method: ](https://apidocs.io/img/method.png ".CallController.create_send_ringless_vm") create_send_ringless_vm
+
+> API endpoint used to send a Ringless Voicemail
+
+```python
+def create_send_ringless_vm(self,
+                                options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| fromCountryCode |  ``` Required ```  | From country code |
+| mfrom |  ``` Required ```  | This number to display on Caller ID as calling |
+| toCountryCode |  ``` Required ```  | To country code |
+| to |  ``` Required ```  | To number |
+| voiceMailURL |  ``` Required ```  | URL to an audio file |
+| method |  ``` Required ```  ``` DefaultValue ```  | Not currently used in this version |
+| statusCallBackUrl |  ``` Optional ```  | URL to post the status of the Ringless request |
+| statsCallBackMethod |  ``` Optional ```  | POST or GET |
+| responseType |  ``` Optional ```  ``` DefaultValue ```  | Response type format xml or json |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+from_country_code = 'FromCountryCode'
+collect['from_country_code'] = from_country_code
+
+mfrom = 'From'
+collect['mfrom'] = mfrom
+
+to_country_code = 'ToCountryCode'
+collect['to_country_code'] = to_country_code
+
+to = 'To'
+collect['to'] = to
+
+voice_mail_url = 'VoiceMailURL'
+collect['voice_mail_url'] = voice_mail_url
+
+method = 'GET'
+collect['method'] = method
+
+status_call_back_url = 'StatusCallBackUrl'
+collect['status_call_back_url'] = status_call_back_url
+
+stats_call_back_method = 'StatsCallBackMethod'
+collect['stats_call_back_method'] = stats_call_back_method
+
+response_type = 'json'
+collect['response_type'] = response_type
+
+
+result = call_client.create_send_ringless_vm(collect)
 
 ```
 
@@ -2068,7 +2131,7 @@ collect = {}
 sub_account_sid = 'SubAccountSID'
 collect['sub_account_sid'] = sub_account_sid
 
-activate = ActivateStatus.DEACTIVATE
+activate = ActivateStatusEnum.DEACTIVATE
 collect['activate'] = activate
 
 response_type = 'ResponseType'
@@ -2107,7 +2170,7 @@ collect = {}
 sub_account_sid = 'SubAccountSID'
 collect['sub_account_sid'] = sub_account_sid
 
-merge_number = MergeNumberStatus.DELETE
+merge_number = MergeNumberStatusEnum.DELETE
 collect['merge_number'] = merge_number
 
 response_type = 'json'
@@ -2407,37 +2470,37 @@ collect['friendly_name'] = friendly_name
 voice_url = 'VoiceUrl'
 collect['voice_url'] = voice_url
 
-voice_method = HttpAction.GET
+voice_method = HttpActionEnum.GET
 collect['voice_method'] = voice_method
 
 voice_fallback_url = 'VoiceFallbackUrl'
 collect['voice_fallback_url'] = voice_fallback_url
 
-voice_fallback_method = HttpAction.GET
+voice_fallback_method = HttpActionEnum.GET
 collect['voice_fallback_method'] = voice_fallback_method
 
 hangup_callback = 'HangupCallback'
 collect['hangup_callback'] = hangup_callback
 
-hangup_callback_method = HttpAction.GET
+hangup_callback_method = HttpActionEnum.GET
 collect['hangup_callback_method'] = hangup_callback_method
 
 heartbeat_url = 'HeartbeatUrl'
 collect['heartbeat_url'] = heartbeat_url
 
-heartbeat_method = HttpAction.GET
+heartbeat_method = HttpActionEnum.GET
 collect['heartbeat_method'] = heartbeat_method
 
 sms_url = 'SmsUrl'
 collect['sms_url'] = sms_url
 
-sms_method = HttpAction.GET
+sms_method = HttpActionEnum.GET
 collect['sms_method'] = sms_method
 
 sms_fallback_url = 'SmsFallbackUrl'
 collect['sms_fallback_url'] = sms_fallback_url
 
-sms_fallback_method = HttpAction.GET
+sms_fallback_method = HttpActionEnum.GET
 collect['sms_fallback_method'] = sms_fallback_method
 
 response_type = 'json'
@@ -2580,13 +2643,13 @@ def create_list_number(self,
 ```python
 collect = {}
 
-page = 106
+page = 140
 collect['page'] = page
 
 page_size = 10
 collect['page_size'] = page_size
 
-number_type = NumberType.ALL
+number_type = NumberTypeEnum.ALL
 collect['number_type'] = number_type
 
 friendly_name = 'FriendlyName'
@@ -2626,7 +2689,7 @@ def create_available_phone_number(self,
 ```python
 collect = {}
 
-number_type = NumberType.ALL
+number_type = NumberTypeEnum.ALL
 collect['number_type'] = number_type
 
 area_code = 'AreaCode'
@@ -2682,10 +2745,10 @@ def create_list_recording(self,
 ```python
 collect = {}
 
-page = 106
+page = 140
 collect['page'] = page
 
-page_size = 106
+page_size = 140
 collect['page_size'] = page_size
 
 date_created = 'DateCreated'
@@ -2811,7 +2874,7 @@ def create_list_inbound_sms(self,
 ```python
 collect = {}
 
-page = 106
+page = 140
 collect['page'] = page
 
 pagesize = 'pagesize'
@@ -2859,10 +2922,10 @@ def create_list_sms(self,
 ```python
 collect = {}
 
-page = 106
+page = 140
 collect['page'] = page
 
-pagesize = 106
+pagesize = 140
 collect['pagesize'] = pagesize
 
 mfrom = 'from'
@@ -2927,7 +2990,7 @@ collect['to'] = to
 body = 'body'
 collect['body'] = body
 
-method = HttpAction.GET
+method = HttpActionEnum.GET
 collect['method'] = method
 
 messagestatuscallback = 'messagestatuscallback'
@@ -3120,13 +3183,13 @@ def create_list_transcription(self,
 ```python
 collect = {}
 
-page = 198
+page = 140
 collect['page'] = page
 
-page_size = 198
+page_size = 140
 collect['page_size'] = page_size
 
-status = Status.INPROGRESS
+status = StatusEnum.INPROGRESS
 collect['status'] = status
 
 date_transcribed = 'DateTranscribed'
@@ -3178,7 +3241,7 @@ def create_list_usage(self,
 ```python
 collect = {}
 
-product_code = ProductCode.ALL
+product_code = ProductCodeEnum.ALL
 collect['product_code'] = product_code
 
 start_date = '2016-09-06'

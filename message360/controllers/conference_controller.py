@@ -73,7 +73,7 @@ class ConferenceController(BaseController):
         # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
-        _context = self.execute_request(_request)        
+        _context = self.execute_request(_request)
         self.validate_response(_context)
 
         # Return appropriate type
@@ -98,8 +98,8 @@ class ConferenceController(BaseController):
                         in the response per page
                     friendly_name -- string -- Only return conferences with
                         the specified FriendlyName
-                    status -- InterruptedCallStatus -- TODO: type description
-                        here. Example: 
+                    status -- InterruptedCallStatusEnum -- TODO: type
+                        description here. Example: 
                     date_created -- string -- TODO: type description here.
                         Example: 
                     date_updated -- string -- TODO: type description here.
@@ -140,7 +140,7 @@ class ConferenceController(BaseController):
         # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
-        _context = self.execute_request(_request)        
+        _context = self.execute_request(_request)
         self.validate_response(_context)
 
         # Return appropriate type
@@ -195,7 +195,7 @@ class ConferenceController(BaseController):
         # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
-        _context = self.execute_request(_request)        
+        _context = self.execute_request(_request)
         self.validate_response(_context)
 
         # Return appropriate type
@@ -260,7 +260,7 @@ class ConferenceController(BaseController):
         # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
-        _context = self.execute_request(_request)        
+        _context = self.execute_request(_request)
         self.validate_response(_context)
 
         # Return appropriate type
@@ -321,7 +321,7 @@ class ConferenceController(BaseController):
         # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
-        _context = self.execute_request(_request)        
+        _context = self.execute_request(_request)
         self.validate_response(_context)
 
         # Return appropriate type
@@ -379,7 +379,7 @@ class ConferenceController(BaseController):
         # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
-        _context = self.execute_request(_request)        
+        _context = self.execute_request(_request)
         self.validate_response(_context)
 
         # Return appropriate type

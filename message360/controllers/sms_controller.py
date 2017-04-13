@@ -69,7 +69,7 @@ class SMSController(BaseController):
         # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
-        _context = self.execute_request(_request)        
+        _context = self.execute_request(_request)
         self.validate_response(_context)
 
         # Return appropriate type
@@ -131,7 +131,7 @@ class SMSController(BaseController):
         # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
-        _context = self.execute_request(_request)        
+        _context = self.execute_request(_request)
         self.validate_response(_context)
 
         # Return appropriate type
@@ -156,8 +156,8 @@ class SMSController(BaseController):
                     tocountrycode -- int -- To country code
                     to -- string -- Number to send the SMS to
                     body -- string -- Text Message To Send
-                    method -- HttpAction -- Specifies the HTTP method used to
-                        request the required URL once SMS sent.
+                    method -- HttpActionEnum -- Specifies the HTTP method used
+                        to request the required URL once SMS sent.
                     messagestatuscallback -- string -- URL that can be
                         requested to receive notification when SMS has Sent. A
                         set of default parameters will be sent here once the
@@ -206,7 +206,7 @@ class SMSController(BaseController):
         # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
-        _context = self.execute_request(_request)        
+        _context = self.execute_request(_request)
         self.validate_response(_context)
 
         # Return appropriate type
@@ -260,7 +260,7 @@ class SMSController(BaseController):
         # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
-        _context = self.execute_request(_request)        
+        _context = self.execute_request(_request)
         self.validate_response(_context)
 
         # Return appropriate type

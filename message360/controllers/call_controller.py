@@ -64,7 +64,7 @@ class CallController(BaseController):
         # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
-        _context = self.execute_request(_request)        
+        _context = self.execute_request(_request)
         self.validate_response(_context)
 
         # Return appropriate type
@@ -90,20 +90,20 @@ class CallController(BaseController):
                         Example: 1
                     to -- string -- TODO: type description here. Example: 
                     url -- string -- TODO: type description here. Example: 
-                    method -- HttpAction -- TODO: type description here.
+                    method -- HttpActionEnum -- TODO: type description here.
                         Example: 
                     status_call_back_url -- string -- TODO: type description
                         here. Example: 
-                    status_call_back_method -- HttpAction -- TODO: type
+                    status_call_back_method -- HttpActionEnum -- TODO: type
                         description here. Example: 
                     fall_back_url -- string -- TODO: type description here.
                         Example: 
-                    fall_back_method -- HttpAction -- TODO: type description
-                        here. Example: 
+                    fall_back_method -- HttpActionEnum -- TODO: type
+                        description here. Example: 
                     heart_beat_url -- string -- TODO: type description here.
                         Example: 
-                    heart_beat_method -- HttpAction -- TODO: type description
-                        here. Example: 
+                    heart_beat_method -- HttpActionEnum -- TODO: type
+                        description here. Example: 
                     timeout -- int -- TODO: type description here. Example: 
                     play_dtmf -- string -- TODO: type description here.
                         Example: 
@@ -112,7 +112,7 @@ class CallController(BaseController):
                     record -- bool -- TODO: type description here. Example: 
                     record_call_back_url -- string -- TODO: type description
                         here. Example: 
-                    record_call_back_method -- HttpAction -- TODO: type
+                    record_call_back_method -- HttpActionEnum -- TODO: type
                         description here. Example: 
                     transcribe -- bool -- TODO: type description here.
                         Example: 
@@ -175,7 +175,7 @@ class CallController(BaseController):
         # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
-        _context = self.execute_request(_request)        
+        _context = self.execute_request(_request)
         self.validate_response(_context)
 
         # Return appropriate type
@@ -196,7 +196,7 @@ class CallController(BaseController):
 
                     call_sid -- string -- TODO: type description here.
                         Example: 
-                    audio_direction -- AudioDirection -- TODO: type
+                    audio_direction -- AudioDirectionEnum -- TODO: type
                         description here. Example: 
                     pitch_semi_tones -- float -- value between -14 and 14
                     pitch_octaves -- float -- value between -1 and 1
@@ -243,7 +243,7 @@ class CallController(BaseController):
         # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
-        _context = self.execute_request(_request)        
+        _context = self.execute_request(_request)
         self.validate_response(_context)
 
         # Return appropriate type
@@ -266,13 +266,14 @@ class CallController(BaseController):
                         resource
                     record -- bool -- Set true to initiate recording or false
                         to terminate recording
-                    direction -- Direction -- The leg of the call to record
+                    direction -- DirectionEnum -- The leg of the call to
+                        record
                     time_limit -- int -- Time in seconds the recording
                         duration should not exceed
                     call_back_url -- string -- URL consulted after the
                         recording completes
-                    fileformat -- AudioFormat -- Format of the recording file.
-                        Can be .mp3 or .wav
+                    fileformat -- AudioFormatEnum -- Format of the recording
+                        file. Can be .mp3 or .wav
                     response_type -- string -- Response format, xml or json
 
         Returns:
@@ -312,7 +313,7 @@ class CallController(BaseController):
         # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
-        _context = self.execute_request(_request)        
+        _context = self.execute_request(_request)
         self.validate_response(_context)
 
         # Return appropriate type
@@ -340,8 +341,8 @@ class CallController(BaseController):
                         .wav
                     length -- int -- Time limit in seconds for audio play
                         back
-                    direction -- Direction -- The leg of the call audio will
-                        be played to
+                    direction -- DirectionEnum -- The leg of the call audio
+                        will be played to
                     loop -- bool -- Repeat audio playback indefinitely
                     mix -- bool -- If false, all other audio will be muted
                     response_type -- string -- Response type format xml or
@@ -384,7 +385,7 @@ class CallController(BaseController):
         # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
-        _context = self.execute_request(_request)        
+        _context = self.execute_request(_request)
         self.validate_response(_context)
 
         # Return appropriate type
@@ -406,9 +407,9 @@ class CallController(BaseController):
                     call_sid -- string -- Call SId
                     url -- string -- URL the in-progress call will be
                         redirected to
-                    method -- HttpAction -- The method used to request the
+                    method -- HttpActionEnum -- The method used to request the
                         above Url parameter
-                    status -- InterruptedCallStatus -- Status to set the
+                    status -- InterruptedCallStatusEnum -- Status to set the
                         in-progress call to
                     response_type -- string -- Response type format xml or
                         json
@@ -447,7 +448,7 @@ class CallController(BaseController):
         # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
-        _context = self.execute_request(_request)        
+        _context = self.execute_request(_request)
         self.validate_response(_context)
 
         # Return appropriate type
@@ -470,8 +471,8 @@ class CallController(BaseController):
                         resource
                     play_dtmf -- string -- DTMF digits to play to the call.
                         0-9, #, *, W, or w
-                    play_dtmf_direction -- Direction -- The leg of the call
-                        DTMF digits should be sent to
+                    play_dtmf_direction -- DirectionEnum -- The leg of the
+                        call DTMF digits should be sent to
                     response_type -- string -- Response type format xml or
                         json
 
@@ -509,7 +510,7 @@ class CallController(BaseController):
         # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
-        _context = self.execute_request(_request)        
+        _context = self.execute_request(_request)
         self.validate_response(_context)
 
         # Return appropriate type
@@ -536,16 +537,16 @@ class CallController(BaseController):
                     to_country_code -- string -- To cuntry code number
                     to -- string -- To number
                     url -- string -- URL requested once the call connects
-                    method -- HttpAction -- Specifies the HTTP method used to
-                        request the required URL once call connects.
+                    method -- HttpActionEnum -- Specifies the HTTP method used
+                        to request the required URL once call connects.
                     status_call_back_url -- string -- specifies the HTTP
                         methodlinkclass used to request StatusCallbackUrl.
-                    status_call_back_method -- HttpAction -- Specifies the
+                    status_call_back_method -- HttpActionEnum -- Specifies the
                         HTTP methodlinkclass used to request
                         StatusCallbackUrl.
                     fall_back_url -- string -- URL requested if the initial
                         Url parameter fails or encounters an error
-                    fall_back_method -- HttpAction -- Specifies the HTTP
+                    fall_back_method -- HttpActionEnum -- Specifies the HTTP
                         method used to request the required FallbackUrl once
                         call connects.
                     heart_beat_url -- string -- URL that can be requested
@@ -563,14 +564,14 @@ class CallController(BaseController):
                         recorded
                     record_call_back_url -- string -- Recording parameters
                         will be sent here upon completion
-                    record_call_back_method -- HttpAction -- Method used to
-                        request the RecordCallback URL.
+                    record_call_back_method -- HttpActionEnum -- Method used
+                        to request the RecordCallback URL.
                     transcribe -- bool -- Specifies if the call recording
                         should be transcribed
                     transcribe_call_back_url -- string -- Transcription
                         parameters will be sent here upon completion
-                    if_machine -- IfMachine -- How Message360 should handle
-                        the receiving numbers voicemail machine
+                    if_machine -- IfMachineEnum -- How Message360 should
+                        handle the receiving numbers voicemail machine
                     response_type -- string -- Response type format xml or
                         json
 
@@ -631,7 +632,7 @@ class CallController(BaseController):
         # Prepare and execute request
         _request = self.http_client.post(_query_url, query_parameters=_query_parameters, parameters=_form_parameters)
         BasicAuth.apply(_request)
-        _context = self.execute_request(_request)        
+        _context = self.execute_request(_request)
         self.validate_response(_context)
 
         # Return appropriate type
@@ -693,7 +694,82 @@ class CallController(BaseController):
         # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
-        _context = self.execute_request(_request)        
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
+
+        # Return appropriate type
+        return _context.response.raw_body
+
+    def create_send_ringless_vm(self,
+                                options=dict()):
+        """Does a POST request to /calls/makeringlessvoicemailcall.{ResponseType}.
+
+        API endpoint used to send a Ringless Voicemail
+
+        Args:
+            options (dict, optional): Key-value pairs for any of the
+                parameters to this API Endpoint. All parameters to the
+                endpoint are supplied through the dictionary with their names
+                being the key and their desired values being the value. A list
+                of parameters that can be used are::
+
+                    from_country_code -- string -- From country code
+                    mfrom -- string -- This number to display on Caller ID as
+                        calling
+                    to_country_code -- string -- To country code
+                    to -- string -- To number
+                    voice_mail_url -- string -- URL to an audio file
+                    method -- string -- Not currently used in this version
+                    status_call_back_url -- string -- URL to post the status
+                        of the Ringless request
+                    stats_call_back_method -- string -- POST or GET
+                    response_type -- string -- Response type format xml or
+                        json
+
+        Returns:
+            string: Response from the API. 
+
+        Raises:
+            APIException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        # Validate required parameters
+        self.validate_parameters(from_country_code=options.get("from_country_code"),
+                                 mfrom=options.get("mfrom"),
+                                 to_country_code=options.get("to_country_code"),
+                                 to=options.get("to"),
+                                 voice_mail_url=options.get("voice_mail_url"),
+                                 method=options.get("method"))
+
+        # Prepare query URL
+        _query_builder = Configuration.get_base_uri()
+        _query_builder += '/calls/makeringlessvoicemailcall.{ResponseType}'
+        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+            'ResponseType': options.get('response_type', None)
+        })
+        _query_url = APIHelper.clean_url(_query_builder)
+
+        # Prepare form parameters
+        _form_parameters = {
+            'FromCountryCode': options.get('from_country_code', None),
+            'From': options.get('mfrom', None),
+            'ToCountryCode': options.get('to_country_code', None),
+            'To': options.get('to', None),
+            'VoiceMailURL': options.get('voice_mail_url', None),
+            'Method': options.get('method', None),
+            'StatusCallBackUrl': options.get('status_call_back_url', None),
+            'StatsCallBackMethod': options.get('stats_call_back_method', None)
+        }
+        _form_parameters = APIHelper.form_encode_parameters(_form_parameters)
+
+        # Prepare and execute request
+        _request = self.http_client.post(_query_url, parameters=_form_parameters)
+        BasicAuth.apply(_request)
+        _context = self.execute_request(_request)
         self.validate_response(_context)
 
         # Return appropriate type

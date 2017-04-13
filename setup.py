@@ -9,8 +9,8 @@ except(IOError, ImportError):
 
 setup(
     name='message_360',
-    version='2.0.0',
-    description='message360 API version 2',
+    version='3.0.0',
+    description='message360 API version 3',
     long_description=long_description,
     author='Shahid Khaliq',
     author_email='shahid.khaliq@apimatic.io',

@@ -43,7 +43,7 @@ class Configuration(object):
     # All the environments the SDK can run in
     environments = {
         Environment.PRODUCTION: {
-            Server.DEFAULT: 'https://api.message360.com/api/v2',
+            Server.DEFAULT: 'https://api.message360.com/api/v3',
         },
         Environment.PREPRODUCTION: {
             Server.DEFAULT: 'https://api-preprod.message360.com/api/v2',

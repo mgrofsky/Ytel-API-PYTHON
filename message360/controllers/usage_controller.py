@@ -29,7 +29,7 @@ class UsageController(BaseController):
                 being the key and their desired values being the value. A list
                 of parameters that can be used are::
 
-                    product_code -- ProductCode -- Product Code
+                    product_code -- ProductCodeEnum -- Product Code
                     start_date -- string -- Start Usage Date
                     end_date -- string -- End Usage Date
                     response_type -- string -- Response type format xml or
@@ -70,7 +70,7 @@ class UsageController(BaseController):
         # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
-        _context = self.execute_request(_request)        
+        _context = self.execute_request(_request)
         self.validate_response(_context)
 
         # Return appropriate type

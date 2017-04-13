@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 
 """
-    message360.models.product_code
+    message360.models.product_code_enum
 
     This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io )
 """
 
-class ProductCode(object):
+class ProductCodeEnum(object):
 
     """Implementation of the 'Product Code' enum.
 
