@@ -3,7 +3,7 @@
 """
     message360.http.http_response
 
-    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 12/12/2016
+    This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ).
 """
 
 class HttpResponse(object):
@@ -25,12 +25,12 @@ class HttpResponse(object):
                  headers,
                  raw_body):
         """Constructor for the HttpResponse class
-        
+
         Args:
             status_code (int): The response status code.
             headers (dict): The response headers.
             raw_body (string): The raw body from the server.
-        
+
         """
         self.status_code = status_code
         self.headers = headers

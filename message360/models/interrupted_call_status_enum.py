@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 
 """
-    message360.models.interrupted_call_status
+    message360.models.interrupted_call_status_enum
 
-    This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 12/12/2016
+    This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io )
 """
 
-class InterruptedCallStatus(object):
+class InterruptedCallStatusEnum(object):
 
     """Implementation of the 'InterruptedCallStatus' enum.
 

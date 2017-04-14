@@ -3,17 +3,17 @@
 """
    message360.configuration
 
-   This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 12/12/2016
+   This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io )
 """
 from .api_helper import APIHelper
 
 class Configuration(object):
 
     """A class used for configuring the SDK by a user.
-    
+
     This class need not be instantiated and all properties and methods
 	are accessible without instance creation.
-    
+
     """
 
     # An enum for SDK environments
@@ -24,13 +24,13 @@ class Configuration(object):
         PREPRODUCTION = 1
         # Internal development testing.  This configuration of the API is not available to the public.
         DEVELOPMENT = 2
-	
+
     # An enum for API servers
     class Server(object):
         DEFAULT = 0
-	
+
     # The environment in which the SDK is running
-    environment = Environment.PRODUCTION;
+    environment = Environment.PRODUCTION
 
     # The username to use with basic authentication
     # TODO: Set an appropriate value
@@ -43,28 +43,27 @@ class Configuration(object):
     # All the environments the SDK can run in
     environments = {
         Environment.PRODUCTION: {
-            Server.DEFAULT: 'https://api.message360.com/api/v2',
+            Server.DEFAULT: 'https://api.message360.com/api/v3',
         },
         Environment.PREPRODUCTION: {
             Server.DEFAULT: 'https://api-preprod.message360.com/api/v2',
         },
         Environment.DEVELOPMENT: {
-            Server.DEFAULT: 'https://api-dev.message360.com/api/v2',
+            Server.DEFAULT: 'https://lara-dev.message360.com/api/v2',
         },
     }
 
     @classmethod
-    def get_base_uri(cls, server = Server.DEFAULT):
+    def get_base_uri(cls, server=Server.DEFAULT):
         """Generates the appropriate base URI for the environment and the server.
-       
+
         Args:
             server (Configuration.Server): The server enum for which the base URI is required.
-            
+
         Returns:
             String: The base URI.
-            
+
         """
         parameters = {
         }
         return APIHelper.append_url_with_template_parameters(cls.environments[cls.environment][server], parameters)
-

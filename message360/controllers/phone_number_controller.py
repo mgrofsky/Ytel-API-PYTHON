@@ -3,15 +3,18 @@
 """
     message360.controllers.phone_number_controller
 
-    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 12/12/2016
+    This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ).
 """
 
-from .base_controller import *
+from .base_controller import BaseController
+from ..api_helper import APIHelper
+from ..configuration import Configuration
+from ..http.auth.basic_auth import BasicAuth
 
 class PhoneNumberController(BaseController):
 
     """A Controller to access Endpoints in the message360 API."""
-    
+
 
     def update_phone_number(self,
                             options=dict()):
@@ -32,29 +35,29 @@ class PhoneNumberController(BaseController):
                         Example: 
                     voice_url -- string -- URL requested once the call
                         connects
-                    voice_method -- HttpAction -- TODO: type description here.
-                        Example: 
+                    voice_method -- HttpActionEnum -- TODO: type description
+                        here. Example: 
                     voice_fallback_url -- string -- URL requested if the voice
                         URL is not available
-                    voice_fallback_method -- HttpAction -- TODO: type
+                    voice_fallback_method -- HttpActionEnum -- TODO: type
                         description here. Example: 
                     hangup_callback -- string -- TODO: type description here.
                         Example: 
-                    hangup_callback_method -- HttpAction -- TODO: type
+                    hangup_callback_method -- HttpActionEnum -- TODO: type
                         description here. Example: 
                     heartbeat_url -- string -- URL requested once the call
                         connects
-                    heartbeat_method -- HttpAction -- URL that can be
+                    heartbeat_method -- HttpActionEnum -- URL that can be
                         requested every 60 seconds during the call to notify
                         of elapsed time
                     sms_url -- string -- URL requested when an SMS is
                         received
-                    sms_method -- HttpAction -- TODO: type description here.
-                        Example: 
+                    sms_method -- HttpActionEnum -- TODO: type description
+                        here. Example: 
                     sms_fallback_url -- string -- URL requested once the call
                         connects
-                    sms_fallback_method -- HttpAction -- URL requested if the
-                        sms URL is not available
+                    sms_fallback_method -- HttpActionEnum -- URL requested if
+                        the sms URL is not available
                     response_type -- string -- Response type format xml or
                         json
 
@@ -70,7 +73,7 @@ class PhoneNumberController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(phone_number = options.get("phone_number"))
+        self.validate_parameters(phone_number=options.get("phone_number"))
 
         # Prepare query URL
         _query_builder = Configuration.get_base_uri()
@@ -102,8 +105,8 @@ class PhoneNumberController(BaseController):
         # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
-        _context = self.execute_request(_request)        
-        self.validate_response(_context)    
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
 
         # Return appropriate type
         return _context.response.raw_body
@@ -137,7 +140,7 @@ class PhoneNumberController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(phone_number = options.get("phone_number"))
+        self.validate_parameters(phone_number=options.get("phone_number"))
 
         # Prepare query URL
         _query_builder = Configuration.get_base_uri()
@@ -156,8 +159,8 @@ class PhoneNumberController(BaseController):
         # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
-        _context = self.execute_request(_request)        
-        self.validate_response(_context)    
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
 
         # Return appropriate type
         return _context.response.raw_body
@@ -191,7 +194,7 @@ class PhoneNumberController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(phone_number = options.get("phone_number"))
+        self.validate_parameters(phone_number=options.get("phone_number"))
 
         # Prepare query URL
         _query_builder = Configuration.get_base_uri()
@@ -210,8 +213,8 @@ class PhoneNumberController(BaseController):
         # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
-        _context = self.execute_request(_request)        
-        self.validate_response(_context)    
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
 
         # Return appropriate type
         return _context.response.raw_body
@@ -245,7 +248,7 @@ class PhoneNumberController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(phone_number = options.get("phone_number"))
+        self.validate_parameters(phone_number=options.get("phone_number"))
 
         # Prepare query URL
         _query_builder = Configuration.get_base_uri()
@@ -264,8 +267,8 @@ class PhoneNumberController(BaseController):
         # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
-        _context = self.execute_request(_request)        
-        self.validate_response(_context)    
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
 
         # Return appropriate type
         return _context.response.raw_body
@@ -287,8 +290,8 @@ class PhoneNumberController(BaseController):
                         returned. Zero indexed
                     page_size -- int -- Number of individual resources listed
                         in the response per page
-                    number_type -- NumberType -- TODO: type description here.
-                        Example: 
+                    number_type -- NumberTypeEnum -- TODO: type description
+                        here. Example: 
                     friendly_name -- string -- TODO: type description here.
                         Example: 
                     response_type -- string -- Response type format xml or
@@ -325,8 +328,8 @@ class PhoneNumberController(BaseController):
         # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
-        _context = self.execute_request(_request)        
-        self.validate_response(_context)    
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
 
         # Return appropriate type
         return _context.response.raw_body
@@ -344,8 +347,8 @@ class PhoneNumberController(BaseController):
                 being the key and their desired values being the value. A list
                 of parameters that can be used are::
 
-                    number_type -- NumberType -- Number type either SMS,Voice
-                        or all
+                    number_type -- NumberTypeEnum -- Number type either
+                        SMS,Voice or all
                     area_code -- string -- Phone Number Area Code
                     page_size -- int -- Page Size
                     response_type -- string -- Response type format xml or
@@ -363,8 +366,8 @@ class PhoneNumberController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(number_type = options.get("number_type"),
-                                 area_code = options.get("area_code"))
+        self.validate_parameters(number_type=options.get("number_type"),
+                                 area_code=options.get("area_code"))
 
         # Prepare query URL
         _query_builder = Configuration.get_base_uri()
@@ -385,8 +388,8 @@ class PhoneNumberController(BaseController):
         # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
-        _context = self.execute_request(_request)        
-        self.validate_response(_context)    
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
 
         # Return appropriate type
         return _context.response.raw_body

@@ -3,11 +3,8 @@
 """
     message360.http.http_context
 
-    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 12/12/2016
+    This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ).
 """
-
-from .http_request import HttpRequest
-from .http_response import HttpResponse
 
 class HttpContext(object):
 
@@ -20,18 +17,18 @@ class HttpContext(object):
         response (HttpResponse): The returned response object after
             executing the request. Note that this may be None
             depending on if and when an error occurred.
-    
+
     """
 
     def __init__(self,
                  request,
                  response):
         """Constructor for the HttpContext class
-        
+
         Args:
             request (HttpRequest): The HTTP Request.
             response (HttpResponse): The HTTP Response.
-        
+
         """
         self.request = request
         self.response = response

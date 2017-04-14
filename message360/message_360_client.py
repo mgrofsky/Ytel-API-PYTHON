@@ -3,16 +3,31 @@
 """
     message360.message_360_client
 
-    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 12/12/2016
+    This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ).
 """
-
-from .http import *
-from .models import *
-from .exceptions import *
-from .decorators import *
-from .controllers import *
+from .decorators import lazy_property
+from .controllers.short_code_controller import ShortCodeController
+from .controllers.conference_controller import ConferenceController
+from .controllers.email_controller import EmailController
+from .controllers.number_verification_controller import NumberVerificationController
+from .controllers.carrier_controller import CarrierController
+from .controllers.call_controller import CallController
+from .controllers.web_rtc_controller import WebRTCController
+from .controllers.sub_account_controller import SubAccountController
+from .controllers.address_controller import AddressController
+from .controllers.phone_number_controller import PhoneNumberController
+from .controllers.recording_controller import RecordingController
+from .controllers.sms_controller import SMSController
+from .controllers.transcription_controller import TranscriptionController
+from .controllers.usage_controller import UsageController
+from .controllers.account_controller import AccountController
+from .configuration import Configuration
 
 class Message360Client(object):
+
+    @lazy_property
+    def short_code(self):
+        return ShortCodeController()
 
     @lazy_property
     def conference(self):
@@ -35,14 +50,6 @@ class Message360Client(object):
         return CallController()
 
     @lazy_property
-    def sms(self):
-        return SMSController()
-
-    @lazy_property
-    def account(self):
-        return AccountController()
-
-    @lazy_property
     def web_rtc(self):
         return WebRTCController()
 
@@ -63,12 +70,20 @@ class Message360Client(object):
         return RecordingController()
 
     @lazy_property
+    def sms(self):
+        return SMSController()
+
+    @lazy_property
     def transcription(self):
         return TranscriptionController()
 
     @lazy_property
     def usage(self):
         return UsageController()
+
+    @lazy_property
+    def account(self):
+        return AccountController()
 
 
     def __init__(self, 

@@ -1,1 +1,3 @@
-from .basic_auth import *
+__all__ = [
+    'basic_auth',
+]

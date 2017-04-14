@@ -3,15 +3,18 @@
 """
     message360.controllers.email_controller
 
-    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 12/12/2016
+    This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ).
 """
 
-from .base_controller import *
+from .base_controller import BaseController
+from ..api_helper import APIHelper
+from ..configuration import Configuration
+from ..http.auth.basic_auth import BasicAuth
 
 class EmailController(BaseController):
 
     """A Controller to access Endpoints in the message360 API."""
-    
+
 
     def create_delete_invalid(self,
                               options=dict()):
@@ -43,7 +46,7 @@ class EmailController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(email = options.get("email"))
+        self.validate_parameters(email=options.get("email"))
 
         # Prepare query URL
         _query_builder = Configuration.get_base_uri()
@@ -62,8 +65,8 @@ class EmailController(BaseController):
         # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
-        _context = self.execute_request(_request)        
-        self.validate_response(_context)    
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
 
         # Return appropriate type
         return _context.response.raw_body
@@ -115,8 +118,8 @@ class EmailController(BaseController):
         # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
-        _context = self.execute_request(_request)        
-        self.validate_response(_context)    
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
 
         # Return appropriate type
         return _context.response.raw_body
@@ -169,8 +172,8 @@ class EmailController(BaseController):
         # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
-        _context = self.execute_request(_request)        
-        self.validate_response(_context)    
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
 
         # Return appropriate type
         return _context.response.raw_body
@@ -223,8 +226,8 @@ class EmailController(BaseController):
         # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
-        _context = self.execute_request(_request)        
-        self.validate_response(_context)    
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
 
         # Return appropriate type
         return _context.response.raw_body
@@ -259,7 +262,7 @@ class EmailController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(email = options.get("email"))
+        self.validate_parameters(email=options.get("email"))
 
         # Prepare query URL
         _query_builder = Configuration.get_base_uri()
@@ -278,8 +281,8 @@ class EmailController(BaseController):
         # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
-        _context = self.execute_request(_request)        
-        self.validate_response(_context)    
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
 
         # Return appropriate type
         return _context.response.raw_body
@@ -331,8 +334,8 @@ class EmailController(BaseController):
         # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
-        _context = self.execute_request(_request)        
-        self.validate_response(_context)    
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
 
         # Return appropriate type
         return _context.response.raw_body
@@ -385,8 +388,8 @@ class EmailController(BaseController):
         # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
-        _context = self.execute_request(_request)        
-        self.validate_response(_context)    
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
 
         # Return appropriate type
         return _context.response.raw_body
@@ -421,7 +424,7 @@ class EmailController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(email = options.get("email"))
+        self.validate_parameters(email=options.get("email"))
 
         # Prepare query URL
         _query_builder = Configuration.get_base_uri()
@@ -440,8 +443,8 @@ class EmailController(BaseController):
         # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
-        _context = self.execute_request(_request)        
-        self.validate_response(_context)    
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
 
         # Return appropriate type
         return _context.response.raw_body
@@ -476,7 +479,7 @@ class EmailController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(email = options.get("email"))
+        self.validate_parameters(email=options.get("email"))
 
         # Prepare query URL
         _query_builder = Configuration.get_base_uri()
@@ -495,8 +498,8 @@ class EmailController(BaseController):
         # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
-        _context = self.execute_request(_request)        
-        self.validate_response(_context)    
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
 
         # Return appropriate type
         return _context.response.raw_body
@@ -531,7 +534,7 @@ class EmailController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(email = options.get("email"))
+        self.validate_parameters(email=options.get("email"))
 
         # Prepare query URL
         _query_builder = Configuration.get_base_uri()
@@ -550,8 +553,8 @@ class EmailController(BaseController):
         # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
-        _context = self.execute_request(_request)        
-        self.validate_response(_context)    
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
 
         # Return appropriate type
         return _context.response.raw_body
@@ -585,7 +588,7 @@ class EmailController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(email = options.get("email"))
+        self.validate_parameters(email=options.get("email"))
 
         # Prepare query URL
         _query_builder = Configuration.get_base_uri()
@@ -604,8 +607,8 @@ class EmailController(BaseController):
         # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
-        _context = self.execute_request(_request)        
-        self.validate_response(_context)    
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
 
         # Return appropriate type
         return _context.response.raw_body
@@ -625,7 +628,8 @@ class EmailController(BaseController):
 
                     to -- string -- The to email address
                     mfrom -- string -- The from email address
-                    mtype -- SendEmailAs -- email format type, html or text
+                    mtype -- SendEmailAsEnum -- email format type, html or
+                        text
                     subject -- string -- Email subject
                     message -- string -- The body of the email message
                     cc -- string -- CC Email address
@@ -647,11 +651,11 @@ class EmailController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(to = options.get("to"),
-                                 mfrom = options.get("mfrom"),
-                                 mtype = options.get("mtype"),
-                                 subject = options.get("subject"),
-                                 message = options.get("message"))
+        self.validate_parameters(to=options.get("to"),
+                                 mfrom=options.get("mfrom"),
+                                 mtype=options.get("mtype"),
+                                 subject=options.get("subject"),
+                                 message=options.get("message"))
 
         # Prepare query URL
         _query_builder = Configuration.get_base_uri()
@@ -677,8 +681,8 @@ class EmailController(BaseController):
         # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
-        _context = self.execute_request(_request)        
-        self.validate_response(_context)    
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
 
         # Return appropriate type
         return _context.response.raw_body

@@ -3,10 +3,8 @@
 """
     message360.http.http_request
 
-    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 12/12/2016
+    This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ).
 """
-
-from .http_method_enum import HttpMethodEnum
 
 class HttpRequest(object):
 
@@ -27,12 +25,12 @@ class HttpRequest(object):
     def __init__(self,
                  http_method,
                  query_url,
-                 headers = None,
-                 query_parameters = None,
-                 parameters = None,
-                 files = None):
+                 headers=None,
+                 query_parameters=None,
+                 parameters=None,
+                 files=None):
         """Constructor for the HttpRequest class
-        
+
         Args:
             http_method (HttpMethodEnum): The HTTP Method.
             query_url (string): The URL to send the request to.
@@ -40,7 +38,7 @@ class HttpRequest(object):
             query_parameters (dict, optional): Query parameters to add in the URL.
             parameters (dict, optional): Form or body parameters to be included in the body.
             files (dict, optional): Files to be sent with the request.
-        
+
         """
         self.http_method = http_method
         self.query_url = query_url

@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 
 """
-    message360.models.status
+    message360.models.status_enum
 
-    This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 12/12/2016
+    This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io )
 """
 
-class Status(object):
+class StatusEnum(object):
 
     """Implementation of the 'Status' enum.
 

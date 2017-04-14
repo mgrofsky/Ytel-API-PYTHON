@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 
 """
-    message360.models.direction
+    message360.models.direction_enum
 
-    This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 12/12/2016
+    This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io )
 """
 
-class Direction(object):
+class DirectionEnum(object):
 
     """Implementation of the 'Direction' enum.
 

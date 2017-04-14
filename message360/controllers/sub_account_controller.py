@@ -3,21 +3,24 @@
 """
     message360.controllers.sub_account_controller
 
-    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 12/12/2016
+    This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ).
 """
 
-from .base_controller import *
+from .base_controller import BaseController
+from ..api_helper import APIHelper
+from ..configuration import Configuration
+from ..http.auth.basic_auth import BasicAuth
 
 class SubAccountController(BaseController):
 
     """A Controller to access Endpoints in the message360 API."""
-    
+
 
     def create_sub_account(self,
                            options=dict()):
         """Does a POST request to /user/createsubaccount.{ResponseType}.
 
-        Create Sub account
+        Create a sub user account under the parent account
 
         Args:
             options (dict, optional): Key-value pairs for any of the
@@ -26,13 +29,11 @@ class SubAccountController(BaseController):
                 being the key and their desired values being the value. A list
                 of parameters that can be used are::
 
-                    firstname -- string -- TODO: type description here.
-                        Example: 
-                    lastname -- string -- TODO: type description here.
-                        Example: 
-                    email -- string -- TODO: type description here. Example: 
-                    response_type -- string -- ResponseType Format either json
-                        or xml
+                    first_name -- string -- Sub account user first name
+                    last_name -- string -- sub account user last name
+                    email -- string -- Sub account email address
+                    response_type -- string -- Response type format xml or
+                        json
 
         Returns:
             string: Response from the API. 
@@ -46,9 +47,9 @@ class SubAccountController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(firstname = options.get("firstname"),
-                                 lastname = options.get("lastname"),
-                                 email = options.get("email"))
+        self.validate_parameters(first_name=options.get("first_name"),
+                                 last_name=options.get("last_name"),
+                                 email=options.get("email"))
 
         # Prepare query URL
         _query_builder = Configuration.get_base_uri()
@@ -60,17 +61,17 @@ class SubAccountController(BaseController):
 
         # Prepare form parameters
         _form_parameters = {
-            'firstname': options.get('firstname', None),
-            'lastname': options.get('lastname', None),
-            'email': options.get('email', None)
+            'FirstName': options.get('first_name', None),
+            'LastName': options.get('last_name', None),
+            'Email': options.get('email', None)
         }
         _form_parameters = APIHelper.form_encode_parameters(_form_parameters)
 
         # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
-        _context = self.execute_request(_request)        
-        self.validate_response(_context)    
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
 
         # Return appropriate type
         return _context.response.raw_body
@@ -88,10 +89,10 @@ class SubAccountController(BaseController):
                 being the key and their desired values being the value. A list
                 of parameters that can be used are::
 
-                    subaccountsid -- string -- TODO: type description here.
-                        Example: 
-                    activate -- ActivateStatus -- TODO: type description here.
-                        Example: 
+                    sub_account_sid -- string -- The SubaccountSid to be
+                        activated or suspended
+                    activate -- ActivateStatusEnum -- 0 to suspend or 1 to
+                        activate
                     response_type -- string -- TODO: type description here.
                         Example: 
 
@@ -107,8 +108,8 @@ class SubAccountController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(subaccountsid = options.get("subaccountsid"),
-                                 activate = options.get("activate"))
+        self.validate_parameters(sub_account_sid=options.get("sub_account_sid"),
+                                 activate=options.get("activate"))
 
         # Prepare query URL
         _query_builder = Configuration.get_base_uri()
@@ -120,25 +121,25 @@ class SubAccountController(BaseController):
 
         # Prepare form parameters
         _form_parameters = {
-            'subaccountsid': options.get('subaccountsid', None),
-            'activate': options.get('activate', None)
+            'SubAccountSID': options.get('sub_account_sid', None),
+            'Activate': options.get('activate', None)
         }
         _form_parameters = APIHelper.form_encode_parameters(_form_parameters)
 
         # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
-        _context = self.execute_request(_request)        
-        self.validate_response(_context)    
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
 
         # Return appropriate type
         return _context.response.raw_body
 
-    def create_delete_merge_sub_account(self,
-                                        options=dict()):
+    def create_delete_sub_account(self,
+                                  options=dict()):
         """Does a POST request to /user/deletesubaccount.{ResponseType}.
 
-        Delete or Merge Sub account
+        Delete sub account or merge numbers into parent
 
         Args:
             options (dict, optional): Key-value pairs for any of the
@@ -147,12 +148,12 @@ class SubAccountController(BaseController):
                 being the key and their desired values being the value. A list
                 of parameters that can be used are::
 
-                    subaccountsid -- string -- TODO: type description here.
-                        Example: 
-                    mergenumber -- MergeNumberStatus -- TODO: type description
-                        here. Example: 
-                    response_type -- string -- Response type format either
-                        json or xml
+                    sub_account_sid -- string -- The SubaccountSid to be
+                        deleted
+                    merge_number -- MergeNumberStatusEnum -- 0 to delete or 1
+                        to merge numbers to parent account.
+                    response_type -- string -- Response type format xml or
+                        json
 
         Returns:
             string: Response from the API. 
@@ -166,8 +167,8 @@ class SubAccountController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(subaccountsid = options.get("subaccountsid"),
-                                 mergenumber = options.get("mergenumber"))
+        self.validate_parameters(sub_account_sid=options.get("sub_account_sid"),
+                                 merge_number=options.get("merge_number"))
 
         # Prepare query URL
         _query_builder = Configuration.get_base_uri()
@@ -179,16 +180,16 @@ class SubAccountController(BaseController):
 
         # Prepare form parameters
         _form_parameters = {
-            'subaccountsid': options.get('subaccountsid', None),
-            'mergenumber': options.get('mergenumber', None)
+            'SubAccountSID': options.get('sub_account_sid', None),
+            'MergeNumber': options.get('merge_number', None)
         }
         _form_parameters = APIHelper.form_encode_parameters(_form_parameters)
 
         # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
-        _context = self.execute_request(_request)        
-        self.validate_response(_context)    
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
 
         # Return appropriate type
         return _context.response.raw_body

@@ -3,15 +3,18 @@
 """
     message360.controllers.carrier_controller
 
-    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 12/12/2016
+    This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ).
 """
 
-from .base_controller import *
+from .base_controller import BaseController
+from ..api_helper import APIHelper
+from ..configuration import Configuration
+from ..http.auth.basic_auth import BasicAuth
 
 class CarrierController(BaseController):
 
     """A Controller to access Endpoints in the message360 API."""
-    
+
 
     def create_carrier_lookup(self,
                               options=dict()):
@@ -42,7 +45,7 @@ class CarrierController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(phonenumber = options.get("phonenumber"))
+        self.validate_parameters(phonenumber=options.get("phonenumber"))
 
         # Prepare query URL
         _query_builder = Configuration.get_base_uri()
@@ -61,8 +64,8 @@ class CarrierController(BaseController):
         # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
-        _context = self.execute_request(_request)        
-        self.validate_response(_context)    
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
 
         # Return appropriate type
         return _context.response.raw_body
@@ -114,8 +117,8 @@ class CarrierController(BaseController):
         # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
-        _context = self.execute_request(_request)        
-        self.validate_response(_context)    
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
 
         # Return appropriate type
         return _context.response.raw_body

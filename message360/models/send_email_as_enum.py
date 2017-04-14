@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 
 """
-    message360.models.send_email_as
+    message360.models.send_email_as_enum
 
-    This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 12/12/2016
+    This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io )
 """
 
-class SendEmailAs(object):
+class SendEmailAsEnum(object):
 
     """Implementation of the 'SendEmailAs' enum.
 

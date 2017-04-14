@@ -3,15 +3,18 @@
 """
     message360.controllers.transcription_controller
 
-    This file was automatically generated for message360 by APIMATIC BETA v2.0 on 12/12/2016
+    This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ).
 """
 
-from .base_controller import *
+from .base_controller import BaseController
+from ..api_helper import APIHelper
+from ..configuration import Configuration
+from ..http.auth.basic_auth import BasicAuth
 
 class TranscriptionController(BaseController):
 
     """A Controller to access Endpoints in the message360 API."""
-    
+
 
     def create_audio_url_transcription(self,
                                        options=dict()):
@@ -42,7 +45,7 @@ class TranscriptionController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(audio_url = options.get("audio_url"))
+        self.validate_parameters(audio_url=options.get("audio_url"))
 
         # Prepare query URL
         _query_builder = Configuration.get_base_uri()
@@ -61,8 +64,8 @@ class TranscriptionController(BaseController):
         # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
-        _context = self.execute_request(_request)        
-        self.validate_response(_context)    
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
 
         # Return appropriate type
         return _context.response.raw_body
@@ -96,7 +99,7 @@ class TranscriptionController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(recording_sid = options.get("recording_sid"))
+        self.validate_parameters(recording_sid=options.get("recording_sid"))
 
         # Prepare query URL
         _query_builder = Configuration.get_base_uri()
@@ -115,8 +118,8 @@ class TranscriptionController(BaseController):
         # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
-        _context = self.execute_request(_request)        
-        self.validate_response(_context)    
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
 
         # Return appropriate type
         return _context.response.raw_body
@@ -150,7 +153,7 @@ class TranscriptionController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(transcription_sid = options.get("transcription_sid"))
+        self.validate_parameters(transcription_sid=options.get("transcription_sid"))
 
         # Prepare query URL
         _query_builder = Configuration.get_base_uri()
@@ -169,8 +172,8 @@ class TranscriptionController(BaseController):
         # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
-        _context = self.execute_request(_request)        
-        self.validate_response(_context)    
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
 
         # Return appropriate type
         return _context.response.raw_body
@@ -190,8 +193,9 @@ class TranscriptionController(BaseController):
 
                     page -- int -- TODO: type description here. Example: 
                     page_size -- int -- TODO: type description here. Example:
-                                            status -- Status -- TODO: type description here. Example:
-                                            date_transcribed -- string -- TODO: type description here.
+                                            status -- StatusEnum -- TODO: type description here.
+                        Example: 
+                    date_transcribed -- string -- TODO: type description here.
                         Example: 
                     response_type -- string -- Response type format xml or
                         json
@@ -227,8 +231,8 @@ class TranscriptionController(BaseController):
         # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
         BasicAuth.apply(_request)
-        _context = self.execute_request(_request)        
-        self.validate_response(_context)    
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
 
         # Return appropriate type
         return _context.response.raw_body

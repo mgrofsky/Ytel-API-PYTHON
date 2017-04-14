@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 
 """
-    message360.models.merge_number_status
+    message360.models.merge_number_status_enum
 
-    This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io ) on 12/12/2016
+    This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io )
 """
 
-class MergeNumberStatus(object):
+class MergeNumberStatusEnum(object):
 
     """Implementation of the 'MergeNumberStatus' enum.
 
