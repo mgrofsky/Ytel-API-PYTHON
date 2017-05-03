@@ -12,8 +12,8 @@ setup(
     version='3.0.0',
     description='message360 API version 3',
     long_description=long_description,
-    author='Shahid Khaliq',
-    author_email='shahid.khaliq@apimatic.io',
+    author='APIMatic SDK Generator',
+    author_email='support@apimatic.io',
     url='https://apimatic.io/',
     packages=find_packages(),
     install_requires=[
