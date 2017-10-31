@@ -26,8 +26,6 @@ class Configuration(object):
         PRODUCTION = 0
         # Pre-Production environment used to test your code in our beta systems.  There is a good chance nothing will work here.  Don't use it unless instructed by our staff.
         PREPRODUCTION = 1
-        # Internal development testing.  This configuration of the API is not available to the public.
-        DEVELOPMENT = 2
 
     # An enum for API servers
     class Server(object):
@@ -51,9 +49,6 @@ class Configuration(object):
         },
         Environment.PREPRODUCTION: {
             Server.DEFAULT: 'https://api-preprod.message360.com/api/v2',
-        },
-        Environment.DEVELOPMENT: {
-            Server.DEFAULT: 'https://lara-dev.message360.com/api/v2',
         },
     }
 

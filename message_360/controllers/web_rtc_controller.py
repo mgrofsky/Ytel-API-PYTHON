@@ -16,8 +16,8 @@ class WebRTCController(BaseController):
     """A Controller to access Endpoints in the message_360 API."""
 
 
-    def create_check_funds(self,
-                           options=dict()):
+    def check_funds(self,
+                    options=dict()):
         """Does a POST request to /webrtc/checkFunds.json.
 
         TODO: type endpoint description here.
@@ -57,8 +57,6 @@ class WebRTCController(BaseController):
             'account_sid': options.get('account_sid', None),
             'auth_token': options.get('auth_token', None)
         }
-        _form_parameters = APIHelper.form_encode_parameters(_form_parameters,
-            Configuration.array_serialization)
 
         # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
@@ -116,8 +114,6 @@ class WebRTCController(BaseController):
             'username': options.get('username', None),
             'password': options.get('password', None)
         }
-        _form_parameters = APIHelper.form_encode_parameters(_form_parameters,
-            Configuration.array_serialization)
 
         # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)

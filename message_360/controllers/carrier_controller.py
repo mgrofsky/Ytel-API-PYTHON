@@ -16,8 +16,8 @@ class CarrierController(BaseController):
     """A Controller to access Endpoints in the message_360 API."""
 
 
-    def create_carrier_lookup_list(self,
-                                   options=dict()):
+    def carrier_lookup_list(self,
+                            options=dict()):
         """Does a POST request to /carrier/lookuplist.{ResponseType}.
 
         Get the All Purchase Number's Carrier lookup
@@ -61,8 +61,6 @@ class CarrierController(BaseController):
             'page': options.get('page', None),
             'pagesize': options.get('pagesize', None)
         }
-        _form_parameters = APIHelper.form_encode_parameters(_form_parameters,
-            Configuration.array_serialization)
 
         # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
@@ -73,8 +71,8 @@ class CarrierController(BaseController):
         # Return appropriate type
         return _context.response.raw_body
 
-    def create_carrier_lookup(self,
-                              options=dict()):
+    def carrier_lookup(self,
+                       options=dict()):
         """Does a POST request to /carrier/lookup.{ResponseType}.
 
         Get the Carrier Lookup
@@ -117,8 +115,6 @@ class CarrierController(BaseController):
         _form_parameters = {
             'phonenumber': options.get('phonenumber', None)
         }
-        _form_parameters = APIHelper.form_encode_parameters(_form_parameters,
-            Configuration.array_serialization)
 
         # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)

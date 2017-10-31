@@ -16,68 +16,11 @@ class ShortCodeController(BaseController):
     """A Controller to access Endpoints in the message_360 API."""
 
 
-    def create_view_template(self,
-                             options=dict()):
-        """Does a POST request to /template/view.{ResponseType}.
+    def send_dedicated_shortcode(self,
+                                 options=dict()):
+        """Does a POST request to /shortcode/senddedicatedsms.{ResponseType}.
 
-        View a Shared ShortCode Template
-
-        Args:
-            options (dict, optional): Key-value pairs for any of the
-                parameters to this API Endpoint. All parameters to the
-                endpoint are supplied through the dictionary with their names
-                being the key and their desired values being the value. A list
-                of parameters that can be used are::
-
-                    templateid -- uuid|string -- The unique identifier for a
-                        template object
-                    response_type -- string -- Response type format xml or
-                        json
-
-        Returns:
-            string: Response from the API. 
-
-        Raises:
-            APIException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        # Validate required parameters
-        self.validate_parameters(templateid=options.get("templateid"),
-                                 response_type=options.get("response_type"))
-
-        # Prepare query URL
-        _query_builder = Configuration.get_base_uri()
-        _query_builder += '/template/view.{ResponseType}'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
-            'ResponseType': options.get('response_type', None)
-        })
-        _query_url = APIHelper.clean_url(_query_builder)
-
-        # Prepare form parameters
-        _form_parameters = {
-            'templateid': options.get('templateid', None)
-        }
-        _form_parameters = APIHelper.form_encode_parameters(_form_parameters,
-            Configuration.array_serialization)
-
-        # Prepare and execute request
-        _request = self.http_client.post(_query_url, parameters=_form_parameters)
-        BasicAuth.apply(_request)
-        _context = self.execute_request(_request)
-        self.validate_response(_context)
-
-        # Return appropriate type
-        return _context.response.raw_body
-
-    def create_send_short_code(self,
-                               options=dict()):
-        """Does a POST request to /shortcode/sendsms.{ResponseType}.
-
-        Send an SMS from a message360 ShortCode
+        TODO: type endpoint description here.
 
         Args:
             options (dict, optional): Key-value pairs for any of the
@@ -86,24 +29,15 @@ class ShortCodeController(BaseController):
                 being the key and their desired values being the value. A list
                 of parameters that can be used are::
 
-                    shortcode -- string -- The Short Code number that is the
-                        sender of this message
-                    tocountrycode -- string -- The country code for sending
-                        this message
-                    to -- string -- A valid 10-digit number that should
-                        receive the message+
-                    templateid -- uuid|string -- The unique identifier for the
-                        template used for the message
+                    shortcode -- int -- Your dedicated shortcode
+                    to -- float -- The number to send your SMS to
+                    body -- string -- The body of your message
                     response_type -- string -- Response type format xml or
                         json
-                    data -- string -- format of your data, example:
-                        {companyname}:test,{otpcode}:1234
-                    method -- string -- Specifies the HTTP method used to
-                        request the required URL once the Short Code message
-                        is sent.
-                    message_status_callback -- string -- URL that can be
-                        requested to receive notification when Short Code
-                        message was sent.
+                    method -- HttpActionEnum -- Callback status method, POST
+                        or GET
+                    messagestatuscallback -- string -- Callback url for SMS
+                        status
 
         Returns:
             string: Response from the API. 
@@ -118,15 +52,13 @@ class ShortCodeController(BaseController):
 
         # Validate required parameters
         self.validate_parameters(shortcode=options.get("shortcode"),
-                                 tocountrycode=options.get("tocountrycode"),
                                  to=options.get("to"),
-                                 templateid=options.get("templateid"),
-                                 response_type=options.get("response_type"),
-                                 data=options.get("data"))
+                                 body=options.get("body"),
+                                 response_type=options.get("response_type"))
 
         # Prepare query URL
         _query_builder = Configuration.get_base_uri()
-        _query_builder += '/shortcode/sendsms.{ResponseType}'
+        _query_builder += '/shortcode/senddedicatedsms.{ResponseType}'
         _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
             'ResponseType': options.get('response_type', None)
         })
@@ -135,15 +67,11 @@ class ShortCodeController(BaseController):
         # Prepare form parameters
         _form_parameters = {
             'shortcode': options.get('shortcode', None),
-            'tocountrycode': options.get('tocountrycode', None),
             'to': options.get('to', None),
-            'templateid': options.get('templateid', None),
-            'data': options.get('data', None),
-            'Method': options.get('method', None),
-            'MessageStatusCallback': options.get('message_status_callback', None)
+            'body': options.get('body', None),
+            'method': options.get('method', None),
+            'messagestatuscallback': options.get('messagestatuscallback', None)
         }
-        _form_parameters = APIHelper.form_encode_parameters(_form_parameters,
-            Configuration.array_serialization)
 
         # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
@@ -154,11 +82,11 @@ class ShortCodeController(BaseController):
         # Return appropriate type
         return _context.response.raw_body
 
-    def create_list_inbound_short_code(self,
-                                       options=dict()):
-        """Does a POST request to /shortcode/getinboundsms.{ResponseType}.
+    def view_shortcode(self,
+                       options=dict()):
+        """Does a POST request to /shortcode/viewsms..{ResponseType}.
 
-        List All Inbound ShortCode
+        View a single Sms Short Code message.
 
         Args:
             options (dict, optional): Key-value pairs for any of the
@@ -167,17 +95,10 @@ class ShortCodeController(BaseController):
                 being the key and their desired values being the value. A list
                 of parameters that can be used are::
 
+                    message_sid -- string -- The unique identifier for the sms
+                        resource
                     response_type -- string -- Response type format xml or
                         json
-                    page -- int -- Which page of the overall response will be
-                        returned. Zero indexed
-                    pagesize -- int -- Number of individual resources listed
-                        in the response per page
-                    mfrom -- string -- From Number to Inbound ShortCode
-                    shortcode -- string -- Only list messages sent to this
-                        Short Code
-                    date_received -- string -- Only list messages sent with
-                        the specified date
 
         Returns:
             string: Response from the API. 
@@ -191,30 +112,21 @@ class ShortCodeController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(response_type=options.get("response_type"))
+        self.validate_parameters(message_sid=options.get("message_sid"),
+                                 response_type=options.get("response_type"))
 
         # Prepare query URL
         _query_builder = Configuration.get_base_uri()
-        _query_builder += '/shortcode/getinboundsms.{ResponseType}'
+        _query_builder += '/shortcode/viewsms..{ResponseType}'
         _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
             'ResponseType': options.get('response_type', None)
         })
-        _query_parameters = {
-            'DateReceived': options.get('date_received', None)
-        }
-        _query_builder = APIHelper.append_url_with_query_parameters(_query_builder,
-            _query_parameters, Configuration.array_serialization)
         _query_url = APIHelper.clean_url(_query_builder)
 
         # Prepare form parameters
         _form_parameters = {
-            'page': options.get('page', None),
-            'pagesize': options.get('pagesize', None),
-            'from': options.get('mfrom', None),
-            'Shortcode': options.get('shortcode', None)
+            'MessageSid': options.get('message_sid', None)
         }
-        _form_parameters = APIHelper.form_encode_parameters(_form_parameters,
-            Configuration.array_serialization)
 
         # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
@@ -225,11 +137,11 @@ class ShortCodeController(BaseController):
         # Return appropriate type
         return _context.response.raw_body
 
-    def create_list_short_code(self,
-                               options=dict()):
+    def list_shortcode(self,
+                       options=dict()):
         """Does a POST request to /shortcode/listsms.{ResponseType}.
 
-        List ShortCode Messages
+        Retrieve a list of Short Code message objects.
 
         Args:
             options (dict, optional): Key-value pairs for any of the
@@ -240,14 +152,15 @@ class ShortCodeController(BaseController):
 
                     response_type -- string -- Response type format xml or
                         json
-                    page -- int -- Which page of the overall response will be
-                        returned. Zero indexed
-                    pagesize -- int -- Number of individual resources listed
-                        in the response per page
-                    mfrom -- string -- Messages sent from this number
-                    to -- string -- Messages sent to this number
-                    datesent -- string -- Only list SMS messages sent in the
-                        specified date range
+                    shortcode -- string -- Only list messages sent from this
+                        Short Code
+                    to -- string -- Only list messages sent to this number
+                    date_sent -- date -- Only list messages sent with the
+                        specified date
+                    page -- int -- The page count to retrieve from the total
+                        results in the collection. Page indexing starts at 1.
+                    page_size -- int -- The count of objects to return per
+                        page.
 
         Returns:
             string: Response from the API. 
@@ -273,14 +186,12 @@ class ShortCodeController(BaseController):
 
         # Prepare form parameters
         _form_parameters = {
-            'page': options.get('page', None),
-            'pagesize': options.get('pagesize', None),
-            'from': options.get('mfrom', None),
-            'to': options.get('to', None),
-            'datesent': options.get('datesent', None)
+            'Shortcode': options.get('shortcode', None),
+            'To': options.get('to', None),
+            'DateSent': options.get('date_sent', None),
+            'Page': options.get('page', None),
+            'PageSize': options.get('page_size', None)
         }
-        _form_parameters = APIHelper.form_encode_parameters(_form_parameters,
-            Configuration.array_serialization)
 
         # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
@@ -291,11 +202,12 @@ class ShortCodeController(BaseController):
         # Return appropriate type
         return _context.response.raw_body
 
-    def create_list_templates(self,
-                              options=dict()):
-        """Does a POST request to /template/lists.{ResponseType}.
+    def list_inbound_shortcode(self,
+                               options=dict()):
+        """Does a POST request to /shortcode/getinboundsms.{ResponseType}.
 
-        List Shortcode Templates by Type
+        Retrive a list of inbound Sms Short Code messages associated with your
+        message360 account.
 
         Args:
             options (dict, optional): Key-value pairs for any of the
@@ -306,12 +218,16 @@ class ShortCodeController(BaseController):
 
                     response_type -- string -- Response type format xml or
                         json
-                    mtype -- string -- The type (category) of template Valid
-                        values: marketing, authorization
-                    page -- int -- The page count to retrieve from the total
-                        results in the collection. Page indexing starts at 1.
-                    pagesize -- int -- The count of objects to return per
-                        page.
+                    page -- int -- Which page of the overall response will be
+                        returned. Zero indexed
+                    page_size -- int -- Number of individual resources listed
+                        in the response per page
+                    mfrom -- string -- Only list SMS messages sent from this
+                        number
+                    shortcode -- string -- Only list SMS messages sent to
+                        Shortcode
+                    date_received -- string -- Only list SMS messages sent in
+                        the specified date MAKE REQUEST
 
         Returns:
             string: Response from the API. 
@@ -329,7 +245,7 @@ class ShortCodeController(BaseController):
 
         # Prepare query URL
         _query_builder = Configuration.get_base_uri()
-        _query_builder += '/template/lists.{ResponseType}'
+        _query_builder += '/shortcode/getinboundsms.{ResponseType}'
         _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
             'ResponseType': options.get('response_type', None)
         })
@@ -337,68 +253,12 @@ class ShortCodeController(BaseController):
 
         # Prepare form parameters
         _form_parameters = {
-            'type': options.get('mtype', None),
-            'page': options.get('page', None),
-            'pagesize': options.get('pagesize', None)
+            'Page': options.get('page', None),
+            'PageSize': options.get('page_size', None),
+            'From': options.get('mfrom', None),
+            'Shortcode': options.get('shortcode', None),
+            'DateReceived': options.get('date_received', None)
         }
-        _form_parameters = APIHelper.form_encode_parameters(_form_parameters,
-            Configuration.array_serialization)
-
-        # Prepare and execute request
-        _request = self.http_client.post(_query_url, parameters=_form_parameters)
-        BasicAuth.apply(_request)
-        _context = self.execute_request(_request)
-        self.validate_response(_context)
-
-        # Return appropriate type
-        return _context.response.raw_body
-
-    def create_view_short_code(self,
-                               options=dict()):
-        """Does a POST request to /shortcode/viewsms.{ResponseType}.
-
-        View a ShortCode Message
-
-        Args:
-            options (dict, optional): Key-value pairs for any of the
-                parameters to this API Endpoint. All parameters to the
-                endpoint are supplied through the dictionary with their names
-                being the key and their desired values being the value. A list
-                of parameters that can be used are::
-
-                    messagesid -- string -- Message sid
-                    response_type -- string -- Response type format xml or
-                        json
-
-        Returns:
-            string: Response from the API. 
-
-        Raises:
-            APIException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        # Validate required parameters
-        self.validate_parameters(messagesid=options.get("messagesid"),
-                                 response_type=options.get("response_type"))
-
-        # Prepare query URL
-        _query_builder = Configuration.get_base_uri()
-        _query_builder += '/shortcode/viewsms.{ResponseType}'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
-            'ResponseType': options.get('response_type', None)
-        })
-        _query_url = APIHelper.clean_url(_query_builder)
-
-        # Prepare form parameters
-        _form_parameters = {
-            'messagesid': options.get('messagesid', None)
-        }
-        _form_parameters = APIHelper.form_encode_parameters(_form_parameters,
-            Configuration.array_serialization)
 
         # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)

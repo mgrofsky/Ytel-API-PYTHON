@@ -16,8 +16,8 @@ class UsageController(BaseController):
     """A Controller to access Endpoints in the message_360 API."""
 
 
-    def create_list_usage(self,
-                          options=dict()):
+    def list_usage(self,
+                   options=dict()):
         """Does a POST request to /usage/listusage.{ResponseType}.
 
         Get all usage 
@@ -29,11 +29,11 @@ class UsageController(BaseController):
                 being the key and their desired values being the value. A list
                 of parameters that can be used are::
 
+                    response_type -- string -- Response type format xml or
+                        json
                     product_code -- ProductCodeEnum -- Product Code
                     start_date -- string -- Start Usage Date
                     end_date -- string -- End Usage Date
-                    response_type -- string -- Response type format xml or
-                        json
 
         Returns:
             string: Response from the API. 
@@ -47,10 +47,7 @@ class UsageController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(product_code=options.get("product_code"),
-                                 start_date=options.get("start_date"),
-                                 end_date=options.get("end_date"),
-                                 response_type=options.get("response_type"))
+        self.validate_parameters(response_type=options.get("response_type"))
 
         # Prepare query URL
         _query_builder = Configuration.get_base_uri()
@@ -66,8 +63,6 @@ class UsageController(BaseController):
             'startDate': options.get('start_date', None),
             'endDate': options.get('end_date', None)
         }
-        _form_parameters = APIHelper.form_encode_parameters(_form_parameters,
-            Configuration.array_serialization)
 
         # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
