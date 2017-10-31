@@ -16,241 +16,8 @@ class PhoneNumberController(BaseController):
     """A Controller to access Endpoints in the message_360 API."""
 
 
-    def create_buy_number(self,
-                          options=dict()):
-        """Does a POST request to /incomingphone/buynumber.{ResponseType}.
-
-        Buy Phone Number 
-
-        Args:
-            options (dict, optional): Key-value pairs for any of the
-                parameters to this API Endpoint. All parameters to the
-                endpoint are supplied through the dictionary with their names
-                being the key and their desired values being the value. A list
-                of parameters that can be used are::
-
-                    phone_number -- string -- Phone number to be purchase
-                    response_type -- string -- Response type format xml or
-                        json
-
-        Returns:
-            string: Response from the API. 
-
-        Raises:
-            APIException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        # Validate required parameters
-        self.validate_parameters(phone_number=options.get("phone_number"),
-                                 response_type=options.get("response_type"))
-
-        # Prepare query URL
-        _query_builder = Configuration.get_base_uri()
-        _query_builder += '/incomingphone/buynumber.{ResponseType}'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
-            'ResponseType': options.get('response_type', None)
-        })
-        _query_url = APIHelper.clean_url(_query_builder)
-
-        # Prepare form parameters
-        _form_parameters = {
-            'PhoneNumber': options.get('phone_number', None)
-        }
-        _form_parameters = APIHelper.form_encode_parameters(_form_parameters,
-            Configuration.array_serialization)
-
-        # Prepare and execute request
-        _request = self.http_client.post(_query_url, parameters=_form_parameters)
-        BasicAuth.apply(_request)
-        _context = self.execute_request(_request)
-        self.validate_response(_context)
-
-        # Return appropriate type
-        return _context.response.raw_body
-
-    def create_release_number(self,
-                              options=dict()):
-        """Does a POST request to /incomingphone/releasenumber.{ResponseType}.
-
-        Release number from account
-
-        Args:
-            options (dict, optional): Key-value pairs for any of the
-                parameters to this API Endpoint. All parameters to the
-                endpoint are supplied through the dictionary with their names
-                being the key and their desired values being the value. A list
-                of parameters that can be used are::
-
-                    phone_number -- string -- Phone number to be relase
-                    response_type -- string -- Response type format xml or
-                        json
-
-        Returns:
-            string: Response from the API. 
-
-        Raises:
-            APIException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        # Validate required parameters
-        self.validate_parameters(phone_number=options.get("phone_number"),
-                                 response_type=options.get("response_type"))
-
-        # Prepare query URL
-        _query_builder = Configuration.get_base_uri()
-        _query_builder += '/incomingphone/releasenumber.{ResponseType}'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
-            'ResponseType': options.get('response_type', None)
-        })
-        _query_url = APIHelper.clean_url(_query_builder)
-
-        # Prepare form parameters
-        _form_parameters = {
-            'PhoneNumber': options.get('phone_number', None)
-        }
-        _form_parameters = APIHelper.form_encode_parameters(_form_parameters,
-            Configuration.array_serialization)
-
-        # Prepare and execute request
-        _request = self.http_client.post(_query_url, parameters=_form_parameters)
-        BasicAuth.apply(_request)
-        _context = self.execute_request(_request)
-        self.validate_response(_context)
-
-        # Return appropriate type
-        return _context.response.raw_body
-
-    def create_view_number_details(self,
-                                   options=dict()):
-        """Does a POST request to /incomingphone/viewnumber.{ResponseType}.
-
-        Get Phone Number Details
-
-        Args:
-            options (dict, optional): Key-value pairs for any of the
-                parameters to this API Endpoint. All parameters to the
-                endpoint are supplied through the dictionary with their names
-                being the key and their desired values being the value. A list
-                of parameters that can be used are::
-
-                    phone_number -- string -- Get Phone number Detail
-                    response_type -- string -- Response type format xml or
-                        json
-
-        Returns:
-            string: Response from the API. 
-
-        Raises:
-            APIException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        # Validate required parameters
-        self.validate_parameters(phone_number=options.get("phone_number"),
-                                 response_type=options.get("response_type"))
-
-        # Prepare query URL
-        _query_builder = Configuration.get_base_uri()
-        _query_builder += '/incomingphone/viewnumber.{ResponseType}'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
-            'ResponseType': options.get('response_type', None)
-        })
-        _query_url = APIHelper.clean_url(_query_builder)
-
-        # Prepare form parameters
-        _form_parameters = {
-            'PhoneNumber': options.get('phone_number', None)
-        }
-        _form_parameters = APIHelper.form_encode_parameters(_form_parameters,
-            Configuration.array_serialization)
-
-        # Prepare and execute request
-        _request = self.http_client.post(_query_url, parameters=_form_parameters)
-        BasicAuth.apply(_request)
-        _context = self.execute_request(_request)
-        self.validate_response(_context)
-
-        # Return appropriate type
-        return _context.response.raw_body
-
-    def create_list_number(self,
-                           options=dict()):
-        """Does a POST request to /incomingphone/listnumber.{ResponseType}.
-
-        List Account's Phone number details
-
-        Args:
-            options (dict, optional): Key-value pairs for any of the
-                parameters to this API Endpoint. All parameters to the
-                endpoint are supplied through the dictionary with their names
-                being the key and their desired values being the value. A list
-                of parameters that can be used are::
-
-                    response_type -- string -- Response type format xml or
-                        json
-                    page -- int -- Which page of the overall response will be
-                        returned. Zero indexed
-                    page_size -- int -- Number of individual resources listed
-                        in the response per page
-                    number_type -- NumberTypeEnum -- TODO: type description
-                        here. Example: 
-                    friendly_name -- string -- TODO: type description here.
-                        Example: 
-
-        Returns:
-            string: Response from the API. 
-
-        Raises:
-            APIException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        # Validate required parameters
-        self.validate_parameters(response_type=options.get("response_type"))
-
-        # Prepare query URL
-        _query_builder = Configuration.get_base_uri()
-        _query_builder += '/incomingphone/listnumber.{ResponseType}'
-        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
-            'ResponseType': options.get('response_type', None)
-        })
-        _query_url = APIHelper.clean_url(_query_builder)
-
-        # Prepare form parameters
-        _form_parameters = {
-            'Page': options.get('page', None),
-            'PageSize': options.get('page_size', None),
-            'NumberType': options.get('number_type', None),
-            'FriendlyName': options.get('friendly_name', None)
-        }
-        _form_parameters = APIHelper.form_encode_parameters(_form_parameters,
-            Configuration.array_serialization)
-
-        # Prepare and execute request
-        _request = self.http_client.post(_query_url, parameters=_form_parameters)
-        BasicAuth.apply(_request)
-        _context = self.execute_request(_request)
-        self.validate_response(_context)
-
-        # Return appropriate type
-        return _context.response.raw_body
-
-    def create_available_phone_number(self,
-                                      options=dict()):
+    def available_phone_number(self,
+                               options=dict()):
         """Does a POST request to /incomingphone/availablenumber.{ResponseType}.
 
         Available Phone Number
@@ -299,8 +66,229 @@ class PhoneNumberController(BaseController):
             'AreaCode': options.get('area_code', None),
             'PageSize': options.get('page_size', None)
         }
-        _form_parameters = APIHelper.form_encode_parameters(_form_parameters,
-            Configuration.array_serialization)
+
+        # Prepare and execute request
+        _request = self.http_client.post(_query_url, parameters=_form_parameters)
+        BasicAuth.apply(_request)
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
+
+        # Return appropriate type
+        return _context.response.raw_body
+
+    def list_number(self,
+                    options=dict()):
+        """Does a POST request to /incomingphone/listnumber.{ResponseType}.
+
+        List Account's Phone number details
+
+        Args:
+            options (dict, optional): Key-value pairs for any of the
+                parameters to this API Endpoint. All parameters to the
+                endpoint are supplied through the dictionary with their names
+                being the key and their desired values being the value. A list
+                of parameters that can be used are::
+
+                    response_type -- string -- Response type format xml or
+                        json
+                    page -- int -- Which page of the overall response will be
+                        returned. Zero indexed
+                    page_size -- int -- Number of individual resources listed
+                        in the response per page
+                    number_type -- NumberTypeEnum -- SMS or Voice
+                    friendly_name -- string -- Friendly name of the number
+
+        Returns:
+            string: Response from the API. 
+
+        Raises:
+            APIException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        # Validate required parameters
+        self.validate_parameters(response_type=options.get("response_type"))
+
+        # Prepare query URL
+        _query_builder = Configuration.get_base_uri()
+        _query_builder += '/incomingphone/listnumber.{ResponseType}'
+        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+            'ResponseType': options.get('response_type', None)
+        })
+        _query_url = APIHelper.clean_url(_query_builder)
+
+        # Prepare form parameters
+        _form_parameters = {
+            'Page': options.get('page', None),
+            'PageSize': options.get('page_size', None),
+            'NumberType': options.get('number_type', None),
+            'FriendlyName': options.get('friendly_name', None)
+        }
+
+        # Prepare and execute request
+        _request = self.http_client.post(_query_url, parameters=_form_parameters)
+        BasicAuth.apply(_request)
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
+
+        # Return appropriate type
+        return _context.response.raw_body
+
+    def view_number_details(self,
+                            options=dict()):
+        """Does a POST request to /incomingphone/viewnumber.{ResponseType}.
+
+        Get Phone Number Details
+
+        Args:
+            options (dict, optional): Key-value pairs for any of the
+                parameters to this API Endpoint. All parameters to the
+                endpoint are supplied through the dictionary with their names
+                being the key and their desired values being the value. A list
+                of parameters that can be used are::
+
+                    phone_number -- string -- Get Phone number Detail
+                    response_type -- string -- Response type format xml or
+                        json
+
+        Returns:
+            string: Response from the API. 
+
+        Raises:
+            APIException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        # Validate required parameters
+        self.validate_parameters(phone_number=options.get("phone_number"),
+                                 response_type=options.get("response_type"))
+
+        # Prepare query URL
+        _query_builder = Configuration.get_base_uri()
+        _query_builder += '/incomingphone/viewnumber.{ResponseType}'
+        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+            'ResponseType': options.get('response_type', None)
+        })
+        _query_url = APIHelper.clean_url(_query_builder)
+
+        # Prepare form parameters
+        _form_parameters = {
+            'PhoneNumber': options.get('phone_number', None)
+        }
+
+        # Prepare and execute request
+        _request = self.http_client.post(_query_url, parameters=_form_parameters)
+        BasicAuth.apply(_request)
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
+
+        # Return appropriate type
+        return _context.response.raw_body
+
+    def release_number(self,
+                       options=dict()):
+        """Does a POST request to /incomingphone/releasenumber.{ResponseType}.
+
+        Release number from account
+
+        Args:
+            options (dict, optional): Key-value pairs for any of the
+                parameters to this API Endpoint. All parameters to the
+                endpoint are supplied through the dictionary with their names
+                being the key and their desired values being the value. A list
+                of parameters that can be used are::
+
+                    phone_number -- string -- Phone number to be relase
+                    response_type -- string -- Response type format xml or
+                        json
+
+        Returns:
+            string: Response from the API. 
+
+        Raises:
+            APIException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        # Validate required parameters
+        self.validate_parameters(phone_number=options.get("phone_number"),
+                                 response_type=options.get("response_type"))
+
+        # Prepare query URL
+        _query_builder = Configuration.get_base_uri()
+        _query_builder += '/incomingphone/releasenumber.{ResponseType}'
+        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+            'ResponseType': options.get('response_type', None)
+        })
+        _query_url = APIHelper.clean_url(_query_builder)
+
+        # Prepare form parameters
+        _form_parameters = {
+            'PhoneNumber': options.get('phone_number', None)
+        }
+
+        # Prepare and execute request
+        _request = self.http_client.post(_query_url, parameters=_form_parameters)
+        BasicAuth.apply(_request)
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
+
+        # Return appropriate type
+        return _context.response.raw_body
+
+    def buy_number(self,
+                   options=dict()):
+        """Does a POST request to /incomingphone/buynumber.{ResponseType}.
+
+        Buy Phone Number 
+
+        Args:
+            options (dict, optional): Key-value pairs for any of the
+                parameters to this API Endpoint. All parameters to the
+                endpoint are supplied through the dictionary with their names
+                being the key and their desired values being the value. A list
+                of parameters that can be used are::
+
+                    phone_number -- string -- Phone number to be purchase
+                    response_type -- string -- Response type format xml or
+                        json
+
+        Returns:
+            string: Response from the API. 
+
+        Raises:
+            APIException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        # Validate required parameters
+        self.validate_parameters(phone_number=options.get("phone_number"),
+                                 response_type=options.get("response_type"))
+
+        # Prepare query URL
+        _query_builder = Configuration.get_base_uri()
+        _query_builder += '/incomingphone/buynumber.{ResponseType}'
+        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+            'ResponseType': options.get('response_type', None)
+        })
+        _query_url = APIHelper.clean_url(_query_builder)
+
+        # Prepare form parameters
+        _form_parameters = {
+            'PhoneNumber': options.get('phone_number', None)
+        }
 
         # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
@@ -324,24 +312,20 @@ class PhoneNumberController(BaseController):
                 being the key and their desired values being the value. A list
                 of parameters that can be used are::
 
-                    phone_number -- string -- TODO: type description here.
-                        Example: 
-                    response_type -- string -- Response type format xml or
-                        json
-                    friendly_name -- string -- TODO: type description here.
-                        Example: 
+                    phone_number -- string -- The phone number to update
                     voice_url -- string -- URL requested once the call
                         connects
-                    voice_method -- HttpActionEnum -- TODO: type description
-                        here. Example: 
+                    response_type -- string -- Response type format xml or
+                        json
+                    friendly_name -- string -- Phone number friendly name
+                        description
+                    voice_method -- HttpActionEnum -- Post or Get
                     voice_fallback_url -- string -- URL requested if the voice
                         URL is not available
-                    voice_fallback_method -- HttpActionEnum -- TODO: type
-                        description here. Example: 
-                    hangup_callback -- string -- TODO: type description here.
-                        Example: 
-                    hangup_callback_method -- HttpActionEnum -- TODO: type
-                        description here. Example: 
+                    voice_fallback_method -- HttpActionEnum -- Post or Get
+                    hangup_callback -- string -- callback url after a hangup
+                        occurs
+                    hangup_callback_method -- HttpActionEnum -- Post or Get
                     heartbeat_url -- string -- URL requested once the call
                         connects
                     heartbeat_method -- HttpActionEnum -- URL that can be
@@ -349,8 +333,7 @@ class PhoneNumberController(BaseController):
                         of elapsed time
                     sms_url -- string -- URL requested when an SMS is
                         received
-                    sms_method -- HttpActionEnum -- TODO: type description
-                        here. Example: 
+                    sms_method -- HttpActionEnum -- Post or Get
                     sms_fallback_url -- string -- URL requested once the call
                         connects
                     sms_fallback_method -- HttpActionEnum -- URL requested if
@@ -369,6 +352,7 @@ class PhoneNumberController(BaseController):
 
         # Validate required parameters
         self.validate_parameters(phone_number=options.get("phone_number"),
+                                 voice_url=options.get("voice_url"),
                                  response_type=options.get("response_type"))
 
         # Prepare query URL
@@ -382,8 +366,8 @@ class PhoneNumberController(BaseController):
         # Prepare form parameters
         _form_parameters = {
             'PhoneNumber': options.get('phone_number', None),
-            'FriendlyName': options.get('friendly_name', None),
             'VoiceUrl': options.get('voice_url', None),
+            'FriendlyName': options.get('friendly_name', None),
             'VoiceMethod': options.get('voice_method', None),
             'VoiceFallbackUrl': options.get('voice_fallback_url', None),
             'VoiceFallbackMethod': options.get('voice_fallback_method', None),
@@ -396,8 +380,6 @@ class PhoneNumberController(BaseController):
             'SmsFallbackUrl': options.get('sms_fallback_url', None),
             'SmsFallbackMethod': options.get('sms_fallback_method', None)
         }
-        _form_parameters = APIHelper.form_encode_parameters(_form_parameters,
-            Configuration.array_serialization)
 
         # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)

@@ -138,7 +138,7 @@ class APIHelper(object):
             parameters (dict): The parameters to replace in the url.
 
         Returns:
-            str: Url with replaced parameters.
+            str: URL with replaced parameters.
 
         """
         # Parameter validation
@@ -168,13 +168,15 @@ class APIHelper(object):
     def append_url_with_query_parameters(url,
                                          parameters,
                                          array_serialization="indexed"):
-        """Adds query parameters to a URL call.
+        """Adds query parameters to a URL.
+
         Args:
-            url (str): The query url string to replace the template parameters.
-            parameters (dict): The parameters to replace in the url.
+            url (str): The URL string.
+            parameters (dict): The query parameters to add to the URL.
+            array_serialization (str): The format of array parameter serialization.
 
         Returns:
-            str: Url with replaced parameters.
+            str: URL with added query parameters.
 
         """
         # Parameter validation
@@ -187,6 +189,7 @@ class APIHelper(object):
             seperator = '&' if '?' in url else '?'
             if not value is None:
                 if isinstance(value, list):
+                    value = [element for element in value if element]
                     if array_serialization is "csv":
                         url += "{0}{1}={2}".format(seperator, key,
                             ",".join(quote(str(x), safe='') for x in value))
@@ -238,6 +241,7 @@ class APIHelper(object):
         Args:
             form_parameters (dictionary): The given dictionary which has
             atleast one model to form encode.
+            array_serialization (str): The format of array parameter serialization.
 
         Returns:
             dict: A dictionary of form encoded properties of the model.
@@ -261,6 +265,7 @@ class APIHelper(object):
             obj (object): The given Object to form encode.
             instance_name (string): The base name to appear before each entry
                 for this object.
+            array_serialization (string): The format of array parameter serialization.
 
         Returns:
             dict: A dictionary of form encoded properties of the model.

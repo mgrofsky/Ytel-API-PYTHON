@@ -1,38 +1,34 @@
 # -*- coding: utf-8 -*-
 
 """
-    message_360.models.data_model
+    message_360.models.errors_model
 
     This file was automatically generated for message360 by APIMATIC v2.0 ( https://apimatic.io )
 """
+import message_360.models.error_model
 
+class ErrorsModel(object):
 
-class DataModel(object):
-
-    """Implementation of the 'data' model.
+    """Implementation of the 'Errors' model.
 
     TODO: type model description here.
 
     Attributes:
-        companyname (string): TODO: type description here.
-        otpcode (int): TODO: type description here.
+        error (list of ErrorModel): TODO: type description here.
 
     """
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "companyname" : "companyname",
-        "otpcode" : "otpcode"
+        "error" : "Error"
     }
 
     def __init__(self,
-                 companyname=None,
-                 otpcode=None):
-        """Constructor for the DataModel class"""
+                 error=None):
+        """Constructor for the ErrorsModel class"""
 
         # Initialize members of the class
-        self.companyname = companyname
-        self.otpcode = otpcode
+        self.error = error
 
 
     @classmethod
@@ -53,11 +49,13 @@ class DataModel(object):
             return None
 
         # Extract variables from the dictionary
-        companyname = dictionary.get("companyname")
-        otpcode = dictionary.get("otpcode")
+        error = None
+        if dictionary.get("Error") != None:
+            error = list()
+            for structure in dictionary.get("Error"):
+                error.append(message_360.models.error_model.ErrorModel.from_dictionary(structure))
 
         # Return an object of this model
-        return cls(companyname,
-                   otpcode)
+        return cls(error)
 
 

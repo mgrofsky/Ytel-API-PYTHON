@@ -1,5 +1,7 @@
 # Getting started
 
+message360 API version 3
+
 ## How to Build
 
 
@@ -55,10 +57,10 @@ Name it "testsdk"
 In your python file you will be required to import the generated python library using the following code lines
 
 ```Python
-from message_360.message_360_client.py import *
+from message_360.message_360_client import Message360Client
 ```
 
-![Add a new project in PyCharm - Step 4](https://apidocs.io/illustration/python?step=projectFiles&workspaceFolder=Message360-Python&libraryName=message_360.message_360_client.py&projectName=message_360)
+![Add a new project in PyCharm - Step 4](https://apidocs.io/illustration/python?step=projectFiles&workspaceFolder=Message360-Python&libraryName=message_360.message_360_client&projectName=message_360)
 
 After this you can write code to instantiate an API client object, get a controller object and  make API calls. Sample code is given in the subsequent sections.
 
@@ -66,7 +68,7 @@ After this you can write code to instantiate an API client object, get a control
 
 To run the file within your test project, right click on your Python file inside your Test project and click on ```Run```
 
-![Run Test Project - Step 1](https://apidocs.io/illustration/python?step=runProject&workspaceFolder=Message360-Python&libraryName=message_360.message_360_client.py&projectName=message_360)
+![Run Test Project - Step 1](https://apidocs.io/illustration/python?step=runProject&workspaceFolder=Message360-Python&libraryName=message_360.message_360_client&projectName=message_360)
 
 
 ## How to Test
@@ -95,49 +97,51 @@ API client can be initialized as following.
 
 ```python
 # Configuration parameters and credentials
-basic_auth_user_name = "basic_auth_user_name" # The username to use with basic authentication
-basic_auth_password = "basic_auth_password" # The password to use with basic authentication
+basic_auth_user_name = 'basic_auth_user_name' # The username to use with basic authentication
+basic_auth_password = 'basic_auth_password' # The password to use with basic authentication
 
 client = Message360Client(basic_auth_user_name, basic_auth_password)
 ```
 
-## Class Reference
 
-### <a name="list_of_controllers"></a>List of Controllers
 
-* [ShortCodeController](#short_code_controller)
+# Class Reference
+
+## <a name="list_of_controllers"></a>List of Controllers
+
+* [SharedShortCodeController](#shared_short_code_controller)
 * [ConferenceController](#conference_controller)
-* [NumberVerificationController](#number_verification_controller)
+* [TranscriptionController](#transcription_controller)
+* [PhoneNumberController](#phone_number_controller)
+* [UsageController](#usage_controller)
 * [WebRTCController](#web_rtc_controller)
-* [CallController](#call_controller)
-* [SubAccountController](#sub_account_controller)
-* [AddressController](#address_controller)
+* [RecordingController](#recording_controller)
 * [EmailController](#email_controller)
 * [SMSController](#sms_controller)
-* [RecordingController](#recording_controller)
+* [CallController](#call_controller)
 * [CarrierController](#carrier_controller)
-* [PhoneNumberController](#phone_number_controller)
-* [TranscriptionController](#transcription_controller)
-* [UsageController](#usage_controller)
+* [AddressController](#address_controller)
+* [SubAccountController](#sub_account_controller)
 * [AccountController](#account_controller)
+* [ShortCodeController](#short_code_controller)
 
-### <a name="short_code_controller"></a>![Class: ](https://apidocs.io/img/class.png ".ShortCodeController") ShortCodeController
+## <a name="shared_short_code_controller"></a>![Class: ](https://apidocs.io/img/class.png ".SharedShortCodeController") SharedShortCodeController
 
-#### Get controller instance
+### Get controller instance
 
-An instance of the ``` ShortCodeController ``` class can be accessed from the API Client.
+An instance of the ``` SharedShortCodeController ``` class can be accessed from the API Client.
 
 ```python
- short_code_client = client.short_code
+ shared_short_code_client = client.shared_short_code
 ```
 
-#### <a name="create_view_template"></a>![Method: ](https://apidocs.io/img/method.png ".ShortCodeController.create_view_template") create_view_template
+### <a name="view_template"></a>![Method: ](https://apidocs.io/img/method.png ".SharedShortCodeController.view_template") view_template
 
 > View a Shared ShortCode Template
 
 ```python
-def create_view_template(self,
-                             options=dict())
+def view_template(self,
+                      options=dict())
 ```
 
 #### Parameters
@@ -161,221 +165,17 @@ response_type = 'json'
 collect['response_type'] = response_type
 
 
-result = short_code_client.create_view_template(collect)
+result = shared_short_code_client.view_template(collect)
 
 ```
 
 
-#### <a name="create_send_short_code"></a>![Method: ](https://apidocs.io/img/method.png ".ShortCodeController.create_send_short_code") create_send_short_code
-
-> Send an SMS from a message360 ShortCode
-
-```python
-def create_send_short_code(self,
-                               options=dict())
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| shortcode |  ``` Required ```  | The Short Code number that is the sender of this message |
-| tocountrycode |  ``` Required ```  ``` DefaultValue ```  | The country code for sending this message |
-| to |  ``` Required ```  | A valid 10-digit number that should receive the message+ |
-| templateid |  ``` Required ```  | The unique identifier for the template used for the message |
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| data |  ``` Required ```  | format of your data, example: {companyname}:test,{otpcode}:1234 |
-| method |  ``` Optional ```  ``` DefaultValue ```  | Specifies the HTTP method used to request the required URL once the Short Code message is sent. |
-| messageStatusCallback |  ``` Optional ```  | URL that can be requested to receive notification when Short Code message was sent. |
-
-
-
-#### Example Usage
-
-```python
-collect = {}
-
-shortcode = 'shortcode'
-collect['shortcode'] = shortcode
-
-tocountrycode = '1'
-collect['tocountrycode'] = tocountrycode
-
-to = 'to'
-collect['to'] = to
-
-templateid = uuid.uuid4()
-collect['templateid'] = templateid
-
-response_type = 'json'
-collect['response_type'] = response_type
-
-data = 'data'
-collect['data'] = data
-
-method = 'GET'
-collect['method'] = method
-
-message_status_callback = 'MessageStatusCallback'
-collect['message_status_callback'] = message_status_callback
-
-
-result = short_code_client.create_send_short_code(collect)
-
-```
-
-
-#### <a name="create_list_inbound_short_code"></a>![Method: ](https://apidocs.io/img/method.png ".ShortCodeController.create_list_inbound_short_code") create_list_inbound_short_code
-
-> List All Inbound ShortCode
-
-```python
-def create_list_inbound_short_code(self,
-                                       options=dict())
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| page |  ``` Optional ```  | Which page of the overall response will be returned. Zero indexed |
-| pagesize |  ``` Optional ```  ``` DefaultValue ```  | Number of individual resources listed in the response per page |
-| mfrom |  ``` Optional ```  | From Number to Inbound ShortCode |
-| shortcode |  ``` Optional ```  | Only list messages sent to this Short Code |
-| dateReceived |  ``` Optional ```  | Only list messages sent with the specified date |
-
-
-
-#### Example Usage
-
-```python
-collect = {}
-
-response_type = 'json'
-collect['response_type'] = response_type
-
-page = 158
-collect['page'] = page
-
-pagesize = 10
-collect['pagesize'] = pagesize
-
-mfrom = 'from'
-collect['mfrom'] = mfrom
-
-shortcode = 'Shortcode'
-collect['shortcode'] = shortcode
-
-date_received = 'DateReceived'
-collect['date_received'] = date_received
-
-
-result = short_code_client.create_list_inbound_short_code(collect)
-
-```
-
-
-#### <a name="create_list_short_code"></a>![Method: ](https://apidocs.io/img/method.png ".ShortCodeController.create_list_short_code") create_list_short_code
-
-> List ShortCode Messages
-
-```python
-def create_list_short_code(self,
-                               options=dict())
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| page |  ``` Optional ```  | Which page of the overall response will be returned. Zero indexed |
-| pagesize |  ``` Optional ```  ``` DefaultValue ```  | Number of individual resources listed in the response per page |
-| mfrom |  ``` Optional ```  | Messages sent from this number |
-| to |  ``` Optional ```  | Messages sent to this number |
-| datesent |  ``` Optional ```  | Only list SMS messages sent in the specified date range |
-
-
-
-#### Example Usage
-
-```python
-collect = {}
-
-response_type = 'json'
-collect['response_type'] = response_type
-
-page = 158
-collect['page'] = page
-
-pagesize = 10
-collect['pagesize'] = pagesize
-
-mfrom = 'from'
-collect['mfrom'] = mfrom
-
-to = 'to'
-collect['to'] = to
-
-datesent = 'datesent'
-collect['datesent'] = datesent
-
-
-result = short_code_client.create_list_short_code(collect)
-
-```
-
-
-#### <a name="create_list_templates"></a>![Method: ](https://apidocs.io/img/method.png ".ShortCodeController.create_list_templates") create_list_templates
-
-> List Shortcode Templates by Type
-
-```python
-def create_list_templates(self,
-                              options=dict())
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| mtype |  ``` Optional ```  ``` DefaultValue ```  | The type (category) of template Valid values: marketing, authorization |
-| page |  ``` Optional ```  | The page count to retrieve from the total results in the collection. Page indexing starts at 1. |
-| pagesize |  ``` Optional ```  ``` DefaultValue ```  | The count of objects to return per page. |
-
-
-
-#### Example Usage
-
-```python
-collect = {}
-
-response_type = 'json'
-collect['response_type'] = response_type
-
-mtype = 'authorization'
-collect['mtype'] = mtype
-
-page = 158
-collect['page'] = page
-
-pagesize = 10
-collect['pagesize'] = pagesize
-
-
-result = short_code_client.create_list_templates(collect)
-
-```
-
-
-#### <a name="create_view_short_code"></a>![Method: ](https://apidocs.io/img/method.png ".ShortCodeController.create_view_short_code") create_view_short_code
+### <a name="view_shared_shortcodes"></a>![Method: ](https://apidocs.io/img/method.png ".SharedShortCodeController.view_shared_shortcodes") view_shared_shortcodes
 
 > View a ShortCode Message
 
 ```python
-def create_view_short_code(self,
+def view_shared_shortcodes(self,
                                options=dict())
 ```
 
@@ -400,16 +200,435 @@ response_type = 'json'
 collect['response_type'] = response_type
 
 
-result = short_code_client.create_view_short_code(collect)
+result = shared_short_code_client.view_shared_shortcodes(collect)
+
+```
+
+
+### <a name="list_outbound_shared_shortcodes"></a>![Method: ](https://apidocs.io/img/method.png ".SharedShortCodeController.list_outbound_shared_shortcodes") list_outbound_shared_shortcodes
+
+> List ShortCode Messages
+
+```python
+def list_outbound_shared_shortcodes(self,
+                                        options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+| page |  ``` Optional ```  ``` DefaultValue ```  | Which page of the overall response will be returned. Zero indexed |
+| pagesize |  ``` Optional ```  ``` DefaultValue ```  | Number of individual resources listed in the response per page |
+| mfrom |  ``` Optional ```  | Messages sent from this number |
+| to |  ``` Optional ```  | Messages sent to this number |
+| datesent |  ``` Optional ```  | Only list SMS messages sent in the specified date range |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+response_type = 'json'
+collect['response_type'] = response_type
+
+page = 1
+collect['page'] = page
+
+pagesize = 10
+collect['pagesize'] = pagesize
+
+mfrom = 'from'
+collect['mfrom'] = mfrom
+
+to = 'to'
+collect['to'] = to
+
+datesent = 'datesent'
+collect['datesent'] = datesent
+
+
+result = shared_short_code_client.list_outbound_shared_shortcodes(collect)
+
+```
+
+
+### <a name="list_inbound_shared_shortcodes"></a>![Method: ](https://apidocs.io/img/method.png ".SharedShortCodeController.list_inbound_shared_shortcodes") list_inbound_shared_shortcodes
+
+> List All Inbound ShortCode
+
+```python
+def list_inbound_shared_shortcodes(self,
+                                       options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+| page |  ``` Optional ```  ``` DefaultValue ```  | Which page of the overall response will be returned. Zero indexed |
+| pagesize |  ``` Optional ```  ``` DefaultValue ```  | Number of individual resources listed in the response per page |
+| mfrom |  ``` Optional ```  | From Number to Inbound ShortCode |
+| shortcode |  ``` Optional ```  | Only list messages sent to this Short Code |
+| dateReceived |  ``` Optional ```  | Only list messages sent with the specified date |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+response_type = 'json'
+collect['response_type'] = response_type
+
+page = 1
+collect['page'] = page
+
+pagesize = 10
+collect['pagesize'] = pagesize
+
+mfrom = 'from'
+collect['mfrom'] = mfrom
+
+shortcode = 'Shortcode'
+collect['shortcode'] = shortcode
+
+date_received = 'DateReceived'
+collect['date_received'] = date_received
+
+
+result = shared_short_code_client.list_inbound_shared_shortcodes(collect)
+
+```
+
+
+### <a name="send_shared_shortcode"></a>![Method: ](https://apidocs.io/img/method.png ".SharedShortCodeController.send_shared_shortcode") send_shared_shortcode
+
+> Send an SMS from a message360 ShortCode
+
+```python
+def send_shared_shortcode(self,
+                              options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| shortcode |  ``` Required ```  | The Short Code number that is the sender of this message |
+| to |  ``` Required ```  | A valid 10-digit number that should receive the message |
+| templateid |  ``` Required ```  | The unique identifier for the template used for the message |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+| data |  ``` Required ```  | format of your data, example: {companyname}:test,{otpcode}:1234 |
+| method |  ``` Optional ```  ``` DefaultValue ```  | Specifies the HTTP method used to request the required URL once the Short Code message is sent. |
+| messageStatusCallback |  ``` Optional ```  | URL that can be requested to receive notification when Short Code message was sent. |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+shortcode = 'shortcode'
+collect['shortcode'] = shortcode
+
+to = 'to'
+collect['to'] = to
+
+templateid = uuid.uuid4()
+collect['templateid'] = templateid
+
+response_type = 'json'
+collect['response_type'] = response_type
+
+data = 'data'
+collect['data'] = data
+
+method = HttpActionEnum.GET
+collect['method'] = method
+
+message_status_callback = 'MessageStatusCallback'
+collect['message_status_callback'] = message_status_callback
+
+
+result = shared_short_code_client.send_shared_shortcode(collect)
+
+```
+
+
+### <a name="list_templates"></a>![Method: ](https://apidocs.io/img/method.png ".SharedShortCodeController.list_templates") list_templates
+
+> List Shortcode Templates by Type
+
+```python
+def list_templates(self,
+                       options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+| mtype |  ``` Optional ```  ``` DefaultValue ```  | The type (category) of template Valid values: marketing, authorization |
+| page |  ``` Optional ```  ``` DefaultValue ```  | The page count to retrieve from the total results in the collection. Page indexing starts at 1. |
+| pagesize |  ``` Optional ```  ``` DefaultValue ```  | The count of objects to return per page. |
+| shortcode |  ``` Optional ```  | Only list templates of type |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+response_type = 'json'
+collect['response_type'] = response_type
+
+mtype = 'authorization'
+collect['mtype'] = mtype
+
+page = 1
+collect['page'] = page
+
+pagesize = 10
+collect['pagesize'] = pagesize
+
+shortcode = 'Shortcode'
+collect['shortcode'] = shortcode
+
+
+result = shared_short_code_client.list_templates(collect)
+
+```
+
+
+### <a name="view_keyword"></a>![Method: ](https://apidocs.io/img/method.png ".SharedShortCodeController.view_keyword") view_keyword
+
+> View a set of properties for a single keyword.
+
+```python
+def view_keyword(self,
+                     options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| keywordid |  ``` Required ```  | The unique identifier of each keyword |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+keywordid = 'Keywordid'
+collect['keywordid'] = keywordid
+
+response_type = 'json'
+collect['response_type'] = response_type
+
+
+result = shared_short_code_client.view_keyword(collect)
+
+```
+
+
+### <a name="list_keyword"></a>![Method: ](https://apidocs.io/img/method.png ".SharedShortCodeController.list_keyword") list_keyword
+
+> Retrieve a list of keywords associated with your message360 account.
+
+```python
+def list_keyword(self,
+                     options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+| page |  ``` Optional ```  ``` DefaultValue ```  | Which page of the overall response will be returned. Zero indexed |
+| pageSize |  ``` Optional ```  ``` DefaultValue ```  | Number of individual resources listed in the response per page |
+| keyword |  ``` Optional ```  | Only list keywords of keyword |
+| shortcode |  ``` Optional ```  | Only list keywords of shortcode |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+response_type = 'json'
+collect['response_type'] = response_type
+
+page = 1
+collect['page'] = page
+
+page_size = 10
+collect['page_size'] = page_size
+
+keyword = 'Keyword'
+collect['keyword'] = keyword
+
+shortcode = 71
+collect['shortcode'] = shortcode
+
+
+result = shared_short_code_client.list_keyword(collect)
+
+```
+
+
+### <a name="view_assignement"></a>![Method: ](https://apidocs.io/img/method.png ".SharedShortCodeController.view_assignement") view_assignement
+
+> The response returned here contains all resource properties associated with the given Shortcode.
+
+```python
+def view_assignement(self,
+                         options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| shortcode |  ``` Required ```  | List of valid Shortcode to your message360 account |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+shortcode = 'Shortcode'
+collect['shortcode'] = shortcode
+
+response_type = 'json'
+collect['response_type'] = response_type
+
+
+result = shared_short_code_client.view_assignement(collect)
+
+```
+
+
+### <a name="list_assignment"></a>![Method: ](https://apidocs.io/img/method.png ".SharedShortCodeController.list_assignment") list_assignment
+
+> Retrieve a list of shortcode assignment associated with your message360 account.
+
+```python
+def list_assignment(self,
+                        options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+| page |  ``` Optional ```  ``` DefaultValue ```  | Which page of the overall response will be returned. Zero indexed |
+| pageSize |  ``` Optional ```  ``` DefaultValue ```  | Number of individual resources listed in the response per page |
+| shortcode |  ``` Optional ```  | Only list keywords of shortcode |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+response_type = 'json'
+collect['response_type'] = response_type
+
+page = 1
+collect['page'] = page
+
+page_size = 10
+collect['page_size'] = page_size
+
+shortcode = 'Shortcode'
+collect['shortcode'] = shortcode
+
+
+result = shared_short_code_client.list_assignment(collect)
+
+```
+
+
+### <a name="update_assignment"></a>![Method: ](https://apidocs.io/img/method.png ".SharedShortCodeController.update_assignment") update_assignment
+
+> TODO: Add a method description
+
+```python
+def update_assignment(self,
+                          options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| shortcode |  ``` Required ```  | List of valid shortcode to your message360 account |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+| friendlyName |  ``` Optional ```  | User generated name of the shortcode |
+| callbackUrl |  ``` Optional ```  | URL that can be requested to receive notification when call has ended. A set of default parameters will be sent here once the call is finished. |
+| callbackMethod |  ``` Optional ```  | Specifies the HTTP method used to request the required StatusCallBackUrl once call connects. |
+| fallbackUrl |  ``` Optional ```  | URL used if any errors occur during execution of InboundXML or at initial request of the required Url provided with the POST. |
+| fallbackUrlMethod |  ``` Optional ```  | Specifies the HTTP method used to request the required FallbackUrl once call connects. |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+shortcode = 'Shortcode'
+collect['shortcode'] = shortcode
+
+response_type = 'json'
+collect['response_type'] = response_type
+
+friendly_name = 'FriendlyName'
+collect['friendly_name'] = friendly_name
+
+callback_url = 'CallbackUrl'
+collect['callback_url'] = callback_url
+
+callback_method = HttpActionEnum.GET
+collect['callback_method'] = callback_method
+
+fallback_url = 'FallbackUrl'
+collect['fallback_url'] = fallback_url
+
+fallback_url_method = HttpActionEnum.GET
+collect['fallback_url_method'] = fallback_url_method
+
+
+result = shared_short_code_client.update_assignment(collect)
 
 ```
 
 
 [Back to List of Controllers](#list_of_controllers)
 
-### <a name="conference_controller"></a>![Class: ](https://apidocs.io/img/class.png ".ConferenceController") ConferenceController
+## <a name="conference_controller"></a>![Class: ](https://apidocs.io/img/class.png ".ConferenceController") ConferenceController
 
-#### Get controller instance
+### Get controller instance
 
 An instance of the ``` ConferenceController ``` class can be accessed from the API Client.
 
@@ -417,24 +636,24 @@ An instance of the ``` ConferenceController ``` class can be accessed from the A
  conference_client = client.conference
 ```
 
-#### <a name="create_deaf_mute_participant"></a>![Method: ](https://apidocs.io/img/method.png ".ConferenceController.create_deaf_mute_participant") create_deaf_mute_participant
+### <a name="deaf_mute_participant"></a>![Method: ](https://apidocs.io/img/method.png ".ConferenceController.deaf_mute_participant") deaf_mute_participant
 
 > Deaf Mute Participant
 
 ```python
-def create_deaf_mute_participant(self,
-                                     options=dict())
+def deaf_mute_participant(self,
+                              options=dict())
 ```
 
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| conferenceSid |  ``` Required ```  | TODO: Add a parameter description |
-| participantSid |  ``` Required ```  | TODO: Add a parameter description |
+| conferenceSid |  ``` Required ```  | ID of the active conference |
+| participantSid |  ``` Required ```  | ID of an active participant |
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response Type either json or xml |
-| muted |  ``` Optional ```  | TODO: Add a parameter description |
-| deaf |  ``` Optional ```  | TODO: Add a parameter description |
+| muted |  ``` Optional ```  | Mute a participant |
+| deaf |  ``` Optional ```  | Make it so a participant cant hear |
 
 
 
@@ -452,38 +671,34 @@ collect['participant_sid'] = participant_sid
 response_type = 'json'
 collect['response_type'] = response_type
 
-muted = True
+muted = False
 collect['muted'] = muted
 
-deaf = True
+deaf = False
 collect['deaf'] = deaf
 
 
-result = conference_client.create_deaf_mute_participant(collect)
+result = conference_client.deaf_mute_participant(collect)
 
 ```
 
 
-#### <a name="create_list_conference"></a>![Method: ](https://apidocs.io/img/method.png ".ConferenceController.create_list_conference") create_list_conference
+### <a name="view_participant"></a>![Method: ](https://apidocs.io/img/method.png ".ConferenceController.view_participant") view_participant
 
-> List Conference
+> View Participant
 
 ```python
-def create_list_conference(self,
-                               options=dict())
+def view_participant(self,
+                         options=dict())
 ```
 
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
+| conferenceSid |  ``` Required ```  | unique conference sid |
+| participantSid |  ``` Required ```  | TODO: Add a parameter description |
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| page |  ``` Optional ```  | Which page of the overall response will be returned. Zero indexed |
-| pageSize |  ``` Optional ```  | Number of individual resources listed in the response per page |
-| friendlyName |  ``` Optional ```  | Only return conferences with the specified FriendlyName |
-| status |  ``` Optional ```  | TODO: Add a parameter description |
-| dateCreated |  ``` Optional ```  | TODO: Add a parameter description |
-| dateUpdated |  ``` Optional ```  | TODO: Add a parameter description |
 
 
 
@@ -492,40 +707,75 @@ def create_list_conference(self,
 ```python
 collect = {}
 
+conference_sid = 'ConferenceSid'
+collect['conference_sid'] = conference_sid
+
+participant_sid = 'ParticipantSid'
+collect['participant_sid'] = participant_sid
+
 response_type = 'json'
 collect['response_type'] = response_type
 
-page = 116
-collect['page'] = page
 
-page_size = 116
-collect['page_size'] = page_size
-
-friendly_name = 'FriendlyName'
-collect['friendly_name'] = friendly_name
-
-status = InterruptedCallStatusEnum.CANCELED
-collect['status'] = status
-
-date_created = 'DateCreated'
-collect['date_created'] = date_created
-
-date_updated = 'DateUpdated'
-collect['date_updated'] = date_updated
-
-
-result = conference_client.create_list_conference(collect)
+result = conference_client.view_participant(collect)
 
 ```
 
 
-#### <a name="create_view_conference"></a>![Method: ](https://apidocs.io/img/method.png ".ConferenceController.create_view_conference") create_view_conference
+### <a name="add_participant"></a>![Method: ](https://apidocs.io/img/method.png ".ConferenceController.add_participant") add_participant
+
+> Add Participant in conference 
+
+```python
+def add_participant(self,
+                        options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| conferencesid |  ``` Required ```  | Unique Conference Sid |
+| participantnumber |  ``` Required ```  | Particiant Number |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+| muted |  ``` Optional ```  | add muted |
+| deaf |  ``` Optional ```  | add without volume |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+conferencesid = 'conferencesid'
+collect['conferencesid'] = conferencesid
+
+participantnumber = 'participantnumber'
+collect['participantnumber'] = participantnumber
+
+response_type = 'json'
+collect['response_type'] = response_type
+
+muted = False
+collect['muted'] = muted
+
+deaf = False
+collect['deaf'] = deaf
+
+
+result = conference_client.add_participant(collect)
+
+```
+
+
+### <a name="view_conference"></a>![Method: ](https://apidocs.io/img/method.png ".ConferenceController.view_conference") view_conference
 
 > View Conference
 
 ```python
-def create_view_conference(self,
-                               options=dict())
+def view_conference(self,
+                        options=dict())
 ```
 
 #### Parameters
@@ -549,30 +799,38 @@ response_type = 'json'
 collect['response_type'] = response_type
 
 
-result = conference_client.create_view_conference(collect)
+result = conference_client.view_conference(collect)
 
 ```
 
 
-#### <a name="add_participant"></a>![Method: ](https://apidocs.io/img/method.png ".ConferenceController.add_participant") add_participant
+### <a name="create_conference"></a>![Method: ](https://apidocs.io/img/method.png ".ConferenceController.create_conference") create_conference
 
-> Add Participant in conference 
+> Here you can experiment with initiating a conference call through message360 and view the request response generated when doing so.
 
 ```python
-def add_participant(self,
-                        options=dict())
+def create_conference(self,
+                          options=dict())
 ```
 
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| conferencesid |  ``` Required ```  | Unique Conference Sid |
-| participantnumber |  ``` Required ```  | Particiant Number |
-| tocountrycode |  ``` Required ```  | TODO: Add a parameter description |
+| mfrom |  ``` Required ```  | This number to display on Caller ID as calling |
+| to |  ``` Required ```  | To number |
+| url |  ``` Required ```  | URL requested once the call connects |
+| method |  ``` Required ```  ``` DefaultValue ```  | Specifies the HTTP method used to request the required URL once call connects. |
+| recordCallbackUrl |  ``` Required ```  | Recording parameters will be sent here upon completion. |
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| muted |  ``` Optional ```  | TODO: Add a parameter description |
-| deaf |  ``` Optional ```  | TODO: Add a parameter description |
+| statusCallBackUrl |  ``` Optional ```  | URL that can be requested to receive notification when call has ended. A set of default parameters will be sent here once the conference is finished. |
+| statusCallBackMethod |  ``` Optional ```  | Specifies the HTTP methodlinkclass used to request StatusCallbackUrl. |
+| fallBackUrl |  ``` Optional ```  | URL requested if the initial Url parameter fails or encounters an error |
+| fallBackMethod |  ``` Optional ```  | Specifies the HTTP method used to request the required FallbackUrl once call connects. |
+| record |  ``` Optional ```  | Specifies if the conference should be recorded. |
+| recordCallbackMethod |  ``` Optional ```  | Specifies the HTTP method used to request the required URL once conference connects. |
+| schdeuleTime |  ``` Optional ```  | Schedule conference in future. Schedule time must be greater than current time |
+| timeout |  ``` Optional ```  | The number of seconds the call stays on the line while waiting for an answer. The max time limit is 999 and the default limit is 60 seconds but lower times can be set. |
 
 
 
@@ -581,96 +839,69 @@ def add_participant(self,
 ```python
 collect = {}
 
-conferencesid = 'conferencesid'
-collect['conferencesid'] = conferencesid
+mfrom = 'From'
+collect['mfrom'] = mfrom
 
-participantnumber = 'participantnumber'
-collect['participantnumber'] = participantnumber
+to = 'To'
+collect['to'] = to
 
-tocountrycode = 116
-collect['tocountrycode'] = tocountrycode
+url = 'Url'
+collect['url'] = url
+
+method = HttpActionEnum.POST
+collect['method'] = method
+
+record_callback_url = 'RecordCallbackUrl'
+collect['record_callback_url'] = record_callback_url
 
 response_type = 'json'
 collect['response_type'] = response_type
 
-muted = False
-collect['muted'] = muted
+status_call_back_url = 'StatusCallBackUrl'
+collect['status_call_back_url'] = status_call_back_url
 
-deaf = False
-collect['deaf'] = deaf
+status_call_back_method = HttpActionEnum.GET
+collect['status_call_back_method'] = status_call_back_method
+
+fall_back_url = 'FallBackUrl'
+collect['fall_back_url'] = fall_back_url
+
+fall_back_method = HttpActionEnum.GET
+collect['fall_back_method'] = fall_back_method
+
+record = False
+collect['record'] = record
+
+record_callback_method = HttpActionEnum.GET
+collect['record_callback_method'] = record_callback_method
+
+schdeule_time = 'SchdeuleTime'
+collect['schdeule_time'] = schdeule_time
+
+timeout = 71
+collect['timeout'] = timeout
 
 
-result = conference_client.add_participant(collect)
+result = conference_client.create_conference(collect)
 
 ```
 
 
-#### <a name="create_list_participant"></a>![Method: ](https://apidocs.io/img/method.png ".ConferenceController.create_list_participant") create_list_participant
+### <a name="hangup_participant"></a>![Method: ](https://apidocs.io/img/method.png ".ConferenceController.hangup_participant") hangup_participant
 
-> List Participant
+> Remove a participant from a conference.
 
 ```python
-def create_list_participant(self,
-                                options=dict())
+def hangup_participant(self,
+                           options=dict())
 ```
 
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| conferenceSid |  ``` Required ```  | unique conference sid |
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response format, xml or json |
-| page |  ``` Optional ```  | page number |
-| pagesize |  ``` Optional ```  | TODO: Add a parameter description |
-| muted |  ``` Optional ```  | TODO: Add a parameter description |
-| deaf |  ``` Optional ```  | TODO: Add a parameter description |
-
-
-
-#### Example Usage
-
-```python
-collect = {}
-
-conference_sid = 'ConferenceSid'
-collect['conference_sid'] = conference_sid
-
-response_type = 'json'
-collect['response_type'] = response_type
-
-page = 116
-collect['page'] = page
-
-pagesize = 116
-collect['pagesize'] = pagesize
-
-muted = False
-collect['muted'] = muted
-
-deaf = False
-collect['deaf'] = deaf
-
-
-result = conference_client.create_list_participant(collect)
-
-```
-
-
-#### <a name="create_view_participant"></a>![Method: ](https://apidocs.io/img/method.png ".ConferenceController.create_view_participant") create_view_participant
-
-> View Participant
-
-```python
-def create_view_participant(self,
-                                options=dict())
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| conferenceSid |  ``` Required ```  | unique conference sid |
-| participantSid |  ``` Required ```  | TODO: Add a parameter description |
+| conferenceSid |  ``` Required ```  | The unique identifier for a conference object. |
+| participantSid |  ``` Required ```  | The unique identifier for a participant object. |
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
 
 
@@ -690,39 +921,28 @@ response_type = 'json'
 collect['response_type'] = response_type
 
 
-result = conference_client.create_view_participant(collect)
+result = conference_client.hangup_participant(collect)
 
 ```
 
 
-[Back to List of Controllers](#list_of_controllers)
+### <a name="play_conference_audio"></a>![Method: ](https://apidocs.io/img/method.png ".ConferenceController.play_conference_audio") play_conference_audio
 
-### <a name="number_verification_controller"></a>![Class: ](https://apidocs.io/img/class.png ".NumberVerificationController") NumberVerificationController
-
-#### Get controller instance
-
-An instance of the ``` NumberVerificationController ``` class can be accessed from the API Client.
+> Play an audio file during a conference.
 
 ```python
- number_verification_client = client.number_verification
-```
-
-#### <a name="create_verify_number"></a>![Method: ](https://apidocs.io/img/method.png ".NumberVerificationController.create_verify_number") create_verify_number
-
-> Number Verification
-
-```python
-def create_verify_number(self,
-                             options=dict())
+def play_conference_audio(self,
+                              options=dict())
 ```
 
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| phonenumber |  ``` Required ```  | TODO: Add a parameter description |
-| mtype |  ``` Required ```  | TODO: Add a parameter description |
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response Type either json or xml |
+| conferenceSid |  ``` Required ```  | The unique identifier for a conference object. |
+| participantSid |  ``` Required ```  | The unique identifier for a participant object. |
+| audioUrl |  ``` Required ```  | The URL for the audio file that is to be played during the conference. Multiple audio files can be chained by using a semicolon. |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
 
 
 
@@ -731,26 +951,640 @@ def create_verify_number(self,
 ```python
 collect = {}
 
-phonenumber = 'phonenumber'
-collect['phonenumber'] = phonenumber
+conference_sid = 'ConferenceSid'
+collect['conference_sid'] = conference_sid
 
-mtype = 'type'
-collect['mtype'] = mtype
+participant_sid = 'ParticipantSid'
+collect['participant_sid'] = participant_sid
+
+audio_url = AudioFormatEnum.MP3
+collect['audio_url'] = audio_url
 
 response_type = 'json'
 collect['response_type'] = response_type
 
 
-result = number_verification_client.create_verify_number(collect)
+result = conference_client.play_conference_audio(collect)
+
+```
+
+
+### <a name="list_participant"></a>![Method: ](https://apidocs.io/img/method.png ".ConferenceController.list_participant") list_participant
+
+> List Participant
+
+```python
+def list_participant(self,
+                         options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| conferenceSid |  ``` Required ```  | unique conference sid |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response format, xml or json |
+| page |  ``` Optional ```  ``` DefaultValue ```  | page number |
+| pagesize |  ``` Optional ```  ``` DefaultValue ```  | Amount of records to return per page |
+| muted |  ``` Optional ```  | Participants that are muted |
+| deaf |  ``` Optional ```  | Participants cant hear |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+conference_sid = 'ConferenceSid'
+collect['conference_sid'] = conference_sid
+
+response_type = 'json'
+collect['response_type'] = response_type
+
+page = 1
+collect['page'] = page
+
+pagesize = 10
+collect['pagesize'] = pagesize
+
+muted = False
+collect['muted'] = muted
+
+deaf = False
+collect['deaf'] = deaf
+
+
+result = conference_client.list_participant(collect)
+
+```
+
+
+### <a name="list_conference"></a>![Method: ](https://apidocs.io/img/method.png ".ConferenceController.list_conference") list_conference
+
+> List Conference
+
+```python
+def list_conference(self,
+                        options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+| page |  ``` Optional ```  ``` DefaultValue ```  | Which page of the overall response will be returned. Zero indexed |
+| pageSize |  ``` Optional ```  ``` DefaultValue ```  | Number of individual resources listed in the response per page |
+| friendlyName |  ``` Optional ```  | Only return conferences with the specified FriendlyName |
+| dateCreated |  ``` Optional ```  | Conference created date |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+response_type = 'json'
+collect['response_type'] = response_type
+
+page = 1
+collect['page'] = page
+
+page_size = 10
+collect['page_size'] = page_size
+
+friendly_name = 'FriendlyName'
+collect['friendly_name'] = friendly_name
+
+date_created = 'DateCreated'
+collect['date_created'] = date_created
+
+
+result = conference_client.list_conference(collect)
 
 ```
 
 
 [Back to List of Controllers](#list_of_controllers)
 
-### <a name="web_rtc_controller"></a>![Class: ](https://apidocs.io/img/class.png ".WebRTCController") WebRTCController
+## <a name="transcription_controller"></a>![Class: ](https://apidocs.io/img/class.png ".TranscriptionController") TranscriptionController
 
-#### Get controller instance
+### Get controller instance
+
+An instance of the ``` TranscriptionController ``` class can be accessed from the API Client.
+
+```python
+ transcription_client = client.transcription
+```
+
+### <a name="list_transcription"></a>![Method: ](https://apidocs.io/img/method.png ".TranscriptionController.list_transcription") list_transcription
+
+> Get All transcriptions
+
+```python
+def list_transcription(self,
+                           options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+| page |  ``` Optional ```  ``` DefaultValue ```  | page number |
+| pageSize |  ``` Optional ```  ``` DefaultValue ```  | Amount of data per page |
+| status |  ``` Optional ```  | Transcription status |
+| dateTranscribed |  ``` Optional ```  | Transcription date |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+response_type = 'json'
+collect['response_type'] = response_type
+
+page = 1
+collect['page'] = page
+
+page_size = 10
+collect['page_size'] = page_size
+
+status = StatusEnum.INPROGRESS
+collect['status'] = status
+
+date_transcribed = 'DateTranscribed'
+collect['date_transcribed'] = date_transcribed
+
+
+result = transcription_client.list_transcription(collect)
+
+```
+
+
+### <a name="view_transcription"></a>![Method: ](https://apidocs.io/img/method.png ".TranscriptionController.view_transcription") view_transcription
+
+> View Specific Transcriptions
+
+```python
+def view_transcription(self,
+                           options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| transcriptionSid |  ``` Required ```  | Unique Transcription ID |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+transcription_sid = 'TranscriptionSid'
+collect['transcription_sid'] = transcription_sid
+
+response_type = 'json'
+collect['response_type'] = response_type
+
+
+result = transcription_client.view_transcription(collect)
+
+```
+
+
+### <a name="recording_transcription"></a>![Method: ](https://apidocs.io/img/method.png ".TranscriptionController.recording_transcription") recording_transcription
+
+> Recording Transcriptions
+
+```python
+def recording_transcription(self,
+                                options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| recordingSid |  ``` Required ```  | Unique Recording sid |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+recording_sid = 'RecordingSid'
+collect['recording_sid'] = recording_sid
+
+response_type = 'json'
+collect['response_type'] = response_type
+
+
+result = transcription_client.recording_transcription(collect)
+
+```
+
+
+### <a name="audio_url_transcription"></a>![Method: ](https://apidocs.io/img/method.png ".TranscriptionController.audio_url_transcription") audio_url_transcription
+
+> Audio URL Transcriptions
+
+```python
+def audio_url_transcription(self,
+                                options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| audioUrl |  ``` Required ```  | Audio url |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+audio_url = 'AudioUrl'
+collect['audio_url'] = audio_url
+
+response_type = 'json'
+collect['response_type'] = response_type
+
+
+result = transcription_client.audio_url_transcription(collect)
+
+```
+
+
+[Back to List of Controllers](#list_of_controllers)
+
+## <a name="phone_number_controller"></a>![Class: ](https://apidocs.io/img/class.png ".PhoneNumberController") PhoneNumberController
+
+### Get controller instance
+
+An instance of the ``` PhoneNumberController ``` class can be accessed from the API Client.
+
+```python
+ phone_number_client = client.phone_number
+```
+
+### <a name="available_phone_number"></a>![Method: ](https://apidocs.io/img/method.png ".PhoneNumberController.available_phone_number") available_phone_number
+
+> Available Phone Number
+
+```python
+def available_phone_number(self,
+                               options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| numberType |  ``` Required ```  | Number type either SMS,Voice or all |
+| areaCode |  ``` Required ```  | Phone Number Area Code |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+| pageSize |  ``` Optional ```  ``` DefaultValue ```  | Page Size |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+number_type = NumberTypeEnum.ALL
+collect['number_type'] = number_type
+
+area_code = 'AreaCode'
+collect['area_code'] = area_code
+
+response_type = 'json'
+collect['response_type'] = response_type
+
+page_size = 10
+collect['page_size'] = page_size
+
+
+result = phone_number_client.available_phone_number(collect)
+
+```
+
+
+### <a name="list_number"></a>![Method: ](https://apidocs.io/img/method.png ".PhoneNumberController.list_number") list_number
+
+> List Account's Phone number details
+
+```python
+def list_number(self,
+                    options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+| page |  ``` Optional ```  ``` DefaultValue ```  | Which page of the overall response will be returned. Zero indexed |
+| pageSize |  ``` Optional ```  ``` DefaultValue ```  | Number of individual resources listed in the response per page |
+| numberType |  ``` Optional ```  | SMS or Voice |
+| friendlyName |  ``` Optional ```  | Friendly name of the number |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+response_type = 'json'
+collect['response_type'] = response_type
+
+page = 1
+collect['page'] = page
+
+page_size = 10
+collect['page_size'] = page_size
+
+number_type = NumberTypeEnum.ALL
+collect['number_type'] = number_type
+
+friendly_name = 'FriendlyName'
+collect['friendly_name'] = friendly_name
+
+
+result = phone_number_client.list_number(collect)
+
+```
+
+
+### <a name="view_number_details"></a>![Method: ](https://apidocs.io/img/method.png ".PhoneNumberController.view_number_details") view_number_details
+
+> Get Phone Number Details
+
+```python
+def view_number_details(self,
+                            options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| phoneNumber |  ``` Required ```  | Get Phone number Detail |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+phone_number = 'PhoneNumber'
+collect['phone_number'] = phone_number
+
+response_type = 'json'
+collect['response_type'] = response_type
+
+
+result = phone_number_client.view_number_details(collect)
+
+```
+
+
+### <a name="release_number"></a>![Method: ](https://apidocs.io/img/method.png ".PhoneNumberController.release_number") release_number
+
+> Release number from account
+
+```python
+def release_number(self,
+                       options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| phoneNumber |  ``` Required ```  | Phone number to be relase |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+phone_number = 'PhoneNumber'
+collect['phone_number'] = phone_number
+
+response_type = 'json'
+collect['response_type'] = response_type
+
+
+result = phone_number_client.release_number(collect)
+
+```
+
+
+### <a name="buy_number"></a>![Method: ](https://apidocs.io/img/method.png ".PhoneNumberController.buy_number") buy_number
+
+> Buy Phone Number 
+
+```python
+def buy_number(self,
+                   options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| phoneNumber |  ``` Required ```  | Phone number to be purchase |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+phone_number = 'PhoneNumber'
+collect['phone_number'] = phone_number
+
+response_type = 'json'
+collect['response_type'] = response_type
+
+
+result = phone_number_client.buy_number(collect)
+
+```
+
+
+### <a name="update_phone_number"></a>![Method: ](https://apidocs.io/img/method.png ".PhoneNumberController.update_phone_number") update_phone_number
+
+> Update Phone Number Details
+
+```python
+def update_phone_number(self,
+                            options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| phoneNumber |  ``` Required ```  | The phone number to update |
+| voiceUrl |  ``` Required ```  | URL requested once the call connects |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+| friendlyName |  ``` Optional ```  | Phone number friendly name description |
+| voiceMethod |  ``` Optional ```  | Post or Get |
+| voiceFallbackUrl |  ``` Optional ```  | URL requested if the voice URL is not available |
+| voiceFallbackMethod |  ``` Optional ```  | Post or Get |
+| hangupCallback |  ``` Optional ```  | callback url after a hangup occurs |
+| hangupCallbackMethod |  ``` Optional ```  | Post or Get |
+| heartbeatUrl |  ``` Optional ```  | URL requested once the call connects |
+| heartbeatMethod |  ``` Optional ```  | URL that can be requested every 60 seconds during the call to notify of elapsed time |
+| smsUrl |  ``` Optional ```  | URL requested when an SMS is received |
+| smsMethod |  ``` Optional ```  | Post or Get |
+| smsFallbackUrl |  ``` Optional ```  | URL requested once the call connects |
+| smsFallbackMethod |  ``` Optional ```  | URL requested if the sms URL is not available |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+phone_number = 'PhoneNumber'
+collect['phone_number'] = phone_number
+
+voice_url = 'VoiceUrl'
+collect['voice_url'] = voice_url
+
+response_type = 'json'
+collect['response_type'] = response_type
+
+friendly_name = 'FriendlyName'
+collect['friendly_name'] = friendly_name
+
+voice_method = HttpActionEnum.GET
+collect['voice_method'] = voice_method
+
+voice_fallback_url = 'VoiceFallbackUrl'
+collect['voice_fallback_url'] = voice_fallback_url
+
+voice_fallback_method = HttpActionEnum.GET
+collect['voice_fallback_method'] = voice_fallback_method
+
+hangup_callback = 'HangupCallback'
+collect['hangup_callback'] = hangup_callback
+
+hangup_callback_method = HttpActionEnum.GET
+collect['hangup_callback_method'] = hangup_callback_method
+
+heartbeat_url = 'HeartbeatUrl'
+collect['heartbeat_url'] = heartbeat_url
+
+heartbeat_method = HttpActionEnum.GET
+collect['heartbeat_method'] = heartbeat_method
+
+sms_url = 'SmsUrl'
+collect['sms_url'] = sms_url
+
+sms_method = HttpActionEnum.GET
+collect['sms_method'] = sms_method
+
+sms_fallback_url = 'SmsFallbackUrl'
+collect['sms_fallback_url'] = sms_fallback_url
+
+sms_fallback_method = HttpActionEnum.GET
+collect['sms_fallback_method'] = sms_fallback_method
+
+
+result = phone_number_client.update_phone_number(collect)
+
+```
+
+
+[Back to List of Controllers](#list_of_controllers)
+
+## <a name="usage_controller"></a>![Class: ](https://apidocs.io/img/class.png ".UsageController") UsageController
+
+### Get controller instance
+
+An instance of the ``` UsageController ``` class can be accessed from the API Client.
+
+```python
+ usage_client = client.usage
+```
+
+### <a name="list_usage"></a>![Method: ](https://apidocs.io/img/method.png ".UsageController.list_usage") list_usage
+
+> Get all usage 
+
+```python
+def list_usage(self,
+                   options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+| productCode |  ``` Optional ```  ``` DefaultValue ```  | Product Code |
+| startDate |  ``` Optional ```  ``` DefaultValue ```  | Start Usage Date |
+| endDate |  ``` Optional ```  ``` DefaultValue ```  | End Usage Date |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+response_type = 'json'
+collect['response_type'] = response_type
+
+product_code = ProductCodeEnum.ALL
+collect['product_code'] = product_code
+
+start_date = '2016-09-06'
+collect['start_date'] = start_date
+
+end_date = '2016-09-06'
+collect['end_date'] = end_date
+
+
+result = usage_client.list_usage(collect)
+
+```
+
+
+[Back to List of Controllers](#list_of_controllers)
+
+## <a name="web_rtc_controller"></a>![Class: ](https://apidocs.io/img/class.png ".WebRTCController") WebRTCController
+
+### Get controller instance
 
 An instance of the ``` WebRTCController ``` class can be accessed from the API Client.
 
@@ -758,13 +1592,13 @@ An instance of the ``` WebRTCController ``` class can be accessed from the API C
  web_rtc_client = client.web_rtc
 ```
 
-#### <a name="create_check_funds"></a>![Method: ](https://apidocs.io/img/method.png ".WebRTCController.create_check_funds") create_check_funds
+### <a name="check_funds"></a>![Method: ](https://apidocs.io/img/method.png ".WebRTCController.check_funds") check_funds
 
 > TODO: Add a method description
 
 ```python
-def create_check_funds(self,
-                           options=dict())
+def check_funds(self,
+                    options=dict())
 ```
 
 #### Parameters
@@ -788,12 +1622,12 @@ auth_token = 'auth_token'
 collect['auth_token'] = auth_token
 
 
-result = web_rtc_client.create_check_funds(collect)
+result = web_rtc_client.check_funds(collect)
 
 ```
 
 
-#### <a name="create_token"></a>![Method: ](https://apidocs.io/img/method.png ".WebRTCController.create_token") create_token
+### <a name="create_token"></a>![Method: ](https://apidocs.io/img/method.png ".WebRTCController.create_token") create_token
 
 > message360 webrtc
 
@@ -838,50 +1672,31 @@ result = web_rtc_client.create_token(collect)
 
 [Back to List of Controllers](#list_of_controllers)
 
-### <a name="call_controller"></a>![Class: ](https://apidocs.io/img/class.png ".CallController") CallController
+## <a name="recording_controller"></a>![Class: ](https://apidocs.io/img/class.png ".RecordingController") RecordingController
 
-#### Get controller instance
+### Get controller instance
 
-An instance of the ``` CallController ``` class can be accessed from the API Client.
+An instance of the ``` RecordingController ``` class can be accessed from the API Client.
 
 ```python
- call_client = client.call
+ recording_client = client.recording
 ```
 
-#### <a name="create_group_call"></a>![Method: ](https://apidocs.io/img/method.png ".CallController.create_group_call") create_group_call
+### <a name="view_recording"></a>![Method: ](https://apidocs.io/img/method.png ".RecordingController.view_recording") view_recording
 
-> Group Call
+> View a specific Recording
 
 ```python
-def create_group_call(self,
-                          options=dict())
+def view_recording(self,
+                       options=dict())
 ```
 
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| fromCountryCode |  ``` Required ```  ``` DefaultValue ```  | TODO: Add a parameter description |
-| mfrom |  ``` Required ```  | TODO: Add a parameter description |
-| toCountryCode |  ``` Required ```  ``` DefaultValue ```  | TODO: Add a parameter description |
-| to |  ``` Required ```  | TODO: Add a parameter description |
-| url |  ``` Required ```  | TODO: Add a parameter description |
-| responseType |  ``` Required ```  ``` DefaultValue ```  | TODO: Add a parameter description |
-| method |  ``` Optional ```  | TODO: Add a parameter description |
-| statusCallBackUrl |  ``` Optional ```  | TODO: Add a parameter description |
-| statusCallBackMethod |  ``` Optional ```  | TODO: Add a parameter description |
-| fallBackUrl |  ``` Optional ```  | TODO: Add a parameter description |
-| fallBackMethod |  ``` Optional ```  | TODO: Add a parameter description |
-| heartBeatUrl |  ``` Optional ```  | TODO: Add a parameter description |
-| heartBeatMethod |  ``` Optional ```  | TODO: Add a parameter description |
-| timeout |  ``` Optional ```  | TODO: Add a parameter description |
-| playDtmf |  ``` Optional ```  | TODO: Add a parameter description |
-| hideCallerId |  ``` Optional ```  | TODO: Add a parameter description |
-| record |  ``` Optional ```  | TODO: Add a parameter description |
-| recordCallBackUrl |  ``` Optional ```  | TODO: Add a parameter description |
-| recordCallBackMethod |  ``` Optional ```  | TODO: Add a parameter description |
-| transcribe |  ``` Optional ```  | TODO: Add a parameter description |
-| transcribeCallBackUrl |  ``` Optional ```  | TODO: Add a parameter description |
+| recordingSid |  ``` Required ```  | Search Recording sid |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
 
 
 
@@ -890,14 +1705,843 @@ def create_group_call(self,
 ```python
 collect = {}
 
-from_country_code = '1'
-collect['from_country_code'] = from_country_code
+recording_sid = 'RecordingSid'
+collect['recording_sid'] = recording_sid
+
+response_type = 'json'
+collect['response_type'] = response_type
+
+
+result = recording_client.view_recording(collect)
+
+```
+
+
+### <a name="delete_recording"></a>![Method: ](https://apidocs.io/img/method.png ".RecordingController.delete_recording") delete_recording
+
+> Delete Recording Record
+
+```python
+def delete_recording(self,
+                         options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| recordingSid |  ``` Required ```  | Unique Recording Sid to be delete |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+recording_sid = 'RecordingSid'
+collect['recording_sid'] = recording_sid
+
+response_type = 'json'
+collect['response_type'] = response_type
+
+
+result = recording_client.delete_recording(collect)
+
+```
+
+
+### <a name="list_recording"></a>![Method: ](https://apidocs.io/img/method.png ".RecordingController.list_recording") list_recording
+
+> List out Recordings
+
+```python
+def list_recording(self,
+                       options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+| page |  ``` Optional ```  ``` DefaultValue ```  | Which page of the overall response will be returned. Zero indexed |
+| pageSize |  ``` Optional ```  ``` DefaultValue ```  | Number of individual resources listed in the response per page |
+| dateCreated |  ``` Optional ```  | Recording date |
+| callSid |  ``` Optional ```  | Call ID |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+response_type = 'json'
+collect['response_type'] = response_type
+
+page = 1
+collect['page'] = page
+
+page_size = 10
+collect['page_size'] = page_size
+
+date_created = 'DateCreated'
+collect['date_created'] = date_created
+
+call_sid = 'CallSid'
+collect['call_sid'] = call_sid
+
+
+result = recording_client.list_recording(collect)
+
+```
+
+
+[Back to List of Controllers](#list_of_controllers)
+
+## <a name="email_controller"></a>![Class: ](https://apidocs.io/img/class.png ".EmailController") EmailController
+
+### Get controller instance
+
+An instance of the ``` EmailController ``` class can be accessed from the API Client.
+
+```python
+ email_client = client.email
+```
+
+### <a name="delete_spam"></a>![Method: ](https://apidocs.io/img/method.png ".EmailController.delete_spam") delete_spam
+
+> Deletes a email address marked as spam from the spam list
+
+```python
+def delete_spam(self,
+                    options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+| email |  ``` Required ```  | Email address |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+response_type = 'json'
+collect['response_type'] = response_type
+
+email = 'email'
+collect['email'] = email
+
+
+result = email_client.delete_spam(collect)
+
+```
+
+
+### <a name="delete_block"></a>![Method: ](https://apidocs.io/img/method.png ".EmailController.delete_block") delete_block
+
+> Deletes a blocked email
+
+```python
+def delete_block(self,
+                     options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| email |  ``` Required ```  | Email address to remove from block list |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+email = 'email'
+collect['email'] = email
+
+response_type = 'json'
+collect['response_type'] = response_type
+
+
+result = email_client.delete_block(collect)
+
+```
+
+
+### <a name="add_unsubscribes"></a>![Method: ](https://apidocs.io/img/method.png ".EmailController.add_unsubscribes") add_unsubscribes
+
+> Add an email to the unsubscribe list
+
+```python
+def add_unsubscribes(self,
+                         options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| email |  ``` Required ```  | The email to add to the unsubscribe list |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+email = 'email'
+collect['email'] = email
+
+response_type = 'json'
+collect['response_type'] = response_type
+
+
+result = email_client.add_unsubscribes(collect)
+
+```
+
+
+### <a name="send_email"></a>![Method: ](https://apidocs.io/img/method.png ".EmailController.send_email") send_email
+
+> Send out an email
+
+```python
+def send_email(self,
+                   options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| to |  ``` Required ```  | The to email address |
+| mfrom |  ``` Required ```  | The from email address |
+| mtype |  ``` Required ```  ``` DefaultValue ```  | email format type, html or text |
+| subject |  ``` Required ```  | Email subject |
+| message |  ``` Required ```  | The body of the email message |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+| cc |  ``` Optional ```  | CC Email address |
+| bcc |  ``` Optional ```  | BCC Email address |
+| attachment |  ``` Optional ```  | File to be attached.File must be less than 7MB. |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+to = 'to'
+collect['to'] = to
+
+mfrom = 'from'
+collect['mfrom'] = mfrom
+
+mtype = SendEmailAsEnum.HTML
+collect['mtype'] = mtype
+
+subject = 'subject'
+collect['subject'] = subject
+
+message = 'message'
+collect['message'] = message
+
+response_type = 'json'
+collect['response_type'] = response_type
+
+cc = 'cc'
+collect['cc'] = cc
+
+bcc = 'bcc'
+collect['bcc'] = bcc
+
+attachment = 'attachment'
+collect['attachment'] = attachment
+
+
+result = email_client.send_email(collect)
+
+```
+
+
+### <a name="delete_unsubscribes"></a>![Method: ](https://apidocs.io/img/method.png ".EmailController.delete_unsubscribes") delete_unsubscribes
+
+> Delete emails from the unsubscribe list
+
+```python
+def delete_unsubscribes(self,
+                            options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| email |  ``` Required ```  | The email to remove from the unsubscribe list |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+email = 'email'
+collect['email'] = email
+
+response_type = 'json'
+collect['response_type'] = response_type
+
+
+result = email_client.delete_unsubscribes(collect)
+
+```
+
+
+### <a name="list_unsubscribes"></a>![Method: ](https://apidocs.io/img/method.png ".EmailController.list_unsubscribes") list_unsubscribes
+
+> List all unsubscribed email addresses
+
+```python
+def list_unsubscribes(self,
+                          options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+| offset |  ``` Optional ```  | Starting record of the list |
+| limit |  ``` Optional ```  | Maximum number of records to be returned |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+response_type = 'json'
+collect['response_type'] = response_type
+
+offset = 'offset'
+collect['offset'] = offset
+
+limit = 'limit'
+collect['limit'] = limit
+
+
+result = email_client.list_unsubscribes(collect)
+
+```
+
+
+### <a name="list_invalid"></a>![Method: ](https://apidocs.io/img/method.png ".EmailController.list_invalid") list_invalid
+
+> List out all invalid email addresses
+
+```python
+def list_invalid(self,
+                     options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+| offet |  ``` Optional ```  | Starting record for listing out emails |
+| limit |  ``` Optional ```  | Maximum number of records to return |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+response_type = 'json'
+collect['response_type'] = response_type
+
+offet = 'offet'
+collect['offet'] = offet
+
+limit = 'limit'
+collect['limit'] = limit
+
+
+result = email_client.list_invalid(collect)
+
+```
+
+
+### <a name="delete_bounces"></a>![Method: ](https://apidocs.io/img/method.png ".EmailController.delete_bounces") delete_bounces
+
+> Delete an email address from the bounced address list
+
+```python
+def delete_bounces(self,
+                       options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+| email |  ``` Required ```  | The email address to remove from the bounce list |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+response_type = 'json'
+collect['response_type'] = response_type
+
+email = 'email'
+collect['email'] = email
+
+
+result = email_client.delete_bounces(collect)
+
+```
+
+
+### <a name="list_bounces"></a>![Method: ](https://apidocs.io/img/method.png ".EmailController.list_bounces") list_bounces
+
+> List out all email addresses that have bounced
+
+```python
+def list_bounces(self,
+                     options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+| offset |  ``` Optional ```  | The record to start the list at |
+| limit |  ``` Optional ```  | The maximum number of records to return |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+response_type = 'json'
+collect['response_type'] = response_type
+
+offset = 'offset'
+collect['offset'] = offset
+
+limit = 'limit'
+collect['limit'] = limit
+
+
+result = email_client.list_bounces(collect)
+
+```
+
+
+### <a name="list_spam"></a>![Method: ](https://apidocs.io/img/method.png ".EmailController.list_spam") list_spam
+
+> List out all email addresses marked as spam
+
+```python
+def list_spam(self,
+                  options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+| offset |  ``` Optional ```  | The record number to start the list at |
+| limit |  ``` Optional ```  | Maximum number of records to return |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+response_type = 'json'
+collect['response_type'] = response_type
+
+offset = 'offset'
+collect['offset'] = offset
+
+limit = 'limit'
+collect['limit'] = limit
+
+
+result = email_client.list_spam(collect)
+
+```
+
+
+### <a name="list_blocks"></a>![Method: ](https://apidocs.io/img/method.png ".EmailController.list_blocks") list_blocks
+
+> Outputs email addresses on your blocklist
+
+```python
+def list_blocks(self,
+                    options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+| offset |  ``` Optional ```  | Where to start in the output list |
+| limit |  ``` Optional ```  | Maximum number of records to return |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+response_type = 'json'
+collect['response_type'] = response_type
+
+offset = 'offset'
+collect['offset'] = offset
+
+limit = 'limit'
+collect['limit'] = limit
+
+
+result = email_client.list_blocks(collect)
+
+```
+
+
+### <a name="delete_invalid"></a>![Method: ](https://apidocs.io/img/method.png ".EmailController.delete_invalid") delete_invalid
+
+> This endpoint allows you to delete entries in the Invalid Emails list.
+
+```python
+def delete_invalid(self,
+                       options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| email |  ``` Required ```  | Email that was marked invalid |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Json or xml |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+email = 'email'
+collect['email'] = email
+
+response_type = 'json'
+collect['response_type'] = response_type
+
+
+result = email_client.delete_invalid(collect)
+
+```
+
+
+[Back to List of Controllers](#list_of_controllers)
+
+## <a name="sms_controller"></a>![Class: ](https://apidocs.io/img/class.png ".SMSController") SMSController
+
+### Get controller instance
+
+An instance of the ``` SMSController ``` class can be accessed from the API Client.
+
+```python
+ sms_client = client.sms
+```
+
+### <a name="send_sms"></a>![Method: ](https://apidocs.io/img/method.png ".SMSController.send_sms") send_sms
+
+> Send an SMS from a message360 number
+
+```python
+def send_sms(self,
+                 options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| mfrom |  ``` Required ```  | SMS enabled Message360 number to send this message from |
+| to |  ``` Required ```  | Number to send the SMS to |
+| body |  ``` Required ```  | Text Message To Send |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+| method |  ``` Optional ```  | Specifies the HTTP method used to request the required URL once SMS sent. |
+| messagestatuscallback |  ``` Optional ```  | URL that can be requested to receive notification when SMS has Sent. A set of default parameters will be sent here once the SMS is finished. |
+| smartsms |  ``` Optional ```  ``` DefaultValue ```  | Check's 'to' number can receive sms or not using Carrier API, if wireless = true then text sms is sent, else wireless = false then call is recieved to end user with audible message. |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+mfrom = 'from'
+collect['mfrom'] = mfrom
+
+to = 'to'
+collect['to'] = to
+
+body = 'body'
+collect['body'] = body
+
+response_type = 'json'
+collect['response_type'] = response_type
+
+method = HttpActionEnum.GET
+collect['method'] = method
+
+messagestatuscallback = 'messagestatuscallback'
+collect['messagestatuscallback'] = messagestatuscallback
+
+smartsms = False
+collect['smartsms'] = smartsms
+
+
+result = sms_client.send_sms(collect)
+
+```
+
+
+### <a name="view_sms"></a>![Method: ](https://apidocs.io/img/method.png ".SMSController.view_sms") view_sms
+
+> View a Particular SMS
+
+```python
+def view_sms(self,
+                 options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| messagesid |  ``` Required ```  | Message sid |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+messagesid = 'messagesid'
+collect['messagesid'] = messagesid
+
+response_type = 'json'
+collect['response_type'] = response_type
+
+
+result = sms_client.view_sms(collect)
+
+```
+
+
+### <a name="list_sms"></a>![Method: ](https://apidocs.io/img/method.png ".SMSController.list_sms") list_sms
+
+> List All SMS
+
+```python
+def list_sms(self,
+                 options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+| page |  ``` Optional ```  ``` DefaultValue ```  | Which page of the overall response will be returned. Zero indexed |
+| pagesize |  ``` Optional ```  ``` DefaultValue ```  | Number of individual resources listed in the response per page |
+| mfrom |  ``` Optional ```  | Messages sent from this number |
+| to |  ``` Optional ```  | Messages sent to this number |
+| datesent |  ``` Optional ```  | Only list SMS messages sent in the specified date range |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+response_type = 'json'
+collect['response_type'] = response_type
+
+page = 1
+collect['page'] = page
+
+pagesize = 10
+collect['pagesize'] = pagesize
+
+mfrom = 'from'
+collect['mfrom'] = mfrom
+
+to = 'to'
+collect['to'] = to
+
+datesent = 'datesent'
+collect['datesent'] = datesent
+
+
+result = sms_client.list_sms(collect)
+
+```
+
+
+### <a name="list_inbound_sms"></a>![Method: ](https://apidocs.io/img/method.png ".SMSController.list_inbound_sms") list_inbound_sms
+
+> List All Inbound SMS
+
+```python
+def list_inbound_sms(self,
+                         options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+| page |  ``` Optional ```  ``` DefaultValue ```  | Which page of the overall response will be returned. Zero indexed |
+| pagesize |  ``` Optional ```  ``` DefaultValue ```  | Number of individual resources listed in the response per page |
+| mfrom |  ``` Optional ```  | From Number to Inbound SMS |
+| to |  ``` Optional ```  | To Number to get Inbound SMS |
+| dateSent |  ``` Optional ```  | Filter sms message objects by this date. |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+response_type = 'json'
+collect['response_type'] = response_type
+
+page = 1
+collect['page'] = page
+
+pagesize = 10
+collect['pagesize'] = pagesize
+
+mfrom = 'from'
+collect['mfrom'] = mfrom
+
+to = 'to'
+collect['to'] = to
+
+date_sent = 'DateSent'
+collect['date_sent'] = date_sent
+
+
+result = sms_client.list_inbound_sms(collect)
+
+```
+
+
+[Back to List of Controllers](#list_of_controllers)
+
+## <a name="call_controller"></a>![Class: ](https://apidocs.io/img/class.png ".CallController") CallController
+
+### Get controller instance
+
+An instance of the ``` CallController ``` class can be accessed from the API Client.
+
+```python
+ call_client = client.call
+```
+
+### <a name="make_call"></a>![Method: ](https://apidocs.io/img/method.png ".CallController.make_call") make_call
+
+> You can experiment with initiating a call through Message360 and view the request response generated when doing so and get the response in json
+
+```python
+def make_call(self,
+                  options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| mfrom |  ``` Required ```  | This number to display on Caller ID as calling |
+| to |  ``` Required ```  | To number |
+| url |  ``` Required ```  | URL requested once the call connects |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+| method |  ``` Optional ```  | Specifies the HTTP method used to request the required URL once call connects. |
+| statusCallBackUrl |  ``` Optional ```  | specifies the HTTP methodlinkclass used to request StatusCallbackUrl. |
+| statusCallBackMethod |  ``` Optional ```  | Specifies the HTTP methodlinkclass used to request StatusCallbackUrl. |
+| fallBackUrl |  ``` Optional ```  | URL requested if the initial Url parameter fails or encounters an error |
+| fallBackMethod |  ``` Optional ```  | Specifies the HTTP method used to request the required FallbackUrl once call connects. |
+| heartBeatUrl |  ``` Optional ```  | URL that can be requested every 60 seconds during the call to notify of elapsed tim |
+| heartBeatMethod |  ``` Optional ```  | Specifies the HTTP method used to request HeartbeatUrl. |
+| timeout |  ``` Optional ```  | Time (in seconds) Message360 should wait while the call is ringing before canceling the call |
+| playDtmf |  ``` Optional ```  | DTMF Digits to play to the call once it connects. 0-9, #, or * |
+| hideCallerId |  ``` Optional ```  | Specifies if the caller id will be hidden |
+| record |  ``` Optional ```  | Specifies if the call should be recorded |
+| recordCallBackUrl |  ``` Optional ```  | Recording parameters will be sent here upon completion |
+| recordCallBackMethod |  ``` Optional ```  | Method used to request the RecordCallback URL. |
+| transcribe |  ``` Optional ```  | Specifies if the call recording should be transcribed |
+| transcribeCallBackUrl |  ``` Optional ```  | Transcription parameters will be sent here upon completion |
+| ifMachine |  ``` Optional ```  | How Message360 should handle the receiving numbers voicemail machine |
+| ifMachineUrl |  ``` Optional ```  | URL requested when IfMachine=continue |
+| ifMachineMethod |  ``` Optional ```  | Method used to request the IfMachineUrl. |
+| feedback |  ``` Optional ```  | Specify if survey should be enable or not |
+| surveyId |  ``` Optional ```  | The unique identifier for the survey. |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
 
 mfrom = 'From'
 collect['mfrom'] = mfrom
-
-to_country_code = '1'
-collect['to_country_code'] = to_country_code
 
 to = 'To'
 collect['to'] = to
@@ -929,13 +2573,13 @@ collect['heart_beat_url'] = heart_beat_url
 heart_beat_method = HttpActionEnum.GET
 collect['heart_beat_method'] = heart_beat_method
 
-timeout = 116
+timeout = 121
 collect['timeout'] = timeout
 
 play_dtmf = 'PlayDtmf'
 collect['play_dtmf'] = play_dtmf
 
-hide_caller_id = 'HideCallerId'
+hide_caller_id = False
 collect['hide_caller_id'] = hide_caller_id
 
 record = False
@@ -953,33 +2597,47 @@ collect['transcribe'] = transcribe
 transcribe_call_back_url = 'TranscribeCallBackUrl'
 collect['transcribe_call_back_url'] = transcribe_call_back_url
 
+if_machine = IfMachineEnum.CONTINUE
+collect['if_machine'] = if_machine
 
-result = call_client.create_group_call(collect)
+if_machine_url = 'IfMachineUrl'
+collect['if_machine_url'] = if_machine_url
+
+if_machine_method = HttpActionEnum.GET
+collect['if_machine_method'] = if_machine_method
+
+feedback = False
+collect['feedback'] = feedback
+
+survey_id = 'SurveyId'
+collect['survey_id'] = survey_id
+
+
+result = call_client.make_call(collect)
 
 ```
 
 
-#### <a name="create_voice_effect"></a>![Method: ](https://apidocs.io/img/method.png ".CallController.create_voice_effect") create_voice_effect
+### <a name="play_audio"></a>![Method: ](https://apidocs.io/img/method.png ".CallController.play_audio") play_audio
 
-> Voice Effect
+> Play Dtmf and send the Digit
 
 ```python
-def create_voice_effect(self,
-                            options=dict())
+def play_audio(self,
+                   options=dict())
 ```
 
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| callSid |  ``` Required ```  | TODO: Add a parameter description |
+| callSid |  ``` Required ```  | The unique identifier of each call resource |
+| audioUrl |  ``` Required ```  | URL to sound that should be played. You also can add more than one audio file using semicolons e.g. http://example.com/audio1.mp3;http://example.com/audio2.wav |
+| sayText |  ``` Required ```  | Valid alphanumeric string that should be played to the In-progress call. |
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| audioDirection |  ``` Optional ```  | TODO: Add a parameter description |
-| pitchSemiTones |  ``` Optional ```  | value between -14 and 14 |
-| pitchOctaves |  ``` Optional ```  | value between -1 and 1 |
-| pitch |  ``` Optional ```  | value greater than 0 |
-| rate |  ``` Optional ```  | value greater than 0 |
-| tempo |  ``` Optional ```  | value greater than 0 |
+| length |  ``` Optional ```  | Time limit in seconds for audio play back |
+| direction |  ``` Optional ```  | The leg of the call audio will be played to |
+| mix |  ``` Optional ```  | If false, all other audio will be muted |
 
 
 
@@ -991,40 +2649,37 @@ collect = {}
 call_sid = 'CallSid'
 collect['call_sid'] = call_sid
 
+audio_url = 'AudioUrl'
+collect['audio_url'] = audio_url
+
+say_text = 'SayText'
+collect['say_text'] = say_text
+
 response_type = 'json'
 collect['response_type'] = response_type
 
-audio_direction = AudioDirectionEnum.IN
-collect['audio_direction'] = audio_direction
+length = 121
+collect['length'] = length
 
-pitch_semi_tones = 116.486160783789
-collect['pitch_semi_tones'] = pitch_semi_tones
+direction = DirectionEnum.IN
+collect['direction'] = direction
 
-pitch_octaves = 116.486160783789
-collect['pitch_octaves'] = pitch_octaves
-
-pitch = 116.486160783789
-collect['pitch'] = pitch
-
-rate = 116.486160783789
-collect['rate'] = rate
-
-tempo = 116.486160783789
-collect['tempo'] = tempo
+mix = False
+collect['mix'] = mix
 
 
-result = call_client.create_voice_effect(collect)
+result = call_client.play_audio(collect)
 
 ```
 
 
-#### <a name="create_record_call"></a>![Method: ](https://apidocs.io/img/method.png ".CallController.create_record_call") create_record_call
+### <a name="record_call"></a>![Method: ](https://apidocs.io/img/method.png ".CallController.record_call") record_call
 
 > Record a Call
 
 ```python
-def create_record_call(self,
-                           options=dict())
+def record_call(self,
+                    options=dict())
 ```
 
 #### Parameters
@@ -1058,7 +2713,7 @@ collect['response_type'] = response_type
 direction = DirectionEnum.IN
 collect['direction'] = direction
 
-time_limit = 116
+time_limit = 121
 collect['time_limit'] = time_limit
 
 call_back_url = 'CallBackUrl'
@@ -1068,31 +2723,32 @@ fileformat = AudioFormatEnum.MP3
 collect['fileformat'] = fileformat
 
 
-result = call_client.create_record_call(collect)
+result = call_client.record_call(collect)
 
 ```
 
 
-#### <a name="create_play_audio"></a>![Method: ](https://apidocs.io/img/method.png ".CallController.create_play_audio") create_play_audio
+### <a name="voice_effect"></a>![Method: ](https://apidocs.io/img/method.png ".CallController.voice_effect") voice_effect
 
-> Play Dtmf and send the Digit
+> Voice Effect
 
 ```python
-def create_play_audio(self,
-                          options=dict())
+def voice_effect(self,
+                     options=dict())
 ```
 
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| callSid |  ``` Required ```  | The unique identifier of each call resource |
-| audioUrl |  ``` Required ```  | URL to sound that should be played. You also can add more than one audio file using semicolons e.g. http://example.com/audio1.mp3;http://example.com/audio2.wav |
+| callSid |  ``` Required ```  | The unique identifier for the in-progress voice call. |
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| length |  ``` Optional ```  | Time limit in seconds for audio play back |
-| direction |  ``` Optional ```  | The leg of the call audio will be played to |
-| loop |  ``` Optional ```  | Repeat audio playback indefinitely |
-| mix |  ``` Optional ```  | If false, all other audio will be muted |
+| audioDirection |  ``` Optional ```  | The direction the audio effect should be placed on. If IN, the effects will occur on the incoming audio stream. If OUT, the effects will occur on the outgoing audio stream. |
+| pitchSemiTones |  ``` Optional ```  | value between -14 and 14 |
+| pitchOctaves |  ``` Optional ```  | value between -1 and 1 |
+| pitch |  ``` Optional ```  | value greater than 0 |
+| rate |  ``` Optional ```  | value greater than 0 |
+| tempo |  ``` Optional ```  | value greater than 0 |
 
 
 
@@ -1104,37 +2760,83 @@ collect = {}
 call_sid = 'CallSid'
 collect['call_sid'] = call_sid
 
-audio_url = 'AudioUrl'
-collect['audio_url'] = audio_url
-
 response_type = 'json'
 collect['response_type'] = response_type
 
-length = 116
-collect['length'] = length
+audio_direction = AudioDirectionEnum.IN
+collect['audio_direction'] = audio_direction
 
-direction = DirectionEnum.IN
-collect['direction'] = direction
+pitch_semi_tones = 121.51357696695
+collect['pitch_semi_tones'] = pitch_semi_tones
 
-loop = False
-collect['loop'] = loop
+pitch_octaves = 121.51357696695
+collect['pitch_octaves'] = pitch_octaves
 
-mix = False
-collect['mix'] = mix
+pitch = 121.51357696695
+collect['pitch'] = pitch
+
+rate = 121.51357696695
+collect['rate'] = rate
+
+tempo = 121.51357696695
+collect['tempo'] = tempo
 
 
-result = call_client.create_play_audio(collect)
+result = call_client.voice_effect(collect)
 
 ```
 
 
-#### <a name="create_interrupted_call"></a>![Method: ](https://apidocs.io/img/method.png ".CallController.create_interrupted_call") create_interrupted_call
+### <a name="send_digit"></a>![Method: ](https://apidocs.io/img/method.png ".CallController.send_digit") send_digit
+
+> Play Dtmf and send the Digit
+
+```python
+def send_digit(self,
+                   options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| callSid |  ``` Required ```  | The unique identifier of each call resource |
+| playDtmf |  ``` Required ```  | DTMF digits to play to the call. 0-9, #, *, W, or w |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+| playDtmfDirection |  ``` Optional ```  | The leg of the call DTMF digits should be sent to |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+call_sid = 'CallSid'
+collect['call_sid'] = call_sid
+
+play_dtmf = 'PlayDtmf'
+collect['play_dtmf'] = play_dtmf
+
+response_type = 'json'
+collect['response_type'] = response_type
+
+play_dtmf_direction = DirectionEnum.IN
+collect['play_dtmf_direction'] = play_dtmf_direction
+
+
+result = call_client.send_digit(collect)
+
+```
+
+
+### <a name="interrupted_call"></a>![Method: ](https://apidocs.io/img/method.png ".CallController.interrupted_call") interrupted_call
 
 > Interrupt the Call by Call Sid
 
 ```python
-def create_interrupted_call(self,
-                                options=dict())
+def interrupted_call(self,
+                         options=dict())
 ```
 
 #### Parameters
@@ -1170,75 +2872,32 @@ status = InterruptedCallStatusEnum.CANCELED
 collect['status'] = status
 
 
-result = call_client.create_interrupted_call(collect)
+result = call_client.interrupted_call(collect)
 
 ```
 
 
-#### <a name="create_send_digit"></a>![Method: ](https://apidocs.io/img/method.png ".CallController.create_send_digit") create_send_digit
+### <a name="group_call"></a>![Method: ](https://apidocs.io/img/method.png ".CallController.group_call") group_call
 
-> Play Dtmf and send the Digit
+> Group Call
 
 ```python
-def create_send_digit(self,
-                          options=dict())
+def group_call(self,
+                   options=dict())
 ```
 
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| callSid |  ``` Required ```  | The unique identifier of each call resource |
-| playDtmf |  ``` Required ```  | DTMF digits to play to the call. 0-9, #, *, W, or w |
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| playDtmfDirection |  ``` Optional ```  | The leg of the call DTMF digits should be sent to |
-
-
-
-#### Example Usage
-
-```python
-collect = {}
-
-call_sid = 'CallSid'
-collect['call_sid'] = call_sid
-
-play_dtmf = 'PlayDtmf'
-collect['play_dtmf'] = play_dtmf
-
-response_type = 'json'
-collect['response_type'] = response_type
-
-play_dtmf_direction = DirectionEnum.IN
-collect['play_dtmf_direction'] = play_dtmf_direction
-
-
-result = call_client.create_send_digit(collect)
-
-```
-
-
-#### <a name="create_make_call"></a>![Method: ](https://apidocs.io/img/method.png ".CallController.create_make_call") create_make_call
-
-> You can experiment with initiating a call through Message360 and view the request response generated when doing so and get the response in json
-
-```python
-def create_make_call(self,
-                         options=dict())
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| fromCountryCode |  ``` Required ```  | from country code |
 | mfrom |  ``` Required ```  | This number to display on Caller ID as calling |
-| toCountryCode |  ``` Required ```  | To cuntry code number |
-| to |  ``` Required ```  | To number |
+| to |  ``` Required ```  | Please enter multiple E164 number. You can add max 10 numbers. Add numbers separated with comma. e.g : 1111111111,2222222222 |
 | url |  ``` Required ```  | URL requested once the call connects |
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | TODO: Add a parameter description |
+| groupConfirmKey |  ``` Required ```  | Define the DTMF that the called party should send to bridge the call. Allowed Values : 0-9, #, * |
+| groupConfirmFile |  ``` Required ```  | Specify the audio file you want to play when the called party picks up the call |
 | method |  ``` Optional ```  | Specifies the HTTP method used to request the required URL once call connects. |
-| statusCallBackUrl |  ``` Optional ```  | specifies the HTTP methodlinkclass used to request StatusCallbackUrl. |
+| statusCallBackUrl |  ``` Optional ```  | Specifies the HTTP method used to request the required URL once call connects. |
 | statusCallBackMethod |  ``` Optional ```  | Specifies the HTTP methodlinkclass used to request StatusCallbackUrl. |
 | fallBackUrl |  ``` Optional ```  | URL requested if the initial Url parameter fails or encounters an error |
 | fallBackMethod |  ``` Optional ```  | Specifies the HTTP method used to request the required FallbackUrl once call connects. |
@@ -1252,7 +2911,6 @@ def create_make_call(self,
 | recordCallBackMethod |  ``` Optional ```  | Method used to request the RecordCallback URL. |
 | transcribe |  ``` Optional ```  | Specifies if the call recording should be transcribed |
 | transcribeCallBackUrl |  ``` Optional ```  | Transcription parameters will be sent here upon completion |
-| ifMachine |  ``` Optional ```  | How Message360 should handle the receiving numbers voicemail machine |
 
 
 
@@ -1261,14 +2919,8 @@ def create_make_call(self,
 ```python
 collect = {}
 
-from_country_code = 'FromCountryCode'
-collect['from_country_code'] = from_country_code
-
 mfrom = 'From'
 collect['mfrom'] = mfrom
-
-to_country_code = 'ToCountryCode'
-collect['to_country_code'] = to_country_code
 
 to = 'To'
 collect['to'] = to
@@ -1278,6 +2930,12 @@ collect['url'] = url
 
 response_type = 'json'
 collect['response_type'] = response_type
+
+group_confirm_key = 'GroupConfirmKey'
+collect['group_confirm_key'] = group_confirm_key
+
+group_confirm_file = AudioFormatEnum.MP3
+collect['group_confirm_file'] = group_confirm_file
 
 method = HttpActionEnum.GET
 collect['method'] = method
@@ -1297,16 +2955,16 @@ collect['fall_back_method'] = fall_back_method
 heart_beat_url = 'HeartBeatUrl'
 collect['heart_beat_url'] = heart_beat_url
 
-heart_beat_method = False
+heart_beat_method = HttpActionEnum.GET
 collect['heart_beat_method'] = heart_beat_method
 
-timeout = 116
+timeout = 121
 collect['timeout'] = timeout
 
 play_dtmf = 'PlayDtmf'
 collect['play_dtmf'] = play_dtmf
 
-hide_caller_id = False
+hide_caller_id = 'HideCallerId'
 collect['hide_caller_id'] = hide_caller_id
 
 record = False
@@ -1324,22 +2982,19 @@ collect['transcribe'] = transcribe
 transcribe_call_back_url = 'TranscribeCallBackUrl'
 collect['transcribe_call_back_url'] = transcribe_call_back_url
 
-if_machine = IfMachineEnum.CONTINUE
-collect['if_machine'] = if_machine
 
-
-result = call_client.create_make_call(collect)
+result = call_client.group_call(collect)
 
 ```
 
 
-#### <a name="create_list_calls"></a>![Method: ](https://apidocs.io/img/method.png ".CallController.create_list_calls") create_list_calls
+### <a name="list_calls"></a>![Method: ](https://apidocs.io/img/method.png ".CallController.list_calls") list_calls
 
 > A list of calls associated with your Message360 account
 
 ```python
-def create_list_calls(self,
-                          options=dict())
+def list_calls(self,
+                   options=dict())
 ```
 
 #### Parameters
@@ -1347,7 +3002,7 @@ def create_list_calls(self,
 | Parameter | Tags | Description |
 |-----------|------|-------------|
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| page |  ``` Optional ```  | Which page of the overall response will be returned. Zero indexed |
+| page |  ``` Optional ```  ``` DefaultValue ```  | Which page of the overall response will be returned. Zero indexed |
 | pageSize |  ``` Optional ```  ``` DefaultValue ```  | Number of individual resources listed in the response per page |
 | to |  ``` Optional ```  | Only list calls to this number |
 | mfrom |  ``` Optional ```  | Only list calls from this number |
@@ -1363,7 +3018,7 @@ collect = {}
 response_type = 'json'
 collect['response_type'] = response_type
 
-page = 116
+page = 1
 collect['page'] = page
 
 page_size = 10
@@ -1379,31 +3034,30 @@ date_created = 'DateCreated'
 collect['date_created'] = date_created
 
 
-result = call_client.create_list_calls(collect)
+result = call_client.list_calls(collect)
 
 ```
 
 
-#### <a name="create_send_ringless_vm"></a>![Method: ](https://apidocs.io/img/method.png ".CallController.create_send_ringless_vm") create_send_ringless_vm
+### <a name="send_ringless_vm"></a>![Method: ](https://apidocs.io/img/method.png ".CallController.send_ringless_vm") send_ringless_vm
 
 > API endpoint used to send a Ringless Voicemail
 
 ```python
-def create_send_ringless_vm(self,
-                                options=dict())
+def send_ringless_vm(self,
+                         options=dict())
 ```
 
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| fromCountryCode |  ``` Required ```  | From country code |
 | mfrom |  ``` Required ```  | This number to display on Caller ID as calling |
-| toCountryCode |  ``` Required ```  | To country code |
+| rVMCallerId |  ``` Required ```  | Alternate caller ID required for RVM |
 | to |  ``` Required ```  | To number |
 | voiceMailURL |  ``` Required ```  | URL to an audio file |
-| method |  ``` Required ```  ``` DefaultValue ```  | Not currently used in this version |
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+| method |  ``` Optional ```  ``` DefaultValue ```  | Not currently used in this version |
 | statusCallBackUrl |  ``` Optional ```  | URL to post the status of the Ringless request |
 | statsCallBackMethod |  ``` Optional ```  | POST or GET |
 
@@ -1414,14 +3068,11 @@ def create_send_ringless_vm(self,
 ```python
 collect = {}
 
-from_country_code = 'FromCountryCode'
-collect['from_country_code'] = from_country_code
-
 mfrom = 'From'
 collect['mfrom'] = mfrom
 
-to_country_code = 'ToCountryCode'
-collect['to_country_code'] = to_country_code
+rvm_caller_id = 'RVMCallerId'
+collect['rvm_caller_id'] = rvm_caller_id
 
 to = 'To'
 collect['to'] = to
@@ -1429,31 +3080,31 @@ collect['to'] = to
 voice_mail_url = 'VoiceMailURL'
 collect['voice_mail_url'] = voice_mail_url
 
-method = 'GET'
-collect['method'] = method
-
 response_type = 'json'
 collect['response_type'] = response_type
+
+method = HttpActionEnum.GET
+collect['method'] = method
 
 status_call_back_url = 'StatusCallBackUrl'
 collect['status_call_back_url'] = status_call_back_url
 
-stats_call_back_method = 'StatsCallBackMethod'
+stats_call_back_method = HttpActionEnum.GET
 collect['stats_call_back_method'] = stats_call_back_method
 
 
-result = call_client.create_send_ringless_vm(collect)
+result = call_client.send_ringless_vm(collect)
 
 ```
 
 
-#### <a name="create_view_call"></a>![Method: ](https://apidocs.io/img/method.png ".CallController.create_view_call") create_view_call
+### <a name="view_call"></a>![Method: ](https://apidocs.io/img/method.png ".CallController.view_call") view_call
 
 > View Call Response
 
 ```python
-def create_view_call(self,
-                         options=dict())
+def view_call(self,
+                  options=dict())
 ```
 
 #### Parameters
@@ -1477,39 +3128,76 @@ response_type = 'json'
 collect['response_type'] = response_type
 
 
-result = call_client.create_view_call(collect)
+result = call_client.view_call(collect)
 
 ```
 
 
 [Back to List of Controllers](#list_of_controllers)
 
-### <a name="sub_account_controller"></a>![Class: ](https://apidocs.io/img/class.png ".SubAccountController") SubAccountController
+## <a name="carrier_controller"></a>![Class: ](https://apidocs.io/img/class.png ".CarrierController") CarrierController
 
-#### Get controller instance
+### Get controller instance
 
-An instance of the ``` SubAccountController ``` class can be accessed from the API Client.
+An instance of the ``` CarrierController ``` class can be accessed from the API Client.
 
 ```python
- sub_account_client = client.sub_account
+ carrier_client = client.carrier
 ```
 
-#### <a name="create_sub_account"></a>![Method: ](https://apidocs.io/img/method.png ".SubAccountController.create_sub_account") create_sub_account
+### <a name="carrier_lookup_list"></a>![Method: ](https://apidocs.io/img/method.png ".CarrierController.carrier_lookup_list") carrier_lookup_list
 
-> Create a sub user account under the parent account
+> Get the All Purchase Number's Carrier lookup
 
 ```python
-def create_sub_account(self,
-                           options=dict())
+def carrier_lookup_list(self,
+                            options=dict())
 ```
 
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| firstName |  ``` Required ```  | Sub account user first name |
-| lastName |  ``` Required ```  | sub account user last name |
-| email |  ``` Required ```  | Sub account email address |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+| page |  ``` Optional ```  ``` DefaultValue ```  | Page Number |
+| pagesize |  ``` Optional ```  ``` DefaultValue ```  | Page Size |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+response_type = 'json'
+collect['response_type'] = response_type
+
+page = 1
+collect['page'] = page
+
+pagesize = 10
+collect['pagesize'] = pagesize
+
+
+result = carrier_client.carrier_lookup_list(collect)
+
+```
+
+
+### <a name="carrier_lookup"></a>![Method: ](https://apidocs.io/img/method.png ".CarrierController.carrier_lookup") carrier_lookup
+
+> Get the Carrier Lookup
+
+```python
+def carrier_lookup(self,
+                       options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| phonenumber |  ``` Required ```  | The number to lookup |
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
 
 
@@ -1519,107 +3207,23 @@ def create_sub_account(self,
 ```python
 collect = {}
 
-first_name = 'FirstName'
-collect['first_name'] = first_name
-
-last_name = 'LastName'
-collect['last_name'] = last_name
-
-email = 'Email'
-collect['email'] = email
+phonenumber = 'phonenumber'
+collect['phonenumber'] = phonenumber
 
 response_type = 'json'
 collect['response_type'] = response_type
 
 
-result = sub_account_client.create_sub_account(collect)
-
-```
-
-
-#### <a name="create_suspend_sub_account"></a>![Method: ](https://apidocs.io/img/method.png ".SubAccountController.create_suspend_sub_account") create_suspend_sub_account
-
-> Suspend or unsuspend
-
-```python
-def create_suspend_sub_account(self,
-                                   options=dict())
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subAccountSID |  ``` Required ```  | The SubaccountSid to be activated or suspended |
-| activate |  ``` Required ```  ``` DefaultValue ```  | 0 to suspend or 1 to activate |
-| responseType |  ``` Required ```  | TODO: Add a parameter description |
-
-
-
-#### Example Usage
-
-```python
-collect = {}
-
-sub_account_sid = 'SubAccountSID'
-collect['sub_account_sid'] = sub_account_sid
-
-activate = ActivateStatusEnum.DEACTIVATE
-collect['activate'] = activate
-
-response_type = 'ResponseType'
-collect['response_type'] = response_type
-
-
-result = sub_account_client.create_suspend_sub_account(collect)
-
-```
-
-
-#### <a name="create_delete_sub_account"></a>![Method: ](https://apidocs.io/img/method.png ".SubAccountController.create_delete_sub_account") create_delete_sub_account
-
-> Delete sub account or merge numbers into parent
-
-```python
-def create_delete_sub_account(self,
-                                  options=dict())
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| subAccountSID |  ``` Required ```  | The SubaccountSid to be deleted |
-| mergeNumber |  ``` Required ```  ``` DefaultValue ```  | 0 to delete or 1 to merge numbers to parent account. |
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-
-
-
-#### Example Usage
-
-```python
-collect = {}
-
-sub_account_sid = 'SubAccountSID'
-collect['sub_account_sid'] = sub_account_sid
-
-merge_number = MergeNumberStatusEnum.DELETE
-collect['merge_number'] = merge_number
-
-response_type = 'json'
-collect['response_type'] = response_type
-
-
-result = sub_account_client.create_delete_sub_account(collect)
+result = carrier_client.carrier_lookup(collect)
 
 ```
 
 
 [Back to List of Controllers](#list_of_controllers)
 
-### <a name="address_controller"></a>![Class: ](https://apidocs.io/img/class.png ".AddressController") AddressController
+## <a name="address_controller"></a>![Class: ](https://apidocs.io/img/class.png ".AddressController") AddressController
 
-#### Get controller instance
+### Get controller instance
 
 An instance of the ``` AddressController ``` class can be accessed from the API Client.
 
@@ -1627,7 +3231,7 @@ An instance of the ``` AddressController ``` class can be accessed from the API 
  address_client = client.address
 ```
 
-#### <a name="create_address"></a>![Method: ](https://apidocs.io/img/method.png ".AddressController.create_address") create_address
+### <a name="create_address"></a>![Method: ](https://apidocs.io/img/method.png ".AddressController.create_address") create_address
 
 > To add an address to your address book, you create a new address object. You can retrieve and delete individual addresses as well as get a list of addresses. Addresses are identified by a unique random ID.
 
@@ -1694,21 +3298,21 @@ result = address_client.create_address(collect)
 ```
 
 
-#### <a name="create_delete_address"></a>![Method: ](https://apidocs.io/img/method.png ".AddressController.create_delete_address") create_delete_address
+### <a name="view_address"></a>![Method: ](https://apidocs.io/img/method.png ".AddressController.view_address") view_address
 
-> To delete Address to your address book
+> View Address Specific address Book by providing the address id
 
 ```python
-def create_delete_address(self,
-                              options=dict())
+def view_address(self,
+                     options=dict())
 ```
 
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| addressSID |  ``` Required ```  | The identifier of the address to be deleted. |
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type either json or xml |
+| addressSID |  ``` Required ```  | The identifier of the address to be retrieved. |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response Type either json or xml |
 
 
 
@@ -1724,53 +3328,18 @@ response_type = 'json'
 collect['response_type'] = response_type
 
 
-result = address_client.create_delete_address(collect)
+result = address_client.view_address(collect)
 
 ```
 
 
-#### <a name="create_verify_address"></a>![Method: ](https://apidocs.io/img/method.png ".AddressController.create_verify_address") create_verify_address
-
-> Validates an address given.
-
-```python
-def create_verify_address(self,
-                              options=dict())
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| addressSID |  ``` Required ```  | The identifier of the address to be verified. |
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type either json or xml |
-
-
-
-#### Example Usage
-
-```python
-collect = {}
-
-address_sid = 'AddressSID'
-collect['address_sid'] = address_sid
-
-response_type = 'json'
-collect['response_type'] = response_type
-
-
-result = address_client.create_verify_address(collect)
-
-```
-
-
-#### <a name="create_list_address"></a>![Method: ](https://apidocs.io/img/method.png ".AddressController.create_list_address") create_list_address
+### <a name="list_address"></a>![Method: ](https://apidocs.io/img/method.png ".AddressController.list_address") list_address
 
 > List All Address 
 
 ```python
-def create_list_address(self,
-                            options=dict())
+def list_address(self,
+                     options=dict())
 ```
 
 #### Parameters
@@ -1806,26 +3375,26 @@ date_created = 'DateCreated'
 collect['date_created'] = date_created
 
 
-result = address_client.create_list_address(collect)
+result = address_client.list_address(collect)
 
 ```
 
 
-#### <a name="create_view_address"></a>![Method: ](https://apidocs.io/img/method.png ".AddressController.create_view_address") create_view_address
+### <a name="verify_address"></a>![Method: ](https://apidocs.io/img/method.png ".AddressController.verify_address") verify_address
 
-> View Address Specific address Book by providing the address id
+> Validates an address given.
 
 ```python
-def create_view_address(self,
-                            options=dict())
+def verify_address(self,
+                       options=dict())
 ```
 
 #### Parameters
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| addressSID |  ``` Required ```  | The identifier of the address to be retrieved. |
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response Type either json or xml |
+| addressSID |  ``` Required ```  | The identifier of the address to be verified. |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type either json or xml |
 
 
 
@@ -1841,29 +3410,64 @@ response_type = 'json'
 collect['response_type'] = response_type
 
 
-result = address_client.create_view_address(collect)
+result = address_client.verify_address(collect)
+
+```
+
+
+### <a name="delete_address"></a>![Method: ](https://apidocs.io/img/method.png ".AddressController.delete_address") delete_address
+
+> To delete Address to your address book
+
+```python
+def delete_address(self,
+                       options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| addressSID |  ``` Required ```  | The identifier of the address to be deleted. |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type either json or xml |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+address_sid = 'AddressSID'
+collect['address_sid'] = address_sid
+
+response_type = 'json'
+collect['response_type'] = response_type
+
+
+result = address_client.delete_address(collect)
 
 ```
 
 
 [Back to List of Controllers](#list_of_controllers)
 
-### <a name="email_controller"></a>![Class: ](https://apidocs.io/img/class.png ".EmailController") EmailController
+## <a name="sub_account_controller"></a>![Class: ](https://apidocs.io/img/class.png ".SubAccountController") SubAccountController
 
-#### Get controller instance
+### Get controller instance
 
-An instance of the ``` EmailController ``` class can be accessed from the API Client.
+An instance of the ``` SubAccountController ``` class can be accessed from the API Client.
 
 ```python
- email_client = client.email
+ sub_account_client = client.sub_account
 ```
 
-#### <a name="create_list_blocks"></a>![Method: ](https://apidocs.io/img/method.png ".EmailController.create_list_blocks") create_list_blocks
+### <a name="delete_sub_account"></a>![Method: ](https://apidocs.io/img/method.png ".SubAccountController.delete_sub_account") delete_sub_account
 
-> Outputs email addresses on your blocklist
+> Delete sub account or merge numbers into parent
 
 ```python
-def create_list_blocks(self,
+def delete_sub_account(self,
                            options=dict())
 ```
 
@@ -1871,9 +3475,9 @@ def create_list_blocks(self,
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
+| subAccountSID |  ``` Required ```  | The SubaccountSid to be deleted |
+| mergeNumber |  ``` Required ```  ``` DefaultValue ```  | 0 to delete or 1 to merge numbers to parent account. |
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| offset |  ``` Optional ```  | Where to start in the output list |
-| limit |  ``` Optional ```  | Maximum number of records to return |
 
 
 
@@ -1882,66 +3486,27 @@ def create_list_blocks(self,
 ```python
 collect = {}
 
-response_type = 'json'
-collect['response_type'] = response_type
+sub_account_sid = 'SubAccountSID'
+collect['sub_account_sid'] = sub_account_sid
 
-offset = 'offset'
-collect['offset'] = offset
-
-limit = 'limit'
-collect['limit'] = limit
-
-
-result = email_client.create_list_blocks(collect)
-
-```
-
-
-#### <a name="create_list_spam"></a>![Method: ](https://apidocs.io/img/method.png ".EmailController.create_list_spam") create_list_spam
-
-> List out all email addresses marked as spam
-
-```python
-def create_list_spam(self,
-                         options=dict())
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| offset |  ``` Optional ```  | The record number to start the list at |
-| limit |  ``` Optional ```  | Maximum number of records to return |
-
-
-
-#### Example Usage
-
-```python
-collect = {}
+merge_number = MergeNumberStatusEnum.DELETE
+collect['merge_number'] = merge_number
 
 response_type = 'json'
 collect['response_type'] = response_type
 
-offset = 'offset'
-collect['offset'] = offset
 
-limit = 'limit'
-collect['limit'] = limit
-
-
-result = email_client.create_list_spam(collect)
+result = sub_account_client.delete_sub_account(collect)
 
 ```
 
 
-#### <a name="create_list_bounces"></a>![Method: ](https://apidocs.io/img/method.png ".EmailController.create_list_bounces") create_list_bounces
+### <a name="suspend_sub_account"></a>![Method: ](https://apidocs.io/img/method.png ".SubAccountController.suspend_sub_account") suspend_sub_account
 
-> List out all email addresses that have bounced
+> Suspend or unsuspend
 
 ```python
-def create_list_bounces(self,
+def suspend_sub_account(self,
                             options=dict())
 ```
 
@@ -1949,362 +3514,8 @@ def create_list_bounces(self,
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| offset |  ``` Optional ```  | The record to start the list at |
-| limit |  ``` Optional ```  | The maximum number of records to return |
-
-
-
-#### Example Usage
-
-```python
-collect = {}
-
-response_type = 'json'
-collect['response_type'] = response_type
-
-offset = 'offset'
-collect['offset'] = offset
-
-limit = 'limit'
-collect['limit'] = limit
-
-
-result = email_client.create_list_bounces(collect)
-
-```
-
-
-#### <a name="create_delete_bounces"></a>![Method: ](https://apidocs.io/img/method.png ".EmailController.create_delete_bounces") create_delete_bounces
-
-> Delete an email address from the bounced address list
-
-```python
-def create_delete_bounces(self,
-                              options=dict())
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| email |  ``` Required ```  | The email address to remove from the bounce list |
-
-
-
-#### Example Usage
-
-```python
-collect = {}
-
-response_type = 'json'
-collect['response_type'] = response_type
-
-email = 'email'
-collect['email'] = email
-
-
-result = email_client.create_delete_bounces(collect)
-
-```
-
-
-#### <a name="create_list_invalid"></a>![Method: ](https://apidocs.io/img/method.png ".EmailController.create_list_invalid") create_list_invalid
-
-> List out all invalid email addresses
-
-```python
-def create_list_invalid(self,
-                            options=dict())
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| offet |  ``` Optional ```  | Starting record for listing out emails |
-| limit |  ``` Optional ```  | Maximum number of records to return |
-
-
-
-#### Example Usage
-
-```python
-collect = {}
-
-response_type = 'json'
-collect['response_type'] = response_type
-
-offet = 'offet'
-collect['offet'] = offet
-
-limit = 'limit'
-collect['limit'] = limit
-
-
-result = email_client.create_list_invalid(collect)
-
-```
-
-
-#### <a name="create_list_unsubscribes"></a>![Method: ](https://apidocs.io/img/method.png ".EmailController.create_list_unsubscribes") create_list_unsubscribes
-
-> List all unsubscribed email addresses
-
-```python
-def create_list_unsubscribes(self,
-                                 options=dict())
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| offset |  ``` Optional ```  | Starting record of the list |
-| limit |  ``` Optional ```  | Maximum number of records to be returned |
-
-
-
-#### Example Usage
-
-```python
-collect = {}
-
-response_type = 'json'
-collect['response_type'] = response_type
-
-offset = 'offset'
-collect['offset'] = offset
-
-limit = 'limit'
-collect['limit'] = limit
-
-
-result = email_client.create_list_unsubscribes(collect)
-
-```
-
-
-#### <a name="create_delete_unsubscribes"></a>![Method: ](https://apidocs.io/img/method.png ".EmailController.create_delete_unsubscribes") create_delete_unsubscribes
-
-> Delete emails from the unsubscribe list
-
-```python
-def create_delete_unsubscribes(self,
-                                   options=dict())
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| email |  ``` Required ```  | The email to remove from the unsubscribe list |
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-
-
-
-#### Example Usage
-
-```python
-collect = {}
-
-email = 'email'
-collect['email'] = email
-
-response_type = 'json'
-collect['response_type'] = response_type
-
-
-result = email_client.create_delete_unsubscribes(collect)
-
-```
-
-
-#### <a name="add_unsubscribes"></a>![Method: ](https://apidocs.io/img/method.png ".EmailController.add_unsubscribes") add_unsubscribes
-
-> Add an email to the unsubscribe list
-
-```python
-def add_unsubscribes(self,
-                         options=dict())
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| email |  ``` Required ```  | The email to add to the unsubscribe list |
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-
-
-
-#### Example Usage
-
-```python
-collect = {}
-
-email = 'email'
-collect['email'] = email
-
-response_type = 'json'
-collect['response_type'] = response_type
-
-
-result = email_client.add_unsubscribes(collect)
-
-```
-
-
-#### <a name="create_delete_block"></a>![Method: ](https://apidocs.io/img/method.png ".EmailController.create_delete_block") create_delete_block
-
-> Deletes a blocked email
-
-```python
-def create_delete_block(self,
-                            options=dict())
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| email |  ``` Required ```  | Email address to remove from block list |
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-
-
-
-#### Example Usage
-
-```python
-collect = {}
-
-email = 'email'
-collect['email'] = email
-
-response_type = 'json'
-collect['response_type'] = response_type
-
-
-result = email_client.create_delete_block(collect)
-
-```
-
-
-#### <a name="create_delete_spam"></a>![Method: ](https://apidocs.io/img/method.png ".EmailController.create_delete_spam") create_delete_spam
-
-> Deletes a email address marked as spam from the spam list
-
-```python
-def create_delete_spam(self,
-                           options=dict())
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| email |  ``` Required ```  | Email address |
-
-
-
-#### Example Usage
-
-```python
-collect = {}
-
-response_type = 'json'
-collect['response_type'] = response_type
-
-email = 'email'
-collect['email'] = email
-
-
-result = email_client.create_delete_spam(collect)
-
-```
-
-
-#### <a name="create_send_email"></a>![Method: ](https://apidocs.io/img/method.png ".EmailController.create_send_email") create_send_email
-
-> Send out an email
-
-```python
-def create_send_email(self,
-                          options=dict())
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| to |  ``` Required ```  | The to email address |
-| mfrom |  ``` Required ```  | The from email address |
-| mtype |  ``` Required ```  ``` DefaultValue ```  | email format type, html or text |
-| subject |  ``` Required ```  | Email subject |
-| message |  ``` Required ```  | The body of the email message |
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| cc |  ``` Optional ```  | CC Email address |
-| bcc |  ``` Optional ```  | BCC Email address |
-| attachment |  ``` Optional ```  | File to be attached.File must be less than 7MB. |
-
-
-
-#### Example Usage
-
-```python
-collect = {}
-
-to = 'to'
-collect['to'] = to
-
-mfrom = 'from'
-collect['mfrom'] = mfrom
-
-mtype = SendEmailAsEnum.HTML
-collect['mtype'] = mtype
-
-subject = 'subject'
-collect['subject'] = subject
-
-message = 'message'
-collect['message'] = message
-
-response_type = 'json'
-collect['response_type'] = response_type
-
-cc = 'cc'
-collect['cc'] = cc
-
-bcc = 'bcc'
-collect['bcc'] = bcc
-
-attachment = 'attachment'
-collect['attachment'] = attachment
-
-
-result = email_client.create_send_email(collect)
-
-```
-
-
-#### <a name="create_delete_invalid"></a>![Method: ](https://apidocs.io/img/method.png ".EmailController.create_delete_invalid") create_delete_invalid
-
-> This endpoint allows you to delete entries in the Invalid Emails list.
-
-```python
-def create_delete_invalid(self,
-                              options=dict())
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| email |  ``` Required ```  | TODO: Add a parameter description |
+| subAccountSID |  ``` Required ```  | The SubaccountSid to be activated or suspended |
+| activate |  ``` Required ```  ``` DefaultValue ```  | 0 to suspend or 1 to activate |
 | responseType |  ``` Required ```  ``` DefaultValue ```  | TODO: Add a parameter description |
 
 
@@ -2314,560 +3525,27 @@ def create_delete_invalid(self,
 ```python
 collect = {}
 
-email = 'email'
-collect['email'] = email
+sub_account_sid = 'SubAccountSID'
+collect['sub_account_sid'] = sub_account_sid
+
+activate = ActivateStatusEnum.DEACTIVATE
+collect['activate'] = activate
 
 response_type = 'json'
 collect['response_type'] = response_type
 
 
-result = email_client.create_delete_invalid(collect)
+result = sub_account_client.suspend_sub_account(collect)
 
 ```
 
 
-[Back to List of Controllers](#list_of_controllers)
+### <a name="create_sub_account"></a>![Method: ](https://apidocs.io/img/method.png ".SubAccountController.create_sub_account") create_sub_account
 
-### <a name="sms_controller"></a>![Class: ](https://apidocs.io/img/class.png ".SMSController") SMSController
-
-#### Get controller instance
-
-An instance of the ``` SMSController ``` class can be accessed from the API Client.
+> Create a sub user account under the parent account
 
 ```python
- sms_client = client.sms
-```
-
-#### <a name="create_list_sms"></a>![Method: ](https://apidocs.io/img/method.png ".SMSController.create_list_sms") create_list_sms
-
-> List All SMS
-
-```python
-def create_list_sms(self,
-                        options=dict())
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| page |  ``` Optional ```  | Which page of the overall response will be returned. Zero indexed |
-| pagesize |  ``` Optional ```  | Number of individual resources listed in the response per page |
-| mfrom |  ``` Optional ```  | Messages sent from this number |
-| to |  ``` Optional ```  | Messages sent to this number |
-| datesent |  ``` Optional ```  | Only list SMS messages sent in the specified date range |
-
-
-
-#### Example Usage
-
-```python
-collect = {}
-
-response_type = 'json'
-collect['response_type'] = response_type
-
-page = 207
-collect['page'] = page
-
-pagesize = 207
-collect['pagesize'] = pagesize
-
-mfrom = 'from'
-collect['mfrom'] = mfrom
-
-to = 'to'
-collect['to'] = to
-
-datesent = 'datesent'
-collect['datesent'] = datesent
-
-
-result = sms_client.create_list_sms(collect)
-
-```
-
-
-#### <a name="create_list_inbound_sms"></a>![Method: ](https://apidocs.io/img/method.png ".SMSController.create_list_inbound_sms") create_list_inbound_sms
-
-> List All Inbound SMS
-
-```python
-def create_list_inbound_sms(self,
-                                options=dict())
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| page |  ``` Optional ```  | Which page of the overall response will be returned. Zero indexed |
-| pagesize |  ``` Optional ```  | Number of individual resources listed in the response per page |
-| mfrom |  ``` Optional ```  | From Number to Inbound SMS |
-| to |  ``` Optional ```  | To Number to get Inbound SMS |
-
-
-
-#### Example Usage
-
-```python
-collect = {}
-
-response_type = 'json'
-collect['response_type'] = response_type
-
-page = 44
-collect['page'] = page
-
-pagesize = 'pagesize'
-collect['pagesize'] = pagesize
-
-mfrom = 'from'
-collect['mfrom'] = mfrom
-
-to = 'to'
-collect['to'] = to
-
-
-result = sms_client.create_list_inbound_sms(collect)
-
-```
-
-
-#### <a name="create_send_sms"></a>![Method: ](https://apidocs.io/img/method.png ".SMSController.create_send_sms") create_send_sms
-
-> Send an SMS from a message360 number
-
-```python
-def create_send_sms(self,
-                        options=dict())
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| fromcountrycode |  ``` Required ```  ``` DefaultValue ```  | From Country Code |
-| mfrom |  ``` Required ```  | SMS enabled Message360 number to send this message from |
-| tocountrycode |  ``` Required ```  ``` DefaultValue ```  | To country code |
-| to |  ``` Required ```  | Number to send the SMS to |
-| body |  ``` Required ```  | Text Message To Send |
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| method |  ``` Optional ```  | Specifies the HTTP method used to request the required URL once SMS sent. |
-| messagestatuscallback |  ``` Optional ```  | URL that can be requested to receive notification when SMS has Sent. A set of default parameters will be sent here once the SMS is finished. |
-
-
-
-#### Example Usage
-
-```python
-collect = {}
-
-fromcountrycode = 1
-collect['fromcountrycode'] = fromcountrycode
-
-mfrom = 'from'
-collect['mfrom'] = mfrom
-
-tocountrycode = 1
-collect['tocountrycode'] = tocountrycode
-
-to = 'to'
-collect['to'] = to
-
-body = 'body'
-collect['body'] = body
-
-response_type = 'json'
-collect['response_type'] = response_type
-
-method = HttpActionEnum.GET
-collect['method'] = method
-
-messagestatuscallback = 'messagestatuscallback'
-collect['messagestatuscallback'] = messagestatuscallback
-
-
-result = sms_client.create_send_sms(collect)
-
-```
-
-
-#### <a name="create_view_sms"></a>![Method: ](https://apidocs.io/img/method.png ".SMSController.create_view_sms") create_view_sms
-
-> View a Particular SMS
-
-```python
-def create_view_sms(self,
-                        options=dict())
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| messagesid |  ``` Required ```  | Message sid |
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-
-
-
-#### Example Usage
-
-```python
-collect = {}
-
-messagesid = 'messagesid'
-collect['messagesid'] = messagesid
-
-response_type = 'json'
-collect['response_type'] = response_type
-
-
-result = sms_client.create_view_sms(collect)
-
-```
-
-
-[Back to List of Controllers](#list_of_controllers)
-
-### <a name="recording_controller"></a>![Class: ](https://apidocs.io/img/class.png ".RecordingController") RecordingController
-
-#### Get controller instance
-
-An instance of the ``` RecordingController ``` class can be accessed from the API Client.
-
-```python
- recording_client = client.recording
-```
-
-#### <a name="create_list_recording"></a>![Method: ](https://apidocs.io/img/method.png ".RecordingController.create_list_recording") create_list_recording
-
-> List out Recordings
-
-```python
-def create_list_recording(self,
-                              options=dict())
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| page |  ``` Optional ```  | Which page of the overall response will be returned. Zero indexed |
-| pageSize |  ``` Optional ```  | Number of individual resources listed in the response per page |
-| dateCreated |  ``` Optional ```  | TODO: Add a parameter description |
-| callSid |  ``` Optional ```  | TODO: Add a parameter description |
-
-
-
-#### Example Usage
-
-```python
-collect = {}
-
-response_type = 'json'
-collect['response_type'] = response_type
-
-page = 44
-collect['page'] = page
-
-page_size = 44
-collect['page_size'] = page_size
-
-date_created = 'DateCreated'
-collect['date_created'] = date_created
-
-call_sid = 'CallSid'
-collect['call_sid'] = call_sid
-
-
-result = recording_client.create_list_recording(collect)
-
-```
-
-
-#### <a name="create_delete_recording"></a>![Method: ](https://apidocs.io/img/method.png ".RecordingController.create_delete_recording") create_delete_recording
-
-> Delete Recording Record
-
-```python
-def create_delete_recording(self,
-                                options=dict())
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| recordingSid |  ``` Required ```  | Unique Recording Sid to be delete |
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-
-
-
-#### Example Usage
-
-```python
-collect = {}
-
-recording_sid = 'RecordingSid'
-collect['recording_sid'] = recording_sid
-
-response_type = 'json'
-collect['response_type'] = response_type
-
-
-result = recording_client.create_delete_recording(collect)
-
-```
-
-
-#### <a name="create_view_recording"></a>![Method: ](https://apidocs.io/img/method.png ".RecordingController.create_view_recording") create_view_recording
-
-> View a specific Recording
-
-```python
-def create_view_recording(self,
-                              options=dict())
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| recordingSid |  ``` Required ```  | Search Recording sid |
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-
-
-
-#### Example Usage
-
-```python
-collect = {}
-
-recording_sid = 'RecordingSid'
-collect['recording_sid'] = recording_sid
-
-response_type = 'json'
-collect['response_type'] = response_type
-
-
-result = recording_client.create_view_recording(collect)
-
-```
-
-
-[Back to List of Controllers](#list_of_controllers)
-
-### <a name="carrier_controller"></a>![Class: ](https://apidocs.io/img/class.png ".CarrierController") CarrierController
-
-#### Get controller instance
-
-An instance of the ``` CarrierController ``` class can be accessed from the API Client.
-
-```python
- carrier_client = client.carrier
-```
-
-#### <a name="create_carrier_lookup_list"></a>![Method: ](https://apidocs.io/img/method.png ".CarrierController.create_carrier_lookup_list") create_carrier_lookup_list
-
-> Get the All Purchase Number's Carrier lookup
-
-```python
-def create_carrier_lookup_list(self,
-                                   options=dict())
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| page |  ``` Optional ```  | Page Number |
-| pagesize |  ``` Optional ```  | Page Size |
-
-
-
-#### Example Usage
-
-```python
-collect = {}
-
-response_type = 'json'
-collect['response_type'] = response_type
-
-page = 44
-collect['page'] = page
-
-pagesize = 44
-collect['pagesize'] = pagesize
-
-
-result = carrier_client.create_carrier_lookup_list(collect)
-
-```
-
-
-#### <a name="create_carrier_lookup"></a>![Method: ](https://apidocs.io/img/method.png ".CarrierController.create_carrier_lookup") create_carrier_lookup
-
-> Get the Carrier Lookup
-
-```python
-def create_carrier_lookup(self,
-                              options=dict())
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| phonenumber |  ``` Required ```  | The number to lookup |
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-
-
-
-#### Example Usage
-
-```python
-collect = {}
-
-phonenumber = 'phonenumber'
-collect['phonenumber'] = phonenumber
-
-response_type = 'json'
-collect['response_type'] = response_type
-
-
-result = carrier_client.create_carrier_lookup(collect)
-
-```
-
-
-[Back to List of Controllers](#list_of_controllers)
-
-### <a name="phone_number_controller"></a>![Class: ](https://apidocs.io/img/class.png ".PhoneNumberController") PhoneNumberController
-
-#### Get controller instance
-
-An instance of the ``` PhoneNumberController ``` class can be accessed from the API Client.
-
-```python
- phone_number_client = client.phone_number
-```
-
-#### <a name="create_buy_number"></a>![Method: ](https://apidocs.io/img/method.png ".PhoneNumberController.create_buy_number") create_buy_number
-
-> Buy Phone Number 
-
-```python
-def create_buy_number(self,
-                          options=dict())
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| phoneNumber |  ``` Required ```  | Phone number to be purchase |
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-
-
-
-#### Example Usage
-
-```python
-collect = {}
-
-phone_number = 'PhoneNumber'
-collect['phone_number'] = phone_number
-
-response_type = 'json'
-collect['response_type'] = response_type
-
-
-result = phone_number_client.create_buy_number(collect)
-
-```
-
-
-#### <a name="create_release_number"></a>![Method: ](https://apidocs.io/img/method.png ".PhoneNumberController.create_release_number") create_release_number
-
-> Release number from account
-
-```python
-def create_release_number(self,
-                              options=dict())
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| phoneNumber |  ``` Required ```  | Phone number to be relase |
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-
-
-
-#### Example Usage
-
-```python
-collect = {}
-
-phone_number = 'PhoneNumber'
-collect['phone_number'] = phone_number
-
-response_type = 'json'
-collect['response_type'] = response_type
-
-
-result = phone_number_client.create_release_number(collect)
-
-```
-
-
-#### <a name="create_view_number_details"></a>![Method: ](https://apidocs.io/img/method.png ".PhoneNumberController.create_view_number_details") create_view_number_details
-
-> Get Phone Number Details
-
-```python
-def create_view_number_details(self,
-                                   options=dict())
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| phoneNumber |  ``` Required ```  | Get Phone number Detail |
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-
-
-
-#### Example Usage
-
-```python
-collect = {}
-
-phone_number = 'PhoneNumber'
-collect['phone_number'] = phone_number
-
-response_type = 'json'
-collect['response_type'] = response_type
-
-
-result = phone_number_client.create_view_number_details(collect)
-
-```
-
-
-#### <a name="create_list_number"></a>![Method: ](https://apidocs.io/img/method.png ".PhoneNumberController.create_list_number") create_list_number
-
-> List Account's Phone number details
-
-```python
-def create_list_number(self,
+def create_sub_account(self,
                            options=dict())
 ```
 
@@ -2875,11 +3553,10 @@ def create_list_number(self,
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
+| firstName |  ``` Required ```  | Sub account user first name |
+| lastName |  ``` Required ```  | sub account user last name |
+| email |  ``` Required ```  | Sub account email address |
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| page |  ``` Optional ```  | Which page of the overall response will be returned. Zero indexed |
-| pageSize |  ``` Optional ```  ``` DefaultValue ```  | Number of individual resources listed in the response per page |
-| numberType |  ``` Optional ```  | TODO: Add a parameter description |
-| friendlyName |  ``` Optional ```  | TODO: Add a parameter description |
 
 
 
@@ -2888,381 +3565,29 @@ def create_list_number(self,
 ```python
 collect = {}
 
-response_type = 'json'
-collect['response_type'] = response_type
+first_name = 'FirstName'
+collect['first_name'] = first_name
 
-page = 44
-collect['page'] = page
+last_name = 'LastName'
+collect['last_name'] = last_name
 
-page_size = 10
-collect['page_size'] = page_size
-
-number_type = NumberTypeEnum.ALL
-collect['number_type'] = number_type
-
-friendly_name = 'FriendlyName'
-collect['friendly_name'] = friendly_name
-
-
-result = phone_number_client.create_list_number(collect)
-
-```
-
-
-#### <a name="create_available_phone_number"></a>![Method: ](https://apidocs.io/img/method.png ".PhoneNumberController.create_available_phone_number") create_available_phone_number
-
-> Available Phone Number
-
-```python
-def create_available_phone_number(self,
-                                      options=dict())
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| numberType |  ``` Required ```  | Number type either SMS,Voice or all |
-| areaCode |  ``` Required ```  | Phone Number Area Code |
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| pageSize |  ``` Optional ```  ``` DefaultValue ```  | Page Size |
-
-
-
-#### Example Usage
-
-```python
-collect = {}
-
-number_type = NumberTypeEnum.ALL
-collect['number_type'] = number_type
-
-area_code = 'AreaCode'
-collect['area_code'] = area_code
+email = 'Email'
+collect['email'] = email
 
 response_type = 'json'
 collect['response_type'] = response_type
 
-page_size = 10
-collect['page_size'] = page_size
 
-
-result = phone_number_client.create_available_phone_number(collect)
-
-```
-
-
-#### <a name="update_phone_number"></a>![Method: ](https://apidocs.io/img/method.png ".PhoneNumberController.update_phone_number") update_phone_number
-
-> Update Phone Number Details
-
-```python
-def update_phone_number(self,
-                            options=dict())
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| phoneNumber |  ``` Required ```  | TODO: Add a parameter description |
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| friendlyName |  ``` Optional ```  | TODO: Add a parameter description |
-| voiceUrl |  ``` Optional ```  | URL requested once the call connects |
-| voiceMethod |  ``` Optional ```  | TODO: Add a parameter description |
-| voiceFallbackUrl |  ``` Optional ```  | URL requested if the voice URL is not available |
-| voiceFallbackMethod |  ``` Optional ```  | TODO: Add a parameter description |
-| hangupCallback |  ``` Optional ```  | TODO: Add a parameter description |
-| hangupCallbackMethod |  ``` Optional ```  | TODO: Add a parameter description |
-| heartbeatUrl |  ``` Optional ```  | URL requested once the call connects |
-| heartbeatMethod |  ``` Optional ```  | URL that can be requested every 60 seconds during the call to notify of elapsed time |
-| smsUrl |  ``` Optional ```  | URL requested when an SMS is received |
-| smsMethod |  ``` Optional ```  | TODO: Add a parameter description |
-| smsFallbackUrl |  ``` Optional ```  | URL requested once the call connects |
-| smsFallbackMethod |  ``` Optional ```  | URL requested if the sms URL is not available |
-
-
-
-#### Example Usage
-
-```python
-collect = {}
-
-phone_number = 'PhoneNumber'
-collect['phone_number'] = phone_number
-
-response_type = 'json'
-collect['response_type'] = response_type
-
-friendly_name = 'FriendlyName'
-collect['friendly_name'] = friendly_name
-
-voice_url = 'VoiceUrl'
-collect['voice_url'] = voice_url
-
-voice_method = HttpActionEnum.GET
-collect['voice_method'] = voice_method
-
-voice_fallback_url = 'VoiceFallbackUrl'
-collect['voice_fallback_url'] = voice_fallback_url
-
-voice_fallback_method = HttpActionEnum.GET
-collect['voice_fallback_method'] = voice_fallback_method
-
-hangup_callback = 'HangupCallback'
-collect['hangup_callback'] = hangup_callback
-
-hangup_callback_method = HttpActionEnum.GET
-collect['hangup_callback_method'] = hangup_callback_method
-
-heartbeat_url = 'HeartbeatUrl'
-collect['heartbeat_url'] = heartbeat_url
-
-heartbeat_method = HttpActionEnum.GET
-collect['heartbeat_method'] = heartbeat_method
-
-sms_url = 'SmsUrl'
-collect['sms_url'] = sms_url
-
-sms_method = HttpActionEnum.GET
-collect['sms_method'] = sms_method
-
-sms_fallback_url = 'SmsFallbackUrl'
-collect['sms_fallback_url'] = sms_fallback_url
-
-sms_fallback_method = HttpActionEnum.GET
-collect['sms_fallback_method'] = sms_fallback_method
-
-
-result = phone_number_client.update_phone_number(collect)
+result = sub_account_client.create_sub_account(collect)
 
 ```
 
 
 [Back to List of Controllers](#list_of_controllers)
 
-### <a name="transcription_controller"></a>![Class: ](https://apidocs.io/img/class.png ".TranscriptionController") TranscriptionController
+## <a name="account_controller"></a>![Class: ](https://apidocs.io/img/class.png ".AccountController") AccountController
 
-#### Get controller instance
-
-An instance of the ``` TranscriptionController ``` class can be accessed from the API Client.
-
-```python
- transcription_client = client.transcription
-```
-
-#### <a name="create_audio_url_transcription"></a>![Method: ](https://apidocs.io/img/method.png ".TranscriptionController.create_audio_url_transcription") create_audio_url_transcription
-
-> Audio URL Transcriptions
-
-```python
-def create_audio_url_transcription(self,
-                                       options=dict())
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| audioUrl |  ``` Required ```  | Audio url |
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-
-
-
-#### Example Usage
-
-```python
-collect = {}
-
-audio_url = 'AudioUrl'
-collect['audio_url'] = audio_url
-
-response_type = 'json'
-collect['response_type'] = response_type
-
-
-result = transcription_client.create_audio_url_transcription(collect)
-
-```
-
-
-#### <a name="create_recording_transcription"></a>![Method: ](https://apidocs.io/img/method.png ".TranscriptionController.create_recording_transcription") create_recording_transcription
-
-> Recording Transcriptions
-
-```python
-def create_recording_transcription(self,
-                                       options=dict())
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| recordingSid |  ``` Required ```  | Unique Recording sid |
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-
-
-
-#### Example Usage
-
-```python
-collect = {}
-
-recording_sid = 'RecordingSid'
-collect['recording_sid'] = recording_sid
-
-response_type = 'json'
-collect['response_type'] = response_type
-
-
-result = transcription_client.create_recording_transcription(collect)
-
-```
-
-
-#### <a name="create_view_transcription"></a>![Method: ](https://apidocs.io/img/method.png ".TranscriptionController.create_view_transcription") create_view_transcription
-
-> View Specific Transcriptions
-
-```python
-def create_view_transcription(self,
-                                  options=dict())
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| transcriptionSid |  ``` Required ```  | Unique Transcription ID |
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-
-
-
-#### Example Usage
-
-```python
-collect = {}
-
-transcription_sid = 'TranscriptionSid'
-collect['transcription_sid'] = transcription_sid
-
-response_type = 'json'
-collect['response_type'] = response_type
-
-
-result = transcription_client.create_view_transcription(collect)
-
-```
-
-
-#### <a name="create_list_transcription"></a>![Method: ](https://apidocs.io/img/method.png ".TranscriptionController.create_list_transcription") create_list_transcription
-
-> Get All transcriptions
-
-```python
-def create_list_transcription(self,
-                                  options=dict())
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-| page |  ``` Optional ```  | TODO: Add a parameter description |
-| pageSize |  ``` Optional ```  | TODO: Add a parameter description |
-| status |  ``` Optional ```  | TODO: Add a parameter description |
-| dateTranscribed |  ``` Optional ```  | TODO: Add a parameter description |
-
-
-
-#### Example Usage
-
-```python
-collect = {}
-
-response_type = 'json'
-collect['response_type'] = response_type
-
-page = 44
-collect['page'] = page
-
-page_size = 44
-collect['page_size'] = page_size
-
-status = StatusEnum.INPROGRESS
-collect['status'] = status
-
-date_transcribed = 'DateTranscribed'
-collect['date_transcribed'] = date_transcribed
-
-
-result = transcription_client.create_list_transcription(collect)
-
-```
-
-
-[Back to List of Controllers](#list_of_controllers)
-
-### <a name="usage_controller"></a>![Class: ](https://apidocs.io/img/class.png ".UsageController") UsageController
-
-#### Get controller instance
-
-An instance of the ``` UsageController ``` class can be accessed from the API Client.
-
-```python
- usage_client = client.usage
-```
-
-#### <a name="create_list_usage"></a>![Method: ](https://apidocs.io/img/method.png ".UsageController.create_list_usage") create_list_usage
-
-> Get all usage 
-
-```python
-def create_list_usage(self,
-                          options=dict())
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| productCode |  ``` Required ```  ``` DefaultValue ```  | Product Code |
-| startDate |  ``` Required ```  ``` DefaultValue ```  | Start Usage Date |
-| endDate |  ``` Required ```  ``` DefaultValue ```  | End Usage Date |
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-
-
-
-#### Example Usage
-
-```python
-collect = {}
-
-product_code = ProductCodeEnum.ALL
-collect['product_code'] = product_code
-
-start_date = '2016-09-06'
-collect['start_date'] = start_date
-
-end_date = '2016-09-06'
-collect['end_date'] = end_date
-
-response_type = 'json'
-collect['response_type'] = response_type
-
-
-result = usage_client.create_list_usage(collect)
-
-```
-
-
-[Back to List of Controllers](#list_of_controllers)
-
-### <a name="account_controller"></a>![Class: ](https://apidocs.io/img/class.png ".AccountController") AccountController
-
-#### Get controller instance
+### Get controller instance
 
 An instance of the ``` AccountController ``` class can be accessed from the API Client.
 
@@ -3270,13 +3595,13 @@ An instance of the ``` AccountController ``` class can be accessed from the API 
  account_client = client.account
 ```
 
-#### <a name="create_view_account"></a>![Method: ](https://apidocs.io/img/method.png ".AccountController.create_view_account") create_view_account
+### <a name="view_account"></a>![Method: ](https://apidocs.io/img/method.png ".AccountController.view_account") view_account
 
 > Display Account Description
 
 ```python
-def create_view_account(self,
-                            options=dict())
+def view_account(self,
+                     options=dict())
 ```
 
 #### Parameters
@@ -3300,7 +3625,207 @@ response_type = 'json'
 collect['response_type'] = response_type
 
 
-result = account_client.create_view_account(collect)
+result = account_client.view_account(collect)
+
+```
+
+
+[Back to List of Controllers](#list_of_controllers)
+
+## <a name="short_code_controller"></a>![Class: ](https://apidocs.io/img/class.png ".ShortCodeController") ShortCodeController
+
+### Get controller instance
+
+An instance of the ``` ShortCodeController ``` class can be accessed from the API Client.
+
+```python
+ short_code_client = client.short_code
+```
+
+### <a name="send_dedicated_shortcode"></a>![Method: ](https://apidocs.io/img/method.png ".ShortCodeController.send_dedicated_shortcode") send_dedicated_shortcode
+
+> TODO: Add a method description
+
+```python
+def send_dedicated_shortcode(self,
+                                 options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| shortcode |  ``` Required ```  | Your dedicated shortcode |
+| to |  ``` Required ```  | The number to send your SMS to |
+| body |  ``` Required ```  | The body of your message |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+| method |  ``` Optional ```  | Callback status method, POST or GET |
+| messagestatuscallback |  ``` Optional ```  | Callback url for SMS status |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+shortcode = 213
+collect['shortcode'] = shortcode
+
+to = 213.008858858612
+collect['to'] = to
+
+body = 'body'
+collect['body'] = body
+
+response_type = 'json'
+collect['response_type'] = response_type
+
+method = HttpActionEnum.GET
+collect['method'] = method
+
+messagestatuscallback = 'messagestatuscallback'
+collect['messagestatuscallback'] = messagestatuscallback
+
+
+result = short_code_client.send_dedicated_shortcode(collect)
+
+```
+
+
+### <a name="view_shortcode"></a>![Method: ](https://apidocs.io/img/method.png ".ShortCodeController.view_shortcode") view_shortcode
+
+> View a single Sms Short Code message.
+
+```python
+def view_shortcode(self,
+                       options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| messageSid |  ``` Required ```  | The unique identifier for the sms resource |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+message_sid = 'MessageSid'
+collect['message_sid'] = message_sid
+
+response_type = 'json'
+collect['response_type'] = response_type
+
+
+result = short_code_client.view_shortcode(collect)
+
+```
+
+
+### <a name="list_shortcode"></a>![Method: ](https://apidocs.io/img/method.png ".ShortCodeController.list_shortcode") list_shortcode
+
+> Retrieve a list of Short Code message objects.
+
+```python
+def list_shortcode(self,
+                       options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+| shortcode |  ``` Optional ```  | Only list messages sent from this Short Code |
+| to |  ``` Optional ```  | Only list messages sent to this number |
+| dateSent |  ``` Optional ```  | Only list messages sent with the specified date |
+| page |  ``` Optional ```  ``` DefaultValue ```  | The page count to retrieve from the total results in the collection. Page indexing starts at 1. |
+| pageSize |  ``` Optional ```  ``` DefaultValue ```  | The count of objects to return per page. |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+response_type = 'json'
+collect['response_type'] = response_type
+
+shortcode = 'Shortcode'
+collect['shortcode'] = shortcode
+
+to = 'To'
+collect['to'] = to
+
+date_sent = datetime.now()
+collect['date_sent'] = date_sent
+
+page = 1
+collect['page'] = page
+
+page_size = 10
+collect['page_size'] = page_size
+
+
+result = short_code_client.list_shortcode(collect)
+
+```
+
+
+### <a name="list_inbound_shortcode"></a>![Method: ](https://apidocs.io/img/method.png ".ShortCodeController.list_inbound_shortcode") list_inbound_shortcode
+
+> Retrive a list of inbound Sms Short Code messages associated with your message360 account.
+
+```python
+def list_inbound_shortcode(self,
+                               options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+| page |  ``` Optional ```  ``` DefaultValue ```  | Which page of the overall response will be returned. Zero indexed |
+| pageSize |  ``` Optional ```  ``` DefaultValue ```  | Number of individual resources listed in the response per page |
+| mfrom |  ``` Optional ```  | Only list SMS messages sent from this number |
+| shortcode |  ``` Optional ```  | Only list SMS messages sent to Shortcode |
+| dateReceived |  ``` Optional ```  | Only list SMS messages sent in the specified date MAKE REQUEST |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+response_type = 'json'
+collect['response_type'] = response_type
+
+page = 1
+collect['page'] = page
+
+page_size = 10
+collect['page_size'] = page_size
+
+mfrom = 'From'
+collect['mfrom'] = mfrom
+
+shortcode = 'Shortcode'
+collect['shortcode'] = shortcode
+
+date_received = 'DateReceived'
+collect['date_received'] = date_received
+
+
+result = short_code_client.list_inbound_shortcode(collect)
 
 ```
 

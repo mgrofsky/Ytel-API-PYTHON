@@ -16,8 +16,8 @@ class AccountController(BaseController):
     """A Controller to access Endpoints in the message_360 API."""
 
 
-    def create_view_account(self,
-                            options=dict()):
+    def view_account(self,
+                     options=dict()):
         """Does a POST request to /accounts/viewaccount.{ResponseType}.
 
         Display Account Description
@@ -60,8 +60,6 @@ class AccountController(BaseController):
         _form_parameters = {
             'Date': options.get('date', None)
         }
-        _form_parameters = APIHelper.form_encode_parameters(_form_parameters,
-            Configuration.array_serialization)
 
         # Prepare and execute request
         _request = self.http_client.post(_query_url, parameters=_form_parameters)
