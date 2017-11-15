@@ -150,6 +150,12 @@ class SubAccountController(BaseController):
                     first_name -- string -- Sub account user first name
                     last_name -- string -- sub account user last name
                     email -- string -- Sub account email address
+                    friendly_name -- string -- Descriptive name of the sub
+                        account
+                    password -- string -- The password of the sub account. 
+                        Please make sure to make as password that is at least
+                        8 characters long, contain a symbol, uppercase and a
+                        number.
                     response_type -- string -- Response type format xml or
                         json
 
@@ -168,6 +174,8 @@ class SubAccountController(BaseController):
         self.validate_parameters(first_name=options.get("first_name"),
                                  last_name=options.get("last_name"),
                                  email=options.get("email"),
+                                 friendly_name=options.get("friendly_name"),
+                                 password=options.get("password"),
                                  response_type=options.get("response_type"))
 
         # Prepare query URL
@@ -182,7 +190,9 @@ class SubAccountController(BaseController):
         _form_parameters = {
             'FirstName': options.get('first_name', None),
             'LastName': options.get('last_name', None),
-            'Email': options.get('email', None)
+            'Email': options.get('email', None),
+            'FriendlyName': options.get('friendly_name', None),
+            'Password': options.get('password', None)
         }
 
         # Prepare and execute request

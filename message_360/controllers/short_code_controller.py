@@ -155,7 +155,7 @@ class ShortCodeController(BaseController):
                     shortcode -- string -- Only list messages sent from this
                         Short Code
                     to -- string -- Only list messages sent to this number
-                    date_sent -- date -- Only list messages sent with the
+                    date_sent -- string -- Only list messages sent with the
                         specified date
                     page -- int -- The page count to retrieve from the total
                         results in the collection. Page indexing starts at 1.
