@@ -669,7 +669,7 @@ class CallController(BaseController):
 
     def send_ringless_vm(self,
                          options=dict()):
-        """Does a POST request to /calls/makeringlessvoicemailcall.{ResponseType}.
+        """Does a POST request to /calls/makervm.{ResponseType}.
 
         API endpoint used to send a Ringless Voicemail
 
@@ -714,7 +714,7 @@ class CallController(BaseController):
 
         # Prepare query URL
         _query_builder = Configuration.get_base_uri()
-        _query_builder += '/calls/makeringlessvoicemailcall.{ResponseType}'
+        _query_builder += '/calls/makervm.{ResponseType}'
         _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
             'ResponseType': options.get('response_type', None)
         })

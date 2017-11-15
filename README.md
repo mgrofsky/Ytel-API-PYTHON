@@ -482,7 +482,7 @@ collect['page_size'] = page_size
 keyword = 'Keyword'
 collect['keyword'] = keyword
 
-shortcode = 71
+shortcode = 253
 collect['shortcode'] = shortcode
 
 
@@ -671,10 +671,10 @@ collect['participant_sid'] = participant_sid
 response_type = 'json'
 collect['response_type'] = response_type
 
-muted = False
+muted = True
 collect['muted'] = muted
 
-deaf = False
+deaf = True
 collect['deaf'] = deaf
 
 
@@ -757,10 +757,10 @@ collect['participantnumber'] = participantnumber
 response_type = 'json'
 collect['response_type'] = response_type
 
-muted = False
+muted = True
 collect['muted'] = muted
 
-deaf = False
+deaf = True
 collect['deaf'] = deaf
 
 
@@ -869,7 +869,7 @@ collect['fall_back_url'] = fall_back_url
 fall_back_method = HttpActionEnum.GET
 collect['fall_back_method'] = fall_back_method
 
-record = False
+record = True
 collect['record'] = record
 
 record_callback_method = HttpActionEnum.GET
@@ -878,7 +878,7 @@ collect['record_callback_method'] = record_callback_method
 schdeule_time = 'SchdeuleTime'
 collect['schdeule_time'] = schdeule_time
 
-timeout = 71
+timeout = 253
 collect['timeout'] = timeout
 
 
@@ -1008,10 +1008,10 @@ collect['page'] = page
 pagesize = 10
 collect['pagesize'] = pagesize
 
-muted = False
+muted = True
 collect['muted'] = muted
 
-deaf = False
+deaf = True
 collect['deaf'] = deaf
 
 
@@ -2573,7 +2573,7 @@ collect['heart_beat_url'] = heart_beat_url
 heart_beat_method = HttpActionEnum.GET
 collect['heart_beat_method'] = heart_beat_method
 
-timeout = 121
+timeout = 48
 collect['timeout'] = timeout
 
 play_dtmf = 'PlayDtmf'
@@ -2658,7 +2658,7 @@ collect['say_text'] = say_text
 response_type = 'json'
 collect['response_type'] = response_type
 
-length = 121
+length = 48
 collect['length'] = length
 
 direction = DirectionEnum.IN
@@ -2713,7 +2713,7 @@ collect['response_type'] = response_type
 direction = DirectionEnum.IN
 collect['direction'] = direction
 
-time_limit = 121
+time_limit = 48
 collect['time_limit'] = time_limit
 
 call_back_url = 'CallBackUrl'
@@ -2766,19 +2766,19 @@ collect['response_type'] = response_type
 audio_direction = AudioDirectionEnum.IN
 collect['audio_direction'] = audio_direction
 
-pitch_semi_tones = 121.51357696695
+pitch_semi_tones = 48.6331481619892
 collect['pitch_semi_tones'] = pitch_semi_tones
 
-pitch_octaves = 121.51357696695
+pitch_octaves = 48.6331481619892
 collect['pitch_octaves'] = pitch_octaves
 
-pitch = 121.51357696695
+pitch = 48.6331481619892
 collect['pitch'] = pitch
 
-rate = 121.51357696695
+rate = 48.6331481619892
 collect['rate'] = rate
 
-tempo = 121.51357696695
+tempo = 48.6331481619892
 collect['tempo'] = tempo
 
 
@@ -2958,7 +2958,7 @@ collect['heart_beat_url'] = heart_beat_url
 heart_beat_method = HttpActionEnum.GET
 collect['heart_beat_method'] = heart_beat_method
 
-timeout = 121
+timeout = 48
 collect['timeout'] = timeout
 
 play_dtmf = 'PlayDtmf'
@@ -3556,6 +3556,8 @@ def create_sub_account(self,
 | firstName |  ``` Required ```  | Sub account user first name |
 | lastName |  ``` Required ```  | sub account user last name |
 | email |  ``` Required ```  | Sub account email address |
+| friendlyName |  ``` Required ```  | Descriptive name of the sub account |
+| password |  ``` Required ```  | The password of the sub account.  Please make sure to make as password that is at least 8 characters long, contain a symbol, uppercase and a number. |
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
 
 
@@ -3573,6 +3575,12 @@ collect['last_name'] = last_name
 
 email = 'Email'
 collect['email'] = email
+
+friendly_name = 'FriendlyName'
+collect['friendly_name'] = friendly_name
+
+password = 'Password'
+collect['password'] = password
 
 response_type = 'json'
 collect['response_type'] = response_type
@@ -3669,10 +3677,10 @@ def send_dedicated_shortcode(self,
 ```python
 collect = {}
 
-shortcode = 213
+shortcode = 140
 collect['shortcode'] = shortcode
 
-to = 213.008858858612
+to = 140.128430053652
 collect['to'] = to
 
 body = 'body'
@@ -3764,7 +3772,7 @@ collect['shortcode'] = shortcode
 to = 'To'
 collect['to'] = to
 
-date_sent = datetime.now()
+date_sent = 'DateSent'
 collect['date_sent'] = date_sent
 
 page = 1
