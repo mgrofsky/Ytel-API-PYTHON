@@ -109,8 +109,8 @@ class AddressController(BaseController):
                 being the key and their desired values being the value. A list
                 of parameters that can be used are::
 
-                    address_sid -- string -- The identifier of the address to
-                        be retrieved.
+                    addressid -- string -- The identifier of the address to be
+                        retrieved.
                     response_type -- string -- Response Type either json or
                         xml
 
@@ -126,7 +126,7 @@ class AddressController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(address_sid=options.get("address_sid"),
+        self.validate_parameters(addressid=options.get("addressid"),
                                  response_type=options.get("response_type"))
 
         # Prepare query URL
@@ -139,7 +139,7 @@ class AddressController(BaseController):
 
         # Prepare form parameters
         _form_parameters = {
-            'AddressSID': options.get('address_sid', None)
+            'addressid': options.get('addressid', None)
         }
 
         # Prepare and execute request
@@ -166,11 +166,11 @@ class AddressController(BaseController):
 
                     response_type -- string -- Response Type either json or
                         xml
-                    page -- int -- Return requested # of items starting the
-                        value, default=0, must be an integer
-                    page_size -- int -- How many results to return, default is
+                    page -- int -- The page count to retrieve from the total
+                        results in the collection. Page indexing starts at 1.
+                    pagesize -- int -- How many results to return, default is
                         10, max is 100, must be an integer
-                    address_sid -- string -- addresses Sid
+                    addressid -- string -- addresses Sid
                     date_created -- string -- date created address.
 
         Returns:
@@ -197,10 +197,10 @@ class AddressController(BaseController):
 
         # Prepare form parameters
         _form_parameters = {
-            'Page': options.get('page', None),
-            'PageSize': options.get('page_size', None),
-            'AddressSID': options.get('address_sid', None),
-            'DateCreated': options.get('date_created', None)
+            'page': options.get('page', None),
+            'pagesize': options.get('pagesize', None),
+            'addressid': options.get('addressid', None),
+            'dateCreated': options.get('date_created', None)
         }
 
         # Prepare and execute request
@@ -225,8 +225,8 @@ class AddressController(BaseController):
                 being the key and their desired values being the value. A list
                 of parameters that can be used are::
 
-                    address_sid -- string -- The identifier of the address to
-                        be verified.
+                    addressid -- string -- The identifier of the address to be
+                        verified.
                     response_type -- string -- Response type either json or
                         xml
 
@@ -242,7 +242,7 @@ class AddressController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(address_sid=options.get("address_sid"),
+        self.validate_parameters(addressid=options.get("addressid"),
                                  response_type=options.get("response_type"))
 
         # Prepare query URL
@@ -255,7 +255,7 @@ class AddressController(BaseController):
 
         # Prepare form parameters
         _form_parameters = {
-            'AddressSID': options.get('address_sid', None)
+            'addressid': options.get('addressid', None)
         }
 
         # Prepare and execute request
@@ -280,8 +280,8 @@ class AddressController(BaseController):
                 being the key and their desired values being the value. A list
                 of parameters that can be used are::
 
-                    address_sid -- string -- The identifier of the address to
-                        be deleted.
+                    addressid -- string -- The identifier of the address to be
+                        deleted.
                     response_type -- string -- Response type either json or
                         xml
 
@@ -297,7 +297,7 @@ class AddressController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(address_sid=options.get("address_sid"),
+        self.validate_parameters(addressid=options.get("addressid"),
                                  response_type=options.get("response_type"))
 
         # Prepare query URL
@@ -310,7 +310,7 @@ class AddressController(BaseController):
 
         # Prepare form parameters
         _form_parameters = {
-            'AddressSID': options.get('address_sid', None)
+            'addressid': options.get('addressid', None)
         }
 
         # Prepare and execute request

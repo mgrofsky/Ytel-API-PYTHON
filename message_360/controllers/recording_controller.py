@@ -20,7 +20,9 @@ class RecordingController(BaseController):
                        options=dict()):
         """Does a POST request to /recording/viewrecording.{ResponseType}.
 
-        View a specific Recording
+        Retrieve the recording of a call by its RecordingSid. This resource
+        will return information regarding the call such as start time, end
+        time, duration, and so forth.
 
         Args:
             options (dict, optional): Key-value pairs for any of the
@@ -29,7 +31,8 @@ class RecordingController(BaseController):
                 being the key and their desired values being the value. A list
                 of parameters that can be used are::
 
-                    recording_sid -- string -- Search Recording sid
+                    recordingsid -- string -- The unique identifier for the
+                        recording.
                     response_type -- string -- Response type format xml or
                         json
 
@@ -45,7 +48,7 @@ class RecordingController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(recording_sid=options.get("recording_sid"),
+        self.validate_parameters(recordingsid=options.get("recordingsid"),
                                  response_type=options.get("response_type"))
 
         # Prepare query URL
@@ -58,7 +61,7 @@ class RecordingController(BaseController):
 
         # Prepare form parameters
         _form_parameters = {
-            'RecordingSid': options.get('recording_sid', None)
+            'recordingsid': options.get('recordingsid', None)
         }
 
         # Prepare and execute request
@@ -74,7 +77,7 @@ class RecordingController(BaseController):
                          options=dict()):
         """Does a POST request to /recording/deleterecording.{ResponseType}.
 
-        Delete Recording Record
+        Remove a recording from your message360 account.
 
         Args:
             options (dict, optional): Key-value pairs for any of the
@@ -83,8 +86,8 @@ class RecordingController(BaseController):
                 being the key and their desired values being the value. A list
                 of parameters that can be used are::
 
-                    recording_sid -- string -- Unique Recording Sid to be
-                        delete
+                    recordingsid -- string -- The unique identifier for a
+                        recording.
                     response_type -- string -- Response type format xml or
                         json
 
@@ -100,7 +103,7 @@ class RecordingController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(recording_sid=options.get("recording_sid"),
+        self.validate_parameters(recordingsid=options.get("recordingsid"),
                                  response_type=options.get("response_type"))
 
         # Prepare query URL
@@ -113,7 +116,7 @@ class RecordingController(BaseController):
 
         # Prepare form parameters
         _form_parameters = {
-            'RecordingSid': options.get('recording_sid', None)
+            'recordingsid': options.get('recordingsid', None)
         }
 
         # Prepare and execute request
@@ -129,7 +132,7 @@ class RecordingController(BaseController):
                        options=dict()):
         """Does a POST request to /recording/listrecording.{ResponseType}.
 
-        List out Recordings
+        Retrieve a list of recording objects.
 
         Args:
             options (dict, optional): Key-value pairs for any of the
@@ -140,12 +143,12 @@ class RecordingController(BaseController):
 
                     response_type -- string -- Response type format xml or
                         json
-                    page -- int -- Which page of the overall response will be
-                        returned. Zero indexed
-                    page_size -- int -- Number of individual resources listed
-                        in the response per page
-                    date_created -- string -- Recording date
-                    call_sid -- string -- Call ID
+                    page -- int -- The page count to retrieve from the total
+                        results in the collection. Page indexing starts at 1.
+                    pagesize -- int -- The count of objects to return per
+                        page.
+                    datecreated -- string -- Filter results by creation date
+                    callsid -- string -- The unique identifier for a call.
 
         Returns:
             string: Response from the API. 
@@ -171,10 +174,10 @@ class RecordingController(BaseController):
 
         # Prepare form parameters
         _form_parameters = {
-            'Page': options.get('page', None),
-            'PageSize': options.get('page_size', None),
-            'DateCreated': options.get('date_created', None),
-            'CallSid': options.get('call_sid', None)
+            'page': options.get('page', None),
+            'pagesize': options.get('pagesize', None),
+            'Datecreated': options.get('datecreated', None),
+            'callsid': options.get('callsid', None)
         }
 
         # Prepare and execute request

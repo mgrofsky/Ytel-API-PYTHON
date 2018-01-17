@@ -20,7 +20,7 @@ class CarrierController(BaseController):
                             options=dict()):
         """Does a POST request to /carrier/lookuplist.{ResponseType}.
 
-        Get the All Purchase Number's Carrier lookup
+        Retrieve a list of carrier lookup objects.
 
         Args:
             options (dict, optional): Key-value pairs for any of the
@@ -31,8 +31,10 @@ class CarrierController(BaseController):
 
                     response_type -- string -- Response type format xml or
                         json
-                    page -- int -- Page Number
-                    pagesize -- int -- Page Size
+                    page -- int -- The page count to retrieve from the total
+                        results in the collection. Page indexing starts at 1.
+                    page_size -- int -- The count of objects to return per
+                        page.
 
         Returns:
             string: Response from the API. 
@@ -58,8 +60,8 @@ class CarrierController(BaseController):
 
         # Prepare form parameters
         _form_parameters = {
-            'page': options.get('page', None),
-            'pagesize': options.get('pagesize', None)
+            'Page': options.get('page', None),
+            'PageSize': options.get('page_size', None)
         }
 
         # Prepare and execute request
@@ -84,7 +86,8 @@ class CarrierController(BaseController):
                 being the key and their desired values being the value. A list
                 of parameters that can be used are::
 
-                    phonenumber -- string -- The number to lookup
+                    phone_number -- string -- A valid 10-digit number (E.164
+                        format).
                     response_type -- string -- Response type format xml or
                         json
 
@@ -100,7 +103,7 @@ class CarrierController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(phonenumber=options.get("phonenumber"),
+        self.validate_parameters(phone_number=options.get("phone_number"),
                                  response_type=options.get("response_type"))
 
         # Prepare query URL
@@ -113,7 +116,7 @@ class CarrierController(BaseController):
 
         # Prepare form parameters
         _form_parameters = {
-            'phonenumber': options.get('phonenumber', None)
+            'PhoneNumber': options.get('phone_number', None)
         }
 
         # Prepare and execute request

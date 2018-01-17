@@ -9,10 +9,9 @@ from .decorators import lazy_property
 from .configuration import Configuration
 from .controllers.shared_short_code_controller import SharedShortCodeController
 from .controllers.conference_controller import ConferenceController
-from .controllers.transcription_controller import TranscriptionController
 from .controllers.phone_number_controller import PhoneNumberController
-from .controllers.usage_controller import UsageController
 from .controllers.web_rtc_controller import WebRTCController
+from .controllers.transcription_controller import TranscriptionController
 from .controllers.recording_controller import RecordingController
 from .controllers.email_controller import EmailController
 from .controllers.sms_controller import SMSController
@@ -21,7 +20,11 @@ from .controllers.carrier_controller import CarrierController
 from .controllers.address_controller import AddressController
 from .controllers.sub_account_controller import SubAccountController
 from .controllers.account_controller import AccountController
+from .controllers.usage_controller import UsageController
 from .controllers.short_code_controller import ShortCodeController
+from .controllers.post_card_controller import PostCardController
+from .controllers.letter_controller import LetterController
+from .controllers.area_mail_controller import AreaMailController
 
 class Message360Client(object):
 
@@ -36,20 +39,16 @@ class Message360Client(object):
         return ConferenceController()
 
     @lazy_property
-    def transcription(self):
-        return TranscriptionController()
-
-    @lazy_property
     def phone_number(self):
         return PhoneNumberController()
 
     @lazy_property
-    def usage(self):
-        return UsageController()
-
-    @lazy_property
     def web_rtc(self):
         return WebRTCController()
+
+    @lazy_property
+    def transcription(self):
+        return TranscriptionController()
 
     @lazy_property
     def recording(self):
@@ -84,8 +83,24 @@ class Message360Client(object):
         return AccountController()
 
     @lazy_property
+    def usage(self):
+        return UsageController()
+
+    @lazy_property
     def short_code(self):
         return ShortCodeController()
+
+    @lazy_property
+    def post_card(self):
+        return PostCardController()
+
+    @lazy_property
+    def letter(self):
+        return LetterController()
+
+    @lazy_property
+    def area_mail(self):
+        return AreaMailController()
 
 
     def __init__(self, 

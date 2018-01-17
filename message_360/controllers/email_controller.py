@@ -20,7 +20,7 @@ class EmailController(BaseController):
                     options=dict()):
         """Does a POST request to /email/deletespamemail.{ResponseType}.
 
-        Deletes a email address marked as spam from the spam list
+        Remove an email from the spam email list.
 
         Args:
             options (dict, optional): Key-value pairs for any of the
@@ -31,7 +31,8 @@ class EmailController(BaseController):
 
                     response_type -- string -- Response type format xml or
                         json
-                    email -- string -- Email address
+                    email -- string -- A valid email address that is to be
+                        remove from the spam list.
 
         Returns:
             string: Response from the API. 
@@ -58,7 +59,7 @@ class EmailController(BaseController):
 
         # Prepare form parameters
         _form_parameters = {
-            'email': options.get('email', None)
+            'Email': options.get('email', None)
         }
 
         # Prepare and execute request
@@ -74,7 +75,7 @@ class EmailController(BaseController):
                      options=dict()):
         """Does a POST request to /email/deleteblocksemail.{ResponseType}.
 
-        Deletes a blocked email
+        Remove an email from blocked emails list.
 
         Args:
             options (dict, optional): Key-value pairs for any of the
@@ -83,8 +84,8 @@ class EmailController(BaseController):
                 being the key and their desired values being the value. A list
                 of parameters that can be used are::
 
-                    email -- string -- Email address to remove from block
-                        list
+                    email -- string -- The email address to be remove from the
+                        blocked list.
                     response_type -- string -- Response type format xml or
                         json
 
@@ -113,7 +114,7 @@ class EmailController(BaseController):
 
         # Prepare form parameters
         _form_parameters = {
-            'email': options.get('email', None)
+            'Email': options.get('email', None)
         }
 
         # Prepare and execute request
@@ -138,8 +139,8 @@ class EmailController(BaseController):
                 being the key and their desired values being the value. A list
                 of parameters that can be used are::
 
-                    email -- string -- The email to add to the unsubscribe
-                        list
+                    email -- string -- A valid email address that is to be
+                        added to the unsubscribe list
                     response_type -- string -- Response type format xml or
                         json
 
@@ -184,7 +185,7 @@ class EmailController(BaseController):
                    options=dict()):
         """Does a POST request to /email/sendemails.{ResponseType}.
 
-        Send out an email
+        Create and submit an email message to one or more email addresses.
 
         Args:
             options (dict, optional): Key-value pairs for any of the
@@ -193,18 +194,27 @@ class EmailController(BaseController):
                 being the key and their desired values being the value. A list
                 of parameters that can be used are::
 
-                    to -- string -- The to email address
-                    mfrom -- string -- The from email address
-                    mtype -- SendEmailAsEnum -- email format type, html or
-                        text
-                    subject -- string -- Email subject
-                    message -- string -- The body of the email message
+                    to -- string -- A valid address that will receive the
+                        email. Multiple addresses can be separated by using
+                        commas.
+                    mtype -- SendEmailAsEnum -- Specifies the type of email to
+                        be sent
+                    subject -- string -- The subject of the mail. Must be a
+                        valid string.
+                    message -- string -- The email message that is to be sent
+                        in the text.
                     response_type -- string -- Response type format xml or
                         json
-                    cc -- string -- CC Email address
-                    bcc -- string -- BCC Email address
-                    attachment -- string -- File to be attached.File must be
-                        less than 7MB.
+                    mfrom -- string -- A valid address that will send the
+                        email.
+                    cc -- string -- Carbon copy. A valid address that will
+                        receive the email. Multiple addresses can be separated
+                        by using commas.
+                    bcc -- string -- Blind carbon copy. A valid address that
+                        will receive the email. Multiple addresses can be
+                        separated by using commas.
+                    attachment -- string -- A file that is attached to the
+                        email. Must be less than 7 MB in size.
 
         Returns:
             string: Response from the API. 
@@ -219,7 +229,6 @@ class EmailController(BaseController):
 
         # Validate required parameters
         self.validate_parameters(to=options.get("to"),
-                                 mfrom=options.get("mfrom"),
                                  mtype=options.get("mtype"),
                                  subject=options.get("subject"),
                                  message=options.get("message"),
@@ -235,14 +244,14 @@ class EmailController(BaseController):
 
         # Prepare form parameters
         _form_parameters = {
-            'to': options.get('to', None),
-            'from': options.get('mfrom', None),
-            'type': options.get('mtype', None),
-            'subject': options.get('subject', None),
-            'message': options.get('message', None),
-            'cc': options.get('cc', None),
-            'bcc': options.get('bcc', None),
-            'attachment': options.get('attachment', None)
+            'To': options.get('to', None),
+            'Type': options.get('mtype', None),
+            'Subject': options.get('subject', None),
+            'Message': options.get('message', None),
+            'From': options.get('mfrom', None),
+            'Cc': options.get('cc', None),
+            'Bcc': options.get('bcc', None),
+            'Attachment': options.get('attachment', None)
         }
 
         # Prepare and execute request
@@ -258,7 +267,7 @@ class EmailController(BaseController):
                             options=dict()):
         """Does a POST request to /email/deleteunsubscribedemail.{ResponseType}.
 
-        Delete emails from the unsubscribe list
+        Remove an email address from the list of unsubscribed emails.
 
         Args:
             options (dict, optional): Key-value pairs for any of the
@@ -267,8 +276,8 @@ class EmailController(BaseController):
                 being the key and their desired values being the value. A list
                 of parameters that can be used are::
 
-                    email -- string -- The email to remove from the
-                        unsubscribe list
+                    email -- string -- A valid email address that is to be
+                        remove from the unsubscribe list.
                     response_type -- string -- Response type format xml or
                         json
 
@@ -313,7 +322,7 @@ class EmailController(BaseController):
                           options=dict()):
         """Does a POST request to /email/listunsubscribedemail.{ResponseType}.
 
-        List all unsubscribed email addresses
+        Retrieve a list of email addresses from the unsubscribe list.
 
         Args:
             options (dict, optional): Key-value pairs for any of the
@@ -324,9 +333,10 @@ class EmailController(BaseController):
 
                     response_type -- string -- Response type format xml or
                         json
-                    offset -- string -- Starting record of the list
-                    limit -- string -- Maximum number of records to be
-                        returned
+                    offset -- string -- The starting point of the list of
+                        unsubscribed emails that should be returned.
+                    limit -- string -- The count of results that should be
+                        returned.
 
         Returns:
             string: Response from the API. 
@@ -352,8 +362,8 @@ class EmailController(BaseController):
 
         # Prepare form parameters
         _form_parameters = {
-            'offset': options.get('offset', None),
-            'limit': options.get('limit', None)
+            'Offset': options.get('offset', None),
+            'Limit': options.get('limit', None)
         }
 
         # Prepare and execute request
@@ -369,7 +379,7 @@ class EmailController(BaseController):
                      options=dict()):
         """Does a POST request to /email/listinvalidemail.{ResponseType}.
 
-        List out all invalid email addresses
+        Retrieve a list of invalid email addresses.
 
         Args:
             options (dict, optional): Key-value pairs for any of the
@@ -380,8 +390,10 @@ class EmailController(BaseController):
 
                     response_type -- string -- Response type format xml or
                         json
-                    offet -- string -- Starting record for listing out emails
-                    limit -- string -- Maximum number of records to return
+                    offset -- string -- The starting point of the list of
+                        invalid emails that should be returned.
+                    limit -- string -- The count of results that should be
+                        returned.
 
         Returns:
             string: Response from the API. 
@@ -407,8 +419,8 @@ class EmailController(BaseController):
 
         # Prepare form parameters
         _form_parameters = {
-            'offet': options.get('offet', None),
-            'limit': options.get('limit', None)
+            'Offset': options.get('offset', None),
+            'Limit': options.get('limit', None)
         }
 
         # Prepare and execute request
@@ -424,7 +436,7 @@ class EmailController(BaseController):
                        options=dict()):
         """Does a POST request to /email/deletebouncesemail.{ResponseType}.
 
-        Delete an email address from the bounced address list
+        Remove an email address from the bounced list.
 
         Args:
             options (dict, optional): Key-value pairs for any of the
@@ -435,8 +447,8 @@ class EmailController(BaseController):
 
                     response_type -- string -- Response type format xml or
                         json
-                    email -- string -- The email address to remove from the
-                        bounce list
+                    email -- string -- The email address to be remove from the
+                        bounced email list.
 
         Returns:
             string: Response from the API. 
@@ -463,7 +475,7 @@ class EmailController(BaseController):
 
         # Prepare form parameters
         _form_parameters = {
-            'email': options.get('email', None)
+            'Email': options.get('email', None)
         }
 
         # Prepare and execute request
@@ -479,7 +491,7 @@ class EmailController(BaseController):
                      options=dict()):
         """Does a POST request to /email/listbounceemail.{ResponseType}.
 
-        List out all email addresses that have bounced
+        Retrieve a list of emails that have bounced.
 
         Args:
             options (dict, optional): Key-value pairs for any of the
@@ -490,9 +502,10 @@ class EmailController(BaseController):
 
                     response_type -- string -- Response type format xml or
                         json
-                    offset -- string -- The record to start the list at
-                    limit -- string -- The maximum number of records to
-                        return
+                    offset -- string -- The starting point of the list of
+                        bounced emails that should be returned.
+                    limit -- string -- The count of results that should be
+                        returned.
 
         Returns:
             string: Response from the API. 
@@ -518,8 +531,8 @@ class EmailController(BaseController):
 
         # Prepare form parameters
         _form_parameters = {
-            'offset': options.get('offset', None),
-            'limit': options.get('limit', None)
+            'Offset': options.get('offset', None),
+            'Limit': options.get('limit', None)
         }
 
         # Prepare and execute request
@@ -535,7 +548,7 @@ class EmailController(BaseController):
                   options=dict()):
         """Does a POST request to /email/listspamemail.{ResponseType}.
 
-        List out all email addresses marked as spam
+        Retrieve a list of emails that are on the spam list.
 
         Args:
             options (dict, optional): Key-value pairs for any of the
@@ -546,9 +559,10 @@ class EmailController(BaseController):
 
                     response_type -- string -- Response type format xml or
                         json
-                    offset -- string -- The record number to start the list
-                        at
-                    limit -- string -- Maximum number of records to return
+                    offset -- string -- The starting point of the list of spam
+                        emails that should be returned.
+                    limit -- string -- The count of results that should be
+                        returned.
 
         Returns:
             string: Response from the API. 
@@ -574,8 +588,8 @@ class EmailController(BaseController):
 
         # Prepare form parameters
         _form_parameters = {
-            'offset': options.get('offset', None),
-            'limit': options.get('limit', None)
+            'Offset': options.get('offset', None),
+            'Limit': options.get('limit', None)
         }
 
         # Prepare and execute request
@@ -591,7 +605,7 @@ class EmailController(BaseController):
                     options=dict()):
         """Does a POST request to /email/listblockemail.{ResponseType}.
 
-        Outputs email addresses on your blocklist
+        Retrieve a list of emails that have been blocked.
 
         Args:
             options (dict, optional): Key-value pairs for any of the
@@ -602,8 +616,10 @@ class EmailController(BaseController):
 
                     response_type -- string -- Response type format xml or
                         json
-                    offset -- string -- Where to start in the output list
-                    limit -- string -- Maximum number of records to return
+                    offset -- string -- The starting point of the list of
+                        blocked emails that should be returned.
+                    limit -- string -- The count of results that should be
+                        returned.
 
         Returns:
             string: Response from the API. 
@@ -629,8 +645,8 @@ class EmailController(BaseController):
 
         # Prepare form parameters
         _form_parameters = {
-            'offset': options.get('offset', None),
-            'limit': options.get('limit', None)
+            'Offset': options.get('offset', None),
+            'Limit': options.get('limit', None)
         }
 
         # Prepare and execute request
@@ -646,8 +662,7 @@ class EmailController(BaseController):
                        options=dict()):
         """Does a POST request to /email/deleteinvalidemail.{ResponseType}.
 
-        This endpoint allows you to delete entries in the Invalid Emails
-        list.
+        Remove an email from the invalid email list.
 
         Args:
             options (dict, optional): Key-value pairs for any of the
@@ -656,8 +671,10 @@ class EmailController(BaseController):
                 being the key and their desired values being the value. A list
                 of parameters that can be used are::
 
-                    email -- string -- Email that was marked invalid
-                    response_type -- string -- Json or xml
+                    email -- string -- A valid email address that is to be
+                        remove from the invalid email list.
+                    response_type -- string -- Response Type either json or
+                        xml
 
         Returns:
             string: Response from the API. 
@@ -684,7 +701,7 @@ class EmailController(BaseController):
 
         # Prepare form parameters
         _form_parameters = {
-            'email': options.get('email', None)
+            'Email': options.get('email', None)
         }
 
         # Prepare and execute request
