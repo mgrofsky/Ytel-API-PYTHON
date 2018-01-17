@@ -20,7 +20,9 @@ class UsageController(BaseController):
                    options=dict()):
         """Does a POST request to /usage/listusage.{ResponseType}.
 
-        Get all usage 
+        Retrieve usage metrics regarding your message360 account. The results
+        includes inbound/outbound voice calls and inbound/outbound SMS
+        messages as well as carrier lookup requests.
 
         Args:
             options (dict, optional): Key-value pairs for any of the
@@ -31,9 +33,13 @@ class UsageController(BaseController):
 
                     response_type -- string -- Response type format xml or
                         json
-                    product_code -- ProductCodeEnum -- Product Code
-                    start_date -- string -- Start Usage Date
-                    end_date -- string -- End Usage Date
+                    product_code -- ProductCodeEnum -- Filter usage results by
+                        product type.
+                    start_date -- string -- Filter usage objects by start
+                        date.
+                    end_date -- string -- Filter usage objects by end date.
+                    include_sub_accounts -- string -- Will include all
+                        subaccount usage data
 
         Returns:
             string: Response from the API. 
@@ -61,7 +67,8 @@ class UsageController(BaseController):
         _form_parameters = {
             'ProductCode': options.get('product_code', None),
             'startDate': options.get('start_date', None),
-            'endDate': options.get('end_date', None)
+            'endDate': options.get('end_date', None),
+            'IncludeSubAccounts': options.get('include_sub_accounts', None)
         }
 
         # Prepare and execute request

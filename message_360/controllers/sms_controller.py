@@ -29,15 +29,17 @@ class SMSController(BaseController):
                 being the key and their desired values being the value. A list
                 of parameters that can be used are::
 
-                    mfrom -- string -- SMS enabled Message360 number to send
-                        this message from
-                    to -- string -- Number to send the SMS to
-                    body -- string -- Text Message To Send
+                    mfrom -- string -- The 10-digit SMS-enabled message360
+                        number (E.164 format) in which the message is sent.
+                    to -- string -- The 10-digit phone number (E.164 format)
+                        that will receive the message.
+                    body -- string -- The body message that is to be sent in
+                        the text.
                     response_type -- string -- Response type format xml or
                         json
                     method -- HttpActionEnum -- Specifies the HTTP method used
                         to request the required URL once SMS sent.
-                    messagestatuscallback -- string -- URL that can be
+                    message_status_callback -- string -- URL that can be
                         requested to receive notification when SMS has Sent. A
                         set of default parameters will be sent here once the
                         SMS is finished.
@@ -45,6 +47,9 @@ class SMSController(BaseController):
                         not using Carrier API, if wireless = true then text
                         sms is sent, else wireless = false then call is
                         recieved to end user with audible message.
+                    delivery_status -- bool -- Delivery reports are a method
+                        to tell your system if the message has arrived on the
+                        destination phone.
 
         Returns:
             string: Response from the API. 
@@ -73,12 +78,13 @@ class SMSController(BaseController):
 
         # Prepare form parameters
         _form_parameters = {
-            'from': options.get('mfrom', None),
-            'to': options.get('to', None),
-            'body': options.get('body', None),
-            'method': options.get('method', None),
-            'messagestatuscallback': options.get('messagestatuscallback', None),
-            'smartsms': options.get('smartsms', None)
+            'From': options.get('mfrom', None),
+            'To': options.get('to', None),
+            'Body': options.get('body', None),
+            'Method': options.get('method', None),
+            'MessageStatusCallback': options.get('message_status_callback', None),
+            'Smartsms': options.get('smartsms', None),
+            'DeliveryStatus': options.get('delivery_status', None)
         }
 
         # Prepare and execute request
@@ -94,7 +100,7 @@ class SMSController(BaseController):
                  options=dict()):
         """Does a POST request to /sms/viewsms.{ResponseType}.
 
-        View a Particular SMS
+        Retrieve a single SMS message object by its SmsSid.
 
         Args:
             options (dict, optional): Key-value pairs for any of the
@@ -103,7 +109,8 @@ class SMSController(BaseController):
                 being the key and their desired values being the value. A list
                 of parameters that can be used are::
 
-                    messagesid -- string -- Message sid
+                    message_sid -- string -- The unique identifier for a sms
+                        message.
                     response_type -- string -- Response type format xml or
                         json
 
@@ -119,7 +126,7 @@ class SMSController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(messagesid=options.get("messagesid"),
+        self.validate_parameters(message_sid=options.get("message_sid"),
                                  response_type=options.get("response_type"))
 
         # Prepare query URL
@@ -132,7 +139,7 @@ class SMSController(BaseController):
 
         # Prepare form parameters
         _form_parameters = {
-            'messagesid': options.get('messagesid', None)
+            'MessageSid': options.get('message_sid', None)
         }
 
         # Prepare and execute request
@@ -148,7 +155,7 @@ class SMSController(BaseController):
                  options=dict()):
         """Does a POST request to /sms/listsms.{ResponseType}.
 
-        List All SMS
+        Retrieve a list of Outbound SMS message objects.
 
         Args:
             options (dict, optional): Key-value pairs for any of the
@@ -159,13 +166,15 @@ class SMSController(BaseController):
 
                     response_type -- string -- Response type format xml or
                         json
-                    page -- int -- Which page of the overall response will be
-                        returned. Zero indexed
-                    pagesize -- int -- Number of individual resources listed
+                    page -- int -- The page count to retrieve from the total
+                        results in the collection. Page indexing starts at 1.
+                    page_size -- int -- Number of individual resources listed
                         in the response per page
-                    mfrom -- string -- Messages sent from this number
-                    to -- string -- Messages sent to this number
-                    datesent -- string -- Only list SMS messages sent in the
+                    mfrom -- string -- Filter SMS message objects from this
+                        valid 10-digit phone number (E.164 format).
+                    to -- string -- Filter SMS message objects to this valid
+                        10-digit phone number (E.164 format).
+                    date_sent -- string -- Only list SMS messages sent in the
                         specified date range
 
         Returns:
@@ -192,11 +201,11 @@ class SMSController(BaseController):
 
         # Prepare form parameters
         _form_parameters = {
-            'page': options.get('page', None),
-            'pagesize': options.get('pagesize', None),
-            'from': options.get('mfrom', None),
-            'to': options.get('to', None),
-            'datesent': options.get('datesent', None)
+            'Page': options.get('page', None),
+            'PageSize': options.get('page_size', None),
+            'From': options.get('mfrom', None),
+            'To': options.get('to', None),
+            'DateSent': options.get('date_sent', None)
         }
 
         # Prepare and execute request
@@ -210,9 +219,9 @@ class SMSController(BaseController):
 
     def list_inbound_sms(self,
                          options=dict()):
-        """Does a POST request to /sms/getInboundsms.{ResponseType}.
+        """Does a POST request to /sms/getinboundsms.{ResponseType}.
 
-        List All Inbound SMS
+        Retrieve a list of Inbound SMS message objects.
 
         Args:
             options (dict, optional): Key-value pairs for any of the
@@ -223,12 +232,14 @@ class SMSController(BaseController):
 
                     response_type -- string -- Response type format xml or
                         json
-                    page -- int -- Which page of the overall response will be
-                        returned. Zero indexed
-                    pagesize -- int -- Number of individual resources listed
-                        in the response per page
-                    mfrom -- string -- From Number to Inbound SMS
-                    to -- string -- To Number to get Inbound SMS
+                    page -- int -- The page count to retrieve from the total
+                        results in the collection. Page indexing starts at 1.
+                    page_size -- int -- The count of objects to return per
+                        page.
+                    mfrom -- string -- Filter SMS message objects from this
+                        valid 10-digit phone number (E.164 format).
+                    to -- string -- Filter SMS message objects to this valid
+                        10-digit phone number (E.164 format).
                     date_sent -- string -- Filter sms message objects by this
                         date.
 
@@ -248,7 +259,7 @@ class SMSController(BaseController):
 
         # Prepare query URL
         _query_builder = Configuration.get_base_uri()
-        _query_builder += '/sms/getInboundsms.{ResponseType}'
+        _query_builder += '/sms/getinboundsms.{ResponseType}'
         _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
             'ResponseType': options.get('response_type', None)
         })
@@ -256,11 +267,66 @@ class SMSController(BaseController):
 
         # Prepare form parameters
         _form_parameters = {
-            'page': options.get('page', None),
-            'pagesize': options.get('pagesize', None),
-            'from': options.get('mfrom', None),
-            'to': options.get('to', None),
+            'Page': options.get('page', None),
+            'PageSize': options.get('page_size', None),
+            'From': options.get('mfrom', None),
+            'To': options.get('to', None),
             'DateSent': options.get('date_sent', None)
+        }
+
+        # Prepare and execute request
+        _request = self.http_client.post(_query_url, parameters=_form_parameters)
+        BasicAuth.apply(_request)
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
+
+        # Return appropriate type
+        return _context.response.raw_body
+
+    def view_detail_sms(self,
+                        options=dict()):
+        """Does a POST request to /sms/viewdetailsms.{ResponseType}.
+
+        Retrieve a single SMS message object with details by its SmsSid.
+
+        Args:
+            options (dict, optional): Key-value pairs for any of the
+                parameters to this API Endpoint. All parameters to the
+                endpoint are supplied through the dictionary with their names
+                being the key and their desired values being the value. A list
+                of parameters that can be used are::
+
+                    message_sid -- string -- The unique identifier for a sms
+                        message.
+                    response_type -- string -- Response type format xml or
+                        json
+
+        Returns:
+            string: Response from the API. 
+
+        Raises:
+            APIException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        # Validate required parameters
+        self.validate_parameters(message_sid=options.get("message_sid"),
+                                 response_type=options.get("response_type"))
+
+        # Prepare query URL
+        _query_builder = Configuration.get_base_uri()
+        _query_builder += '/sms/viewdetailsms.{ResponseType}'
+        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+            'ResponseType': options.get('response_type', None)
+        })
+        _query_url = APIHelper.clean_url(_query_builder)
+
+        # Prepare form parameters
+        _form_parameters = {
+            'MessageSid': options.get('message_sid', None)
         }
 
         # Prepare and execute request

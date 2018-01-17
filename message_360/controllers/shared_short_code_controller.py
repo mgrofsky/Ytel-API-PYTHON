@@ -29,7 +29,7 @@ class SharedShortCodeController(BaseController):
                 being the key and their desired values being the value. A list
                 of parameters that can be used are::
 
-                    templateid -- uuid|string -- The unique identifier for a
+                    template_id -- uuid|string -- The unique identifier for a
                         template object
                     response_type -- string -- Response type format xml or
                         json
@@ -46,7 +46,7 @@ class SharedShortCodeController(BaseController):
         """
 
         # Validate required parameters
-        self.validate_parameters(templateid=options.get("templateid"),
+        self.validate_parameters(template_id=options.get("template_id"),
                                  response_type=options.get("response_type"))
 
         # Prepare query URL
@@ -59,7 +59,7 @@ class SharedShortCodeController(BaseController):
 
         # Prepare form parameters
         _form_parameters = {
-            'templateid': options.get('templateid', None)
+            'TemplateId': options.get('template_id', None)
         }
 
         # Prepare and execute request
@@ -140,12 +140,13 @@ class SharedShortCodeController(BaseController):
 
                     response_type -- string -- Response type format xml or
                         json
-                    page -- int -- Which page of the overall response will be
-                        returned. Zero indexed
+                    page -- int -- The page count to retrieve from the total
+                        results in the collection. Page indexing starts at 1.
                     pagesize -- int -- Number of individual resources listed
                         in the response per page
-                    mfrom -- string -- Messages sent from this number
-                    to -- string -- Messages sent to this number
+                    shortcode -- string -- Only list messages sent from this
+                        Short Code
+                    to -- string -- Only list messages sent to this number
                     datesent -- string -- Only list SMS messages sent in the
                         specified date range
 
@@ -175,7 +176,7 @@ class SharedShortCodeController(BaseController):
         _form_parameters = {
             'page': options.get('page', None),
             'pagesize': options.get('pagesize', None),
-            'from': options.get('mfrom', None),
+            'Shortcode': options.get('shortcode', None),
             'to': options.get('to', None),
             'datesent': options.get('datesent', None)
         }
@@ -204,15 +205,15 @@ class SharedShortCodeController(BaseController):
 
                     response_type -- string -- Response type format xml or
                         json
-                    page -- int -- Which page of the overall response will be
-                        returned. Zero indexed
+                    page -- int -- The page count to retrieve from the total
+                        results in the collection. Page indexing starts at 1.
                     pagesize -- int -- Number of individual resources listed
                         in the response per page
                     mfrom -- string -- From Number to Inbound ShortCode
                     shortcode -- string -- Only list messages sent to this
                         Short Code
-                    date_received -- string -- Only list messages sent with
-                        the specified date
+                    datecreated -- string -- Only list messages sent with the
+                        specified date
 
         Returns:
             string: Response from the API. 
@@ -235,7 +236,7 @@ class SharedShortCodeController(BaseController):
             'ResponseType': options.get('response_type', None)
         })
         _query_parameters = {
-            'DateReceived': options.get('date_received', None)
+            'Datecreated': options.get('datecreated', None)
         }
         _query_builder = APIHelper.append_url_with_query_parameters(_query_builder,
             _query_parameters, Configuration.array_serialization)
@@ -465,9 +466,9 @@ class SharedShortCodeController(BaseController):
 
                     response_type -- string -- Response type format xml or
                         json
-                    page -- int -- Which page of the overall response will be
-                        returned. Zero indexed
-                    page_size -- int -- Number of individual resources listed
+                    page -- int -- The page count to retrieve from the total
+                        results in the collection. Page indexing starts at 1.
+                    pagesize -- int -- Number of individual resources listed
                         in the response per page
                     keyword -- string -- Only list keywords of keyword
                     shortcode -- int -- Only list keywords of shortcode
@@ -496,8 +497,8 @@ class SharedShortCodeController(BaseController):
 
         # Prepare form parameters
         _form_parameters = {
-            'Page': options.get('page', None),
-            'PageSize': options.get('page_size', None),
+            'page': options.get('page', None),
+            'pagesize': options.get('pagesize', None),
             'Keyword': options.get('keyword', None),
             'Shortcode': options.get('shortcode', None)
         }
@@ -583,9 +584,9 @@ class SharedShortCodeController(BaseController):
 
                     response_type -- string -- Response type format xml or
                         json
-                    page -- int -- Which page of the overall response will be
-                        returned. Zero indexed
-                    page_size -- int -- Number of individual resources listed
+                    page -- int -- The page count to retrieve from the total
+                        results in the collection. Page indexing starts at 1.
+                    pagesize -- int -- Number of individual resources listed
                         in the response per page
                     shortcode -- string -- Only list keywords of shortcode
 
@@ -618,8 +619,8 @@ class SharedShortCodeController(BaseController):
 
         # Prepare form parameters
         _form_parameters = {
-            'Page': options.get('page', None),
-            'PageSize': options.get('page_size', None)
+            'page': options.get('page', None),
+            'pagesize': options.get('pagesize', None)
         }
 
         # Prepare and execute request

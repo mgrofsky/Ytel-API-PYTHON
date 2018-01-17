@@ -31,16 +31,19 @@ class CallController(BaseController):
                 being the key and their desired values being the value. A list
                 of parameters that can be used are::
 
-                    mfrom -- string -- This number to display on Caller ID as
-                        calling
+                    mfrom -- string -- A valid message360 Voice enabled number
+                        (E.164 format) that will be initiating the phone
+                        call.
                     to -- string -- To number
                     url -- string -- URL requested once the call connects
                     response_type -- string -- Response type format xml or
                         json
                     method -- HttpActionEnum -- Specifies the HTTP method used
                         to request the required URL once call connects.
-                    status_call_back_url -- string -- specifies the HTTP
-                        methodlinkclass used to request StatusCallbackUrl.
+                    status_call_back_url -- string -- URL that can be
+                        requested to receive notification when call has ended.
+                        A set of default parameters will be sent here once the
+                        call is finished.
                     status_call_back_method -- HttpActionEnum -- Specifies the
                         HTTP methodlinkclass used to request
                         StatusCallbackUrl.
@@ -220,7 +223,7 @@ class CallController(BaseController):
                     options=dict()):
         """Does a POST request to /calls/recordcalls.{ResponseType}.
 
-        Record a Call
+        Start or stop recording of an in-progress voice call.
 
         Args:
             options (dict, optional): Key-value pairs for any of the
@@ -290,7 +293,7 @@ class CallController(BaseController):
                      options=dict()):
         """Does a POST request to /calls/voiceeffect.{ResponseType}.
 
-        Voice Effect
+        Add audio voice effects to the an in-progress voice call.
 
         Args:
             options (dict, optional): Key-value pairs for any of the
@@ -307,11 +310,18 @@ class CallController(BaseController):
                         audio effect should be placed on. If IN, the effects
                         will occur on the incoming audio stream. If OUT, the
                         effects will occur on the outgoing audio stream.
-                    pitch_semi_tones -- float -- value between -14 and 14
-                    pitch_octaves -- float -- value between -1 and 1
-                    pitch -- float -- value greater than 0
-                    rate -- float -- value greater than 0
-                    tempo -- float -- value greater than 0
+                    pitch_semi_tones -- float -- Set the pitch in semitone
+                        (half-step) intervals. Value between -14 and 14
+                    pitch_octaves -- float -- Set the pitch in octave
+                        intervals.. Value between -1 and 1
+                    pitch -- float -- Set the pitch (lowness/highness) of the
+                        audio. The higher the value, the higher the pitch.
+                        Value greater than 0
+                    rate -- float -- Set the rate for audio. The lower the
+                        value, the lower the rate. value greater than 0
+                    tempo -- float -- Set the tempo (speed) of the audio. A
+                        higher value denotes a faster tempo. Value greater
+                        than 0
 
         Returns:
             string: Response from the API. 
@@ -431,7 +441,8 @@ class CallController(BaseController):
                 being the key and their desired values being the value. A list
                 of parameters that can be used are::
 
-                    call_sid -- string -- Call SId
+                    call_sid -- string -- The unique identifier for voice call
+                        that is in progress.
                     response_type -- string -- Response type format xml or
                         json
                     url -- string -- URL the in-progress call will be
@@ -510,9 +521,10 @@ class CallController(BaseController):
                         the call
                     method -- HttpActionEnum -- Specifies the HTTP method used
                         to request the required URL once call connects.
-                    status_call_back_url -- string -- Specifies the HTTP
-                        method used to request the required URL once call
-                        connects.
+                    status_call_back_url -- string -- URL that can be
+                        requested to receive notification when call has ended.
+                        A set of default parameters will be sent here once the
+                        call is finished.
                     status_call_back_method -- HttpActionEnum -- Specifies the
                         HTTP methodlinkclass used to request
                         StatusCallbackUrl.
@@ -523,7 +535,7 @@ class CallController(BaseController):
                         call connects.
                     heart_beat_url -- string -- URL that can be requested
                         every 60 seconds during the call to notify of elapsed
-                        tim
+                        time and pass other general information.
                     heart_beat_method -- HttpActionEnum -- Specifies the HTTP
                         method used to request HeartbeatUrl.
                     timeout -- int -- Time (in seconds) Message360 should wait
@@ -618,14 +630,16 @@ class CallController(BaseController):
 
                     response_type -- string -- Response type format xml or
                         json
-                    page -- int -- Which page of the overall response will be
-                        returned. Zero indexed
+                    page -- int -- The page count to retrieve from the total
+                        results in the collection. Page indexing starts at 1.
                     page_size -- int -- Number of individual resources listed
                         in the response per page
-                    to -- string -- Only list calls to this number
-                    mfrom -- string -- Only list calls from this number
-                    date_created -- string -- Only list calls starting within
-                        the specified date range
+                    to -- string -- Filter calls that were sent to this
+                        10-digit number (E.164 format).
+                    mfrom -- string -- Filter calls that were sent from this
+                        10-digit number (E.164 format).
+                    date_created -- string -- Return calls that are from a
+                        specified date.
 
         Returns:
             string: Response from the API. 
@@ -671,7 +685,7 @@ class CallController(BaseController):
                          options=dict()):
         """Does a POST request to /calls/makervm.{ResponseType}.
 
-        API endpoint used to send a Ringless Voicemail
+        Initiate an outbound Ringless Voicemail through message360.
 
         Args:
             options (dict, optional): Key-value pairs for any of the
@@ -680,19 +694,27 @@ class CallController(BaseController):
                 being the key and their desired values being the value. A list
                 of parameters that can be used are::
 
-                    mfrom -- string -- This number to display on Caller ID as
-                        calling
-                    rvm_caller_id -- string -- Alternate caller ID required
-                        for RVM
-                    to -- string -- To number
-                    voice_mail_url -- string -- URL to an audio file
+                    mfrom -- string -- A valid message360 Voice enabled number
+                        (E.164 format) that will be initiating the phone
+                        call.
+                    rvm_caller_id -- string -- A required secondary Caller ID
+                        for RVM to work.
+                    to -- string -- A valid number (E.164 format) that will
+                        receive the phone call.
+                    voice_mail_url -- string -- The URL requested once the RVM
+                        connects. A set of default parameters will be sent
+                        here.
                     response_type -- string -- Response type format xml or
                         json
-                    method -- HttpActionEnum -- Not currently used in this
-                        version
-                    status_call_back_url -- string -- URL to post the status
-                        of the Ringless request
-                    stats_call_back_method -- HttpActionEnum -- POST or GET
+                    method -- HttpActionEnum -- Specifies the HTTP method used
+                        to request the required URL once call connects.
+                    status_call_back_url -- string -- URL that can be
+                        requested to receive notification when call has ended.
+                        A set of default parameters will be sent here once the
+                        call is finished.
+                    stats_call_back_method -- HttpActionEnum -- Specifies the
+                        HTTP method used to request the required
+                        StatusCallBackUrl once call connects.
 
         Returns:
             string: Response from the API. 
@@ -744,7 +766,7 @@ class CallController(BaseController):
                   options=dict()):
         """Does a POST request to /calls/viewcalls.{ResponseType}.
 
-        View Call Response
+        Retrieve a single voice call’s information by its CallSid.
 
         Args:
             options (dict, optional): Key-value pairs for any of the
@@ -753,7 +775,8 @@ class CallController(BaseController):
                 being the key and their desired values being the value. A list
                 of parameters that can be used are::
 
-                    callsid -- string -- Call Sid id for particular Call
+                    callsid -- string -- The unique identifier for the voice
+                        call.
                     response_type -- string -- Response type format xml or
                         json
 
@@ -783,6 +806,54 @@ class CallController(BaseController):
         # Prepare form parameters
         _form_parameters = {
             'callsid': options.get('callsid', None)
+        }
+
+        # Prepare and execute request
+        _request = self.http_client.post(_query_url, parameters=_form_parameters)
+        BasicAuth.apply(_request)
+        _context = self.execute_request(_request)
+        self.validate_response(_context)
+
+        # Return appropriate type
+        return _context.response.raw_body
+
+    def view_call_detail(self,
+                         call_sid,
+                         response_type):
+        """Does a POST request to /calls/viewcalldetail.{ResponseType}.
+
+        Retrieve a single voice call’s information by its CallSid.
+
+        Args:
+            call_sid (string): The unique identifier for the voice call.
+            response_type (string): Response type format xml or json
+
+        Returns:
+            string: Response from the API. 
+
+        Raises:
+            APIException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        # Validate required parameters
+        self.validate_parameters(call_sid=call_sid,
+                                 response_type=response_type)
+
+        # Prepare query URL
+        _query_builder = Configuration.get_base_uri()
+        _query_builder += '/calls/viewcalldetail.{ResponseType}'
+        _query_builder = APIHelper.append_url_with_template_parameters(_query_builder, { 
+            'ResponseType': response_type
+        })
+        _query_url = APIHelper.clean_url(_query_builder)
+
+        # Prepare form parameters
+        _form_parameters = {
+            'callSid': call_sid
         }
 
         # Prepare and execute request

@@ -20,7 +20,9 @@ class AccountController(BaseController):
                      options=dict()):
         """Does a POST request to /accounts/viewaccount.{ResponseType}.
 
-        Display Account Description
+        Retrieve information regarding your message360 account by a specific
+        date. The response object will contain data such as account status,
+        balance, and account usage totals.
 
         Args:
             options (dict, optional): Key-value pairs for any of the
@@ -29,7 +31,8 @@ class AccountController(BaseController):
                 being the key and their desired values being the value. A list
                 of parameters that can be used are::
 
-                    date -- string -- TODO: type description here. Example: 
+                    date -- string -- Filter account information based on
+                        date.
                     response_type -- string -- Response type format xml or
                         json
 
