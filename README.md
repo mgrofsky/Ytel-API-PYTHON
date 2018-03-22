@@ -1,6 +1,6 @@
 # Getting started
 
-message360 API version 3
+Ytel API version 3
 
 ## How to Build
 
@@ -15,12 +15,12 @@ This should display the version of the PIP Dependency Manager installed if your 
 * Using command line, navigate to the directory containing the generated files (including ```requirements.txt```) for the SDK.
 * Run the command ```pip install -r requirements.txt```. This should install all the required dependencies.
 
-![Building SDK - Step 1](https://apidocs.io/illustration/python?step=installDependencies&workspaceFolder=Message360-Python)
+![Building SDK - Step 1](https://apidocs.io/illustration/python?step=installDependencies&workspaceFolder=Ytel-Python)
 
 
 ## How to Use
 
-The following section explains how to use the Message360 SDK package in a new project.
+The following section explains how to use the Ytel SDK package in a new project.
 
 ### 1. Open Project in an IDE
 
@@ -30,17 +30,17 @@ Open up a Python IDE like PyCharm. The basic workflow presented here is also app
 
 Click on ```Open``` in PyCharm to browse to your generated SDK directory and then click ```OK```.
 
-![Open project in PyCharm - Step 2](https://apidocs.io/illustration/python?step=openProject0&workspaceFolder=Message360-Python)     
+![Open project in PyCharm - Step 2](https://apidocs.io/illustration/python?step=openProject0&workspaceFolder=Ytel-Python)     
 
 The project files will be displayed in the side bar as follows:
 
-![Open project in PyCharm - Step 3](https://apidocs.io/illustration/python?step=openProject1&workspaceFolder=Message360-Python&projectName=message_360)     
+![Open project in PyCharm - Step 3](https://apidocs.io/illustration/python?step=openProject1&workspaceFolder=Ytel-Python&projectName=ytel)     
 
 ### 2. Add a new Test Project
 
 Create a new directory by right clicking on the solution name as shown below:
 
-![Add a new project in PyCharm - Step 1](https://apidocs.io/illustration/python?step=createDirectory&workspaceFolder=Message360-Python&projectName=message_360)
+![Add a new project in PyCharm - Step 1](https://apidocs.io/illustration/python?step=createDirectory&workspaceFolder=Ytel-Python&projectName=ytel)
 
 Name the directory as "test"
 
@@ -48,7 +48,7 @@ Name the directory as "test"
    
 Add a python file to this project with the name "testsdk"
 
-![Add a new project in PyCharm - Step 3](https://apidocs.io/illustration/python?step=createFile&workspaceFolder=Message360-Python&projectName=message_360)
+![Add a new project in PyCharm - Step 3](https://apidocs.io/illustration/python?step=createFile&workspaceFolder=Ytel-Python&projectName=ytel)
 
 Name it "testsdk"
 
@@ -57,10 +57,10 @@ Name it "testsdk"
 In your python file you will be required to import the generated python library using the following code lines
 
 ```Python
-from message_360.message_360_client import Message360Client
+from ytel.ytel_client import YtelClient
 ```
 
-![Add a new project in PyCharm - Step 4](https://apidocs.io/illustration/python?step=projectFiles&workspaceFolder=Message360-Python&libraryName=message_360.message_360_client&projectName=message_360&className=Message360Client)
+![Add a new project in PyCharm - Step 4](https://apidocs.io/illustration/python?step=projectFiles&workspaceFolder=Ytel-Python&libraryName=ytel.ytel_client&projectName=ytel&className=YtelClient)
 
 After this you can write code to instantiate an API client object, get a controller object and  make API calls. Sample code is given in the subsequent sections.
 
@@ -68,7 +68,7 @@ After this you can write code to instantiate an API client object, get a control
 
 To run the file within your test project, right click on your Python file inside your Test project and click on ```Run```
 
-![Run Test Project - Step 1](https://apidocs.io/illustration/python?step=runProject&workspaceFolder=Message360-Python&libraryName=message_360.message_360_client&projectName=message_360&className=Message360Client)
+![Run Test Project - Step 1](https://apidocs.io/illustration/python?step=runProject&workspaceFolder=Ytel-Python&libraryName=ytel.ytel_client&projectName=ytel&className=YtelClient)
 
 
 ## How to Test
@@ -100,7 +100,7 @@ API client can be initialized as following.
 basic_auth_user_name = 'basic_auth_user_name' # The username to use with basic authentication
 basic_auth_password = 'basic_auth_password' # The password to use with basic authentication
 
-client = Message360Client(basic_auth_user_name, basic_auth_password)
+client = YtelClient(basic_auth_user_name, basic_auth_password)
 ```
 
 
@@ -109,10 +109,10 @@ client = Message360Client(basic_auth_user_name, basic_auth_password)
 
 ## <a name="list_of_controllers"></a>List of Controllers
 
+* [WebRTCController](#web_rtc_controller)
 * [SharedShortCodeController](#shared_short_code_controller)
 * [ConferenceController](#conference_controller)
 * [PhoneNumberController](#phone_number_controller)
-* [WebRTCController](#web_rtc_controller)
 * [TranscriptionController](#transcription_controller)
 * [RecordingController](#recording_controller)
 * [EmailController](#email_controller)
@@ -127,6 +127,96 @@ client = Message360Client(basic_auth_user_name, basic_auth_password)
 * [PostCardController](#post_card_controller)
 * [LetterController](#letter_controller)
 * [AreaMailController](#area_mail_controller)
+
+## <a name="web_rtc_controller"></a>![Class: ](https://apidocs.io/img/class.png ".WebRTCController") WebRTCController
+
+### Get controller instance
+
+An instance of the ``` WebRTCController ``` class can be accessed from the API Client.
+
+```python
+ web_rtc_controller = client.web_rtc
+```
+
+### <a name="create_token"></a>![Method: ](https://apidocs.io/img/method.png ".WebRTCController.create_token") create_token
+
+> Ytel webrtc
+
+```python
+def create_token(self,
+                     options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| accountSid |  ``` Required ```  | Your Ytel Account SID |
+| authToken |  ``` Required ```  | Your Ytel Token |
+| username |  ``` Required ```  | WebRTC username authentication |
+| password |  ``` Required ```  | WebRTC password authentication |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+account_sid = 'account_sid'
+collect['account_sid'] = account_sid
+
+auth_token = 'auth_token'
+collect['auth_token'] = auth_token
+
+username = 'username'
+collect['username'] = username
+
+password = 'password'
+collect['password'] = password
+
+
+result = web_rtc_controller.create_token(collect)
+
+```
+
+
+### <a name="check_funds"></a>![Method: ](https://apidocs.io/img/method.png ".WebRTCController.check_funds") check_funds
+
+> TODO: Add a method description
+
+```python
+def check_funds(self,
+                    options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| accountSid |  ``` Required ```  | Your Ytel Account SID |
+| authToken |  ``` Required ```  | Your Ytel Token |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+account_sid = 'account_sid'
+collect['account_sid'] = account_sid
+
+auth_token = 'auth_token'
+collect['auth_token'] = auth_token
+
+
+result = web_rtc_controller.check_funds(collect)
+
+```
+
+
+[Back to List of Controllers](#list_of_controllers)
 
 ## <a name="shared_short_code_controller"></a>![Class: ](https://apidocs.io/img/class.png ".SharedShortCodeController") SharedShortCodeController
 
@@ -312,7 +402,7 @@ result = shared_short_code_controller.list_inbound_shared_shortcodes(collect)
 
 ### <a name="send_shared_shortcode"></a>![Method: ](https://apidocs.io/img/method.png ".SharedShortCodeController.send_shared_shortcode") send_shared_shortcode
 
-> Send an SMS from a message360 ShortCode
+> Send an SMS from a Ytel ShortCode
 
 ```python
 def send_shared_shortcode(self,
@@ -449,7 +539,7 @@ result = shared_short_code_controller.view_keyword(collect)
 
 ### <a name="list_keyword"></a>![Method: ](https://apidocs.io/img/method.png ".SharedShortCodeController.list_keyword") list_keyword
 
-> Retrieve a list of keywords associated with your message360 account.
+> Retrieve a list of keywords associated with your Ytel account.
 
 ```python
 def list_keyword(self,
@@ -485,7 +575,7 @@ collect['pagesize'] = pagesize
 keyword = 'Keyword'
 collect['keyword'] = keyword
 
-shortcode = 86
+shortcode = 24
 collect['shortcode'] = shortcode
 
 
@@ -507,7 +597,7 @@ def view_assignement(self,
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| shortcode |  ``` Required ```  | List of valid Shortcode to your message360 account |
+| shortcode |  ``` Required ```  | List of valid Shortcode to your Ytel account |
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
 
 
@@ -531,7 +621,7 @@ result = shared_short_code_controller.view_assignement(collect)
 
 ### <a name="list_assignment"></a>![Method: ](https://apidocs.io/img/method.png ".SharedShortCodeController.list_assignment") list_assignment
 
-> Retrieve a list of shortcode assignment associated with your message360 account.
+> Retrieve a list of shortcode assignment associated with your Ytel account.
 
 ```python
 def list_assignment(self,
@@ -585,7 +675,7 @@ def update_assignment(self,
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| shortcode |  ``` Required ```  | List of valid shortcode to your message360 account |
+| shortcode |  ``` Required ```  | List of valid shortcode to your Ytel account |
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
 | friendlyName |  ``` Optional ```  | User generated name of the shortcode |
 | callbackUrl |  ``` Optional ```  | URL that can be requested to receive notification when call has ended. A set of default parameters will be sent here once the call is finished. |
@@ -809,7 +899,7 @@ result = conference_controller.add_participant(collect)
 
 ### <a name="create_conference"></a>![Method: ](https://apidocs.io/img/method.png ".ConferenceController.create_conference") create_conference
 
-> Here you can experiment with initiating a conference call through message360 and view the request response generated when doing so.
+> Here you can experiment with initiating a conference call through Ytel and view the request response generated when doing so.
 
 ```python
 def create_conference(self,
@@ -881,7 +971,7 @@ collect['record_call_back_method'] = record_call_back_method
 schedule_time = 'ScheduleTime'
 collect['schedule_time'] = schedule_time
 
-timeout = 44
+timeout = 24
 collect['timeout'] = timeout
 
 
@@ -1084,7 +1174,7 @@ An instance of the ``` PhoneNumberController ``` class can be accessed from the 
 
 ### <a name="available_phone_number"></a>![Method: ](https://apidocs.io/img/method.png ".PhoneNumberController.available_phone_number") available_phone_number
 
-> Retrieve a list of available phone numbers that can be purchased and used for your message360 account.
+> Retrieve a list of available phone numbers that can be purchased and used for your Ytel account.
 
 ```python
 def available_phone_number(self,
@@ -1125,6 +1215,41 @@ result = phone_number_controller.available_phone_number(collect)
 ```
 
 
+### <a name="mass_release_number"></a>![Method: ](https://apidocs.io/img/method.png ".PhoneNumberController.mass_release_number") mass_release_number
+
+> Remove a purchased Ytel number from your account.
+
+```python
+def mass_release_number(self,
+                            options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| phoneNumber |  ``` Required ```  | A valid Ytel comma separated numbers (E.164 format). |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+phone_number = 'PhoneNumber'
+collect['phone_number'] = phone_number
+
+response_type = 'json'
+collect['response_type'] = response_type
+
+
+result = phone_number_controller.mass_release_number(collect)
+
+```
+
+
 ### <a name="view_number_details"></a>![Method: ](https://apidocs.io/img/method.png ".PhoneNumberController.view_number_details") view_number_details
 
 > Retrieve the details for a phone number by its number.
@@ -1138,7 +1263,7 @@ def view_number_details(self,
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| phoneNumber |  ``` Required ```  | A valid message360 10-digit phone number (E.164 format). |
+| phoneNumber |  ``` Required ```  | A valid Ytel 10-digit phone number (E.164 format). |
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
 
 
@@ -1162,7 +1287,7 @@ result = phone_number_controller.view_number_details(collect)
 
 ### <a name="release_number"></a>![Method: ](https://apidocs.io/img/method.png ".PhoneNumberController.release_number") release_number
 
-> Remove a purchased message360 number from your account.
+> Remove a purchased Ytel number from your account.
 
 ```python
 def release_number(self,
@@ -1173,7 +1298,7 @@ def release_number(self,
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| phoneNumber |  ``` Required ```  | A valid 10-digit message360 number (E.164 format). |
+| phoneNumber |  ``` Required ```  | A valid 10-digit Ytel number (E.164 format). |
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
 
 
@@ -1197,7 +1322,7 @@ result = phone_number_controller.release_number(collect)
 
 ### <a name="buy_number"></a>![Method: ](https://apidocs.io/img/method.png ".PhoneNumberController.buy_number") buy_number
 
-> Purchase a phone number to be used with your message360 account
+> Purchase a phone number to be used with your Ytel account
 
 ```python
 def buy_number(self,
@@ -1208,7 +1333,7 @@ def buy_number(self,
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| phoneNumber |  ``` Required ```  | A valid 10-digit message360 number (E.164 format). |
+| phoneNumber |  ``` Required ```  | A valid 10-digit Ytel number (E.164 format). |
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
 
 
@@ -1230,44 +1355,9 @@ result = phone_number_controller.buy_number(collect)
 ```
 
 
-### <a name="mass_release_number"></a>![Method: ](https://apidocs.io/img/method.png ".PhoneNumberController.mass_release_number") mass_release_number
-
-> Remove a purchased message360 number from your account.
-
-```python
-def mass_release_number(self,
-                            options=dict())
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| phoneNumber |  ``` Required ```  | A valid message360 comma separated numbers (E.164 format). |
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-
-
-
-#### Example Usage
-
-```python
-collect = {}
-
-phone_number = 'PhoneNumber'
-collect['phone_number'] = phone_number
-
-response_type = 'json'
-collect['response_type'] = response_type
-
-
-result = phone_number_controller.mass_release_number(collect)
-
-```
-
-
 ### <a name="update_phone_number"></a>![Method: ](https://apidocs.io/img/method.png ".PhoneNumberController.update_phone_number") update_phone_number
 
-> Update properties for a message360 number that has been purchased for your account. Refer to the parameters list for the list of properties that can be updated.
+> Update properties for a Ytel number that has been purchased for your account. Refer to the parameters list for the list of properties that can be updated.
 
 ```python
 def update_phone_number(self,
@@ -1278,7 +1368,7 @@ def update_phone_number(self,
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| phoneNumber |  ``` Required ```  | A valid message360 number (E.164 format). |
+| phoneNumber |  ``` Required ```  | A valid Ytel number (E.164 format). |
 | voiceUrl |  ``` Required ```  | URL requested once the call connects |
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
 | friendlyName |  ``` Optional ```  | Phone number friendly name description |
@@ -1292,7 +1382,7 @@ def update_phone_number(self,
 | smsUrl |  ``` Optional ```  | URL requested when an SMS is received |
 | smsMethod |  ``` Optional ```  | Post or Get |
 | smsFallbackUrl |  ``` Optional ```  | URL used if any errors occur during execution of InboundXML from an SMS or at initial request of the SmsUrl. |
-| smsFallbackMethod |  ``` Optional ```  | The HTTP method message360 will use when URL requested if the SmsUrl is not available. |
+| smsFallbackMethod |  ``` Optional ```  | The HTTP method Ytel will use when URL requested if the SmsUrl is not available. |
 
 
 
@@ -1352,9 +1442,52 @@ result = phone_number_controller.update_phone_number(collect)
 ```
 
 
+### <a name="transfer_number"></a>![Method: ](https://apidocs.io/img/method.png ".PhoneNumberController.transfer_number") transfer_number
+
+> Transfer phone number that has been purchased for from one account to another account.
+
+```python
+def transfer_number(self,
+                        options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| phonenumber |  ``` Required ```  | A valid 10-digit Ytel number (E.164 format). |
+| fromaccountsid |  ``` Required ```  | A specific Accountsid from where Number is getting transfer. |
+| toaccountsid |  ``` Required ```  | A specific Accountsid to which Number is getting transfer. |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+phonenumber = 'phonenumber'
+collect['phonenumber'] = phonenumber
+
+fromaccountsid = 'fromaccountsid'
+collect['fromaccountsid'] = fromaccountsid
+
+toaccountsid = 'toaccountsid'
+collect['toaccountsid'] = toaccountsid
+
+response_type = 'json'
+collect['response_type'] = response_type
+
+
+result = phone_number_controller.transfer_number(collect)
+
+```
+
+
 ### <a name="list_number"></a>![Method: ](https://apidocs.io/img/method.png ".PhoneNumberController.list_number") list_number
 
-> Retrieve a list of purchased phones numbers associated with your message360 account.
+> Retrieve a list of purchased phones numbers associated with your Ytel account.
 
 ```python
 def list_number(self,
@@ -1401,7 +1534,7 @@ result = phone_number_controller.list_number(collect)
 
 ### <a name="mass_update_number"></a>![Method: ](https://apidocs.io/img/method.png ".PhoneNumberController.mass_update_number") mass_update_number
 
-> Update properties for a message360 numbers that has been purchased for your account. Refer to the parameters list for the list of properties that can be updated.
+> Update properties for a Ytel numbers that has been purchased for your account. Refer to the parameters list for the list of properties that can be updated.
 
 ```python
 def mass_update_number(self,
@@ -1412,7 +1545,7 @@ def mass_update_number(self,
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| phoneNumber |  ``` Required ```  | A valid comma(,) separated message360 numbers. (E.164 format). |
+| phoneNumber |  ``` Required ```  | A valid comma(,) separated Ytel numbers. (E.164 format). |
 | voiceUrl |  ``` Required ```  | The URL returning InboundXML incoming calls should execute when connected. |
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
 | friendlyName |  ``` Optional ```  | A human-readable value for labeling the number. |
@@ -1420,13 +1553,13 @@ def mass_update_number(self,
 | voiceFallbackUrl |  ``` Optional ```  | URL used if any errors occur during execution of InboundXML on a call or at initial request of the voice url |
 | voiceFallbackMethod |  ``` Optional ```  | Specifies the HTTP method used to request the VoiceFallbackUrl once incoming call connects. |
 | hangupCallback |  ``` Optional ```  | URL that can be requested to receive notification when and how incoming call has ended. |
-| hangupCallbackMethod |  ``` Optional ```  | The HTTP method message360 will use when requesting the HangupCallback URL. |
+| hangupCallbackMethod |  ``` Optional ```  | The HTTP method Ytel will use when requesting the HangupCallback URL. |
 | heartbeatUrl |  ``` Optional ```  | URL that can be used to monitor the phone number. |
-| heartbeatMethod |  ``` Optional ```  | The HTTP method message360 will use when requesting the HeartbeatUrl. |
+| heartbeatMethod |  ``` Optional ```  | The HTTP method Ytel will use when requesting the HeartbeatUrl. |
 | smsUrl |  ``` Optional ```  | URL requested when an SMS is received. |
-| smsMethod |  ``` Optional ```  | The HTTP method message360 will use when requesting the SmsUrl. |
+| smsMethod |  ``` Optional ```  | The HTTP method Ytel will use when requesting the SmsUrl. |
 | smsFallbackUrl |  ``` Optional ```  | URL used if any errors occur during execution of InboundXML from an SMS or at initial request of the SmsUrl. |
-| smsFallbackMethod |  ``` Optional ```  | The HTTP method message360 will use when URL requested if the SmsUrl is not available. |
+| smsFallbackMethod |  ``` Optional ```  | The HTTP method Ytel will use when URL requested if the SmsUrl is not available. |
 
 
 
@@ -1523,7 +1656,7 @@ result = phone_number_controller.get_did_score_number(collect)
 
 ### <a name="bulk_buy_number"></a>![Method: ](https://apidocs.io/img/method.png ".PhoneNumberController.bulk_buy_number") bulk_buy_number
 
-> Purchase a selected number of DID's from specific area codes to be used with your message360 account.
+> Purchase a selected number of DID's from specific area codes to be used with your Ytel account.
 
 ```python
 def bulk_buy_number(self,
@@ -1564,139 +1697,6 @@ collect['leftover'] = leftover
 
 
 result = phone_number_controller.bulk_buy_number(collect)
-
-```
-
-
-### <a name="transfer_number"></a>![Method: ](https://apidocs.io/img/method.png ".PhoneNumberController.transfer_number") transfer_number
-
-> Transfer phone number that has been purchased for from one account to another account.
-
-```python
-def transfer_number(self,
-                        options=dict())
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| phonenumber |  ``` Required ```  | A valid 10-digit message360 number (E.164 format). |
-| fromaccountsid |  ``` Required ```  | A specific Accountsid from where Number is getting transfer. |
-| toaccountsid |  ``` Required ```  | A specific Accountsid to which Number is getting transfer. |
-| responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
-
-
-
-#### Example Usage
-
-```python
-collect = {}
-
-phonenumber = 'phonenumber'
-collect['phonenumber'] = phonenumber
-
-fromaccountsid = 'fromaccountsid'
-collect['fromaccountsid'] = fromaccountsid
-
-toaccountsid = 'toaccountsid'
-collect['toaccountsid'] = toaccountsid
-
-response_type = 'json'
-collect['response_type'] = response_type
-
-
-result = phone_number_controller.transfer_number(collect)
-
-```
-
-
-[Back to List of Controllers](#list_of_controllers)
-
-## <a name="web_rtc_controller"></a>![Class: ](https://apidocs.io/img/class.png ".WebRTCController") WebRTCController
-
-### Get controller instance
-
-An instance of the ``` WebRTCController ``` class can be accessed from the API Client.
-
-```python
- web_rtc_controller = client.web_rtc
-```
-
-### <a name="check_funds"></a>![Method: ](https://apidocs.io/img/method.png ".WebRTCController.check_funds") check_funds
-
-> TODO: Add a method description
-
-```python
-def check_funds(self,
-                    options=dict())
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| accountSid |  ``` Required ```  | Your message360 Account SID |
-| authToken |  ``` Required ```  | Your message360 Token |
-
-
-
-#### Example Usage
-
-```python
-collect = {}
-
-account_sid = 'account_sid'
-collect['account_sid'] = account_sid
-
-auth_token = 'auth_token'
-collect['auth_token'] = auth_token
-
-
-result = web_rtc_controller.check_funds(collect)
-
-```
-
-
-### <a name="create_token"></a>![Method: ](https://apidocs.io/img/method.png ".WebRTCController.create_token") create_token
-
-> message360 webrtc
-
-```python
-def create_token(self,
-                     options=dict())
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| accountSid |  ``` Required ```  | Your message360 Account SID |
-| authToken |  ``` Required ```  | Your message360 Token |
-| username |  ``` Required ```  | WebRTC username authentication |
-| password |  ``` Required ```  | WebRTC password authentication |
-
-
-
-#### Example Usage
-
-```python
-collect = {}
-
-account_sid = 'account_sid'
-collect['account_sid'] = account_sid
-
-auth_token = 'auth_token'
-collect['auth_token'] = auth_token
-
-username = 'username'
-collect['username'] = username
-
-password = 'password'
-collect['password'] = password
-
-
-result = web_rtc_controller.create_token(collect)
 
 ```
 
@@ -1820,7 +1820,7 @@ result = transcription_controller.audio_url_transcription(collect)
 
 ### <a name="list_transcription"></a>![Method: ](https://apidocs.io/img/method.png ".TranscriptionController.list_transcription") list_transcription
 
-> Retrieve a list of transcription objects for your message360 account.
+> Retrieve a list of transcription objects for your Ytel account.
 
 ```python
 def list_transcription(self,
@@ -1914,7 +1914,7 @@ result = recording_controller.view_recording(collect)
 
 ### <a name="delete_recording"></a>![Method: ](https://apidocs.io/img/method.png ".RecordingController.delete_recording") delete_recording
 
-> Remove a recording from your message360 account.
+> Remove a recording from your Ytel account.
 
 ```python
 def delete_recording(self,
@@ -2488,7 +2488,7 @@ An instance of the ``` SMSController ``` class can be accessed from the API Clie
 
 ### <a name="send_sms"></a>![Method: ](https://apidocs.io/img/method.png ".SMSController.send_sms") send_sms
 
-> Send an SMS from a message360 number
+> Send an SMS from a Ytel number
 
 ```python
 def send_sms(self,
@@ -2499,7 +2499,7 @@ def send_sms(self,
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| mfrom |  ``` Required ```  | The 10-digit SMS-enabled message360 number (E.164 format) in which the message is sent. |
+| mfrom |  ``` Required ```  | The 10-digit SMS-enabled Ytel number (E.164 format) in which the message is sent. |
 | to |  ``` Required ```  | The 10-digit phone number (E.164 format) that will receive the message. |
 | body |  ``` Required ```  | The body message that is to be sent in the text. |
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
@@ -2731,7 +2731,7 @@ An instance of the ``` CallController ``` class can be accessed from the API Cli
 
 ### <a name="make_call"></a>![Method: ](https://apidocs.io/img/method.png ".CallController.make_call") make_call
 
-> You can experiment with initiating a call through Message360 and view the request response generated when doing so and get the response in json
+> You can experiment with initiating a call through Ytel and view the request response generated when doing so and get the response in json
 
 ```python
 def make_call(self,
@@ -2742,7 +2742,7 @@ def make_call(self,
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| mfrom |  ``` Required ```  | A valid message360 Voice enabled number (E.164 format) that will be initiating the phone call. |
+| mfrom |  ``` Required ```  | A valid Ytel Voice enabled number (E.164 format) that will be initiating the phone call. |
 | to |  ``` Required ```  | To number |
 | url |  ``` Required ```  | URL requested once the call connects |
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
@@ -2753,7 +2753,7 @@ def make_call(self,
 | fallBackMethod |  ``` Optional ```  | Specifies the HTTP method used to request the required FallbackUrl once call connects. |
 | heartBeatUrl |  ``` Optional ```  | URL that can be requested every 60 seconds during the call to notify of elapsed tim |
 | heartBeatMethod |  ``` Optional ```  | Specifies the HTTP method used to request HeartbeatUrl. |
-| timeout |  ``` Optional ```  | Time (in seconds) Message360 should wait while the call is ringing before canceling the call |
+| timeout |  ``` Optional ```  | Time (in seconds) Ytel should wait while the call is ringing before canceling the call |
 | playDtmf |  ``` Optional ```  | DTMF Digits to play to the call once it connects. 0-9, #, or * |
 | hideCallerId |  ``` Optional ```  | Specifies if the caller id will be hidden |
 | record |  ``` Optional ```  | Specifies if the call should be recorded |
@@ -2761,7 +2761,7 @@ def make_call(self,
 | recordCallBackMethod |  ``` Optional ```  | Method used to request the RecordCallback URL. |
 | transcribe |  ``` Optional ```  | Specifies if the call recording should be transcribed |
 | transcribeCallBackUrl |  ``` Optional ```  | Transcription parameters will be sent here upon completion |
-| ifMachine |  ``` Optional ```  | How Message360 should handle the receiving numbers voicemail machine |
+| ifMachine |  ``` Optional ```  | How Ytel should handle the receiving numbers voicemail machine |
 | ifMachineUrl |  ``` Optional ```  | URL requested when IfMachine=continue |
 | ifMachineMethod |  ``` Optional ```  | Method used to request the IfMachineUrl. |
 | feedback |  ``` Optional ```  | Specify if survey should be enable or not |
@@ -2807,7 +2807,7 @@ collect['heart_beat_url'] = heart_beat_url
 heart_beat_method = HttpActionEnum.GET
 collect['heart_beat_method'] = heart_beat_method
 
-timeout = 227
+timeout = 207
 collect['timeout'] = timeout
 
 play_dtmf = 'PlayDtmf'
@@ -2892,7 +2892,7 @@ collect['say_text'] = say_text
 response_type = 'json'
 collect['response_type'] = response_type
 
-length = 227
+length = 207
 collect['length'] = length
 
 direction = DirectionEnum.IN
@@ -2947,7 +2947,7 @@ collect['response_type'] = response_type
 direction = DirectionEnum.IN
 collect['direction'] = direction
 
-time_limit = 227
+time_limit = 207
 collect['time_limit'] = time_limit
 
 call_back_url = 'CallBackUrl'
@@ -3000,19 +3000,19 @@ collect['response_type'] = response_type
 audio_direction = AudioDirectionEnum.IN
 collect['audio_direction'] = audio_direction
 
-pitch_semi_tones = 227.569347430286
+pitch_semi_tones = 207.851839348605
 collect['pitch_semi_tones'] = pitch_semi_tones
 
-pitch_octaves = 227.569347430286
+pitch_octaves = 207.851839348605
 collect['pitch_octaves'] = pitch_octaves
 
-pitch = 227.569347430286
+pitch = 207.851839348605
 collect['pitch'] = pitch
 
-rate = 227.569347430286
+rate = 207.851839348605
 collect['rate'] = rate
 
-tempo = 227.569347430286
+tempo = 207.851839348605
 collect['tempo'] = tempo
 
 
@@ -3111,120 +3111,9 @@ result = call_controller.interrupted_call(collect)
 ```
 
 
-### <a name="group_call"></a>![Method: ](https://apidocs.io/img/method.png ".CallController.group_call") group_call
-
-> Group Call
-
-```python
-def group_call(self,
-                   options=dict())
-```
-
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| mfrom |  ``` Required ```  | This number to display on Caller ID as calling |
-| to |  ``` Required ```  | Please enter multiple E164 number. You can add max 10 numbers. Add numbers separated with comma. e.g : 1111111111,2222222222 |
-| url |  ``` Required ```  | URL requested once the call connects |
-| responseType |  ``` Required ```  ``` DefaultValue ```  | TODO: Add a parameter description |
-| groupConfirmKey |  ``` Required ```  | Define the DTMF that the called party should send to bridge the call. Allowed Values : 0-9, #, * |
-| groupConfirmFile |  ``` Required ```  | Specify the audio file you want to play when the called party picks up the call |
-| method |  ``` Optional ```  | Specifies the HTTP method used to request the required URL once call connects. |
-| statusCallBackUrl |  ``` Optional ```  | URL that can be requested to receive notification when call has ended. A set of default parameters will be sent here once the call is finished. |
-| statusCallBackMethod |  ``` Optional ```  | Specifies the HTTP methodlinkclass used to request StatusCallbackUrl. |
-| fallBackUrl |  ``` Optional ```  | URL requested if the initial Url parameter fails or encounters an error |
-| fallBackMethod |  ``` Optional ```  | Specifies the HTTP method used to request the required FallbackUrl once call connects. |
-| heartBeatUrl |  ``` Optional ```  | URL that can be requested every 60 seconds during the call to notify of elapsed time and pass other general information. |
-| heartBeatMethod |  ``` Optional ```  | Specifies the HTTP method used to request HeartbeatUrl. |
-| timeout |  ``` Optional ```  | Time (in seconds) Message360 should wait while the call is ringing before canceling the call |
-| playDtmf |  ``` Optional ```  | DTMF Digits to play to the call once it connects. 0-9, #, or * |
-| hideCallerId |  ``` Optional ```  | Specifies if the caller id will be hidden |
-| record |  ``` Optional ```  | Specifies if the call should be recorded |
-| recordCallBackUrl |  ``` Optional ```  | Recording parameters will be sent here upon completion |
-| recordCallBackMethod |  ``` Optional ```  | Method used to request the RecordCallback URL. |
-| transcribe |  ``` Optional ```  | Specifies if the call recording should be transcribed |
-| transcribeCallBackUrl |  ``` Optional ```  | Transcription parameters will be sent here upon completion |
-
-
-
-#### Example Usage
-
-```python
-collect = {}
-
-mfrom = 'From'
-collect['mfrom'] = mfrom
-
-to = 'To'
-collect['to'] = to
-
-url = 'Url'
-collect['url'] = url
-
-response_type = 'json'
-collect['response_type'] = response_type
-
-group_confirm_key = 'GroupConfirmKey'
-collect['group_confirm_key'] = group_confirm_key
-
-group_confirm_file = AudioFormatEnum.MP3
-collect['group_confirm_file'] = group_confirm_file
-
-method = HttpActionEnum.GET
-collect['method'] = method
-
-status_call_back_url = 'StatusCallBackUrl'
-collect['status_call_back_url'] = status_call_back_url
-
-status_call_back_method = HttpActionEnum.GET
-collect['status_call_back_method'] = status_call_back_method
-
-fall_back_url = 'FallBackUrl'
-collect['fall_back_url'] = fall_back_url
-
-fall_back_method = HttpActionEnum.GET
-collect['fall_back_method'] = fall_back_method
-
-heart_beat_url = 'HeartBeatUrl'
-collect['heart_beat_url'] = heart_beat_url
-
-heart_beat_method = HttpActionEnum.GET
-collect['heart_beat_method'] = heart_beat_method
-
-timeout = 227
-collect['timeout'] = timeout
-
-play_dtmf = 'PlayDtmf'
-collect['play_dtmf'] = play_dtmf
-
-hide_caller_id = 'HideCallerId'
-collect['hide_caller_id'] = hide_caller_id
-
-record = True
-collect['record'] = record
-
-record_call_back_url = 'RecordCallBackUrl'
-collect['record_call_back_url'] = record_call_back_url
-
-record_call_back_method = HttpActionEnum.GET
-collect['record_call_back_method'] = record_call_back_method
-
-transcribe = True
-collect['transcribe'] = transcribe
-
-transcribe_call_back_url = 'TranscribeCallBackUrl'
-collect['transcribe_call_back_url'] = transcribe_call_back_url
-
-
-result = call_controller.group_call(collect)
-
-```
-
-
 ### <a name="list_calls"></a>![Method: ](https://apidocs.io/img/method.png ".CallController.list_calls") list_calls
 
-> A list of calls associated with your Message360 account
+> A list of calls associated with your Ytel account
 
 ```python
 def list_calls(self,
@@ -3275,7 +3164,7 @@ result = call_controller.list_calls(collect)
 
 ### <a name="send_ringless_vm"></a>![Method: ](https://apidocs.io/img/method.png ".CallController.send_ringless_vm") send_ringless_vm
 
-> Initiate an outbound Ringless Voicemail through message360.
+> Initiate an outbound Ringless Voicemail through Ytel.
 
 ```python
 def send_ringless_vm(self,
@@ -3286,7 +3175,7 @@ def send_ringless_vm(self,
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| mfrom |  ``` Required ```  | A valid message360 Voice enabled number (E.164 format) that will be initiating the phone call. |
+| mfrom |  ``` Required ```  | A valid Ytel Voice enabled number (E.164 format) that will be initiating the phone call. |
 | rVMCallerId |  ``` Required ```  | A required secondary Caller ID for RVM to work. |
 | to |  ``` Required ```  | A valid number (E.164 format) that will receive the phone call. |
 | voiceMailURL |  ``` Required ```  | The URL requested once the RVM connects. A set of default parameters will be sent here. |
@@ -3393,6 +3282,117 @@ call_sid = 'callSid'
 response_type = 'json'
 
 result = call_controller.view_call_detail(call_sid, response_type)
+
+```
+
+
+### <a name="group_call"></a>![Method: ](https://apidocs.io/img/method.png ".CallController.group_call") group_call
+
+> Group Call
+
+```python
+def group_call(self,
+                   options=dict())
+```
+
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| mfrom |  ``` Required ```  | This number to display on Caller ID as calling |
+| to |  ``` Required ```  | Please enter multiple E164 number. You can add max 10 numbers. Add numbers separated with comma. e.g : 1111111111,2222222222 |
+| url |  ``` Required ```  | URL requested once the call connects |
+| responseType |  ``` Required ```  ``` DefaultValue ```  | TODO: Add a parameter description |
+| groupConfirmKey |  ``` Required ```  | Define the DTMF that the called party should send to bridge the call. Allowed Values : 0-9, #, * |
+| groupConfirmFile |  ``` Required ```  | Specify the audio file you want to play when the called party picks up the call |
+| method |  ``` Optional ```  | Specifies the HTTP method used to request the required URL once call connects. |
+| statusCallBackUrl |  ``` Optional ```  | URL that can be requested to receive notification when call has ended. A set of default parameters will be sent here once the call is finished. |
+| statusCallBackMethod |  ``` Optional ```  | Specifies the HTTP methodlinkclass used to request StatusCallbackUrl. |
+| fallBackUrl |  ``` Optional ```  | URL requested if the initial Url parameter fails or encounters an error |
+| fallBackMethod |  ``` Optional ```  | Specifies the HTTP method used to request the required FallbackUrl once call connects. |
+| heartBeatUrl |  ``` Optional ```  | URL that can be requested every 60 seconds during the call to notify of elapsed time and pass other general information. |
+| heartBeatMethod |  ``` Optional ```  | Specifies the HTTP method used to request HeartbeatUrl. |
+| timeout |  ``` Optional ```  | Time (in seconds) we should wait while the call is ringing before canceling the call |
+| playDtmf |  ``` Optional ```  | DTMF Digits to play to the call once it connects. 0-9, #, or * |
+| hideCallerId |  ``` Optional ```  | Specifies if the caller id will be hidden |
+| record |  ``` Optional ```  | Specifies if the call should be recorded |
+| recordCallBackUrl |  ``` Optional ```  | Recording parameters will be sent here upon completion |
+| recordCallBackMethod |  ``` Optional ```  | Method used to request the RecordCallback URL. |
+| transcribe |  ``` Optional ```  | Specifies if the call recording should be transcribed |
+| transcribeCallBackUrl |  ``` Optional ```  | Transcription parameters will be sent here upon completion |
+
+
+
+#### Example Usage
+
+```python
+collect = {}
+
+mfrom = 'From'
+collect['mfrom'] = mfrom
+
+to = 'To'
+collect['to'] = to
+
+url = 'Url'
+collect['url'] = url
+
+response_type = 'json'
+collect['response_type'] = response_type
+
+group_confirm_key = 'GroupConfirmKey'
+collect['group_confirm_key'] = group_confirm_key
+
+group_confirm_file = AudioFormatEnum.MP3
+collect['group_confirm_file'] = group_confirm_file
+
+method = HttpActionEnum.GET
+collect['method'] = method
+
+status_call_back_url = 'StatusCallBackUrl'
+collect['status_call_back_url'] = status_call_back_url
+
+status_call_back_method = HttpActionEnum.GET
+collect['status_call_back_method'] = status_call_back_method
+
+fall_back_url = 'FallBackUrl'
+collect['fall_back_url'] = fall_back_url
+
+fall_back_method = HttpActionEnum.GET
+collect['fall_back_method'] = fall_back_method
+
+heart_beat_url = 'HeartBeatUrl'
+collect['heart_beat_url'] = heart_beat_url
+
+heart_beat_method = HttpActionEnum.GET
+collect['heart_beat_method'] = heart_beat_method
+
+timeout = 166
+collect['timeout'] = timeout
+
+play_dtmf = 'PlayDtmf'
+collect['play_dtmf'] = play_dtmf
+
+hide_caller_id = 'HideCallerId'
+collect['hide_caller_id'] = hide_caller_id
+
+record = True
+collect['record'] = record
+
+record_call_back_url = 'RecordCallBackUrl'
+collect['record_call_back_url'] = record_call_back_url
+
+record_call_back_method = HttpActionEnum.GET
+collect['record_call_back_method'] = record_call_back_method
+
+transcribe = True
+collect['transcribe'] = transcribe
+
+transcribe_call_back_url = 'TranscribeCallBackUrl'
+collect['transcribe_call_back_url'] = transcribe_call_back_url
+
+
+result = call_controller.group_call(collect)
 
 ```
 
@@ -3869,7 +3869,7 @@ An instance of the ``` AccountController ``` class can be accessed from the API 
 
 ### <a name="view_account"></a>![Method: ](https://apidocs.io/img/method.png ".AccountController.view_account") view_account
 
-> Retrieve information regarding your message360 account by a specific date. The response object will contain data such as account status, balance, and account usage totals.
+> Retrieve information regarding your Ytel account by a specific date. The response object will contain data such as account status, balance, and account usage totals.
 
 ```python
 def view_account(self,
@@ -3916,7 +3916,7 @@ An instance of the ``` UsageController ``` class can be accessed from the API Cl
 
 ### <a name="list_usage"></a>![Method: ](https://apidocs.io/img/method.png ".UsageController.list_usage") list_usage
 
-> Retrieve usage metrics regarding your message360 account. The results includes inbound/outbound voice calls and inbound/outbound SMS messages as well as carrier lookup requests.
+> Retrieve usage metrics regarding your Ytel account. The results includes inbound/outbound voice calls and inbound/outbound SMS messages as well as carrier lookup requests.
 
 ```python
 def list_usage(self,
@@ -4000,10 +4000,10 @@ def send_dedicated_shortcode(self,
 ```python
 collect = {}
 
-shortcode = 185
+shortcode = 166
 collect['shortcode'] = shortcode
 
-to = 185.846174203719
+to = 166.128666122038
 collect['to'] = to
 
 body = 'body'
@@ -4112,7 +4112,7 @@ result = short_code_controller.list_shortcode(collect)
 
 ### <a name="list_inbound_shortcode"></a>![Method: ](https://apidocs.io/img/method.png ".ShortCodeController.list_inbound_shortcode") list_inbound_shortcode
 
-> Retrive a list of inbound Sms Short Code messages associated with your message360 account.
+> Retrive a list of inbound Sms Short Code messages associated with your Ytel account.
 
 ```python
 def list_inbound_shortcode(self,
@@ -4174,7 +4174,7 @@ def view_dedicated_shortcode_assignment(self,
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| shortcode |  ``` Required ```  | List of valid Dedicated Short Code to your message360 account |
+| shortcode |  ``` Required ```  | List of valid Dedicated Short Code to your Ytel account |
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
 
 
@@ -4209,7 +4209,7 @@ def update_dedicated_short_code_assignment(self,
 
 | Parameter | Tags | Description |
 |-----------|------|-------------|
-| shortcode |  ``` Required ```  | List of valid dedicated shortcode to your message360 account. |
+| shortcode |  ``` Required ```  | List of valid dedicated shortcode to your Ytel account. |
 | responseType |  ``` Required ```  ``` DefaultValue ```  | Response type format xml or json |
 | friendlyName |  ``` Optional ```  | User generated name of the dedicated shortcode. |
 | callbackMethod |  ``` Optional ```  | Specifies the HTTP method used to request the required StatusCallBackUrl once call connects. |
@@ -4253,7 +4253,7 @@ result = short_code_controller.update_dedicated_short_code_assignment(collect)
 
 ### <a name="list_short_code_assignment"></a>![Method: ](https://apidocs.io/img/method.png ".ShortCodeController.list_short_code_assignment") list_short_code_assignment
 
-> Retrieve a list of Short Code assignment associated with your message360 account.
+> Retrieve a list of Short Code assignment associated with your Ytel account.
 
 ```python
 def list_short_code_assignment(self,

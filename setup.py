@@ -8,9 +8,9 @@ except(IOError, ImportError):
     long_description = open('README.md').read()
 
 setup(
-    name='message_360',
-    version='3.0.0',
-    description='message360 API version 3',
+    name='ytel',
+    version='3.1.0',
+    description='Ytel API version 3',
     long_description=long_description,
     author='APIMatic SDK Generator',
     author_email='support@apimatic.io',
@@ -21,9 +21,5 @@ setup(
         'jsonpickle>=0.7.1, <1.0',
         'cachecontrol>=0.11.7, <1.0',
         'python-dateutil>=2.5.3, <3.0'
-    ],
-    tests_require=[
-        'nose>=1.3.7'
-    ],
-    test_suite = 'nose.collector'
+    ]
 )
