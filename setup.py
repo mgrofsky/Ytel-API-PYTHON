@@ -8,8 +8,8 @@ except(IOError, ImportError):
     long_description = open('README.md').read()
 
 setup(
-    name='ytel',
-    version='3.1.0',
+    name='ytelapiv_3',
+    version='3.11.0',
     description='Ytel API version 3',
     long_description=long_description,
     author='APIMatic SDK Generator',
