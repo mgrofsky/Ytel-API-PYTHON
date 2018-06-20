@@ -15,12 +15,12 @@ This should display the version of the PIP Dependency Manager installed if your 
 * Using command line, navigate to the directory containing the generated files (including ```requirements.txt```) for the SDK.
 * Run the command ```pip install -r requirements.txt```. This should install all the required dependencies.
 
-![Building SDK - Step 1](https://apidocs.io/illustration/python?step=installDependencies&workspaceFolder=Ytel%20API%20V3-Python)
+![Building SDK - Step 1](https://apidocs.io/illustration/python?step=installDependencies&workspaceFolder=Ytel%20API-Python)
 
 
 ## How to Use
 
-The following section explains how to use the Ytelapiv3 SDK package in a new project.
+The following section explains how to use the Ytelapi SDK package in a new project.
 
 ### 1. Open Project in an IDE
 
@@ -30,17 +30,17 @@ Open up a Python IDE like PyCharm. The basic workflow presented here is also app
 
 Click on ```Open``` in PyCharm to browse to your generated SDK directory and then click ```OK```.
 
-![Open project in PyCharm - Step 2](https://apidocs.io/illustration/python?step=openProject0&workspaceFolder=Ytel%20API%20V3-Python)     
+![Open project in PyCharm - Step 2](https://apidocs.io/illustration/python?step=openProject0&workspaceFolder=Ytel%20API-Python)     
 
 The project files will be displayed in the side bar as follows:
 
-![Open project in PyCharm - Step 3](https://apidocs.io/illustration/python?step=openProject1&workspaceFolder=Ytel%20API%20V3-Python&projectName=ytelapiv3)     
+![Open project in PyCharm - Step 3](https://apidocs.io/illustration/python?step=openProject1&workspaceFolder=Ytel%20API-Python&projectName=ytelapi)     
 
 ### 2. Add a new Test Project
 
 Create a new directory by right clicking on the solution name as shown below:
 
-![Add a new project in PyCharm - Step 1](https://apidocs.io/illustration/python?step=createDirectory&workspaceFolder=Ytel%20API%20V3-Python&projectName=ytelapiv3)
+![Add a new project in PyCharm - Step 1](https://apidocs.io/illustration/python?step=createDirectory&workspaceFolder=Ytel%20API-Python&projectName=ytelapi)
 
 Name the directory as "test"
 
@@ -48,7 +48,7 @@ Name the directory as "test"
    
 Add a python file to this project with the name "testsdk"
 
-![Add a new project in PyCharm - Step 3](https://apidocs.io/illustration/python?step=createFile&workspaceFolder=Ytel%20API%20V3-Python&projectName=ytelapiv3)
+![Add a new project in PyCharm - Step 3](https://apidocs.io/illustration/python?step=createFile&workspaceFolder=Ytel%20API-Python&projectName=ytelapi)
 
 Name it "testsdk"
 
@@ -57,10 +57,10 @@ Name it "testsdk"
 In your python file you will be required to import the generated python library using the following code lines
 
 ```Python
-from ytelapiv3.ytelapiv_3_client import Ytelapiv3Client
+from ytelapi.ytelapi_client import YtelapiClient
 ```
 
-![Add a new project in PyCharm - Step 4](https://apidocs.io/illustration/python?step=projectFiles&workspaceFolder=Ytel%20API%20V3-Python&libraryName=ytelapiv3.ytelapiv_3_client&projectName=ytelapiv3&className=Ytelapiv3Client)
+![Add a new project in PyCharm - Step 4](https://apidocs.io/illustration/python?step=projectFiles&workspaceFolder=Ytel%20API-Python&libraryName=ytelapi.ytelapi_client&projectName=ytelapi&className=YtelapiClient)
 
 After this you can write code to instantiate an API client object, get a controller object and  make API calls. Sample code is given in the subsequent sections.
 
@@ -68,7 +68,7 @@ After this you can write code to instantiate an API client object, get a control
 
 To run the file within your test project, right click on your Python file inside your Test project and click on ```Run```
 
-![Run Test Project - Step 1](https://apidocs.io/illustration/python?step=runProject&workspaceFolder=Ytel%20API%20V3-Python&libraryName=ytelapiv3.ytelapiv_3_client&projectName=ytelapiv3&className=Ytelapiv3Client)
+![Run Test Project - Step 1](https://apidocs.io/illustration/python?step=runProject&workspaceFolder=Ytel%20API-Python&libraryName=ytelapi.ytelapi_client&projectName=ytelapi&className=YtelapiClient)
 
 
 ## How to Test
@@ -100,7 +100,7 @@ API client can be initialized as following.
 basic_auth_user_name = 'basic_auth_user_name' # The username to use with basic authentication
 basic_auth_password = 'basic_auth_password' # The password to use with basic authentication
 
-client = Ytelapiv3Client(basic_auth_user_name, basic_auth_password)
+client = YtelapiClient(basic_auth_user_name, basic_auth_password)
 ```
 
 
@@ -354,10 +354,10 @@ def create_dedicatedshortcode_sendsms(self,
 ```python
 collect = {}
 
-shortcode = 88
+shortcode = 209
 collect['shortcode'] = shortcode
 
-to = 88.7513929576387
+to = 209.709060110482
 collect['to'] = to
 
 body = 'body'
@@ -1214,13 +1214,13 @@ collect = {}
 call_sid = 'CallSid'
 collect['call_sid'] = call_sid
 
-record = True
+record = False
 collect['record'] = record
 
 direction = DirectionEnum.IN
 collect['direction'] = direction
 
-time_limit = 180
+time_limit = 46
 collect['time_limit'] = time_limit
 
 call_back_url = 'CallBackUrl'
@@ -1271,13 +1271,13 @@ collect['audio_url'] = audio_url
 say_text = 'SayText'
 collect['say_text'] = say_text
 
-length = 180
+length = 46
 collect['length'] = length
 
 direction = DirectionEnum.IN
 collect['direction'] = direction
 
-mix = True
+mix = False
 collect['mix'] = mix
 
 
@@ -1320,19 +1320,19 @@ collect['call_sid'] = call_sid
 audio_direction = AudioDirectionEnum.IN
 collect['audio_direction'] = audio_direction
 
-pitch_semi_tones = 180.246674849301
+pitch_semi_tones = 46.2043420021442
 collect['pitch_semi_tones'] = pitch_semi_tones
 
-pitch_octaves = 180.246674849301
+pitch_octaves = 46.2043420021442
 collect['pitch_octaves'] = pitch_octaves
 
-pitch = 180.246674849301
+pitch = 46.2043420021442
 collect['pitch'] = pitch
 
-rate = 180.246674849301
+rate = 46.2043420021442
 collect['rate'] = rate
 
-tempo = 180.246674849301
+tempo = 46.2043420021442
 collect['tempo'] = tempo
 
 
@@ -1418,7 +1418,7 @@ collect['heart_beat_url'] = heart_beat_url
 heart_beat_method = 'HeartBeatMethod'
 collect['heart_beat_method'] = heart_beat_method
 
-timeout = 16
+timeout = 46
 collect['timeout'] = timeout
 
 play_dtmf = 'PlayDtmf'
@@ -1522,7 +1522,7 @@ collect['heart_beat_url'] = heart_beat_url
 heart_beat_method = 'HeartBeatMethod'
 collect['heart_beat_method'] = heart_beat_method
 
-timeout = 16
+timeout = 46
 collect['timeout'] = timeout
 
 play_dtmf = 'PlayDtmf'
@@ -2484,7 +2484,7 @@ collect['pagesize'] = pagesize
 keyword = 'Keyword'
 collect['keyword'] = keyword
 
-shortcode = 230
+shortcode = 4
 collect['shortcode'] = shortcode
 
 
@@ -2825,10 +2825,10 @@ collect['page'] = page
 pagesize = 10
 collect['pagesize'] = pagesize
 
-muted = True
+muted = False
 collect['muted'] = muted
 
-deaf = True
+deaf = False
 collect['deaf'] = deaf
 
 
@@ -2903,10 +2903,10 @@ collect['conference_sid'] = conference_sid
 participant_number = 'ParticipantNumber'
 collect['participant_number'] = participant_number
 
-muted = True
+muted = False
 collect['muted'] = muted
 
-deaf = True
+deaf = False
 collect['deaf'] = deaf
 
 
@@ -2973,7 +2973,7 @@ collect['fallback_url'] = fallback_url
 fallback_method = 'FallbackMethod'
 collect['fallback_method'] = fallback_method
 
-record = True
+record = False
 collect['record'] = record
 
 record_call_back_url = 'RecordCallBackUrl'
@@ -2985,7 +2985,7 @@ collect['record_call_back_method'] = record_call_back_method
 schedule_time = 'ScheduleTime'
 collect['schedule_time'] = schedule_time
 
-timeout = 230
+timeout = 95
 collect['timeout'] = timeout
 
 
@@ -3025,10 +3025,10 @@ collect['conference_sid'] = conference_sid
 participant_sid = 'ParticipantSid'
 collect['participant_sid'] = participant_sid
 
-muted = True
+muted = False
 collect['muted'] = muted
 
-deaf = True
+deaf = False
 collect['deaf'] = deaf
 
 

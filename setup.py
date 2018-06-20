@@ -8,7 +8,7 @@ except(IOError, ImportError):
     long_description = open('README.md').read()
 
 setup(
-    name='ytelapiv_3',
+    name='ytelapi',
     version='3.11.0',
     description='Ytel API version 3',
     long_description=long_description,
