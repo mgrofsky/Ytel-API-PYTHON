@@ -8,18 +8,22 @@ except(IOError, ImportError):
     long_description = open('README.md').read()
 
 setup(
-    name='ytelapi',
-    version='3.11.0',
+    name='ytelapiv_3',
+    version='3.1.2',
     description='Ytel API version 3',
     long_description=long_description,
     author='APIMatic SDK Generator',
     author_email='support@apimatic.io',
-    url='https://apimatic.io/',
+    url='https://apimatic.io',
     packages=find_packages(),
     install_requires=[
         'requests>=2.9.1, <3.0',
         'jsonpickle>=0.7.1, <1.0',
         'cachecontrol>=0.11.7, <1.0',
         'python-dateutil>=2.5.3, <3.0'
-    ]
+    ],
+    tests_require=[
+        'nose>=1.3.7'
+    ],
+    test_suite = 'nose.collector'
 )
